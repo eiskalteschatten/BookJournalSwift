@@ -17,7 +17,11 @@ class MainSplitViewController: NSSplitViewController {
     
     override var representedObject: Any? {
         didSet {
-            // Update the view, if already loaded.
+            /*print("in here")
+            for viewController in self.childViewControllers {
+                print("in here too")
+                viewController.representedObject = representedObject
+            }*/
         }
     }
 }

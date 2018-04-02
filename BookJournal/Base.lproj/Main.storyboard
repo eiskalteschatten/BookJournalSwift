@@ -939,10 +939,10 @@ CA
             </objects>
             <point key="canvasLocation" x="939" y="256"/>
         </scene>
-        <!--View Controller-->
+        <!--Book List View Controller-->
         <scene sceneID="4G5-A9-de2">
             <objects>
-                <viewController id="TVy-6W-pqb" sceneMemberID="viewController">
+                <viewController id="TVy-6W-pqb" customClass="BookListViewController" customModule="BookJournal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="DME-sK-Xab">
                         <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1041,13 +1041,13 @@ CA
                     </view>
                 </viewController>
                 <customObject id="7Lp-XY-EEO" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController representsSharedInstance="YES" id="qeE-Z0-F4W"/>
                 <arrayController mode="entity" entityName="Book" automaticallyPreparesContent="YES" id="MzE-wk-GYU" userLabel="Book Array Controller">
                     <connections>
-                        <binding destination="TVy-6W-pqb" name="managedObjectContext" keyPath="representedObject.managedObjectContext" id="KzT-Hv-AuN"/>
+                        <binding destination="TVy-6W-pqb" name="managedObjectContext" keyPath="self.representedObject.managedObjectContext" id="1R6-Rh-Scw"/>
                         <outlet property="content" destination="RbJ-RK-9pj" id="C6C-Y4-vH5"/>
                     </connections>
                 </arrayController>
-                <userDefaultsController representsSharedInstance="YES" id="qeE-Z0-F4W"/>
             </objects>
             <point key="canvasLocation" x="1331" y="256"/>
         </scene>
