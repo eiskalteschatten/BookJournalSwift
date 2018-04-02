@@ -715,10 +715,10 @@
             </objects>
             <point key="canvasLocation" x="-402" y="271"/>
         </scene>
-        <!--Split View Controller-->
+        <!--Main Split View Controller-->
         <scene sceneID="ilj-2I-0KX">
             <objects>
-                <splitViewController id="4aE-C0-N5g" sceneMemberID="viewController">
+                <splitViewController id="4aE-C0-N5g" customClass="MainSplitViewController" customModule="BookJournal" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem canCollapse="YES" holdingPriority="750" id="GjB-2p-XeL"/>
                         <splitViewItem holdingPriority="750" id="2Bs-g4-AP3"/>
@@ -747,13 +747,13 @@
             <objects>
                 <viewController id="Ll1-iV-YRx" sceneMemberID="viewController">
                     <view key="view" id="58W-9u-yfM">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="714" height="521"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </view>
                 </viewController>
                 <customObject id="geX-CS-ehq" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1755" y="256"/>
+            <point key="canvasLocation" x="1887" y="366.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="miS-Pq-Pga">
