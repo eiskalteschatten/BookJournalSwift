@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
@@ -66,6 +67,18 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem title="New Folder" keyEquivalent="N" id="Ppx-jd-cml"/>
+                                        <menuItem isSeparatorItem="YES" id="1WT-IN-57K"/>
+                                        <menuItem title="Delete Book" id="Dn5-Nl-1G5">
+                                            <string key="keyEquivalent" base64-UTF8="YES">
+CA
+</string>
+                                        </menuItem>
+                                        <menuItem title="Delete Folder" id="HzT-xd-9hi">
+                                            <string key="keyEquivalent" base64-UTF8="YES">
+CA
+</string>
+                                            <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="m54-Is-iLE"/>
                                         <menuItem title="Close" keyEquivalent="w" id="DVo-aG-piG">
                                             <connections>
@@ -665,7 +678,7 @@
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-165" y="-291"/>
+            <point key="canvasLocation" x="486" y="-257"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -819,13 +832,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="250" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="22" horizontalPageScroll="10" verticalLineScroll="22" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1vw-F6-fbP">
+                            <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="17" horizontalPageScroll="10" verticalLineScroll="17" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1vw-F6-fbP">
                                 <rect key="frame" x="0.0" y="42" width="250" height="258"/>
                                 <clipView key="contentView" drawsBackground="NO" id="bNX-bt-S3A">
                                     <rect key="frame" x="0.0" y="0.0" width="250" height="258"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowHeight="22" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="14" outlineTableColumn="tdy-tl-OQE" id="aLd-4m-F5i">
+                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="14" outlineTableColumn="tdy-tl-OQE" id="aLd-4m-F5i">
                                             <rect key="frame" x="0.0" y="0.0" width="250" height="258"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="0.0"/>
@@ -994,13 +1007,6 @@
                                                                         <font key="font" metaFont="systemSemibold" size="13"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                                        <connections>
-                                                                            <binding destination="zOU-aG-xRa" name="value" keyPath="objectValue.title" id="osA-Uh-5ZU">
-                                                                                <dictionary key="options">
-                                                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
-                                                                                </dictionary>
-                                                                            </binding>
-                                                                        </connections>
                                                                     </textFieldCell>
                                                                 </textField>
                                                             </subviews>
@@ -1009,15 +1015,15 @@
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>
-                                                <binding destination="MzE-wk-GYU" name="content" keyPath="arrangedObjects" id="Wo5-aX-0U2"/>
-                                                <binding destination="MzE-wk-GYU" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="Wo5-aX-0U2" id="IWr-uV-cuw"/>
-                                                <binding destination="MzE-wk-GYU" name="sortDescriptors" keyPath="sortDescriptors" previousBinding="IWr-uV-cuw" id="Tq7-MR-sFF"/>
+                                                <binding destination="MzE-wk-GYU" name="content" keyPath="arrangedObjects" id="bYm-aD-Rrg"/>
+                                                <binding destination="MzE-wk-GYU" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="bYm-aD-Rrg" id="mBK-oI-pvr"/>
+                                                <binding destination="MzE-wk-GYU" name="sortDescriptors" keyPath="sortDescriptors" previousBinding="mBK-oI-pvr" id="AAq-Rc-NB1"/>
                                             </connections>
                                         </tableView>
                                     </subviews>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="AQ6-Od-eAG">
-                                    <rect key="frame" x="1" y="117.85863524675369" width="237.68802261352539" height="16"/>
+                                    <rect key="frame" x="1" y="117" width="237.68802261352539" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="j5X-lE-wPl">
@@ -1037,7 +1043,7 @@
                 <customObject id="7Lp-XY-EEO" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <arrayController mode="entity" entityName="Book" automaticallyPreparesContent="YES" id="MzE-wk-GYU" userLabel="Book Array Controller">
                     <connections>
-                        <binding destination="TVy-6W-pqb" name="managedObjectContext" keyPath="representedObject.managedObjectContext" id="XN9-gy-u2V"/>
+                        <binding destination="TVy-6W-pqb" name="managedObjectContext" keyPath="representedObject.managedObjectContext" id="KzT-Hv-AuN"/>
                         <outlet property="content" destination="RbJ-RK-9pj" id="C6C-Y4-vH5"/>
                     </connections>
                 </arrayController>
