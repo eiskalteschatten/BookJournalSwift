@@ -940,7 +940,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" columnResizing="NO" autosaveColumns="NO" rowHeight="65" rowSizeStyle="automatic" viewBased="YES" id="RbJ-RK-9pj">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnSelection="YES" columnResizing="NO" autosaveColumns="NO" rowHeight="65" rowSizeStyle="automatic" viewBased="YES" id="RbJ-RK-9pj">
                                             <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
@@ -970,18 +970,18 @@
                                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSBookmarksTemplate" id="AHm-tj-OWg"/>
                                                                 </imageView>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yib-pQ-vaY">
-                                                                    <rect key="frame" x="65" y="24" width="233" height="17"/>
+                                                                    <rect key="frame" x="65" y="21" width="233" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Date Finished" id="oem-zr-3qw">
+                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Author" id="oem-zr-3qw">
                                                                         <font key="font" metaFont="smallSystem"/>
-                                                                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                 </textField>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g36-yy-LnU">
-                                                                    <rect key="frame" x="65" y="9" width="233" height="17"/>
+                                                                    <rect key="frame" x="65" y="9" width="233" height="11"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="This is where a truncated version of the user's comments will go" id="Nlb-r4-4FF">
+                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Date finished" id="Nlb-r4-4FF">
                                                                         <font key="font" metaFont="miniSystem"/>
                                                                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -994,6 +994,13 @@
                                                                         <font key="font" metaFont="systemSemibold" size="13"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                        <connections>
+                                                                            <binding destination="zOU-aG-xRa" name="value" keyPath="objectValue.title" id="osA-Uh-5ZU">
+                                                                                <dictionary key="options">
+                                                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                                                </dictionary>
+                                                                            </binding>
+                                                                        </connections>
                                                                     </textFieldCell>
                                                                 </textField>
                                                             </subviews>
@@ -1001,6 +1008,11 @@
                                                     </prototypeCellViews>
                                                 </tableColumn>
                                             </tableColumns>
+                                            <connections>
+                                                <binding destination="MzE-wk-GYU" name="content" keyPath="arrangedObjects" id="Wo5-aX-0U2"/>
+                                                <binding destination="MzE-wk-GYU" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="Wo5-aX-0U2" id="IWr-uV-cuw"/>
+                                                <binding destination="MzE-wk-GYU" name="sortDescriptors" keyPath="sortDescriptors" previousBinding="IWr-uV-cuw" id="Tq7-MR-sFF"/>
+                                            </connections>
                                         </tableView>
                                     </subviews>
                                 </clipView>
@@ -1023,7 +1035,12 @@
                     </view>
                 </viewController>
                 <customObject id="7Lp-XY-EEO" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <arrayController mode="entity" entityName="Book" automaticallyPreparesContent="YES" id="MzE-wk-GYU"/>
+                <arrayController mode="entity" entityName="Book" automaticallyPreparesContent="YES" id="MzE-wk-GYU" userLabel="Book Array Controller">
+                    <connections>
+                        <binding destination="TVy-6W-pqb" name="managedObjectContext" keyPath="representedObject.managedObjectContext" id="XN9-gy-u2V"/>
+                        <outlet property="content" destination="RbJ-RK-9pj" id="C6C-Y4-vH5"/>
+                    </connections>
+                </arrayController>
                 <userDefaultsController representsSharedInstance="YES" id="qeE-Z0-F4W"/>
             </objects>
             <point key="canvasLocation" x="1331" y="256"/>
