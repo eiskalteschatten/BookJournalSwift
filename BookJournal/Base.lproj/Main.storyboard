@@ -1023,6 +1023,8 @@
                     </view>
                 </viewController>
                 <customObject id="7Lp-XY-EEO" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <arrayController mode="entity" entityName="Book" automaticallyPreparesContent="YES" id="MzE-wk-GYU"/>
+                <userDefaultsController representsSharedInstance="YES" id="qeE-Z0-F4W"/>
             </objects>
             <point key="canvasLocation" x="1331" y="256"/>
         </scene>

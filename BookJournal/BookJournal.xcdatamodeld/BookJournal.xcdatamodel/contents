@@ -14,14 +14,15 @@
         <attribute name="publisher" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="yearPublished" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="folder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Folder" syncable="YES"/>
+        <relationship name="folder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Folder" inverseName="book" inverseEntity="Folder" syncable="YES"/>
     </entity>
     <entity name="Folder" representedClassName="Folder" syncable="YES" codeGenerationType="class">
         <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="folderName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="book" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="folder" inverseEntity="Book" syncable="YES"/>
     </entity>
     <elements>
         <element name="Book" positionX="-63" positionY="-18" width="128" height="255"/>
-        <element name="Folder" positionX="-54" positionY="63" width="128" height="75"/>
+        <element name="Folder" positionX="-54" positionY="63" width="128" height="90"/>
     </elements>
 </model>
