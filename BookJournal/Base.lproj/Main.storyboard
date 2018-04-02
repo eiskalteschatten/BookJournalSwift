@@ -616,6 +616,13 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="hB3-LF-h0Y"/>
+                                        <menuItem title="Toggle Sidebar" id="MgE-1q-Dfu">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="toggleSidebar:" target="Ady-hI-5gd" id="WK9-DH-NlU"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="M6N-jD-NW7"/>
                                         <menuItem title="Show Sidebar" keyEquivalent="s" id="kIP-vf-haE">
                                             <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
                                             <connections>
@@ -720,8 +727,8 @@
             <objects>
                 <splitViewController id="4aE-C0-N5g" customClass="MainSplitViewController" customModule="BookJournal" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
-                        <splitViewItem canCollapse="YES" holdingPriority="750" id="GjB-2p-XeL"/>
-                        <splitViewItem holdingPriority="750" id="2Bs-g4-AP3"/>
+                        <splitViewItem canCollapse="YES" holdingPriority="260" behavior="sidebar" id="GjB-2p-XeL"/>
+                        <splitViewItem holdingPriority="255" behavior="contentList" id="2Bs-g4-AP3"/>
                         <splitViewItem id="Wb4-Ki-9lF"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" vertical="YES" id="4Ru-Zu-btC">
