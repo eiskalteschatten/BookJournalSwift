@@ -702,12 +702,86 @@
                                 <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="S5D-VL-lzW"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="rGM-5b-jLG"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="vHl-eA-tgz"/>
+                                <toolbarItem implicitItemIdentifier="AB40C198-E295-428B-8C2B-FE24ECE9F57F" label="Add New Book" paletteLabel="Add New Book" image="NSAddTemplate" id="7hn-uE-Gm3">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="35" height="25"/>
+                                    <size key="maxSize" width="40" height="25"/>
+                                    <button key="view" verticalHuggingPriority="750" id="6y0-nt-i79">
+                                        <rect key="frame" x="22" y="14" width="40" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSAddTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="H9P-rA-Jas">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="24513DFB-96AB-4976-840C-89782982B22B" label="Toggle Sidebar" paletteLabel="Toggle Sidebar" image="NSTouchBarSidebarTemplate" id="27C-xs-7z0">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="35" height="25"/>
+                                    <size key="maxSize" width="40" height="25"/>
+                                    <button key="view" verticalHuggingPriority="750" id="c75-YA-Yxj">
+                                        <rect key="frame" x="23" y="14" width="40" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSTouchBarSidebarTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="okD-Tn-NM1">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                    <connections>
+                                        <action selector="toggleSidebar:" target="Oky-zY-oP4" id="Ib8-Sq-VFm"/>
+                                    </connections>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="8C67DD99-98A1-420C-881A-168FC91680B3" label="Add New Folder" paletteLabel="Add New Folder" image="NSTouchBarNewFolderTemplate" id="Evf-KN-Vs9">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="35" height="25"/>
+                                    <size key="maxSize" width="40" height="25"/>
+                                    <button key="view" verticalHuggingPriority="750" id="Hpr-I2-kof">
+                                        <rect key="frame" x="26" y="14" width="40" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSTouchBarNewFolderTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Je4-G6-GeP">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                    <connections>
+                                        <action selector="toggleSidebar:" target="Oky-zY-oP4" id="1ck-VR-0Ig"/>
+                                    </connections>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="4AD5A8CB-863C-4BE9-9C2B-1913DEDB232B" label="Share" paletteLabel="Share" image="NSShareTemplate" id="6H0-fj-16J">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="35" height="25"/>
+                                    <size key="maxSize" width="40" height="25"/>
+                                    <button key="view" verticalHuggingPriority="750" id="PkH-xb-aSK">
+                                        <rect key="frame" x="0.0" y="14" width="40" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSShareTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dQa-Td-OCR">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                    <connections>
+                                        <action selector="toggleSidebar:" target="Oky-zY-oP4" id="OIm-OJ-aEQ"/>
+                                    </connections>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="E2202F76-1753-487F-94B8-833EE01529FC" label="Search" paletteLabel="Search" id="BgT-xi-VAA">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="150" height="22"/>
+                                    <size key="maxSize" width="250" height="22"/>
+                                    <searchField key="view" wantsLayer="YES" verticalHuggingPriority="750" textCompletion="NO" id="sDU-od-aol">
+                                        <rect key="frame" x="0.0" y="14" width="200" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="g3C-Zk-YwO">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </searchFieldCell>
+                                    </searchField>
+                                </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
-                                <toolbarItem reference="1I1-mT-tvd"/>
-                                <toolbarItem reference="flP-f3-9bR"/>
+                                <toolbarItem reference="7hn-uE-Gm3"/>
                                 <toolbarItem reference="vHl-eA-tgz"/>
-                                <toolbarItem reference="S5D-VL-lzW"/>
+                                <toolbarItem reference="BgT-xi-VAA"/>
                             </defaultToolbarItems>
                         </toolbar>
                         <connections>
@@ -987,5 +1061,9 @@
     </scenes>
     <resources>
         <image name="NSActionTemplate" width="14" height="14"/>
+        <image name="NSAddTemplate" width="11" height="11"/>
+        <image name="NSShareTemplate" width="11" height="16"/>
+        <image name="NSTouchBarNewFolderTemplate" width="28" height="30"/>
+        <image name="NSTouchBarSidebarTemplate" width="22" height="30"/>
     </resources>
 </document>
