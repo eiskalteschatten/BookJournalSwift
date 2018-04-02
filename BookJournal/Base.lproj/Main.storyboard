@@ -723,9 +723,6 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                     </button>
-                                    <connections>
-                                        <action selector="toggleSidebar:" target="Oky-zY-oP4" id="1ck-VR-0Ig"/>
-                                    </connections>
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="4AD5A8CB-863C-4BE9-9C2B-1913DEDB232B" label="Share" paletteLabel="Share" image="NSShareTemplate" id="6H0-fj-16J">
                                     <nil key="toolTip"/>
@@ -739,9 +736,6 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                     </button>
-                                    <connections>
-                                        <action selector="toggleSidebar:" target="Oky-zY-oP4" id="OIm-OJ-aEQ"/>
-                                    </connections>
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="E2202F76-1753-487F-94B8-833EE01529FC" label="Search" paletteLabel="Search" id="BgT-xi-VAA">
                                     <nil key="toolTip"/>
@@ -760,6 +754,7 @@
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="7hn-uE-Gm3"/>
+                                <toolbarItem reference="6H0-fj-16J"/>
                                 <toolbarItem reference="vHl-eA-tgz"/>
                                 <toolbarItem reference="BgT-xi-VAA"/>
                             </defaultToolbarItems>
