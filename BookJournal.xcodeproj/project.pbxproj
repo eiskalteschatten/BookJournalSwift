@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		937EDCD72072261700FC6ED9 /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937EDCD62072261700FC6ED9 /* MainSplitViewController.swift */; };
 		93AD96312071630300C41B67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AD96302071630300C41B67 /* AppDelegate.swift */; };
-		93AD96332071630300C41B67 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AD96322071630300C41B67 /* ViewController.swift */; };
+		93AD96332071630300C41B67 /* BookListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AD96322071630300C41B67 /* BookListViewController.swift */; };
 		93AD96362071630300C41B67 /* BookJournal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 93AD96342071630300C41B67 /* BookJournal.xcdatamodeld */; };
 		93AD96382071630400C41B67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93AD96372071630400C41B67 /* Assets.xcassets */; };
 		93AD963B2071630400C41B67 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93AD96392071630400C41B67 /* Main.storyboard */; };
@@ -38,7 +38,7 @@
 		937EDCD62072261700FC6ED9 /* MainSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSplitViewController.swift; sourceTree = "<group>"; };
 		93AD962D2071630300C41B67 /* BookJournal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookJournal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93AD96302071630300C41B67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		93AD96322071630300C41B67 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		93AD96322071630300C41B67 /* BookListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewController.swift; sourceTree = "<group>"; };
 		93AD96352071630300C41B67 /* BookJournal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BookJournal.xcdatamodel; sourceTree = "<group>"; };
 		93AD96372071630400C41B67 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93AD963A2071630400C41B67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -80,6 +80,7 @@
 		937EDCD82072282C00FC6ED9 /* MainWindow */ = {
 			isa = PBXGroup;
 			children = (
+				93AD96322071630300C41B67 /* BookListViewController.swift */,
 				93AD96392071630400C41B67 /* Main.storyboard */,
 				937EDCD62072261700FC6ED9 /* MainSplitViewController.swift */,
 			);
@@ -110,7 +111,6 @@
 			isa = PBXGroup;
 			children = (
 				93AD96302071630300C41B67 /* AppDelegate.swift */,
-				93AD96322071630300C41B67 /* ViewController.swift */,
 				93AD96372071630400C41B67 /* Assets.xcassets */,
 				937EDCD82072282C00FC6ED9 /* MainWindow */,
 				93AD963C2071630400C41B67 /* Info.plist */,
@@ -268,7 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93AD96332071630300C41B67 /* ViewController.swift in Sources */,
+				93AD96332071630300C41B67 /* BookListViewController.swift in Sources */,
 				93AD96312071630300C41B67 /* AppDelegate.swift in Sources */,
 				93AD96362071630300C41B67 /* BookJournal.xcdatamodeld in Sources */,
 				937EDCD72072261700FC6ED9 /* MainSplitViewController.swift in Sources */,
