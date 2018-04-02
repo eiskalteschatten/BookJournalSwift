@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		937EDCD72072261700FC6ED9 /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937EDCD62072261700FC6ED9 /* MainSplitViewController.swift */; };
+		937EDD01207287A700FC6ED9 /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937EDD00207287A700FC6ED9 /* EditorViewController.swift */; };
 		93AD96312071630300C41B67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AD96302071630300C41B67 /* AppDelegate.swift */; };
 		93AD96332071630300C41B67 /* BookListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AD96322071630300C41B67 /* BookListViewController.swift */; };
 		93AD96362071630300C41B67 /* BookJournal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 93AD96342071630300C41B67 /* BookJournal.xcdatamodeld */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		937EDCD62072261700FC6ED9 /* MainSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSplitViewController.swift; sourceTree = "<group>"; };
+		937EDD00207287A700FC6ED9 /* EditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
 		93AD962D2071630300C41B67 /* BookJournal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookJournal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93AD96302071630300C41B67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93AD96322071630300C41B67 /* BookListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				93AD96322071630300C41B67 /* BookListViewController.swift */,
 				93AD96392071630400C41B67 /* Main.storyboard */,
 				937EDCD62072261700FC6ED9 /* MainSplitViewController.swift */,
+				937EDD00207287A700FC6ED9 /* EditorViewController.swift */,
 			);
 			name = MainWindow;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 				93AD96332071630300C41B67 /* BookListViewController.swift in Sources */,
 				93AD96312071630300C41B67 /* AppDelegate.swift in Sources */,
 				93AD96362071630300C41B67 /* BookJournal.xcdatamodeld in Sources */,
+				937EDD01207287A700FC6ED9 /* EditorViewController.swift in Sources */,
 				937EDCD72072261700FC6ED9 /* MainSplitViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
