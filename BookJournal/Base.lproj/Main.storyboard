@@ -59,11 +59,12 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="File" id="bib-Uj-vzu">
                                     <items>
-                                        <menuItem title="New" keyEquivalent="n" id="Was-JA-tGl">
+                                        <menuItem title="New Book" keyEquivalent="n" id="Was-JA-tGl">
                                             <connections>
                                                 <action selector="newDocument:" target="Ady-hI-5gd" id="4Si-XN-c54"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="New Folder" keyEquivalent="N" id="Ppx-jd-cml"/>
                                         <menuItem title="Open…" keyEquivalent="o" id="IAo-SY-fd9">
                                             <connections>
                                                 <action selector="openDocument:" target="Ady-hI-5gd" id="bVn-NM-KNZ"/>
@@ -702,12 +703,12 @@
                                 <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="S5D-VL-lzW"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="rGM-5b-jLG"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="vHl-eA-tgz"/>
-                                <toolbarItem implicitItemIdentifier="AB40C198-E295-428B-8C2B-FE24ECE9F57F" label="Add New Book" paletteLabel="Add New Book" image="NSAddTemplate" id="7hn-uE-Gm3">
+                                <toolbarItem implicitItemIdentifier="AB40C198-E295-428B-8C2B-FE24ECE9F57F" label="New Book" paletteLabel="New Book" image="NSAddTemplate" id="7hn-uE-Gm3">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="35" height="25"/>
                                     <size key="maxSize" width="40" height="25"/>
                                     <button key="view" verticalHuggingPriority="750" id="6y0-nt-i79">
-                                        <rect key="frame" x="22" y="14" width="40" height="25"/>
+                                        <rect key="frame" x="10" y="14" width="40" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSAddTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="H9P-rA-Jas">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -731,12 +732,12 @@
                                         <action selector="toggleSidebar:" target="Oky-zY-oP4" id="Ib8-Sq-VFm"/>
                                     </connections>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="8C67DD99-98A1-420C-881A-168FC91680B3" label="Add New Folder" paletteLabel="Add New Folder" image="NSTouchBarNewFolderTemplate" id="Evf-KN-Vs9">
+                                <toolbarItem implicitItemIdentifier="8C67DD99-98A1-420C-881A-168FC91680B3" label="New Folder" paletteLabel="New Folder" image="NSTouchBarNewFolderTemplate" id="Evf-KN-Vs9">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="35" height="25"/>
                                     <size key="maxSize" width="40" height="25"/>
                                     <button key="view" verticalHuggingPriority="750" id="Hpr-I2-kof">
-                                        <rect key="frame" x="26" y="14" width="40" height="25"/>
+                                        <rect key="frame" x="14" y="14" width="40" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSTouchBarNewFolderTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Je4-G6-GeP">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -845,13 +846,13 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="22" horizontalPageScroll="10" verticalLineScroll="22" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1vw-F6-fbP">
-                                <rect key="frame" x="0.0" y="0.0" width="250" height="300"/>
+                                <rect key="frame" x="0.0" y="42" width="250" height="258"/>
                                 <clipView key="contentView" drawsBackground="NO" id="bNX-bt-S3A">
-                                    <rect key="frame" x="0.0" y="0.0" width="250" height="300"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="250" height="258"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowHeight="22" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="14" outlineTableColumn="tdy-tl-OQE" id="aLd-4m-F5i">
-                                            <rect key="frame" x="0.0" y="0.0" width="250" height="300"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="250" height="258"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="0.0"/>
                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -928,11 +929,21 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="diE-hh-IdQ">
+                                <rect key="frame" x="20" y="10" width="210" height="32"/>
+                                <buttonCell key="cell" type="bevel" title="New Folder" bezelStyle="rounded" image="NSTouchBarAddDetailTemplate" imagePosition="leading" alignment="left" imageScaling="proportionallyDown" inset="2" id="lCX-sJ-5Ug">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="1vw-F6-fbP" secondAttribute="bottom" id="Dim-AH-I93"/>
+                            <constraint firstAttribute="bottom" secondItem="diE-hh-IdQ" secondAttribute="bottom" constant="10" id="AIv-xM-JkY"/>
                             <constraint firstItem="1vw-F6-fbP" firstAttribute="leading" secondItem="O3u-Oa-euN" secondAttribute="leading" id="HpY-Yt-clZ"/>
                             <constraint firstItem="1vw-F6-fbP" firstAttribute="top" secondItem="O3u-Oa-euN" secondAttribute="top" id="aw5-XD-XvK"/>
+                            <constraint firstAttribute="trailing" secondItem="diE-hh-IdQ" secondAttribute="trailing" constant="20" id="bBr-K6-UpM"/>
+                            <constraint firstItem="diE-hh-IdQ" firstAttribute="leading" secondItem="O3u-Oa-euN" secondAttribute="leading" constant="20" id="hTy-Jf-cG2"/>
+                            <constraint firstItem="diE-hh-IdQ" firstAttribute="top" secondItem="1vw-F6-fbP" secondAttribute="bottom" id="lso-k7-HMg"/>
                             <constraint firstAttribute="trailing" secondItem="1vw-F6-fbP" secondAttribute="trailing" id="wC7-DG-hWU"/>
                         </constraints>
                     </view>
@@ -1063,6 +1074,7 @@
         <image name="NSActionTemplate" width="14" height="14"/>
         <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSShareTemplate" width="11" height="16"/>
+        <image name="NSTouchBarAddDetailTemplate" width="18" height="30"/>
         <image name="NSTouchBarNewFolderTemplate" width="28" height="30"/>
         <image name="NSTouchBarSidebarTemplate" width="22" height="30"/>
     </resources>
