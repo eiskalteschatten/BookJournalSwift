@@ -10,6 +10,7 @@
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="isbn" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="labels" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="placeFinished" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="publisher" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="yearPublished" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -19,7 +20,7 @@
         <attribute name="folderName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Book" positionX="-63" positionY="-18" width="128" height="225"/>
+        <element name="Book" positionX="-63" positionY="-18" width="128" height="240"/>
         <element name="Folder" positionX="-54" positionY="63" width="128" height="75"/>
     </elements>
 </model>
