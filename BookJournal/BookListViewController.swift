@@ -9,9 +9,7 @@
 import Cocoa
 
 class BookListViewController: NSViewController {
-    let appDelegate = NSApplication.shared.delegate as! AppDelegate
-    lazy var managedObjectContext: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
