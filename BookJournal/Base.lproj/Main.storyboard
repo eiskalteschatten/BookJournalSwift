@@ -1161,6 +1161,9 @@ CA
                                                                     <rect key="frame" x="11" y="9" width="48" height="48"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSBookmarksTemplate" id="AHm-tj-OWg"/>
+                                                                    <connections>
+                                                                        <binding destination="zOU-aG-xRa" name="data" keyPath="objectValue.image" id="3Eq-df-ycl"/>
+                                                                    </connections>
                                                                 </imageView>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yib-pQ-vaY">
                                                                     <rect key="frame" x="65" y="21" width="233" height="17"/>
@@ -1170,6 +1173,13 @@ CA
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
+                                                                    <connections>
+                                                                        <binding destination="zOU-aG-xRa" name="value" keyPath="objectValue.author" id="Ox2-1r-b6d">
+                                                                            <dictionary key="options">
+                                                                                <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                                            </dictionary>
+                                                                        </binding>
+                                                                    </connections>
                                                                 </textField>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g36-yy-LnU">
                                                                     <rect key="frame" x="65" y="9" width="233" height="11"/>
@@ -1179,6 +1189,13 @@ CA
                                                                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
+                                                                    <connections>
+                                                                        <binding destination="zOU-aG-xRa" name="value" keyPath="objectValue.dateFinished" id="naJ-KQ-Et4">
+                                                                            <dictionary key="options">
+                                                                                <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                                            </dictionary>
+                                                                        </binding>
+                                                                    </connections>
                                                                 </textField>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jbs-A8-pSd">
                                                                     <rect key="frame" x="65" y="40" width="232" height="17"/>
