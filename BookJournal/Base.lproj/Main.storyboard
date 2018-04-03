@@ -1202,9 +1202,8 @@ CA
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>
-                                                <binding destination="MzE-wk-GYU" name="content" keyPath="arrangedObjects" id="bYm-aD-Rrg"/>
-                                                <binding destination="MzE-wk-GYU" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="bYm-aD-Rrg" id="mBK-oI-pvr"/>
-                                                <binding destination="MzE-wk-GYU" name="sortDescriptors" keyPath="sortDescriptors" previousBinding="mBK-oI-pvr" id="AAq-Rc-NB1"/>
+                                                <binding destination="MzE-wk-GYU" name="selectionIndexes" keyPath="selectionIndexes" id="J7N-FS-bME"/>
+                                                <binding destination="MzE-wk-GYU" name="sortDescriptors" keyPath="sortDescriptors" id="gmH-9T-pzD"/>
                                             </connections>
                                         </tableView>
                                     </subviews>
