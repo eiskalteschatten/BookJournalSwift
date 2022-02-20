@@ -28,5 +28,14 @@ struct Sidebar: View {
         .onChange(of: screen, perform: { _ in
             UserDefaults.standard.set(screen?.rawValue, forKey: USER_LAST_SCREEN_KEY)
         })
+#if os(iOS)
+        .navigationBarTitle("BookJournal")
+#endif
+    }
+}
+
+struct Sidebar_Previews: PreviewProvider {
+    static var previews: some View {
+        Sidebar().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
