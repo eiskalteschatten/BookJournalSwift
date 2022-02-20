@@ -9,23 +9,23 @@ import SwiftUI
 import CoreData
 
 struct AllBooksView: View {
-    @State private var selectedBook: Item?
+    @State private var selectedBook: Book?
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \Book.title, ascending: false)],
         animation: .default)
-    private var items: FetchedResults<Item>
+    private var books: FetchedResults<Book>
 
     var body: some View {
         List {
-            ForEach(items) { book in
+            ForEach(books) { book in
                 NavigationLink(
                     destination: BookView(book: book),
                     tag: book,
                     selection: $selectedBook,
                     label: {
-                        Text("Item at \(book.timestamp!, formatter: itemFormatter)")
+                        Text(book.title!)
                     }
                 )
             }
@@ -39,7 +39,7 @@ struct AllBooksView: View {
             #endif
             ToolbarItem {
                 Button(action: addItem) {
-                    Label("Add Item", systemImage: "plus")
+                    Label("Add Book", systemImage: "plus")
                 }
             }
         }
@@ -47,8 +47,10 @@ struct AllBooksView: View {
 
     private func addItem() {
         withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
+            let newBook = Book(context: viewContext)
+            newBook.createdAt = Date()
+            newBook.updatedAt = Date()
+            newBook.title = "Untitled Book";
 
             do {
                 try viewContext.save()
@@ -63,7 +65,7 @@ struct AllBooksView: View {
 
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
+            offsets.map { books[$0] }.forEach(viewContext.delete)
 
             do {
                 try viewContext.save()
@@ -76,13 +78,6 @@ struct AllBooksView: View {
         }
     }
 }
-
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
 
 struct AllBooksView_Previews: PreviewProvider {
     static var previews: some View {

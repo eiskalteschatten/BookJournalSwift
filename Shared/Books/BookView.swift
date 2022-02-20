@@ -9,10 +9,10 @@ import SwiftUI
 import CoreData
 
 struct BookView: View {
-    var book: Item
+    var book: Book
     
     var body: some View {
-        Text("test!")
+        Text(book.title!)
     }
 }
 
