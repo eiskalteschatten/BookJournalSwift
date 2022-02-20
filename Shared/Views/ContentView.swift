@@ -34,7 +34,10 @@ struct ContentView: View {
             .navigationBarTitle("BookJournal")
             #endif
             
+            // TODO: something other than just text
             Text("Select a category")
+            
+            // TODO: show a monochrome version of the app icon
             Text("Select a book")
         }
     }
