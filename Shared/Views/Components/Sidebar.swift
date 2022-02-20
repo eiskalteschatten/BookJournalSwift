@@ -21,7 +21,7 @@ struct Sidebar: View {
                 tag: Screen.allBooks,
                 selection: $screen,
                 label: {
-                    Label("All Books", systemImage: "info.circle")
+                    Label("All Books", systemImage: "books.vertical.fill")
                 }
             )
         }
