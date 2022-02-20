@@ -104,8 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				932198E6279D86E400CB6E76 /* BookJournalApp.swift */,
-				932198E7279D86E400CB6E76 /* ContentView.swift */,
 				932198E8279D86E400CB6E76 /* Persistence.swift */,
+				9329053827C28DDF000D15AE /* Views */,
 				932198E9279D86E600CB6E76 /* Assets.xcassets */,
 				932198E4279D86E400CB6E76 /* BookJournal.xcdatamodeld */,
 			);
@@ -147,6 +147,14 @@
 				9321990D279D86E600CB6E76 /* Tests_macOSLaunchTests.swift */,
 			);
 			path = "Tests macOS";
+			sourceTree = "<group>";
+		};
+		9329053827C28DDF000D15AE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				932198E7279D86E400CB6E76 /* ContentView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
