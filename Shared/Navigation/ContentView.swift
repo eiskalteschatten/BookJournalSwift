@@ -10,7 +10,7 @@ import CoreData
 
 struct ContentView: View {
     enum Screen: Int {
-        case allBooks, wishlist
+        case allBooks, wishlist, currentlyReading, notReadYet, read, statistics
     }
     
     @State private var screen: Screen? = Screen(rawValue: UserDefaults.standard.integer(forKey: USER_LAST_SCREEN_KEY)) ?? .allBooks
@@ -23,7 +23,7 @@ struct ContentView: View {
                     tag: Screen.allBooks,
                     selection: $screen,
                     label: {
-                        Label("All Books", systemImage: "books.vertical.fill")
+                        Label("All Books", systemImage: "books.vertical")
                     }
                 )
                 NavigationLink(
@@ -34,6 +34,45 @@ struct ContentView: View {
                     selection: $screen,
                     label: {
                         Label("Wishlist", systemImage: "list.star")
+                    }
+                )
+                NavigationLink(
+                    destination: BookList(
+                        predicate: NSPredicate(format: "status == %@", BookStatus.currentlyReading.rawValue)
+                    ).navigationTitle("Currently Reading"),
+                    tag: Screen.currentlyReading,
+                    selection: $screen,
+                    label: {
+                        Label("Currently Reading", systemImage: "book")
+                    }
+                )
+                NavigationLink(
+                    destination: BookList(
+                        predicate: NSPredicate(format: "status == %@", BookStatus.notReadYet.rawValue)
+                    ).navigationTitle("Not Read Yet"),
+                    tag: Screen.notReadYet,
+                    selection: $screen,
+                    label: {
+                        Label("Not Read Yet", systemImage: "book.closed")
+                    }
+                )
+                NavigationLink(
+                    destination: BookList(
+                        predicate: NSPredicate(format: "status == %@", BookStatus.read.rawValue)
+                    ).navigationTitle("Books Read"),
+                    tag: Screen.read,
+                    selection: $screen,
+                    label: {
+                        Label("Books Read", systemImage: "checkmark.square")
+                    }
+                )
+                NavigationLink(
+                    // TODO: create the statistics view
+                    destination: BookList().navigationTitle("Statistics"),
+                    tag: Screen.statistics,
+                    selection: $screen,
+                    label: {
+                        Label("Statistics", systemImage: "chart.bar")
                     }
                 )
             }

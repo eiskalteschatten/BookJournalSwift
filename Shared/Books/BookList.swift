@@ -57,7 +57,6 @@ struct BookList: View {
             let newBook = Book(context: viewContext)
             newBook.createdAt = Date()
             newBook.updatedAt = Date()
-            newBook.title = "Untitled Book";
 
             do {
                 try viewContext.save()

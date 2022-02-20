@@ -23,4 +23,3 @@ struct BookView_Previews: PreviewProvider {
         BookView(book: book).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
-

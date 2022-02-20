@@ -27,6 +27,8 @@
 		9329054227C2932F000D15AE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9329054027C2932F000D15AE /* Constants.swift */; };
 		9329054427C29C55000D15AE /* BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9329054327C29C55000D15AE /* BookView.swift */; };
 		9329054527C29C55000D15AE /* BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9329054327C29C55000D15AE /* BookView.swift */; };
+		9346342427C2DC45003B233F /* BookStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9346342327C2DC45003B233F /* BookStatus.swift */; };
+		9346342527C2DC45003B233F /* BookStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9346342327C2DC45003B233F /* BookStatus.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,7 @@
 		9329053D27C2916F000D15AE /* BookList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookList.swift; sourceTree = "<group>"; };
 		9329054027C2932F000D15AE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9329054327C29C55000D15AE /* BookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookView.swift; sourceTree = "<group>"; };
+		9346342327C2DC45003B233F /* BookStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookStatus.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +176,7 @@
 			children = (
 				9329053D27C2916F000D15AE /* BookList.swift */,
 				9329054327C29C55000D15AE /* BookView.swift */,
+				9346342327C2DC45003B233F /* BookStatus.swift */,
 			);
 			path = Books;
 			sourceTree = "<group>";
@@ -337,6 +341,7 @@
 			files = (
 				9329053E27C2916F000D15AE /* BookList.swift in Sources */,
 				93219911279D86E600CB6E76 /* BookJournalApp.swift in Sources */,
+				9346342427C2DC45003B233F /* BookStatus.swift in Sources */,
 				93219915279D86E600CB6E76 /* Persistence.swift in Sources */,
 				9329054127C2932F000D15AE /* Constants.swift in Sources */,
 				9321990F279D86E600CB6E76 /* BookJournal.xcdatamodeld in Sources */,
@@ -351,6 +356,7 @@
 			files = (
 				9329053F27C2916F000D15AE /* BookList.swift in Sources */,
 				93219912279D86E600CB6E76 /* BookJournalApp.swift in Sources */,
+				9346342527C2DC45003B233F /* BookStatus.swift in Sources */,
 				93219916279D86E600CB6E76 /* Persistence.swift in Sources */,
 				9329054227C2932F000D15AE /* Constants.swift in Sources */,
 				93219910279D86E600CB6E76 /* BookJournal.xcdatamodeld in Sources */,
