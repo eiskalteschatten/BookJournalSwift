@@ -23,7 +23,7 @@ struct BookListItem: View {
                     .font(Font.body.bold())
                 
                 if (book.authors != nil) {
-                    Text(book.authors!.split(separator: ",").joined(separator: ", "))
+                    Text(getBookAuthors(book.authors!))
                         .font(.footnote)
                 }
             }

@@ -12,7 +12,23 @@ struct BookView: View {
     var book: Book
     
     var body: some View {
-        Text(book.title!)
+        VStack {
+            HStack(spacing: 30.0) {
+                // TODO: add actual cover image
+                Image(systemName: "book.closed.circle")
+                    .resizable()
+                    .frame(width: 200.0, height: 225.0)
+                
+                VStack {
+                    Text(book.title!)
+                        .font(.title)
+                    
+                    if (book.authors != nil) {
+                        Text(getBookAuthors(book.authors!))
+                    }
+                }
+            }
+        }
     }
 }
 
