@@ -14,12 +14,15 @@ struct BookList: View {
     @State private var selectedBook: Book?
     @Environment(\.managedObjectContext) private var viewContext
 
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Book.title, ascending: false)],
-        predicate: predicate,
-        animation: .default
-    )
-    private var books: FetchedResults<Book>
+    @FetchRequest private var books: FetchedResults<Book>
+    
+    init() {
+        self._books = FetchRequest<Book>(
+            sortDescriptors: [NSSortDescriptor(keyPath: \Book.title, ascending: false)],
+            predicate: predicate,
+            animation: .default
+        )
+    }
 
     var body: some View {
         List {
