@@ -34,7 +34,7 @@ struct BookView: View {
                 // TODO: show a monochrome version of the app icon
                 Image(systemName: "book")
                     .font(.system(size: 200))
-                    .opacity(0.2)
+                    .opacity(0.1)
             }
         }
         .toolbar {
