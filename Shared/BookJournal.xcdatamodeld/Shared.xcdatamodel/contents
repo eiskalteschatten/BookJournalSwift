@@ -20,7 +20,7 @@
         <attribute name="pageCount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="publisher" optional="YES" attributeType="String"/>
         <attribute name="rating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="status" optional="YES" attributeType="String"/>
+        <attribute name="status" attributeType="String" defaultValueString="notReadYet"/>
         <attribute name="summary" optional="YES" attributeType="String" spotlightIndexingEnabled="YES"/>
         <attribute name="tags" optional="YES" attributeType="String" spotlightIndexingEnabled="YES"/>
         <attribute name="title" attributeType="String" defaultValueString="Untitled Book" spotlightIndexingEnabled="YES"/>
