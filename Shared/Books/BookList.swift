@@ -1,5 +1,5 @@
 //
-//  AllBooksList.swift
+//  BookList.swift
 //  BookJournal
 //
 //  Created by Alex Seifert on 20.02.22.
@@ -8,13 +8,17 @@
 import SwiftUI
 import CoreData
 
-struct AllBooksList: View {
+struct BookList: View {
+    var predicate: NSPredicate?
+    
     @State private var selectedBook: Book?
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Book.title, ascending: false)],
-        animation: .default)
+        predicate: predicate,
+        animation: .default
+    )
     private var books: FetchedResults<Book>
 
     var body: some View {
@@ -79,8 +83,8 @@ struct AllBooksList: View {
     }
 }
 
-struct AllBooksList_Previews: PreviewProvider {
+struct BookList_Previews: PreviewProvider {
     static var previews: some View {
-        AllBooksList().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        BookList().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
