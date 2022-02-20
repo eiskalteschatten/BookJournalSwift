@@ -23,19 +23,21 @@
         <attribute name="status" optional="YES" attributeType="String"/>
         <attribute name="summary" optional="YES" attributeType="String" spotlightIndexingEnabled="YES"/>
         <attribute name="tags" optional="YES" attributeType="String" spotlightIndexingEnabled="YES"/>
-        <attribute name="title" attributeType="String" spotlightIndexingEnabled="YES"/>
+        <attribute name="title" attributeType="String" defaultValueString="Untitled Book" spotlightIndexingEnabled="YES"/>
         <attribute name="translator" optional="YES" attributeType="String" spotlightIndexingEnabled="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="yearPublished" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="categories" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category"/>
+        <relationship name="categories" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="books" inverseEntity="Category"/>
     </entity>
-    <entity name="Category" representedClassName="Category" syncable="YES" codeGenerationType="class"/>
+    <entity name="Category" representedClassName="Category" syncable="YES" codeGenerationType="class">
+        <relationship name="books" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="categories" inverseEntity="Book"/>
+    </entity>
     <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <elements>
-        <element name="Item" positionX="-63" positionY="-18" width="128" height="44"/>
         <element name="Book" positionX="-63" positionY="-9" width="128" height="434"/>
-        <element name="Category" positionX="-54" positionY="153" width="128" height="29"/>
+        <element name="Category" positionX="-54" positionY="153" width="128" height="44"/>
+        <element name="Item" positionX="-63" positionY="-18" width="128" height="44"/>
     </elements>
 </model>
