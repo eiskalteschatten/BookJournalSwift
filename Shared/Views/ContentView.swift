@@ -8,12 +8,33 @@
 import SwiftUI
 import CoreData
 
+enum Screen: Int {
+    case allBooks
+}
+
 struct ContentView: View {
+    @State private var screen: Screen? = Screen(rawValue: UserDefaults.standard.integer(forKey: USER_LAST_SCREEN_KEY)) ?? .allBooks
+    
     var body: some View {
         NavigationView {
-            Sidebar()
-            AllBooksView()
+            List {
+                NavigationLink(
+                    destination: AllBooksView().navigationTitle("All Books"),
+                    tag: Screen.allBooks,
+                    selection: $screen,
+                    label: {
+                        Label("All Books", systemImage: "books.vertical.fill")
+                    }
+                )
+            }
+            .onChange(of: screen, perform: { _ in
+                UserDefaults.standard.set(screen?.rawValue, forKey: USER_LAST_SCREEN_KEY)
+            })
+            #if os(iOS)
+            .navigationBarTitle("BookJournal")
+            #endif
         }
+        .navigationViewStyle(DoubleColumnNavigationViewStyle())
     }
 }
 
