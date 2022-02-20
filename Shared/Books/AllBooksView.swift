@@ -29,7 +29,7 @@ struct AllBooksList: View {
                     }
                 )
             }
-            .onDelete(perform: deleteItems)
+            .onDelete(perform: deleteBooks)
         }
         .toolbar {
             #if os(iOS)
@@ -38,14 +38,14 @@ struct AllBooksList: View {
             }
             #endif
             ToolbarItem {
-                Button(action: addItem) {
+                Button(action: addBook) {
                     Label("Add Book", systemImage: "plus")
                 }
             }
         }
     }
 
-    private func addItem() {
+    private func addBook() {
         withAnimation {
             let newBook = Book(context: viewContext)
             newBook.createdAt = Date()
@@ -63,7 +63,7 @@ struct AllBooksList: View {
         }
     }
 
-    private func deleteItems(offsets: IndexSet) {
+    private func deleteBooks(offsets: IndexSet) {
         withAnimation {
             offsets.map { books[$0] }.forEach(viewContext.delete)
 
