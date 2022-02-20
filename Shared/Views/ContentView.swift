@@ -8,11 +8,11 @@
 import SwiftUI
 import CoreData
 
-enum Screen: Int {
-    case allBooks
-}
-
 struct ContentView: View {
+    enum Screen: Int {
+        case allBooks
+    }
+    
     @State private var screen: Screen? = Screen(rawValue: UserDefaults.standard.integer(forKey: USER_LAST_SCREEN_KEY)) ?? .allBooks
     
     var body: some View {
@@ -34,7 +34,8 @@ struct ContentView: View {
             .navigationBarTitle("BookJournal")
             #endif
             
-            AllBooksView()
+            Text("Select a category")
+            Text("Select a book")
         }
     }
 }

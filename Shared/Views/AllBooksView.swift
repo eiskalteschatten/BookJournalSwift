@@ -9,6 +9,7 @@ import SwiftUI
 import CoreData
 
 struct AllBooksView: View {
+    @State private var selectedBook: Item?
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
@@ -17,31 +18,36 @@ struct AllBooksView: View {
     private var items: FetchedResults<Item>
 
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                    } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
+        List {
+            ForEach(items) { book in
+                NavigationLink(
+                    destination: BookView(book: book),
+                    tag: book,
+                    selection: $selectedBook,
+                    label: {
+                        Text("Item at \(book.timestamp!, formatter: itemFormatter)")
                     }
-                }
-                .onDelete(perform: deleteItems)
+                )
+//
+//                NavigationLink {
+//                    Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+//                } label: {
+//                    Text(item.timestamp!, formatter: itemFormatter)
+//                }
             }
-            .toolbar {
-                #if os(iOS)
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                #endif
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
+            .onDelete(perform: deleteItems)
+        }
+        .toolbar {
+            #if os(iOS)
+            ToolbarItem(placement: .navigationBarTrailing) {
+                EditButton()
+            }
+            #endif
+            ToolbarItem {
+                Button(action: addItem) {
+                    Label("Add Item", systemImage: "plus")
                 }
             }
-            
-            Text("Select an item")
         }
     }
 
