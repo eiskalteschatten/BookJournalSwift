@@ -15,7 +15,7 @@
         <attribute name="languageReadIn" optional="YES" attributeType="String"/>
         <attribute name="nationality" optional="YES" attributeType="String"/>
         <attribute name="notes" optional="YES" attributeType="String" spotlightIndexingEnabled="YES"/>
-        <attribute name="onWishList" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="onWishlist" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="originalLanguage" optional="YES" attributeType="String"/>
         <attribute name="pageCount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="publisher" optional="YES" attributeType="String"/>

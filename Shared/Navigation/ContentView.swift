@@ -10,7 +10,7 @@ import CoreData
 
 struct ContentView: View {
     enum Screen: Int {
-        case allBooks
+        case allBooks, wishlist
     }
     
     @State private var screen: Screen? = Screen(rawValue: UserDefaults.standard.integer(forKey: USER_LAST_SCREEN_KEY)) ?? .allBooks
@@ -24,6 +24,16 @@ struct ContentView: View {
                     selection: $screen,
                     label: {
                         Label("All Books", systemImage: "books.vertical.fill")
+                    }
+                )
+                NavigationLink(
+                    destination: BookList(
+                        predicate: NSPredicate(format: "onWishlist == true")
+                    ).navigationTitle("Wishlist"),
+                    tag: Screen.wishlist,
+                    selection: $screen,
+                    label: {
+                        Label("Wishlist", systemImage: "list.star")
                     }
                 )
             }

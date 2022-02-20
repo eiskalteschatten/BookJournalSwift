@@ -16,7 +16,7 @@ struct BookList: View {
 
     @FetchRequest private var books: FetchedResults<Book>
     
-    init() {
+    init(predicate: NSPredicate? = nil) {
         self._books = FetchRequest<Book>(
             sortDescriptors: [NSSortDescriptor(keyPath: \Book.title, ascending: false)],
             predicate: predicate,
