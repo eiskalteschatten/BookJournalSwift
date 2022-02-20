@@ -9,26 +9,46 @@ import SwiftUI
 import CoreData
 
 struct BookView: View {
-    var book: Book
+    var book: Book?
     
     var body: some View {
         VStack {
-            HStack(spacing: 30.0) {
-                // TODO: add actual cover image
-                Image(systemName: "book.closed.circle")
-                    .resizable()
-                    .frame(width: 200.0, height: 225.0)
-                
-                VStack {
-                    Text(book.title!)
-                        .font(.title)
+            if book != nil {
+                HStack(spacing: 30.0) {
+                    // TODO: add actual cover image
+                    Image(systemName: "book.closed.circle")
+                        .resizable()
+                        .frame(width: 200.0, height: 225.0)
                     
-                    if (book.authors != nil) {
-                        Text(getBookAuthors(book.authors!))
+                    VStack {
+                        Text(book!.title!)
+                            .font(.title)
+                        
+                        if (book!.authors != nil) {
+                            Text(getBookAuthors(book!.authors!))
+                        }
                     }
                 }
             }
+            else {
+                // TODO: show a monochrome version of the app icon
+                Image(systemName: "book")
+                    .font(.system(size: 200))
+                    .opacity(0.2)
+            }
         }
+        .toolbar {
+            ToolbarItem {
+                Button(action: editBook) {
+                    Label("Edit", systemImage: "pencil")
+                }
+                .disabled(book == nil)
+            }
+        }
+    }
+    
+    private func editBook() {
+        // TODO
     }
 }
 
