@@ -1,9 +1,41 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="true" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21D62" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+    <entity name="Book" representedClassName="Book" syncable="YES" codeGenerationType="class">
+        <attribute name="authors" optional="YES" attributeType="String" spotlightIndexingEnabled="YES"/>
+        <attribute name="bookcover" optional="YES" attributeType="Binary"/>
+        <attribute name="bookFormat" optional="YES" attributeType="String"/>
+        <attribute name="color" optional="YES" attributeType="String"/>
+        <attribute name="commentary" optional="YES" attributeType="String" spotlightIndexingEnabled="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="dateRead" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="dateStarted" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="editors" optional="YES" attributeType="String" spotlightIndexingEnabled="YES"/>
+        <attribute name="genre" optional="YES" attributeType="String" spotlightIndexingEnabled="YES"/>
+        <attribute name="isbn" optional="YES" attributeType="String"/>
+        <attribute name="languageReadIn" optional="YES" attributeType="String"/>
+        <attribute name="nationality" optional="YES" attributeType="String"/>
+        <attribute name="notes" optional="YES" attributeType="String" spotlightIndexingEnabled="YES"/>
+        <attribute name="onWishList" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="originalLanguage" optional="YES" attributeType="String"/>
+        <attribute name="pageCount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="publisher" optional="YES" attributeType="String"/>
+        <attribute name="rating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="status" optional="YES" attributeType="String"/>
+        <attribute name="summary" optional="YES" attributeType="String" spotlightIndexingEnabled="YES"/>
+        <attribute name="tags" optional="YES" attributeType="String" spotlightIndexingEnabled="YES"/>
+        <attribute name="title" attributeType="String" spotlightIndexingEnabled="YES"/>
+        <attribute name="translator" optional="YES" attributeType="String" spotlightIndexingEnabled="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="yearPublished" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="categories" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category"/>
+    </entity>
+    <entity name="Category" representedClassName="Category" syncable="YES" codeGenerationType="class"/>
     <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <elements>
         <element name="Item" positionX="-63" positionY="-18" width="128" height="44"/>
+        <element name="Book" positionX="-63" positionY="-9" width="128" height="434"/>
+        <element name="Category" positionX="-54" positionY="153" width="128" height="29"/>
     </elements>
 </model>
