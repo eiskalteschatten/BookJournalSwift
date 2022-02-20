@@ -114,7 +114,8 @@
 			children = (
 				932198E6279D86E400CB6E76 /* BookJournalApp.swift */,
 				932198E8279D86E400CB6E76 /* Persistence.swift */,
-				9329053827C28DDF000D15AE /* Views */,
+				9329053827C28DDF000D15AE /* Navigation */,
+				9346342227C2A5BF003B233F /* Books */,
 				9329054027C2932F000D15AE /* Constants.swift */,
 				932198E9279D86E600CB6E76 /* Assets.xcassets */,
 				932198E4279D86E400CB6E76 /* BookJournal.xcdatamodeld */,
@@ -159,22 +160,21 @@
 			path = "Tests macOS";
 			sourceTree = "<group>";
 		};
-		9329053827C28DDF000D15AE /* Views */ = {
+		9329053827C28DDF000D15AE /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				9329053C27C28FD2000D15AE /* Components */,
 				932198E7279D86E400CB6E76 /* ContentView.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		9346342227C2A5BF003B233F /* Books */ = {
+			isa = PBXGroup;
+			children = (
 				9329053D27C2916F000D15AE /* AllBooksView.swift */,
 				9329054327C29C55000D15AE /* BookView.swift */,
 			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		9329053C27C28FD2000D15AE /* Components */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Components;
+			path = Books;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
