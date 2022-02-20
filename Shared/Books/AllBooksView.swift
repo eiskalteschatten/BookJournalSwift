@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreData
 
-struct AllBooksView: View {
+struct AllBooksList: View {
     @State private var selectedBook: Book?
     @Environment(\.managedObjectContext) private var viewContext
 
@@ -79,8 +79,8 @@ struct AllBooksView: View {
     }
 }
 
-struct AllBooksView_Previews: PreviewProvider {
+struct AllBooksList_Previews: PreviewProvider {
     static var previews: some View {
-        AllBooksView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        AllBooksList().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

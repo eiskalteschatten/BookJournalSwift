@@ -18,7 +18,9 @@ struct BookView: View {
 
 struct BookView_Previews: PreviewProvider {
     static var previews: some View {
-        AllBooksView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        let context = PersistenceController.preview.container.viewContext
+        let book = Book(context: context)
+        BookView(book: book).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
 

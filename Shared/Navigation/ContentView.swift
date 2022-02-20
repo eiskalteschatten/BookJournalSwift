@@ -19,7 +19,7 @@ struct ContentView: View {
         NavigationView {
             List {
                 NavigationLink(
-                    destination: AllBooksView().navigationTitle("All Books"),
+                    destination: AllBooksList().navigationTitle("All Books"),
                     tag: Screen.allBooks,
                     selection: $screen,
                     label: {
