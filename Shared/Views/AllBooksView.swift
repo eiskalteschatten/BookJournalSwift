@@ -28,12 +28,6 @@ struct AllBooksView: View {
                         Text("Item at \(book.timestamp!, formatter: itemFormatter)")
                     }
                 )
-//
-//                NavigationLink {
-//                    Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-//                } label: {
-//                    Text(item.timestamp!, formatter: itemFormatter)
-//                }
             }
             .onDelete(perform: deleteItems)
         }
