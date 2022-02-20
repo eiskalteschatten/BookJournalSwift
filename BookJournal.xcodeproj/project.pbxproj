@@ -21,6 +21,10 @@
 		93219916279D86E600CB6E76 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932198E8279D86E400CB6E76 /* Persistence.swift */; };
 		93219917279D86E600CB6E76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 932198E9279D86E600CB6E76 /* Assets.xcassets */; };
 		93219918279D86E600CB6E76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 932198E9279D86E600CB6E76 /* Assets.xcassets */; };
+		9329053A27C28FCA000D15AE /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9329053927C28FCA000D15AE /* Sidebar.swift */; };
+		9329053B27C28FCA000D15AE /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9329053927C28FCA000D15AE /* Sidebar.swift */; };
+		9329053E27C2916F000D15AE /* AllBooksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9329053D27C2916F000D15AE /* AllBooksView.swift */; };
+		9329053F27C2916F000D15AE /* AllBooksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9329053D27C2916F000D15AE /* AllBooksView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +59,8 @@
 		93219907279D86E600CB6E76 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9321990B279D86E600CB6E76 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		9321990D279D86E600CB6E76 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
+		9329053927C28FCA000D15AE /* Sidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
+		9329053D27C2916F000D15AE /* AllBooksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllBooksView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,9 +158,19 @@
 		9329053827C28DDF000D15AE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9329053C27C28FD2000D15AE /* Components */,
 				932198E7279D86E400CB6E76 /* ContentView.swift */,
+				9329053D27C2916F000D15AE /* AllBooksView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		9329053C27C28FD2000D15AE /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				9329053927C28FCA000D15AE /* Sidebar.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -315,6 +331,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9329053A27C28FCA000D15AE /* Sidebar.swift in Sources */,
+				9329053E27C2916F000D15AE /* AllBooksView.swift in Sources */,
 				93219911279D86E600CB6E76 /* BookJournalApp.swift in Sources */,
 				93219915279D86E600CB6E76 /* Persistence.swift in Sources */,
 				9321990F279D86E600CB6E76 /* BookJournal.xcdatamodeld in Sources */,
@@ -326,6 +344,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9329053B27C28FCA000D15AE /* Sidebar.swift in Sources */,
+				9329053F27C2916F000D15AE /* AllBooksView.swift in Sources */,
 				93219912279D86E600CB6E76 /* BookJournalApp.swift in Sources */,
 				93219916279D86E600CB6E76 /* Persistence.swift in Sources */,
 				93219910279D86E600CB6E76 /* BookJournal.xcdatamodeld in Sources */,
