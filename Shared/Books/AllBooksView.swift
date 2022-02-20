@@ -1,5 +1,5 @@
 //
-//  AllBooksView.swift
+//  AllBooksList.swift
 //  BookJournal
 //
 //  Created by Alex Seifert on 20.02.22.
