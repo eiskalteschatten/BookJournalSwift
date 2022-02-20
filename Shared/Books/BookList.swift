@@ -32,7 +32,7 @@ struct BookList: View {
                     tag: book,
                     selection: $selectedBook,
                     label: {
-                        Text(book.title!)
+                        BookListItem(book: book)
                     }
                 )
             }
