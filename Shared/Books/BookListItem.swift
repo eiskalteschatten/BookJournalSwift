@@ -12,10 +12,13 @@ struct BookListItem: View {
     var book: Book
     
     var body: some View {
-        HStack(alignment: .center, spacing: 15) {
-            Text("img")
+        HStack(alignment: .center, spacing: 10) {
+            // TODO: add actual cover image
+            Image(systemName: "book.closed.circle")
+                .resizable()
+                .frame(width: 32.0, height: 32.0)
             
-            VStack(alignment: .leading, spacing: 3) {
+            VStack(alignment: .leading, spacing: 3.0) {
                 Text(book.title!)
                     .font(Font.body.bold())
                 
@@ -25,8 +28,8 @@ struct BookListItem: View {
                 }
             }
         }
-        .padding(.top, 3)
-        .padding(.bottom, 3)
+        .padding(.top, 5.0)
+        .padding(.bottom, 5.0)
     }
 }
 
