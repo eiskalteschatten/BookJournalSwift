@@ -17,7 +17,7 @@ struct PersistenceController {
             let newBook = Book(context: viewContext)
             newBook.createdAt = Date()
             newBook.updatedAt = Date()
-            newBook.title = "Untitled Book";
+            newBook.title = "Preview Book";
         }
         do {
             try viewContext.save()
