@@ -12,16 +12,21 @@ enum Screen: Int {
 }
 
 struct Sidebar: View {
-    @State private var screen: Screen?
+    @State private var screen: Screen? = Screen(rawValue: UserDefaults.standard.integer(forKey: USER_LAST_SCREEN_KEY)) ?? .allBooks
     
     var body: some View {
-        NavigationLink(
-            destination: AllBooksView().navigationTitle("All Books"),
-            tag: Screen.allBooks,
-            selection: $screen,
-            label: {
-                Label("All Books", systemImage: "info.circle")
-            }
-        )
+        List {
+            NavigationLink(
+                destination: AllBooksView().navigationTitle("All Books"),
+                tag: Screen.allBooks,
+                selection: $screen,
+                label: {
+                    Label("All Books", systemImage: "info.circle")
+                }
+            )
+        }
+        .onChange(of: screen, perform: { _ in
+            UserDefaults.standard.set(screen?.rawValue, forKey: USER_LAST_SCREEN_KEY)
+        })
     }
 }
