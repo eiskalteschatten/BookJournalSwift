@@ -33,8 +33,9 @@ struct ContentView: View {
             #if os(iOS)
             .navigationBarTitle("BookJournal")
             #endif
+            
+            AllBooksView()
         }
-        .navigationViewStyle(DoubleColumnNavigationViewStyle())
     }
 }
 
