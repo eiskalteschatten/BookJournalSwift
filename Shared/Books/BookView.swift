@@ -66,6 +66,6 @@ struct BookView_Previews: PreviewProvider {
     static var previews: some View {
         let context = PersistenceController.preview.container.viewContext
         let book = Book(context: context)
-        BookView(book: book).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        BookView(book: book).environment(\.managedObjectContext, context)
     }
 }
