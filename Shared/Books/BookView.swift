@@ -23,6 +23,8 @@ struct BookView: View {
                                 .frame(width: geometry.size.width, height: geometry.size.height)
                                 .offset(y: geometry.frame(in: .global).minY / 9)
                                 .clipped()
+                                .blur(radius: 30)
+                                .opacity(0.4)
                         }
                         else {
                             Image("DefaultBookCover")
@@ -31,6 +33,8 @@ struct BookView: View {
                                 .frame(width: geometry.size.width, height: geometry.size.height + geometry.frame(in: .global).minY)
                                 .clipped()
                                 .offset(y: -geometry.frame(in: .global).minY)
+                                .blur(radius: 30)
+                                .opacity(0.4)
                         }
                     }
                     .frame(height: 400)
@@ -90,6 +94,6 @@ struct BookView_Previews: PreviewProvider {
     static var previews: some View {
         let context = PersistenceController.preview.container.viewContext
         let book = Book(context: context)
-        BookView(book: book).environment(\.managedObjectContext, context)
+        BookView(book: book).padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/).environment(\.managedObjectContext, context)
     }
 }
