@@ -44,10 +44,20 @@ struct BookView: View {
                 }
                 .disabled(book == nil)
             }
+            ToolbarItem {
+                Button(action: deleteBooks) {
+                    Label("Delete", systemImage: "trash")
+                }
+                .disabled(book == nil)
+            }
         }
     }
     
     private func editBook() {
+        // TODO
+    }
+    
+    private func deleteBooks() {
         // TODO
     }
 }
