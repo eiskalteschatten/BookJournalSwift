@@ -15,6 +15,26 @@ struct BookView: View {
         VStack {
             if book != nil {
                 ScrollView {
+                    GeometryReader { geometry in
+                        if geometry.frame(in: .global).minY <= 0 {
+                            Image("DefaultBookCover")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: geometry.size.width, height: geometry.size.height)
+                                .offset(y: geometry.frame(in: .global).minY / 9)
+                                .clipped()
+                        }
+                        else {
+                            Image("DefaultBookCover")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: geometry.size.width, height: geometry.size.height + geometry.frame(in: .global).minY)
+                                .clipped()
+                                .offset(y: -geometry.frame(in: .global).minY)
+                        }
+                    }
+                    .frame(height: 400)
+                    
                     VStack(spacing: 30.0) {
                         // TODO: add actual cover image
                         Image("DefaultBookCover")
@@ -22,16 +42,17 @@ struct BookView: View {
                             .frame(width: 200.0, height: 307.0)
                             .scaledToFit()
                         
-                        VStack {
-                            Text(book!.title!)
-                                .font(.title)
-                            
-                            if (book!.authors != nil) {
-                                Text(getBookAuthors(book!.authors!))
-                            }
+                        Text(book!.title!)
+                            .font(.title)
+                        
+                        if (book!.authors != nil) {
+                            Text(getBookAuthors(book!.authors!))
                         }
                     }
                 }
+                #if os(iOS)
+                .edgesIgnoringSafeArea(.top)
+                #endif
             }
             else {
                 // TODO: show a monochrome version of the app icon
