@@ -14,18 +14,21 @@ struct BookView: View {
     var body: some View {
         VStack {
             if book != nil {
-                HStack(spacing: 30.0) {
-                    // TODO: add actual cover image
-                    Image(systemName: "book.closed.circle")
-                        .resizable()
-                        .frame(width: 200.0, height: 225.0)
-                    
-                    VStack {
-                        Text(book!.title!)
-                            .font(.title)
+                ScrollView {
+                    VStack(spacing: 30.0) {
+                        // TODO: add actual cover image
+                        Image("DefaultBookCover")
+                            .resizable()
+                            .frame(width: 200.0, height: 307.0)
+                            .scaledToFit()
                         
-                        if (book!.authors != nil) {
-                            Text(getBookAuthors(book!.authors!))
+                        VStack {
+                            Text(book!.title!)
+                                .font(.title)
+                            
+                            if (book!.authors != nil) {
+                                Text(getBookAuthors(book!.authors!))
+                            }
                         }
                     }
                 }
