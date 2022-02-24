@@ -13,17 +13,42 @@ struct NewBookSheet: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     var body: some View {
+        #if os(iOS)
         NavigationView {
             VStack {
-                Text("forms go here")
+                NewBookSheetContents()
             }
             .navigationBarTitle(Text("Add a New Book"), displayMode: .inline)
-                .navigationBarItems(trailing: Button(action: {
-                    dismiss()
-                }) {
-                    Text("Cancel").bold()
-                })
+                .navigationBarItems(
+                    leading: Button(action: {
+                        dismiss()
+                    }) {
+                        Text("Cancel")
+                    },
+                    trailing: Button(action: {
+                        addBook()
+                        dismiss()
+                    }) {
+                        Text("Save").bold()
+                    }
+                )
         }
+        #else
+        VStack {
+            NewBookSheetContents()
+            
+            HStack {
+                Button("Cancel", action: {
+                    dismiss()
+                })
+                Button("Save", action: {
+                    addBook()
+                    dismiss()
+                })
+            }
+        }
+        .padding(15)
+        #endif
     }
     
     private func addBook() {
@@ -41,5 +66,11 @@ struct NewBookSheet: View {
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
         }
+    }
+}
+
+fileprivate struct NewBookSheetContents: View {
+    var body: some View {
+        Text("forms go here")
     }
 }
