@@ -66,15 +66,15 @@ struct ContentView: View {
                         Label("Books Read", systemImage: "checkmark.square")
                     }
                 )
-                NavigationLink(
-                    // TODO: create the statistics view
-                    destination: BookList().navigationTitle("Statistics"),
-                    tag: Screen.statistics,
-                    selection: $screen,
-                    label: {
-                        Label("Statistics", systemImage: "chart.bar")
-                    }
-                )
+//                NavigationLink(
+//                    // TODO: create the statistics view
+//                    destination: BookList().navigationTitle("Statistics"),
+//                    tag: Screen.statistics,
+//                    selection: $screen,
+//                    label: {
+//                        Label("Statistics", systemImage: "chart.bar")
+//                    }
+//                )
             }
             .onChange(of: screen, perform: { _ in
                 UserDefaults.standard.set(screen?.rawValue, forKey: USER_LAST_SCREEN_KEY)
