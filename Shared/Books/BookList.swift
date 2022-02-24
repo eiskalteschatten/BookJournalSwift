@@ -46,7 +46,9 @@ struct BookList: View {
             }
             #endif
             ToolbarItem {
-                Button(action: addBook) {
+                Button(action: {
+                    showNewBookSheet.toggle()
+                }) {
                     Label("Add Book", systemImage: "plus")
                 }
             }
@@ -54,10 +56,6 @@ struct BookList: View {
         .sheet(isPresented: $showNewBookSheet) {
             NewBookSheet()
         }
-    }
-
-    private func addBook() {
-        showNewBookSheet.toggle()
     }
 
     private func deleteBooks(offsets: IndexSet) {

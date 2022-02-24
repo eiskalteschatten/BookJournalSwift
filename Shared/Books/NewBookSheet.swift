@@ -13,8 +13,16 @@ struct NewBookSheet: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     var body: some View {
-        Button("Press to dismiss") {
-            dismiss()
+        NavigationView {
+            VStack {
+                Text("forms go here")
+            }
+            .navigationBarTitle(Text("Add a New Book"), displayMode: .inline)
+                .navigationBarItems(trailing: Button(action: {
+                    dismiss()
+                }) {
+                    Text("Cancel").bold()
+                })
         }
     }
     
