@@ -11,6 +11,7 @@ import CoreData
 struct BookList: View {
     var predicate: NSPredicate?
     
+    @State private var showNewBookSheet = false
     @State private var selectedBook: Book?
     @Environment(\.managedObjectContext) private var viewContext
 
@@ -50,23 +51,13 @@ struct BookList: View {
                 }
             }
         }
+        .sheet(isPresented: $showNewBookSheet) {
+            NewBookSheet()
+        }
     }
 
     private func addBook() {
-        withAnimation {
-            let newBook = Book(context: viewContext)
-            newBook.createdAt = Date()
-            newBook.updatedAt = Date()
-
-            do {
-                try viewContext.save()
-            } catch {
-                // TODO: Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
+        showNewBookSheet.toggle()
     }
 
     private func deleteBooks(offsets: IndexSet) {

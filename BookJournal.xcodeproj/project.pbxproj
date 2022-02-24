@@ -33,6 +33,8 @@
 		9346342827C2DFA6003B233F /* BookListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9346342627C2DFA6003B233F /* BookListItem.swift */; };
 		9346342A27C2E702003B233F /* BookHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9346342927C2E702003B233F /* BookHelpers.swift */; };
 		9346342B27C2E702003B233F /* BookHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9346342927C2E702003B233F /* BookHelpers.swift */; };
+		9395168327C8301300F04CCF /* NewBookSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9395168227C8301300F04CCF /* NewBookSheet.swift */; };
+		9395168427C8301300F04CCF /* NewBookSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9395168227C8301300F04CCF /* NewBookSheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +75,7 @@
 		9346342327C2DC45003B233F /* BookConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookConstants.swift; sourceTree = "<group>"; };
 		9346342627C2DFA6003B233F /* BookListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListItem.swift; sourceTree = "<group>"; };
 		9346342927C2E702003B233F /* BookHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookHelpers.swift; sourceTree = "<group>"; };
+		9395168227C8301300F04CCF /* NewBookSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBookSheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +188,7 @@
 				9346342627C2DFA6003B233F /* BookListItem.swift */,
 				9346342327C2DC45003B233F /* BookConstants.swift */,
 				9346342927C2E702003B233F /* BookHelpers.swift */,
+				9395168227C8301300F04CCF /* NewBookSheet.swift */,
 			);
 			path = Books;
 			sourceTree = "<group>";
@@ -357,6 +361,7 @@
 				9321990F279D86E600CB6E76 /* BookJournal.xcdatamodeld in Sources */,
 				9329054427C29C55000D15AE /* BookView.swift in Sources */,
 				93219913279D86E600CB6E76 /* ContentView.swift in Sources */,
+				9395168327C8301300F04CCF /* NewBookSheet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,6 +379,7 @@
 				93219910279D86E600CB6E76 /* BookJournal.xcdatamodeld in Sources */,
 				9329054527C29C55000D15AE /* BookView.swift in Sources */,
 				93219914279D86E600CB6E76 /* ContentView.swift in Sources */,
+				9395168427C8301300F04CCF /* NewBookSheet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -607,7 +613,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.alexseifert.BookJournal;
 				PRODUCT_NAME = BookJournal;
@@ -638,7 +644,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.alexseifert.BookJournal;
 				PRODUCT_NAME = BookJournal;
