@@ -19,12 +19,12 @@ struct iOSNewBookSheet: View {
             VStack {
                 Menu {
                     Button {
-                        
+                        // TODO: add function
                     } label: {
                         Label("Choose Image", systemImage: "photo")
                     }
                     Button {
-                        
+                        // TODO: add function
                     } label: {
                         Label("Scan Image", systemImage: "viewfinder")
                     }
@@ -40,6 +40,8 @@ struct iOSNewBookSheet: View {
                 )
                     .font(.system(size: 20, weight: .bold))
                     .multilineTextAlignment(.center)
+                
+                
             }
             .navigationBarTitle(Text("Add a New Book"), displayMode: .inline)
                 .navigationBarItems(
@@ -63,6 +65,7 @@ struct iOSNewBookSheet: View {
             let newBook = Book(context: viewContext)
             newBook.createdAt = Date()
             newBook.updatedAt = Date()
+            newBook.title = title;
 
             do {
                 try viewContext.save()
