@@ -19,64 +19,62 @@ struct iOSNewBookSheet: View {
 
     var body: some View {
         NavigationView {
-            ScrollView {
-                VStack {
-                    // Bookcover
-                    Menu {
-                        Button {
-                            // TODO: add function
-                        } label: {
-                            Label("Choose Image", systemImage: "photo")
-                        }
-                        Button {
-                            // TODO: add function
-                        } label: {
-                            Label("Scan Image", systemImage: "viewfinder")
-                        }
+            VStack {
+                // Bookcover
+                Menu {
+                    Button {
+                        // TODO: add function
                     } label: {
-                        Image(systemName: "plus.square.dashed")
-                            .font(.system(size: 200))
+                        Label("Choose Image", systemImage: "photo")
                     }
-                    .padding(.vertical)
-                    
-                    // Title
-                    TextField(
-                        "Enter title...",
-                        text: $title
-                    )
-                        .font(.system(size: 20, weight: .bold))
-                        .multilineTextAlignment(.center)
-                    
-                    Form {
-                        // Book Format
-                        Section {
-                            Picker("Book Format", selection: $bookFormat) {
-                                ForEach(bookFormatData, id: \.self) { format in
-                                    Label(format[0], systemImage: format[1])
-                                }
+                    Button {
+                        // TODO: add function
+                    } label: {
+                        Label("Scan Image", systemImage: "viewfinder")
+                    }
+                } label: {
+                    Image(systemName: "plus.square.dashed")
+                        .font(.system(size: 200))
+                }
+                .padding(.vertical)
+                
+                // Title
+                TextField(
+                    "Enter title...",
+                    text: $title
+                )
+                    .font(.system(size: 20, weight: .bold))
+                    .multilineTextAlignment(.center)
+                
+                Form {
+                    // Book Format
+                    Section {
+                        Picker("Book Format", selection: $bookFormat) {
+                            ForEach(bookFormatData, id: \.self) { format in
+                                Label(format[0], systemImage: format[1])
                             }
                         }
-                        
-                        // ISBN
-                        Section {
-                            Label("ISBN", systemImage: "barcode")
-                            TextField(
-                                "Enter ISBN...",
-                                text: $isbn
-                            )
-                                .keyboardType(.numberPad)
-                        }
-                        
-                        // Page Count
-                        Section {
-                            Label("Page Count", systemImage: "number")
-                            TextField(
-                                "Enter page count...",
-                                value: $pageCount,
-                                format: .number
-                            )
-                                .keyboardType(.numberPad)
-                        }
+                    }
+                    
+                    // ISBN
+                    Section {
+                        Label("ISBN", systemImage: "barcode")
+                        TextField(
+                            "Enter ISBN...",
+                            text: $isbn
+                        )
+                            .keyboardType(.numberPad)
+                    }
+                    
+                    // Page Count
+                    Section {
+                        Label("Page Count", systemImage: "number")
+                        TextField(
+                            "Enter page count...",
+                            value: $pageCount,
+                            format: .number
+                        )
+                            .keyboardType(.numberPad)
                     }
                 }
             }
