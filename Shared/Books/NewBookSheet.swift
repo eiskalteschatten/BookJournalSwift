@@ -70,7 +70,41 @@ struct NewBookSheet: View {
 }
 
 fileprivate struct NewBookSheetContents: View {
+    @State private var title: String = ""
+    
     var body: some View {
-        Text("forms go here")
+        Menu {
+            Button {
+                
+            } label: {
+                Label("Choose Image", systemImage: "photo")
+            }
+            Button {
+                
+            } label: {
+                Label("Scan Image", systemImage: "viewfinder")
+            }
+        } label: {
+            Image(systemName: "plus.square.dashed")
+                .font(.system(size: 200))
+        }
+        .padding(.bottom)
+        
+        TextField(
+            "Enter title...",
+            text: $title
+        )
+            .font(.system(size: 20, weight: .bold))
+            .multilineTextAlignment(.center)
     }
 }
+
+struct NewBookSheet_Previews: PreviewProvider {
+    static var previews: some View {
+        let context = PersistenceController.preview.container.viewContext
+        Group {
+            NewBookSheet().preferredColorScheme(.dark).padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/).frame(height: /*@START_MENU_TOKEN@*/800.0/*@END_MENU_TOKEN@*/).environment(\.managedObjectContext, context)
+        }
+    }
+}
+
