@@ -25,8 +25,11 @@ struct BookListItem: View {
                     .font(Font.body.bold())
                 
                 if (book.authors != nil) {
-                    Text(getBookAuthors(book.authors!))
-                        .font(.footnote)
+                    // TODO: add chips
+                    ForEach(Array(arrayLiteral: book.authors!)) { author in
+                        Text(author.name!)
+                            .font(.footnote)
+                    }
                 }
             }
         }

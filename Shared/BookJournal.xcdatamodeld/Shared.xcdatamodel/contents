@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21D62" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+    <entity name="Author" representedClassName="Author" syncable="YES" codeGenerationType="class">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isEditor" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" spotlightIndexingEnabled="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="books" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="authors" inverseEntity="Book"/>
+    </entity>
     <entity name="Book" representedClassName="Book" syncable="YES" codeGenerationType="class">
-        <attribute name="authors" optional="YES" attributeType="String" spotlightIndexingEnabled="YES"/>
         <attribute name="bookcover" optional="YES" attributeType="Binary"/>
         <attribute name="bookFormat" optional="YES" attributeType="String"/>
         <attribute name="color" optional="YES" attributeType="String"/>
@@ -27,6 +33,7 @@
         <attribute name="translator" optional="YES" attributeType="String" spotlightIndexingEnabled="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="yearPublished" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="authors" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Author" inverseName="books" inverseEntity="Author"/>
         <relationship name="categories" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="books" inverseEntity="Category"/>
     </entity>
     <entity name="Category" representedClassName="Category" syncable="YES" codeGenerationType="class">
@@ -39,5 +46,6 @@
     <elements>
         <element name="Book" positionX="-63" positionY="-9" width="128" height="434"/>
         <element name="Category" positionX="-54" positionY="153" width="128" height="104"/>
+        <element name="Author" positionX="-54" positionY="153" width="128" height="104"/>
     </elements>
 </model>
