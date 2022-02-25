@@ -13,9 +13,11 @@ struct iOSNewBookSheet: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @State private var title: String = ""
-    @State private var bookFormat: String = ""
-    @State private var isbn: String = ""
     @State private var pageCount: Int16?
+    @State private var bookFormat: String = ""
+    @State private var publisher: String = ""
+    @State private var yearPublished: Int16?
+    @State private var isbn: String = ""
 
     var body: some View {
         NavigationView {
@@ -48,33 +50,45 @@ struct iOSNewBookSheet: View {
                     .padding(.bottom)
                 
                 Form {
-                    // Book Format
+                    // Page Count
                     Section {
+                        Label("Page Count", systemImage: "number")
+                        TextField(
+                            "Page Count",
+                            value: $pageCount,
+                            format: .number
+                        )
+                            .keyboardType(.numberPad)
+                    }
+                    
+                    Section("Publication Details") {
+                        // Book Format
                         Picker("Book Format", selection: $bookFormat) {
                             ForEach(BookFormat.allCases) { format in
                                 Label(bookFormatProperties[format]![0], systemImage: bookFormatProperties[format]![1])
                                     .tag(format.rawValue)
                             }
                         }
-                    }
-                    
-                    // ISBN
-                    Section {
-                        Label("ISBN", systemImage: "barcode")
+                        
+                        // Publisher
                         TextField(
-                            "Enter ISBN...",
-                            text: $isbn
+                            "Publisher",
+                            text: $publisher
                         )
                             .keyboardType(.numberPad)
-                    }
-                    
-                    // Page Count
-                    Section {
-                        Label("Page Count", systemImage: "number")
+                        
+                        // Year Published
                         TextField(
-                            "Enter page count...",
+                            "Year Published",
                             value: $pageCount,
                             format: .number
+                        )
+                            .keyboardType(.numberPad)
+                        
+                        // ISBN
+                        TextField(
+                            "ISBN",
+                            text: $isbn
                         )
                             .keyboardType(.numberPad)
                     }
@@ -104,10 +118,15 @@ struct iOSNewBookSheet: View {
             newBook.updatedAt = Date()
             newBook.bookFormat = bookFormat;
             newBook.title = title;
+            newBook.publisher = publisher;
             newBook.isbn = isbn;
             
             if pageCount != nil {
                 newBook.pageCount = pageCount!;
+            }
+            
+            if yearPublished != nil {
+                newBook.yearPublished = yearPublished!;
             }
 
             do {
