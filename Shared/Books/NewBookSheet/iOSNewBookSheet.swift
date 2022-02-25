@@ -84,4 +84,3 @@ struct iOSNewBookSheet_Previews: PreviewProvider {
         }
     }
 }
-

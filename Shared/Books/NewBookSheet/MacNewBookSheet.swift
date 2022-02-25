@@ -1,23 +1,34 @@
 //
-//  NewBookSheet.swift
-//  BookJournal
+//  MacNewBookSheet.swift
+//  BookJournal (iOS)
 //
-//  Created by Alex Seifert on 24.02.22.
+//  Created by Alex Seifert on 25.02.22.
 //
 
 import SwiftUI
 import CoreData
 
-struct NewBookSheet: View {
+struct MacNewBookSheet: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.managedObjectContext) private var viewContext
+    
+    @State private var title: String = ""
 
     var body: some View {
-        #if os(iOS)
-        iOSNewBookSheet()
-        #else
-        MacNewBookSheet()
-        #endif
+        VStack {
+            Text("mac goes here")
+            
+            HStack {
+                Button("Cancel", action: {
+                    dismiss()
+                })
+                Button("Save", action: {
+                    addBook()
+                    dismiss()
+                })
+            }
+        }
+        .padding(15)
     }
     
     private func addBook() {
@@ -38,12 +49,11 @@ struct NewBookSheet: View {
     }
 }
 
-struct NewBookSheet_Previews: PreviewProvider {
+struct MacNewBookSheet_Previews: PreviewProvider {
     static var previews: some View {
         let context = PersistenceController.preview.container.viewContext
         Group {
-            NewBookSheet().preferredColorScheme(.dark).padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/).frame(height: /*@START_MENU_TOKEN@*/800.0/*@END_MENU_TOKEN@*/).environment(\.managedObjectContext, context)
+            MacNewBookSheet().preferredColorScheme(.dark).padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/).frame(height: /*@START_MENU_TOKEN@*/800.0/*@END_MENU_TOKEN@*/).environment(\.managedObjectContext, context)
         }
     }
 }
-
