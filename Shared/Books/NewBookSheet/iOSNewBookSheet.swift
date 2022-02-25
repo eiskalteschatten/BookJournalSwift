@@ -13,35 +13,67 @@ struct iOSNewBookSheet: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @State private var title: String = ""
+    @State private var isbn: String = ""
+    @State private var pageCount: Int16?
 
     var body: some View {
         NavigationView {
-            VStack {
-                Menu {
-                    Button {
-                        // TODO: add function
+            ScrollView {
+                VStack {
+                    Menu {
+                        Button {
+                            // TODO: add function
+                        } label: {
+                            Label("Choose Image", systemImage: "photo")
+                        }
+                        Button {
+                            // TODO: add function
+                        } label: {
+                            Label("Scan Image", systemImage: "viewfinder")
+                        }
                     } label: {
-                        Label("Choose Image", systemImage: "photo")
+                        Image(systemName: "plus.square.dashed")
+                            .font(.system(size: 200))
                     }
-                    Button {
-                        // TODO: add function
-                    } label: {
-                        Label("Scan Image", systemImage: "viewfinder")
+                    .padding(.bottom)
+                    
+                    TextField(
+                        "Enter title...",
+                        text: $title
+                    )
+                        .font(.system(size: 20, weight: .bold))
+                        .multilineTextAlignment(.center)
+                        .padding()
+                    
+                    // ISBN
+                    GroupBox(label:
+                        Label("ISBN", systemImage: "barcode")
+                    ) {
+                        TextField(
+                            "Enter ISBN...",
+                            text: $isbn
+                        )
+                            .keyboardType(.numberPad)
                     }
-                } label: {
-                    Image(systemName: "plus.square.dashed")
-                        .font(.system(size: 200))
+                    .padding(.leading)
+                    .padding(.trailing)
+                    .padding(.bottom)
+                    
+                    // Page Count
+                    GroupBox(label:
+                        Label("Page Count", systemImage: "number")
+                    ) {
+                        TextField(
+                            "Enter page count...",
+                            value: $pageCount,
+                            format: .number
+                        )
+                            .keyboardType(.numberPad)
+                    }
+                    .padding(.leading)
+                    .padding(.trailing)
+                    .padding(.bottom)
                 }
-                .padding(.bottom)
-                
-                TextField(
-                    "Enter title...",
-                    text: $title
-                )
-                    .font(.system(size: 20, weight: .bold))
-                    .multilineTextAlignment(.center)
-                
-                
             }
             .navigationBarTitle(Text("Add a New Book"), displayMode: .inline)
                 .navigationBarItems(
@@ -66,6 +98,11 @@ struct iOSNewBookSheet: View {
             newBook.createdAt = Date()
             newBook.updatedAt = Date()
             newBook.title = title;
+            newBook.isbn = isbn;
+            
+            if pageCount != nil {
+                newBook.pageCount = pageCount!;
+            }
 
             do {
                 try viewContext.save()
