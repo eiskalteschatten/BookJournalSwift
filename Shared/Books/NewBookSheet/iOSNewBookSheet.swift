@@ -13,6 +13,7 @@ struct iOSNewBookSheet: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @State private var title: String = ""
+    @State private var bookFormat: String = ""
     @State private var isbn: String = ""
     @State private var pageCount: Int16?
 
@@ -20,6 +21,7 @@ struct iOSNewBookSheet: View {
         NavigationView {
             ScrollView {
                 VStack {
+                    // Bookcover
                     Menu {
                         Button {
                             // TODO: add function
@@ -37,6 +39,7 @@ struct iOSNewBookSheet: View {
                     }
                     .padding(.bottom)
                     
+                    // Title
                     TextField(
                         "Enter title...",
                         text: $title
@@ -44,6 +47,16 @@ struct iOSNewBookSheet: View {
                         .font(.system(size: 20, weight: .bold))
                         .multilineTextAlignment(.center)
                         .padding()
+                    
+                    // Book Format
+                    Picker("Format", selection: $bookFormat) {
+                        Label("Paperback", systemImage: "book")
+                        Label("Hardback", systemImage: "book.closed")
+                        Label("E-Book", systemImage: "ipad")
+                        Label("Audiobook", systemImage: "airpodsmax")
+                        Label("Other", systemImage: "questionmark")
+                    }
+                    .pickerStyle(MenuPickerStyle())
                     
                     // ISBN
                     GroupBox(label:
@@ -91,6 +104,7 @@ struct iOSNewBookSheet: View {
             let newBook = Book(context: viewContext)
             newBook.createdAt = Date()
             newBook.updatedAt = Date()
+            newBook.bookFormat = bookFormat;
             newBook.title = title;
             newBook.isbn = isbn;
             
