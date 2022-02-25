@@ -19,66 +19,63 @@ struct iOSNewBookSheet: View {
 
     var body: some View {
         NavigationView {
-            ScrollView {
-                VStack {
-                    // Bookcover
-                    Menu {
-                        Button {
-                            // TODO: add function
-                        } label: {
-                            Label("Choose Image", systemImage: "photo")
-                        }
-                        Button {
-                            // TODO: add function
-                        } label: {
-                            Label("Scan Image", systemImage: "viewfinder")
-                        }
+            VStack {
+                // Bookcover
+                Menu {
+                    Button {
+                        // TODO: add function
                     } label: {
-                        Image(systemName: "plus.square.dashed")
-                            .font(.system(size: 200))
+                        Label("Choose Image", systemImage: "photo")
                     }
-                    .padding(.bottom)
-                    
-                    // Title
-                    TextField(
-                        "Enter title...",
-                        text: $title
-                    )
-                        .font(.system(size: 20, weight: .bold))
-                        .multilineTextAlignment(.center)
-                        .padding()
-                    
+                    Button {
+                        // TODO: add function
+                    } label: {
+                        Label("Scan Image", systemImage: "viewfinder")
+                    }
+                } label: {
+                    Image(systemName: "plus.square.dashed")
+                        .font(.system(size: 200))
+                }
+                .padding(.vertical)
+                
+                // Title
+                TextField(
+                    "Enter title...",
+                    text: $title
+                )
+                    .font(.system(size: 20, weight: .bold))
+                    .multilineTextAlignment(.center)
+                
+                Form {
                     // Book Format
-                    Picker("Format", selection: $bookFormat) {
-                        ForEach(bookFormatData, id: \.self) { format in
-                            Label(format[0], systemImage: format[1])
+                    Section {
+                        Picker("Book Format", selection: $bookFormat) {
+                            ForEach(bookFormatData, id: \.self) { format in
+                                Label(format[0], systemImage: format[1])
+                            }
                         }
                     }
-                    .pickerStyle(MenuPickerStyle())
-                    .padding(.bottom)
                     
                     // ISBN
-                    GroupBox(label:
+                    Section {
                         Label("ISBN", systemImage: "barcode")
-                    ) {
                         TextField(
                             "Enter ISBN...",
                             text: $isbn
                         )
                             .keyboardType(.numberPad)
-                    }.groupBoxStyle(FormControlGroupBoxStyle())
+                    }
                     
                     // Page Count
-                    GroupBox(label:
+                    Section {
                         Label("Page Count", systemImage: "number")
-                    ) {
                         TextField(
                             "Enter page count...",
                             value: $pageCount,
                             format: .number
                         )
                             .keyboardType(.numberPad)
-                    }.groupBoxStyle(FormControlGroupBoxStyle())
+                    }
                 }
             }
             .navigationBarTitle(Text("Add a New Book"), displayMode: .inline)
@@ -129,16 +126,5 @@ struct iOSNewBookSheet_Previews: PreviewProvider {
         Group {
             iOSNewBookSheet().preferredColorScheme(.dark).padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/).frame(height: /*@START_MENU_TOKEN@*/800.0/*@END_MENU_TOKEN@*/).environment(\.managedObjectContext, context)
         }
-    }
-}
-
-fileprivate struct FormControlGroupBoxStyle: GroupBoxStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        GroupBox(label: configuration.label) {
-            configuration.content
-        }
-        .padding(.leading)
-        .padding(.trailing)
-        .padding(.bottom)
     }
 }
