@@ -54,10 +54,7 @@ struct iOSNewBookSheet: View {
                             text: $isbn
                         )
                             .keyboardType(.numberPad)
-                    }
-                    .padding(.leading)
-                    .padding(.trailing)
-                    .padding(.bottom)
+                    }.groupBoxStyle(FormControlGroupBoxStyle())
                     
                     // Page Count
                     GroupBox(label:
@@ -69,10 +66,7 @@ struct iOSNewBookSheet: View {
                             format: .number
                         )
                             .keyboardType(.numberPad)
-                    }
-                    .padding(.leading)
-                    .padding(.trailing)
-                    .padding(.bottom)
+                    }.groupBoxStyle(FormControlGroupBoxStyle())
                 }
             }
             .navigationBarTitle(Text("Add a New Book"), displayMode: .inline)
@@ -122,5 +116,16 @@ struct iOSNewBookSheet_Previews: PreviewProvider {
         Group {
             iOSNewBookSheet().preferredColorScheme(.dark).padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/).frame(height: /*@START_MENU_TOKEN@*/800.0/*@END_MENU_TOKEN@*/).environment(\.managedObjectContext, context)
         }
+    }
+}
+
+fileprivate struct FormControlGroupBoxStyle: GroupBoxStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        GroupBox(label: configuration.label) {
+            configuration.content
+        }
+        .padding(.leading)
+        .padding(.trailing)
+        .padding(.bottom)
     }
 }
