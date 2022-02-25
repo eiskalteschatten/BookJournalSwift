@@ -50,13 +50,12 @@ struct iOSNewBookSheet: View {
                     
                     // Book Format
                     Picker("Format", selection: $bookFormat) {
-                        Label("Paperback", systemImage: "book")
-                        Label("Hardback", systemImage: "book.closed")
-                        Label("E-Book", systemImage: "ipad")
-                        Label("Audiobook", systemImage: "airpodsmax")
-                        Label("Other", systemImage: "questionmark")
+                        ForEach(bookFormatData, id: \.self) { format in
+                            Label(format[0], systemImage: format[1])
+                        }
                     }
                     .pickerStyle(MenuPickerStyle())
+                    .padding(.bottom)
                     
                     // ISBN
                     GroupBox(label:
