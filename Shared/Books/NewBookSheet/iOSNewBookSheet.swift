@@ -45,6 +45,7 @@ struct iOSNewBookSheet: View {
                 )
                     .font(.system(size: 20, weight: .bold))
                     .multilineTextAlignment(.center)
+                    .padding(.bottom)
                 
                 Form {
                     // Book Format
