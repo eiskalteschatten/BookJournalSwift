@@ -50,8 +50,9 @@ struct iOSNewBookSheet: View {
                     // Book Format
                     Section {
                         Picker("Book Format", selection: $bookFormat) {
-                            ForEach(bookFormatData, id: \.self) { format in
-                                Label(format[0], systemImage: format[1])
+                            ForEach(BookFormat.allCases) { format in
+                                Label(bookFormatProperties[format]![0], systemImage: bookFormatProperties[format]![1])
+                                    .tag(format.rawValue)
                             }
                         }
                     }
