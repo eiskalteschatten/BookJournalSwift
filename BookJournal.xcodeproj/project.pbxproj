@@ -41,6 +41,8 @@
 		939BB9F027CA44D60001B0DF /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939BB9EE27CA44D60001B0DF /* CoreData.swift */; };
 		939BB9F327CA785F0001B0DF /* Chip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939BB9F227CA785F0001B0DF /* Chip.swift */; };
 		939BB9F427CA785F0001B0DF /* Chip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939BB9F227CA785F0001B0DF /* Chip.swift */; };
+		939BB9F627CA9BB40001B0DF /* SmallChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939BB9F527CA9BB40001B0DF /* SmallChip.swift */; };
+		939BB9F727CA9BB40001B0DF /* SmallChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939BB9F527CA9BB40001B0DF /* SmallChip.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +88,7 @@
 		9395168227C8301300F04CCF /* NewBookSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBookSheet.swift; sourceTree = "<group>"; };
 		939BB9EE27CA44D60001B0DF /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		939BB9F227CA785F0001B0DF /* Chip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chip.swift; sourceTree = "<group>"; };
+		939BB9F527CA9BB40001B0DF /* SmallChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallChip.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				939BB9F227CA785F0001B0DF /* Chip.swift */,
+				939BB9F527CA9BB40001B0DF /* SmallChip.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -411,6 +415,7 @@
 				93219913279D86E600CB6E76 /* ContentView.swift in Sources */,
 				9395168327C8301300F04CCF /* NewBookSheet.swift in Sources */,
 				939BB9F327CA785F0001B0DF /* Chip.swift in Sources */,
+				939BB9F627CA9BB40001B0DF /* SmallChip.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,6 +437,7 @@
 				9329054527C29C55000D15AE /* BookView.swift in Sources */,
 				93219914279D86E600CB6E76 /* ContentView.swift in Sources */,
 				939BB9F427CA785F0001B0DF /* Chip.swift in Sources */,
+				939BB9F727CA9BB40001B0DF /* SmallChip.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

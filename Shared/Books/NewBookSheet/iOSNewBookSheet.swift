@@ -15,6 +15,8 @@ struct iOSNewBookSheet: View {
     @State private var title: String = ""
     @State private var pageCount: Int16?
     
+    @State private var authors: [Author] = []
+    
     @State private var readingStatus: String = ""
     @State private var addDateStarted = false
     @State private var dateStarted: Date = Date()
@@ -57,6 +59,36 @@ struct iOSNewBookSheet: View {
                     .padding(.bottom)
                 
                 Form {
+                    // Authors
+                    Section {
+                        Label("Authors", systemImage: "person.2")
+                        
+                        HStack {
+                            SmallChip(action: {
+                                // TODO: open authors sheet
+                            }, background: .white) {
+                                HStack(alignment: .center, spacing: 4) {
+                                    Image(systemName: "plus")
+                                    Text("Add")
+                                }
+                            }
+                            
+                            if authors.count > 0 {
+                                ForEach(authors, id: \.self) { author in
+                                    SmallChip(action: {
+                                        // TODO: open authors sheet
+                                    }, background: .green) {
+                                        HStack(alignment: .center, spacing: 4) {
+                                            if let name = author.name {
+                                                Text(name)
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
                     Section("Status") {
                         // Reading Status
                         Picker("Reading Status", selection: $readingStatus) {

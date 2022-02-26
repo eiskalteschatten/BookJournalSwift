@@ -8,15 +8,16 @@
 import SwiftUI
 
 struct Chip<Content: View>: View {
+    var action: () -> Void
     var background: Color = .yellow
     var foregroundColor: Color = .black
-    var action: () -> Void
     @ViewBuilder var content: Content
     
     var body: some View {
         Button(action: action, label: {
             content
-                .padding(10)
+                .padding(.vertical, 10)
+                .padding(.horizontal, 15)
         })
             .foregroundColor(foregroundColor)
             .background(background)
@@ -32,6 +33,9 @@ struct Chip_Previews: PreviewProvider {
             }
             Chip(action: {}) {
                 Label("Image Chip", systemImage: "desktopcomputer")
+            }
+            Chip(action: {}, background: .blue, foregroundColor: .white) {
+                Label("Blue Image Chip", systemImage: "macwindow")
             }
         }
     }
