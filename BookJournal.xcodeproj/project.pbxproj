@@ -39,6 +39,8 @@
 		9395168327C8301300F04CCF /* NewBookSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9395168227C8301300F04CCF /* NewBookSheet.swift */; };
 		939BB9EF27CA44D60001B0DF /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939BB9EE27CA44D60001B0DF /* CoreData.swift */; };
 		939BB9F027CA44D60001B0DF /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939BB9EE27CA44D60001B0DF /* CoreData.swift */; };
+		939BB9F327CA785F0001B0DF /* Chip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939BB9F227CA785F0001B0DF /* Chip.swift */; };
+		939BB9F427CA785F0001B0DF /* Chip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939BB9F227CA785F0001B0DF /* Chip.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,7 @@
 		9346662727C9841900D58DE7 /* Books.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Books.swift; sourceTree = "<group>"; };
 		9395168227C8301300F04CCF /* NewBookSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBookSheet.swift; sourceTree = "<group>"; };
 		939BB9EE27CA44D60001B0DF /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
+		939BB9F227CA785F0001B0DF /* Chip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chip.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +138,7 @@
 				932198E8279D86E400CB6E76 /* Persistence.swift */,
 				9346662627C9840200D58DE7 /* Data */,
 				939BB9ED27CA44AE0001B0DF /* Extensions */,
+				939BB9F127CA78460001B0DF /* Elements */,
 				9329053827C28DDF000D15AE /* Navigation */,
 				9346342227C2A5BF003B233F /* Books */,
 				9329054027C2932F000D15AE /* Constants.swift */,
@@ -225,6 +229,14 @@
 				939BB9EE27CA44D60001B0DF /* CoreData.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		939BB9F127CA78460001B0DF /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				939BB9F227CA785F0001B0DF /* Chip.swift */,
+			);
+			path = Elements;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -398,6 +410,7 @@
 				9329054427C29C55000D15AE /* BookView.swift in Sources */,
 				93219913279D86E600CB6E76 /* ContentView.swift in Sources */,
 				9395168327C8301300F04CCF /* NewBookSheet.swift in Sources */,
+				939BB9F327CA785F0001B0DF /* Chip.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,6 +431,7 @@
 				93219910279D86E600CB6E76 /* BookJournal.xcdatamodeld in Sources */,
 				9329054527C29C55000D15AE /* BookView.swift in Sources */,
 				93219914279D86E600CB6E76 /* ContentView.swift in Sources */,
+				939BB9F427CA785F0001B0DF /* Chip.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

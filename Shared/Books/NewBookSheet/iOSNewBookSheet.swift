@@ -66,7 +66,6 @@ struct iOSNewBookSheet: View {
                             }
                         }
                         
-                        
                         // Date Started
                         if !addDateStarted {
                             Button("Add Date Started") {
