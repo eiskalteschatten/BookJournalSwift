@@ -2,10 +2,9 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21D62" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="Author" representedClassName="Author" syncable="YES" codeGenerationType="class">
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="isEditor" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String" spotlightIndexingEnabled="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <relationship name="books" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="authors" inverseEntity="Book"/>
+        <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="authors" inverseEntity="Book" spotlightIndexingEnabled="YES"/>
     </entity>
     <entity name="Book" representedClassName="Book" syncable="YES" codeGenerationType="class">
         <attribute name="bookcover" optional="YES" attributeType="Binary"/>
@@ -15,37 +14,87 @@
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="dateFinished" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="dateStarted" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="editors" optional="YES" attributeType="String" spotlightIndexingEnabled="YES"/>
-        <attribute name="genre" optional="YES" attributeType="String" spotlightIndexingEnabled="YES"/>
         <attribute name="isbn" optional="YES" attributeType="String"/>
-        <attribute name="languageReadIn" optional="YES" attributeType="String"/>
-        <attribute name="nationality" optional="YES" attributeType="String"/>
         <attribute name="notes" optional="YES" attributeType="String" spotlightIndexingEnabled="YES"/>
         <attribute name="onWishlist" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="originalLanguage" optional="YES" attributeType="String"/>
         <attribute name="pageCount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="publisher" optional="YES" attributeType="String"/>
         <attribute name="rating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="readingStatus" attributeType="String" defaultValueString="notReadYet"/>
         <attribute name="summary" optional="YES" attributeType="String" spotlightIndexingEnabled="YES"/>
-        <attribute name="tags" optional="YES" attributeType="String" spotlightIndexingEnabled="YES"/>
         <attribute name="title" attributeType="String" defaultValueString="Untitled Book" spotlightIndexingEnabled="YES"/>
-        <attribute name="translator" optional="YES" attributeType="String" spotlightIndexingEnabled="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="yearPublished" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="authors" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Author" inverseName="books" inverseEntity="Author"/>
-        <relationship name="categories" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="books" inverseEntity="Category"/>
+        <relationship name="authors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Author" inverseName="books" inverseEntity="Author" spotlightIndexingEnabled="YES"/>
+        <relationship name="categories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Category" inverseName="books" inverseEntity="Category" spotlightIndexingEnabled="YES"/>
+        <relationship name="editors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Editor" inverseName="books" inverseEntity="Editor" spotlightIndexingEnabled="YES"/>
+        <relationship name="genres" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Genre" inverseName="books" inverseEntity="Genre" spotlightIndexingEnabled="YES"/>
+        <relationship name="languageReadIn" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Language" inverseName="booksReadIn" inverseEntity="Language"/>
+        <relationship name="nationality" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Country" inverseName="books" inverseEntity="Country"/>
+        <relationship name="originalLanguage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Language" inverseName="booksOriginallyInLanguage" inverseEntity="Language"/>
+        <relationship name="publisher" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Publisher" inverseName="books" inverseEntity="Publisher"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="books" inverseEntity="Tag" spotlightIndexingEnabled="YES"/>
+        <relationship name="translator" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Translator" inverseName="books" inverseEntity="Translator"/>
     </entity>
     <entity name="Category" representedClassName="Category" syncable="YES" codeGenerationType="class">
         <attribute name="color" optional="YES" attributeType="String"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" attributeType="String" defaultValueString="New Category" spotlightIndexingEnabled="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <relationship name="books" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="categories" inverseEntity="Book"/>
+        <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="categories" inverseEntity="Book" spotlightIndexingEnabled="YES"/>
+    </entity>
+    <entity name="Country" representedClassName="Tag" syncable="YES" codeGenerationType="class">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="nationality" inverseEntity="Book" spotlightIndexingEnabled="YES"/>
+    </entity>
+    <entity name="Editor" representedClassName="Author" syncable="YES" codeGenerationType="class">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String" spotlightIndexingEnabled="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="editors" inverseEntity="Book"/>
+    </entity>
+    <entity name="Genre" representedClassName="Tag" syncable="YES" codeGenerationType="class">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="genres" inverseEntity="Book" spotlightIndexingEnabled="YES"/>
+    </entity>
+    <entity name="Language" representedClassName="Tag" syncable="YES" codeGenerationType="class">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="booksOriginallyInLanguage" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="originalLanguage" inverseEntity="Book" spotlightIndexingEnabled="YES"/>
+        <relationship name="booksReadIn" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="languageReadIn" inverseEntity="Book" spotlightIndexingEnabled="YES"/>
+    </entity>
+    <entity name="Publisher" representedClassName="Tag" syncable="YES" codeGenerationType="class">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="publisher" inverseEntity="Book" spotlightIndexingEnabled="YES"/>
+    </entity>
+    <entity name="Tag" representedClassName="Tag" syncable="YES" codeGenerationType="class">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="tags" inverseEntity="Book" spotlightIndexingEnabled="YES"/>
+    </entity>
+    <entity name="Translator" representedClassName="Author" syncable="YES" codeGenerationType="class">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String" spotlightIndexingEnabled="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="translator" inverseEntity="Book" spotlightIndexingEnabled="YES"/>
     </entity>
     <elements>
-        <element name="Author" positionX="-54" positionY="153" width="128" height="104"/>
+        <element name="Author" positionX="-54" positionY="153" width="128" height="89"/>
         <element name="Book" positionX="-63" positionY="-9" width="128" height="434"/>
         <element name="Category" positionX="-54" positionY="153" width="128" height="104"/>
+        <element name="Editor" positionX="-54" positionY="153" width="128" height="89"/>
+        <element name="Tag" positionX="-45" positionY="162" width="128" height="89"/>
+        <element name="Publisher" positionX="-27" positionY="180" width="128" height="89"/>
+        <element name="Genre" positionX="-9" positionY="189" width="128" height="89"/>
+        <element name="Language" positionX="9" positionY="198" width="128" height="104"/>
+        <element name="Country" positionX="27" positionY="207" width="128" height="89"/>
+        <element name="Translator" positionX="-18" positionY="153" width="128" height="89"/>
     </elements>
 </model>
