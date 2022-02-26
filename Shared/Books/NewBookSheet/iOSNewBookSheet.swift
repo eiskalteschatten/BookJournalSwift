@@ -15,6 +15,7 @@ struct iOSNewBookSheet: View {
     @State private var title: String = ""
     @State private var pageCount: Int16?
     @State private var bookFormat: String = ""
+    @State private var readingStatus: String = ""
     @State private var publisher: String = ""
     @State private var yearPublished: Int16?
     @State private var isbn: String = ""
@@ -50,6 +51,16 @@ struct iOSNewBookSheet: View {
                     .padding(.bottom)
                 
                 Form {
+                    Section("Status") {
+                        // Reading Status
+                        Picker("Reading Status", selection: $readingStatus) {
+                            ForEach(BookReadingStatus.allCases) { status in
+                                Text(bookReadingStatusProperties[status]!)
+                                    .tag(status.rawValue)
+                            }
+                        }
+                    }
+                    
                     // Page Count
                     Section {
                         Label("Page Count", systemImage: "number")
@@ -116,10 +127,11 @@ struct iOSNewBookSheet: View {
             let newBook = Book(context: viewContext)
             newBook.createdAt = Date()
             newBook.updatedAt = Date()
-            newBook.bookFormat = bookFormat;
             newBook.title = title;
             newBook.publisher = publisher;
             newBook.isbn = isbn;
+            newBook.bookFormat = bookFormat;
+            newBook.readingStatus = readingStatus;
             
             if pageCount != nil {
                 newBook.pageCount = pageCount!;
@@ -128,7 +140,7 @@ struct iOSNewBookSheet: View {
             if yearPublished != nil {
                 newBook.yearPublished = yearPublished!;
             }
-
+            
             do {
                 try viewContext.save()
             } catch {
