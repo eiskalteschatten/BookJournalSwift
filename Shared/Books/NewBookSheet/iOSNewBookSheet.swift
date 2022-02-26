@@ -74,8 +74,18 @@ struct iOSNewBookSheet: View {
                             }
                         }
                         else {
-                            DatePicker(selection: $dateStarted, displayedComponents: .date) {
-                                Text("Date Started")
+                            HStack {
+                                DatePicker(selection: $dateStarted, displayedComponents: .date) {
+                                    Text("Date Started")
+                                }
+                                
+                                Button {
+                                    addDateStarted.toggle()
+                                } label: {
+                                    Image(systemName: "xmark.circle")
+                                        .foregroundColor(.red)
+                                }
+                                .padding(.leading, 5)
                             }
                         }
                         
@@ -86,8 +96,18 @@ struct iOSNewBookSheet: View {
                             }
                         }
                         else {
-                            DatePicker(selection: $dateFinished, displayedComponents: .date) {
-                                Text("Date Finished")
+                            HStack {
+                                DatePicker(selection: $dateFinished, displayedComponents: .date) {
+                                    Text("Date Finished")
+                                }
+                                
+                                Button {
+                                    addDateFinished.toggle()
+                                } label: {
+                                    Image(systemName: "xmark.circle")
+                                        .foregroundColor(.red)
+                                }
+                                .padding(.leading, 5)
                             }
                         }
                     }
