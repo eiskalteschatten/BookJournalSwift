@@ -177,27 +177,26 @@ struct iOSNewBookSheet: View {
             let newBook = Book(context: viewContext)
             newBook.createdAt = Date()
             newBook.updatedAt = Date()
-            newBook.title = title;
-//            newBook.publisher = publisher;
-            newBook.isbn = isbn;
-            newBook.bookFormat = bookFormat;
-            newBook.readingStatus = readingStatus;
             
+            newBook.title = title
+            if let unwrapped = pageCount {
+                newBook.pageCount = unwrapped
+            }
+            
+            newBook.readingStatus = readingStatus
             if addDateStarted {
-                newBook.dateStarted = dateStarted;
+                newBook.dateStarted = dateStarted
             }
-            
             if addDateFinished {
-                newBook.dateFinished = dateFinished;
+                newBook.dateFinished = dateFinished
             }
-            
-            if pageCount != nil {
-                newBook.pageCount = pageCount!;
+
+            newBook.bookFormat = bookFormat
+//            newBook.publisher = publisher
+            if let unwrapped = yearPublished {
+                newBook.yearPublished = unwrapped
             }
-            
-            if yearPublished != nil {
-                newBook.yearPublished = yearPublished!;
-            }
+            newBook.isbn = isbn
             
             do {
                 try viewContext.save()
