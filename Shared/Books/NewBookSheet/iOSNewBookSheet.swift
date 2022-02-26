@@ -14,8 +14,12 @@ struct iOSNewBookSheet: View {
     
     @State private var title: String = ""
     @State private var pageCount: Int16?
-    @State private var bookFormat: String = ""
+    
     @State private var readingStatus: String = ""
+    @State private var dateStarted: Date?
+    @State private var dateFinished: Date?
+    
+    @State private var bookFormat: String = ""
     @State private var publisher: String = ""
     @State private var yearPublished: Int16?
     @State private var isbn: String = ""
@@ -58,6 +62,11 @@ struct iOSNewBookSheet: View {
                                 Text(bookReadingStatusProperties[status]!)
                                     .tag(status.rawValue)
                             }
+                        }
+                        
+                        // Date Started
+                        DatePicker(selection: $dateStarted, in: ...Date(), displayedComponents: .date) {
+                            Text("Date Started")
                         }
                     }
                     
@@ -132,6 +141,8 @@ struct iOSNewBookSheet: View {
             newBook.isbn = isbn;
             newBook.bookFormat = bookFormat;
             newBook.readingStatus = readingStatus;
+            newBook.dateStarted = dateStarted;
+            newBook.dateFinished = dateFinished;
             
             if pageCount != nil {
                 newBook.pageCount = pageCount!;

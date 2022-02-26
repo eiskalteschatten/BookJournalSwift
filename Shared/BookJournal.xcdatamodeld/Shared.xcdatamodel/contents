@@ -13,7 +13,7 @@
         <attribute name="color" optional="YES" attributeType="String"/>
         <attribute name="commentary" optional="YES" attributeType="String" spotlightIndexingEnabled="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="dateRead" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="dateFinished" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="dateStarted" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="editors" optional="YES" attributeType="String" spotlightIndexingEnabled="YES"/>
         <attribute name="genre" optional="YES" attributeType="String" spotlightIndexingEnabled="YES"/>
