@@ -16,8 +16,10 @@ struct iOSNewBookSheet: View {
     @State private var pageCount: Int16?
     
     @State private var readingStatus: String = ""
-    @State private var dateStarted: Date?
-    @State private var dateFinished: Date?
+    @State private var addDateStarted = false
+    @State private var dateStarted: Date = Date()
+    @State private var addDateFinished = false
+    @State private var dateFinished: Date = Date()
     
     @State private var bookFormat: String = ""
     @State private var publisher: String = ""
@@ -64,9 +66,29 @@ struct iOSNewBookSheet: View {
                             }
                         }
                         
+                        
                         // Date Started
-                        DatePicker(selection: $dateStarted, in: ...Date(), displayedComponents: .date) {
-                            Text("Date Started")
+                        if !addDateStarted {
+                            Button("Add Date Started") {
+                                addDateStarted.toggle()
+                            }
+                        }
+                        else {
+                            DatePicker(selection: $dateStarted, displayedComponents: .date) {
+                                Text("Date Started")
+                            }
+                        }
+                        
+                        // Date Finished
+                        if !addDateFinished {
+                            Button("Add Date Finished") {
+                                addDateFinished.toggle()
+                            }
+                        }
+                        else {
+                            DatePicker(selection: $dateFinished, displayedComponents: .date) {
+                                Text("Date Finished")
+                            }
                         }
                     }
                     
@@ -141,8 +163,14 @@ struct iOSNewBookSheet: View {
             newBook.isbn = isbn;
             newBook.bookFormat = bookFormat;
             newBook.readingStatus = readingStatus;
-            newBook.dateStarted = dateStarted;
-            newBook.dateFinished = dateFinished;
+            
+            if addDateStarted {
+                newBook.dateStarted = dateStarted;
+            }
+            
+            if addDateFinished {
+                newBook.dateFinished = dateFinished;
+            }
             
             if pageCount != nil {
                 newBook.pageCount = pageCount!;
