@@ -133,11 +133,11 @@ struct iOSNewBookSheet: View {
                         }
                         
                         // Publisher
-                        TextField(
-                            "Publisher",
-                            text: $publisher
-                        )
-                            .keyboardType(.numberPad)
+//                        TextField(
+//                            "Publisher",
+//                            text: $publisher
+//                        )
+//                            .keyboardType(.numberPad)
                         
                         // Year Published
                         TextField(
@@ -179,7 +179,7 @@ struct iOSNewBookSheet: View {
             newBook.createdAt = Date()
             newBook.updatedAt = Date()
             newBook.title = title;
-            newBook.publisher = publisher;
+//            newBook.publisher = publisher;
             newBook.isbn = isbn;
             newBook.bookFormat = bookFormat;
             newBook.readingStatus = readingStatus;
