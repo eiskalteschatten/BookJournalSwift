@@ -96,36 +96,6 @@ struct iOSNewBookSheet: View {
                         )
                     }
                     
-                    // Editors
-                    Section {
-                        Label("Editors", systemImage: "pencil")
-                        
-                        NavigationLink(
-                            destination: EditorsSearchList(selectedEditors: $editors).navigationTitle("Search Editors"),
-                            tag: Screen.addEditors,
-                            selection: $screen,
-                            label: {
-                                HStack {
-                                    if editors.count > 0 {
-                                        ForEach(editors, id: \.self) { editor in
-                                            SmallChip(background: .gray) {
-                                                HStack(alignment: .center, spacing: 4) {
-                                                    if let name = editor.name {
-                                                        Text(name)
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                    else {
-                                        Text("Add Editors")
-                                            .opacity(0.3)
-                                    }
-                                }
-                            }
-                        )
-                    }
-                    
                     Section("Status") {
                         // Reading Status
                         Picker("Reading Status", selection: $readingStatus) {
@@ -221,6 +191,36 @@ struct iOSNewBookSheet: View {
                             text: $isbn
                         )
                             .keyboardType(.numberPad)
+                    }
+                    
+                    // Editors
+                    Section {
+                        Label("Editors", systemImage: "pencil")
+                        
+                        NavigationLink(
+                            destination: EditorsSearchList(selectedEditors: $editors).navigationTitle("Search Editors"),
+                            tag: Screen.addEditors,
+                            selection: $screen,
+                            label: {
+                                HStack {
+                                    if editors.count > 0 {
+                                        ForEach(editors, id: \.self) { editor in
+                                            SmallChip(background: .gray) {
+                                                HStack(alignment: .center, spacing: 4) {
+                                                    if let name = editor.name {
+                                                        Text(name)
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    else {
+                                        Text("Add Editors")
+                                            .opacity(0.3)
+                                    }
+                                }
+                            }
+                        )
                     }
                 }
             }
