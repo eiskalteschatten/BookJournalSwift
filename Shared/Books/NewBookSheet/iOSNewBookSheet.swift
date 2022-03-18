@@ -21,14 +21,14 @@ struct iOSNewBookSheet: View {
     @State private var title: String = ""
     @State private var pageCount: Int16?
     
-    @State private var authors: [Author] = []
-    @State private var editors: [Editor] = []
-    
     @State private var readingStatus: String = ""
     @State private var addDateStarted = false
     @State private var dateStarted: Date = Date()
     @State private var addDateFinished = false
     @State private var dateFinished: Date = Date()
+    
+    @State private var authors: [Author] = []
+    @State private var editors: [Editor] = []
     
     @State private var bookFormat: String = ""
     @State private var publishers: [Publisher] = []
@@ -66,63 +66,6 @@ struct iOSNewBookSheet: View {
                     .padding(.bottom)
                 
                 Form {
-                    // People
-                    Section {
-                        Label("People", systemImage: "person.2")
-                        
-                        // Authors
-                        NavigationLink(
-                            destination: AuthorsSearchList(selectedItems: $authors).navigationTitle("Search Authors"),
-                            tag: Screen.addAuthors,
-                            selection: $screen,
-                            label: {
-                                HStack {
-                                    if authors.count > 0 {
-                                        ForEach(authors, id: \.self) { item in
-                                            SmallChip(background: .green) {
-                                                HStack(alignment: .center, spacing: 4) {
-                                                    if let name = item.name {
-                                                        Text(name)
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                    else {
-                                        Text("Add Authors")
-                                            .opacity(0.3)
-                                    }
-                                }
-                            }
-                        )
-                        
-                        // Editors
-                        NavigationLink(
-                            destination: EditorsSearchList(selectedItems: $editors).navigationTitle("Search Editors"),
-                            tag: Screen.addEditors,
-                            selection: $screen,
-                            label: {
-                                HStack {
-                                    if editors.count > 0 {
-                                        ForEach(editors, id: \.self) { item in
-                                            SmallChip(background: .gray) {
-                                                HStack(alignment: .center, spacing: 4) {
-                                                    if let name = item.name {
-                                                        Text(name)
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                    else {
-                                        Text("Add Editors")
-                                            .opacity(0.3)
-                                    }
-                                }
-                            }
-                        )
-                    }
-                    
                     Section("Status") {
                         // Reading Status
                         Picker("Reading Status", selection: $readingStatus) {
@@ -177,9 +120,63 @@ struct iOSNewBookSheet: View {
                         }
                     }
                     
+                    // People
+                    Section("People") {
+                        // Authors
+                        NavigationLink(
+                            destination: AuthorsSearchList(selectedItems: $authors).navigationTitle("Search Authors"),
+                            tag: Screen.addAuthors,
+                            selection: $screen,
+                            label: {
+                                HStack {
+                                    if authors.count > 0 {
+                                        ForEach(authors, id: \.self) { item in
+                                            SmallChip(background: .green) {
+                                                HStack(alignment: .center, spacing: 4) {
+                                                    if let name = item.name {
+                                                        Text(name)
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    else {
+                                        Text("Add Authors")
+                                            .opacity(0.3)
+                                    }
+                                }
+                            }
+                        )
+                        
+                        // Editors
+                        NavigationLink(
+                            destination: EditorsSearchList(selectedItems: $editors).navigationTitle("Search Editors"),
+                            tag: Screen.addEditors,
+                            selection: $screen,
+                            label: {
+                                HStack {
+                                    if editors.count > 0 {
+                                        ForEach(editors, id: \.self) { item in
+                                            SmallChip(background: .gray) {
+                                                HStack(alignment: .center, spacing: 4) {
+                                                    if let name = item.name {
+                                                        Text(name)
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    else {
+                                        Text("Add Editors")
+                                            .opacity(0.3)
+                                    }
+                                }
+                            }
+                        )
+                    }
+                    
                     // Page Count
-                    Section {
-                        Label("Page Count", systemImage: "number")
+                    Section("Page Count") {
                         TextField(
                             "Page Count",
                             value: $pageCount,
@@ -267,10 +264,7 @@ struct iOSNewBookSheet: View {
             if let unwrapped = pageCount {
                 newBook.pageCount = unwrapped
             }
-            
-            authors.forEach(newBook.addToAuthors)
-            editors.forEach(newBook.addToEditors)
-            
+                       
             newBook.readingStatus = readingStatus
             if addDateStarted {
                 newBook.dateStarted = dateStarted
@@ -278,6 +272,9 @@ struct iOSNewBookSheet: View {
             if addDateFinished {
                 newBook.dateFinished = dateFinished
             }
+            
+            authors.forEach(newBook.addToAuthors)
+            editors.forEach(newBook.addToEditors)
 
             newBook.bookFormat = bookFormat
             publishers.forEach(newBook.addToPublishers)
