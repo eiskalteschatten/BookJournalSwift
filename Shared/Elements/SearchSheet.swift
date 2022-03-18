@@ -7,34 +7,36 @@
 
 import SwiftUI
 
-struct SearchSheet<T>: View {
+struct SearchSheet<T: AbstractName>: View {
     @Environment(\.dismiss) var dismiss
     
     var title: String
+    var data: [T]
     @Binding var selectedData: [T]
     
     @State private var searchText = ""
     @State var selectKeeper = Set<String>()
     
-    // TODO: replace with real items passed into this component
-    private let authors = ["Holly", "Josh", "Rhonda", "Ted"]
-    
     var body: some View {
         NavigationView {
             List(selection: $selectKeeper) {
-                ForEach(searchResults, id: \.self) { author in
+                ForEach(searchResults, id: \.self) { item in
                     HStack {
-                        Image(systemName: "circle")
-                        
-//                        Image(systemName: "checkmark.circle.fill")
-//                            .foregroundColor(.yellow)
-                        Text(author)
+                        if item.name != nil {
+                            Image(systemName: "circle")
+                            
+    //                        Image(systemName: "checkmark.circle.fill")
+    //                            .foregroundColor(.yellow)
+                            Text(item.name!)
+                        }
                     }
                 }
             }
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always)) {
                 ForEach(searchResults, id: \.self) { result in
-                    Text(result).searchCompletion(result)
+                    if result.name != nil {
+                        Text(result.name!).searchCompletion(result.name!)
+                    }
                 }
             }
             .navigationBarTitle(Text(title), displayMode: .inline)
@@ -48,11 +50,11 @@ struct SearchSheet<T>: View {
         }
     }
     
-    var searchResults: [String] {
+    var searchResults: [T] {
             if searchText.isEmpty {
-            return authors
+                return data
         } else {
-            return authors.filter { $0.contains(searchText) }
+            return data.filter { $0.name != nil ? $0.name!.contains(searchText) : false }
         }
     }
 }
