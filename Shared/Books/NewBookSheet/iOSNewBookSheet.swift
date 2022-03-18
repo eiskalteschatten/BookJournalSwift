@@ -77,9 +77,7 @@ struct iOSNewBookSheet: View {
                                 label: {
                                     if authors.count > 0 {
                                         ForEach(authors, id: \.self) { author in
-                                            SmallChip(action: {
-                                                // ??
-                                            }, background: .green) {
+                                            SmallChip(background: .green) {
                                                 HStack(alignment: .center, spacing: 4) {
                                                     if let name = author.name {
                                                         Text(name)
@@ -89,9 +87,7 @@ struct iOSNewBookSheet: View {
                                         }
                                     }
                                     
-                                    SmallChip(action: {
-                                        // ??
-                                    }, background: .white) {
+                                    SmallChip(background: .white) {
                                         HStack(alignment: .center, spacing: 4) {
                                             Image(systemName: "plus")
                                             Text("Add")

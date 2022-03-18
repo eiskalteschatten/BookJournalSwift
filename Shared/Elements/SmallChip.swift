@@ -8,34 +8,33 @@
 import SwiftUI
 
 struct SmallChip<Content: View>: View {
-    var action: () -> Void
     var background: Color = .yellow
     var foregroundColor: Color = .black
     @ViewBuilder var content: Content
     
     var body: some View {
-        Button(action: action, label: {
-            content
-                .padding(.vertical, 5)
-                .padding(.horizontal, 10)
-                .font(.system(size: 13))
-        })
+        content
+            .padding(.vertical, 5)
+            .padding(.horizontal, 10)
+            .background(
+                Capsule()
+                    .fill(background)
+            )
             .foregroundColor(foregroundColor)
-            .background(background)
-            .cornerRadius(15)
+            .font(.system(size: 13))
     }
 }
 
 struct SmallChip_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            SmallChip(action: {}) {
+            SmallChip {
                 Text("Text SmallChip")
             }
-            SmallChip(action: {}) {
+            SmallChip {
                 Label("Image SmallChip", systemImage: "desktopcomputer")
             }
-            SmallChip(action: {}, background: .blue, foregroundColor: .white) {
+            SmallChip(background: .blue, foregroundColor: .white) {
                 Label("Blue Image SmallChip", systemImage: "macwindow")
             }
         }
