@@ -21,8 +21,13 @@ struct AuthorsSearchSheet: View {
         SearchSheet<Author>(
             title: "Search Authors",
             data: authors.map { $0 },
-            selectedData: $selectedAuthors
+            selectedData: $selectedAuthors,
+            addItem: addAuthor
         )
+    }
+    
+    private func addAuthor() {
+        // TODO
     }
 }
 

@@ -13,6 +13,7 @@ struct SearchSheet<T: AbstractName>: View {
     var title: String
     var data: [T]
     @Binding var selectedData: [T]
+    var addItem: () -> Void
     
     @State private var searchText = ""
     
@@ -54,10 +55,15 @@ struct SearchSheet<T: AbstractName>: View {
             }
             .navigationBarTitle(Text(title), displayMode: .inline)
                 .navigationBarItems(
-                    trailing: Button(action: {
+                    leading: Button(action: {
                         dismiss()
                     }) {
                         Text("Done")
+                    },
+                    trailing: Button(action: {
+                        addItem()
+                    }) {
+                        Image(systemName: "plus")
                     }
                 )
         }
@@ -75,9 +81,15 @@ struct SearchSheet<T: AbstractName>: View {
 struct SearchSheet_Previews: PreviewProvider {
     @State static var authors: [Author] = []
     static let context = PersistenceController.preview.container.viewContext
+    static func addItem() {}
     
     static var previews: some View {
-        SearchSheet<Author>(title: "Search for Something", data: getMockAuthors(), selectedData: $authors)
+        SearchSheet<Author>(
+            title: "Search for Something",
+            data: getMockAuthors(),
+            selectedData: $authors,
+            addItem: addItem
+        )
     }
     
     static func getMockAuthors() -> [Author] {
