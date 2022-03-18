@@ -63,6 +63,16 @@ struct SearchSheet_Previews: PreviewProvider {
     @State static var authors: [Author] = []
     
     static var previews: some View {
-        SearchSheet<Author>(title: "Search for Something", selectedData: $authors)
+        SearchSheet<Author>(title: "Search for Something", data: getMockAuthors(), selectedData: $authors)
+    }
+    
+    static func getMockAuthors() -> [Author] {
+        let mockAuthor1 = Author()
+        mockAuthor1.name = "Liz"
+        
+        let mockAuthor2 = Author()
+        mockAuthor2.name = "Scott"
+        
+        return [mockAuthor1, mockAuthor2]
     }
 }
