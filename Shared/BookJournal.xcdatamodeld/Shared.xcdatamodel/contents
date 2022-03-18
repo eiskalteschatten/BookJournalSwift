@@ -35,7 +35,7 @@
         <relationship name="originalLanguage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Language" inverseName="booksOriginallyInLanguage" inverseEntity="Language"/>
         <relationship name="publisher" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Publisher" inverseName="books" inverseEntity="Publisher"/>
         <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="books" inverseEntity="Tag" spotlightIndexingEnabled="YES"/>
-        <relationship name="translator" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Translator" inverseName="books" inverseEntity="Translator"/>
+        <relationship name="translators" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Translator" inverseName="books" inverseEntity="Translator"/>
     </entity>
     <entity name="Category" representedClassName="Category" parentEntity="AbstractName" syncable="YES" codeGenerationType="class">
         <attribute name="color" optional="YES" attributeType="String"/>
@@ -61,7 +61,7 @@
         <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="tags" inverseEntity="Book" spotlightIndexingEnabled="YES"/>
     </entity>
     <entity name="Translator" representedClassName="Translator" parentEntity="AbstractName" syncable="YES" codeGenerationType="class">
-        <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="translator" inverseEntity="Book" spotlightIndexingEnabled="YES"/>
+        <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="translators" inverseEntity="Book" spotlightIndexingEnabled="YES"/>
     </entity>
     <elements>
         <element name="AbstractName" positionX="-9" positionY="162" width="128" height="74"/>

@@ -48,6 +48,10 @@
 		9369C19127E5204A00A39E57 /* CreatePublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9369C18F27E5204A00A39E57 /* CreatePublisher.swift */; };
 		9369C19327E520CC00A39E57 /* PublishersSearchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9369C19227E520CC00A39E57 /* PublishersSearchList.swift */; };
 		9369C19427E520CC00A39E57 /* PublishersSearchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9369C19227E520CC00A39E57 /* PublishersSearchList.swift */; };
+		9369C19727E53BC400A39E57 /* TranslatorsSearchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9369C19627E53BC400A39E57 /* TranslatorsSearchList.swift */; };
+		9369C19827E53BC400A39E57 /* TranslatorsSearchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9369C19627E53BC400A39E57 /* TranslatorsSearchList.swift */; };
+		9369C19A27E53C3D00A39E57 /* CreateTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9369C19927E53C3D00A39E57 /* CreateTranslator.swift */; };
+		9369C19B27E53C3D00A39E57 /* CreateTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9369C19927E53C3D00A39E57 /* CreateTranslator.swift */; };
 		9395168327C8301300F04CCF /* NewBookSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9395168227C8301300F04CCF /* NewBookSheet.swift */; };
 		939BB9EF27CA44D60001B0DF /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939BB9EE27CA44D60001B0DF /* CoreData.swift */; };
 		939BB9F027CA44D60001B0DF /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939BB9EE27CA44D60001B0DF /* CoreData.swift */; };
@@ -103,6 +107,8 @@
 		9369C18B27E51E1900A39E57 /* CreateEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEditor.swift; sourceTree = "<group>"; };
 		9369C18F27E5204A00A39E57 /* CreatePublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePublisher.swift; sourceTree = "<group>"; };
 		9369C19227E520CC00A39E57 /* PublishersSearchList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishersSearchList.swift; sourceTree = "<group>"; };
+		9369C19627E53BC400A39E57 /* TranslatorsSearchList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatorsSearchList.swift; sourceTree = "<group>"; };
+		9369C19927E53C3D00A39E57 /* CreateTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTranslator.swift; sourceTree = "<group>"; };
 		9395168227C8301300F04CCF /* NewBookSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBookSheet.swift; sourceTree = "<group>"; };
 		939BB9EE27CA44D60001B0DF /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		939BB9F227CA785F0001B0DF /* Chip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chip.swift; sourceTree = "<group>"; };
@@ -173,6 +179,7 @@
 				9346342227C2A5BF003B233F /* Books */,
 				9309D78127E4A54900F19670 /* Authors */,
 				9369C18727E51CAD00A39E57 /* Editors */,
+				9369C19527E53BAE00A39E57 /* Translators */,
 				9369C18E27E5201900A39E57 /* Publishers */,
 				9329054027C2932F000D15AE /* Constants.swift */,
 				932198E9279D86E600CB6E76 /* Assets.xcassets */,
@@ -271,6 +278,15 @@
 				9369C18F27E5204A00A39E57 /* CreatePublisher.swift */,
 			);
 			path = Publishers;
+			sourceTree = "<group>";
+		};
+		9369C19527E53BAE00A39E57 /* Translators */ = {
+			isa = PBXGroup;
+			children = (
+				9369C19627E53BC400A39E57 /* TranslatorsSearchList.swift */,
+				9369C19927E53C3D00A39E57 /* CreateTranslator.swift */,
+			);
+			path = Translators;
 			sourceTree = "<group>";
 		};
 		939BB9ED27CA44AE0001B0DF /* Extensions */ = {
@@ -466,8 +482,10 @@
 				9329054427C29C55000D15AE /* BookView.swift in Sources */,
 				9369C19027E5204A00A39E57 /* CreatePublisher.swift in Sources */,
 				93219913279D86E600CB6E76 /* ContentView.swift in Sources */,
+				9369C19727E53BC400A39E57 /* TranslatorsSearchList.swift in Sources */,
 				9309D77F27E4A51500F19670 /* SearchList.swift in Sources */,
 				9395168327C8301300F04CCF /* NewBookSheet.swift in Sources */,
+				9369C19A27E53C3D00A39E57 /* CreateTranslator.swift in Sources */,
 				939BB9F327CA785F0001B0DF /* Chip.swift in Sources */,
 				939BB9F627CA9BB40001B0DF /* SmallChip.swift in Sources */,
 			);
@@ -494,8 +512,10 @@
 				93219910279D86E600CB6E76 /* BookJournal.xcdatamodeld in Sources */,
 				9369C19127E5204A00A39E57 /* CreatePublisher.swift in Sources */,
 				9329054527C29C55000D15AE /* BookView.swift in Sources */,
+				9369C19827E53BC400A39E57 /* TranslatorsSearchList.swift in Sources */,
 				9309D78027E4A51500F19670 /* SearchList.swift in Sources */,
 				93219914279D86E600CB6E76 /* ContentView.swift in Sources */,
+				9369C19B27E53C3D00A39E57 /* CreateTranslator.swift in Sources */,
 				939BB9F427CA785F0001B0DF /* Chip.swift in Sources */,
 				939BB9F727CA9BB40001B0DF /* SmallChip.swift in Sources */,
 			);

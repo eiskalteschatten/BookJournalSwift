@@ -10,7 +10,7 @@ import CoreData
 
 struct iOSNewBookSheet: View {
     private enum Screen: Int {
-        case addAuthors, addEditors, addPublisher
+        case addAuthors, addEditors, addTranslators, addPublisher
     }
     
     @State private var screen: Screen?
@@ -29,6 +29,7 @@ struct iOSNewBookSheet: View {
     
     @State private var authors: [Author] = []
     @State private var editors: [Editor] = []
+    @State private var translators: [Translator] = []
     
     @State private var bookFormat: String = ""
     @State private var publisher: Publisher?
@@ -124,7 +125,7 @@ struct iOSNewBookSheet: View {
                     Section("People") {
                         // Authors
                         NavigationLink(
-                            destination: AuthorsSearchList(selectedItems: $authors).navigationTitle("Search Authors"),
+                            destination: AuthorsSearchList(selectedItems: $authors),
                             tag: Screen.addAuthors,
                             selection: $screen,
                             label: {
@@ -150,7 +151,7 @@ struct iOSNewBookSheet: View {
                         
                         // Editors
                         NavigationLink(
-                            destination: EditorsSearchList(selectedItems: $editors).navigationTitle("Search Editors"),
+                            destination: EditorsSearchList(selectedItems: $editors),
                             tag: Screen.addEditors,
                             selection: $screen,
                             label: {
@@ -168,6 +169,32 @@ struct iOSNewBookSheet: View {
                                     }
                                     else {
                                         Text("Add Editors")
+                                            .opacity(0.3)
+                                    }
+                                }
+                            }
+                        )
+                        
+                        // Translators
+                        NavigationLink(
+                            destination: TranslatorsSearchList(selectedItems: $translators),
+                            tag: Screen.addTranslators,
+                            selection: $screen,
+                            label: {
+                                HStack {
+                                    if translators.count > 0 {
+                                        ForEach(translators, id: \.self) { item in
+                                            SmallChip(background: .gray) {
+                                                HStack(alignment: .center, spacing: 4) {
+                                                    if let name = item.name {
+                                                        Text(name)
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    else {
+                                        Text("Add Translators")
                                             .opacity(0.3)
                                     }
                                 }
@@ -273,6 +300,7 @@ struct iOSNewBookSheet: View {
             
             authors.forEach(newBook.addToAuthors)
             editors.forEach(newBook.addToEditors)
+            translators.forEach(newBook.addToTranslators)
 
             newBook.bookFormat = bookFormat
             if let unwrapped = publisher {
