@@ -13,7 +13,6 @@ struct SearchList<T: AbstractName>: View {
     var title: String
     var data: [T]
     @Binding var selectedData: [T]
-    var addItem: () -> Void
     
     @State private var searchText = ""
     
@@ -52,15 +51,6 @@ struct SearchList<T: AbstractName>: View {
                 }
             }
         }
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: {
-                    addItem()
-                }) {
-                    Image(systemName: "plus")
-                }
-            }
-        }
     }
     
     var searchResults: [T] {
@@ -81,8 +71,7 @@ struct SearchList_Previews: PreviewProvider {
         SearchList<Author>(
             title: "Search for Something",
             data: getMockAuthors(),
-            selectedData: $authors,
-            addItem: addItem
+            selectedData: $authors
         )
     }
     

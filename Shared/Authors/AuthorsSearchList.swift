@@ -7,7 +7,13 @@
 
 import SwiftUI
 
+enum AuthorsSearchListScreen: Int {
+    case home, createAuthor
+}
+
 struct AuthorsSearchList: View {
+    @State private var screen: AuthorsSearchListScreen? = .home
+    
     @Environment(\.managedObjectContext) private var viewContext
     
     @Binding var selectedAuthors: [Author]
@@ -21,13 +27,20 @@ struct AuthorsSearchList: View {
         SearchList<Author>(
             title: "Search Authors",
             data: authors.map { $0 },
-            selectedData: $selectedAuthors,
-            addItem: addAuthor
+            selectedData: $selectedAuthors
         )
-    }
-    
-    private func addAuthor() {
-        // TODO
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink(
+                    destination: CreateAuthor(screen: $screen),
+                    tag: AuthorsSearchListScreen.createAuthor,
+                    selection: $screen,
+                    label: {
+                        Image(systemName: "plus")
+                    }
+                )
+            }
+        }
     }
 }
 
