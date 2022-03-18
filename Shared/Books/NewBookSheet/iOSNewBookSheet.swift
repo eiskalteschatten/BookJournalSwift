@@ -246,22 +246,6 @@ struct iOSNewBookSheet: View {
             }
         }
     }
-    
-    // TODO: Remove
-    func createMockAuthors() {
-        let mockAuthor1 = Author(context: viewContext)
-        mockAuthor1.name = "Liz"
-        
-        let mockAuthor2 = Author(context: viewContext)
-        mockAuthor2.name = "Scott"
-        
-        do {
-            try viewContext.save()
-        } catch {
-            let nsError = error as NSError
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-        }
-    }
 }
 
 struct iOSNewBookSheet_Previews: PreviewProvider {
