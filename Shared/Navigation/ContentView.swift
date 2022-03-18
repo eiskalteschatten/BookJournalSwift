@@ -38,7 +38,7 @@ struct ContentView: View {
                 )
                 NavigationLink(
                     destination: BookList(
-                        predicate: NSPredicate(format: "status == %@", BookReadingStatus.currentlyReading.rawValue)
+                        predicate: NSPredicate(format: "readingStatus == %@", BookReadingStatus.currentlyReading.rawValue)
                     ).navigationTitle("Currently Reading"),
                     tag: Screen.currentlyReading,
                     selection: $screen,
@@ -48,7 +48,7 @@ struct ContentView: View {
                 )
                 NavigationLink(
                     destination: BookList(
-                        predicate: NSPredicate(format: "status == %@", BookReadingStatus.notReadYet.rawValue)
+                        predicate: NSPredicate(format: "readingStatus == %@", BookReadingStatus.notReadYet.rawValue)
                     ).navigationTitle("Not Read Yet"),
                     tag: Screen.notReadYet,
                     selection: $screen,
@@ -58,7 +58,7 @@ struct ContentView: View {
                 )
                 NavigationLink(
                     destination: BookList(
-                        predicate: NSPredicate(format: "status == %@", BookReadingStatus.read.rawValue)
+                          predicate: NSPredicate(format: "readingStatus == %@", BookReadingStatus.read.rawValue)
                     ).navigationTitle("Books Read"),
                     tag: Screen.read,
                     selection: $screen,
