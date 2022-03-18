@@ -52,6 +52,10 @@
 		9369C19827E53BC400A39E57 /* TranslatorsSearchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9369C19627E53BC400A39E57 /* TranslatorsSearchList.swift */; };
 		9369C19A27E53C3D00A39E57 /* CreateTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9369C19927E53C3D00A39E57 /* CreateTranslator.swift */; };
 		9369C19B27E53C3D00A39E57 /* CreateTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9369C19927E53C3D00A39E57 /* CreateTranslator.swift */; };
+		9369C19E27E53FE000A39E57 /* CountriesSearchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9369C19D27E53FE000A39E57 /* CountriesSearchList.swift */; };
+		9369C19F27E53FE000A39E57 /* CountriesSearchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9369C19D27E53FE000A39E57 /* CountriesSearchList.swift */; };
+		9369C1A127E5410800A39E57 /* CreateCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9369C1A027E5410800A39E57 /* CreateCountry.swift */; };
+		9369C1A227E5410800A39E57 /* CreateCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9369C1A027E5410800A39E57 /* CreateCountry.swift */; };
 		9395168327C8301300F04CCF /* NewBookSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9395168227C8301300F04CCF /* NewBookSheet.swift */; };
 		939BB9EF27CA44D60001B0DF /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939BB9EE27CA44D60001B0DF /* CoreData.swift */; };
 		939BB9F027CA44D60001B0DF /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939BB9EE27CA44D60001B0DF /* CoreData.swift */; };
@@ -109,6 +113,8 @@
 		9369C19227E520CC00A39E57 /* PublishersSearchList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishersSearchList.swift; sourceTree = "<group>"; };
 		9369C19627E53BC400A39E57 /* TranslatorsSearchList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatorsSearchList.swift; sourceTree = "<group>"; };
 		9369C19927E53C3D00A39E57 /* CreateTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTranslator.swift; sourceTree = "<group>"; };
+		9369C19D27E53FE000A39E57 /* CountriesSearchList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesSearchList.swift; sourceTree = "<group>"; };
+		9369C1A027E5410800A39E57 /* CreateCountry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCountry.swift; sourceTree = "<group>"; };
 		9395168227C8301300F04CCF /* NewBookSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBookSheet.swift; sourceTree = "<group>"; };
 		939BB9EE27CA44D60001B0DF /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		939BB9F227CA785F0001B0DF /* Chip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chip.swift; sourceTree = "<group>"; };
@@ -181,6 +187,7 @@
 				9369C18727E51CAD00A39E57 /* Editors */,
 				9369C19527E53BAE00A39E57 /* Translators */,
 				9369C18E27E5201900A39E57 /* Publishers */,
+				9369C19C27E53FBF00A39E57 /* Countries */,
 				9329054027C2932F000D15AE /* Constants.swift */,
 				932198E9279D86E600CB6E76 /* Assets.xcassets */,
 				932198E4279D86E400CB6E76 /* BookJournal.xcdatamodeld */,
@@ -287,6 +294,15 @@
 				9369C19927E53C3D00A39E57 /* CreateTranslator.swift */,
 			);
 			path = Translators;
+			sourceTree = "<group>";
+		};
+		9369C19C27E53FBF00A39E57 /* Countries */ = {
+			isa = PBXGroup;
+			children = (
+				9369C19D27E53FE000A39E57 /* CountriesSearchList.swift */,
+				9369C1A027E5410800A39E57 /* CreateCountry.swift */,
+			);
+			path = Countries;
 			sourceTree = "<group>";
 		};
 		939BB9ED27CA44AE0001B0DF /* Extensions */ = {
@@ -471,6 +487,7 @@
 				9346661727C93EC100D58DE7 /* iOSNewBookSheet.swift in Sources */,
 				9369C18927E51D5500A39E57 /* EditorsSearchList.swift in Sources */,
 				9369C18C27E51E1900A39E57 /* CreateEditor.swift in Sources */,
+				9369C1A127E5410800A39E57 /* CreateCountry.swift in Sources */,
 				9346342727C2DFA6003B233F /* BookListItem.swift in Sources */,
 				93219915279D86E600CB6E76 /* Persistence.swift in Sources */,
 				9329054127C2932F000D15AE /* Constants.swift in Sources */,
@@ -483,6 +500,7 @@
 				9369C19027E5204A00A39E57 /* CreatePublisher.swift in Sources */,
 				93219913279D86E600CB6E76 /* ContentView.swift in Sources */,
 				9369C19727E53BC400A39E57 /* TranslatorsSearchList.swift in Sources */,
+				9369C19E27E53FE000A39E57 /* CountriesSearchList.swift in Sources */,
 				9309D77F27E4A51500F19670 /* SearchList.swift in Sources */,
 				9395168327C8301300F04CCF /* NewBookSheet.swift in Sources */,
 				9369C19A27E53C3D00A39E57 /* CreateTranslator.swift in Sources */,
@@ -501,6 +519,7 @@
 				9346661C27C9406A00D58DE7 /* NewBookSheet.swift in Sources */,
 				9369C18A27E51D5500A39E57 /* EditorsSearchList.swift in Sources */,
 				9369C18D27E51E1900A39E57 /* CreateEditor.swift in Sources */,
+				9369C1A227E5410800A39E57 /* CreateCountry.swift in Sources */,
 				9346342827C2DFA6003B233F /* BookListItem.swift in Sources */,
 				93219916279D86E600CB6E76 /* Persistence.swift in Sources */,
 				9346661D27C9407000D58DE7 /* MacNewBookSheet.swift in Sources */,
@@ -513,6 +532,7 @@
 				9369C19127E5204A00A39E57 /* CreatePublisher.swift in Sources */,
 				9329054527C29C55000D15AE /* BookView.swift in Sources */,
 				9369C19827E53BC400A39E57 /* TranslatorsSearchList.swift in Sources */,
+				9369C19F27E53FE000A39E57 /* CountriesSearchList.swift in Sources */,
 				9309D78027E4A51500F19670 /* SearchList.swift in Sources */,
 				93219914279D86E600CB6E76 /* ContentView.swift in Sources */,
 				9369C19B27E53C3D00A39E57 /* CreateTranslator.swift in Sources */,
