@@ -18,7 +18,11 @@ struct AuthorsSearchSheet: View {
     ) private var authors: FetchedResults<Author>
     
     var body: some View {
-        SearchSheet<Author>(title: "Search Authors", data: authors, selectedData: $selectedAuthors)
+        SearchSheet<Author>(
+            title: "Search Authors",
+            data: authors.map { $0 },
+            selectedData: $selectedAuthors
+        )
     }
     
     // TODO: Replace with actual authors
