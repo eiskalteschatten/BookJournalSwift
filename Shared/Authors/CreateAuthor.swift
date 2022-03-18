@@ -24,7 +24,7 @@ struct CreateAuthor: View {
         .navigationBarTitle(Text("Create an Author"), displayMode: .inline)
             .navigationBarItems(
                 trailing: Button(action: {
-                    saveAuthor()
+                    save()
                     screen = .home
                 }) {
                     Text("Save").bold()
@@ -32,7 +32,7 @@ struct CreateAuthor: View {
             )
     }
     
-    private func saveAuthor() {
+    private func save() {
         let newAuthor = Author(context: viewContext)
         newAuthor.createdAt = Date()
         newAuthor.updatedAt = Date()

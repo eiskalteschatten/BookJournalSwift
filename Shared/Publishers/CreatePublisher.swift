@@ -1,5 +1,5 @@
 //
-//  CreateEditor.swift
+//  CreatePublisher.swift
 //  BookJournal
 //
 //  Created by Alex Seifert on 18.03.22.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct CreateEditor: View {
-    @Binding var screen: EditorsSearchListScreen?
+struct CreatePublisher: View {
+    @Binding var screen: PublishersSearchListScreen?
     
     @Environment(\.managedObjectContext) private var viewContext
     
@@ -21,7 +21,7 @@ struct CreateEditor: View {
                 text: $name
             )
         }
-        .navigationBarTitle(Text("Create an Editor"), displayMode: .inline)
+        .navigationBarTitle(Text("Create a Publisher"), displayMode: .inline)
             .navigationBarItems(
                 trailing: Button(action: {
                     save()
@@ -33,10 +33,10 @@ struct CreateEditor: View {
     }
     
     private func save() {
-        let newEditor = Editor(context: viewContext)
-        newEditor.createdAt = Date()
-        newEditor.updatedAt = Date()
-        newEditor.name = name
+        let newPublisher = Publisher(context: viewContext)
+        newPublisher.createdAt = Date()
+        newPublisher.updatedAt = Date()
+        newPublisher.name = name
         
         do {
             try viewContext.save()
@@ -49,10 +49,10 @@ struct CreateEditor: View {
     }
 }
 
-struct CreateEditor_Previews: PreviewProvider {
-    @State static var screen: EditorsSearchListScreen?
+struct CreatePublisher_Previews: PreviewProvider {
+    @State static var screen: PublishersSearchListScreen?
     
     static var previews: some View {
-        CreateEditor(screen: $screen)
+        CreatePublisher(screen: $screen)
     }
 }

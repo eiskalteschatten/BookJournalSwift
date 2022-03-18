@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21D62" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21E230" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="AbstractName" representedClassName="AbstractName" isAbstract="YES" syncable="YES" codeGenerationType="class">
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
@@ -33,7 +33,7 @@
         <relationship name="languageReadIn" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Language" inverseName="booksReadIn" inverseEntity="Language"/>
         <relationship name="nationality" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Country" inverseName="books" inverseEntity="Country"/>
         <relationship name="originalLanguage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Language" inverseName="booksOriginallyInLanguage" inverseEntity="Language"/>
-        <relationship name="publisher" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Publisher" inverseName="books" inverseEntity="Publisher"/>
+        <relationship name="publishers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Publisher" inverseName="books" inverseEntity="Publisher"/>
         <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="books" inverseEntity="Tag" spotlightIndexingEnabled="YES"/>
         <relationship name="translator" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Translator" inverseName="books" inverseEntity="Translator"/>
     </entity>
@@ -55,7 +55,7 @@
         <relationship name="booksReadIn" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="languageReadIn" inverseEntity="Book" spotlightIndexingEnabled="YES"/>
     </entity>
     <entity name="Publisher" representedClassName="Publisher" parentEntity="AbstractName" syncable="YES" codeGenerationType="class">
-        <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="publisher" inverseEntity="Book" spotlightIndexingEnabled="YES"/>
+        <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="publishers" inverseEntity="Book" spotlightIndexingEnabled="YES"/>
     </entity>
     <entity name="Tag" representedClassName="Tag" parentEntity="AbstractName" syncable="YES" codeGenerationType="class">
         <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="tags" inverseEntity="Book" spotlightIndexingEnabled="YES"/>
@@ -64,16 +64,16 @@
         <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="translator" inverseEntity="Book" spotlightIndexingEnabled="YES"/>
     </entity>
     <elements>
+        <element name="AbstractName" positionX="-9" positionY="162" width="128" height="74"/>
         <element name="Author" positionX="-54" positionY="153" width="128" height="44"/>
         <element name="Book" positionX="-63" positionY="-9" width="128" height="434"/>
         <element name="Category" positionX="-54" positionY="153" width="128" height="59"/>
+        <element name="Country" positionX="27" positionY="207" width="128" height="44"/>
         <element name="Editor" positionX="-54" positionY="153" width="128" height="44"/>
-        <element name="Tag" positionX="-45" positionY="162" width="128" height="44"/>
-        <element name="Publisher" positionX="-27" positionY="180" width="128" height="44"/>
         <element name="Genre" positionX="-9" positionY="189" width="128" height="44"/>
         <element name="Language" positionX="9" positionY="198" width="128" height="59"/>
-        <element name="Country" positionX="27" positionY="207" width="128" height="44"/>
+        <element name="Publisher" positionX="-27" positionY="180" width="128" height="44"/>
+        <element name="Tag" positionX="-45" positionY="162" width="128" height="44"/>
         <element name="Translator" positionX="-18" positionY="153" width="128" height="44"/>
-        <element name="AbstractName" positionX="-9" positionY="162" width="128" height="74"/>
     </elements>
 </model>

@@ -16,7 +16,7 @@ struct EditorsSearchList: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     
-    @Binding var selectedEditors: [Editor]
+    @Binding var selectedItems: [Editor]
     
     @FetchRequest(
         entity: Editor.entity(),
@@ -27,8 +27,8 @@ struct EditorsSearchList: View {
         SearchList<Editor>(
             title: "Search Editors",
             data: editors.map { $0 },
-            selectedData: $selectedEditors,
-            onDelete: deleteEditors
+            selectedData: $selectedItems,
+            onDelete: delete
         )
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -49,10 +49,10 @@ struct EditorsSearchList: View {
         }
     }
     
-    private func deleteEditors(offsets: IndexSet) {
+    private func delete(offsets: IndexSet) {
         withAnimation {
             offsets.map { editors[$0] }.forEach(viewContext.delete)
-            offsets.forEach { i in selectedEditors.remove(at: i) }
+            offsets.forEach { i in selectedItems.remove(at: i) }
 
             do {
                 try viewContext.save()
@@ -67,9 +67,9 @@ struct EditorsSearchList: View {
 }
 
 struct EditorsSearchList_Previews: PreviewProvider {
-    @State static var editors: [Editor] = []
+    @State static var items: [Editor] = []
     
     static var previews: some View {
-        EditorsSearchList(selectedEditors: $editors)
+        EditorsSearchList(selectedItems: $items)
     }
 }

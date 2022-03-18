@@ -10,7 +10,7 @@ import CoreData
 
 struct iOSNewBookSheet: View {
     private enum Screen: Int {
-        case addAuthors, addEditors
+        case addAuthors, addEditors, addPublishers
     }
     
     @State private var screen: Screen?
@@ -31,7 +31,7 @@ struct iOSNewBookSheet: View {
     @State private var dateFinished: Date = Date()
     
     @State private var bookFormat: String = ""
-    @State private var publisher: String = ""
+    @State private var publishers: [Publisher] = []
     @State private var yearPublished: Int16?
     @State private var isbn: String = ""
 
@@ -71,16 +71,16 @@ struct iOSNewBookSheet: View {
                         Label("Authors", systemImage: "person.2")
                         
                         NavigationLink(
-                            destination: AuthorsSearchList(selectedAuthors: $authors).navigationTitle("Search Authors"),
+                            destination: AuthorsSearchList(selectedItems: $authors).navigationTitle("Search Authors"),
                             tag: Screen.addAuthors,
                             selection: $screen,
                             label: {
                                 HStack {
                                     if authors.count > 0 {
-                                        ForEach(authors, id: \.self) { author in
+                                        ForEach(authors, id: \.self) { item in
                                             SmallChip(background: .green) {
                                                 HStack(alignment: .center, spacing: 4) {
-                                                    if let name = author.name {
+                                                    if let name = item.name {
                                                         Text(name)
                                                     }
                                                 }
@@ -171,11 +171,30 @@ struct iOSNewBookSheet: View {
                         }
                         
                         // Publisher
-//                        TextField(
-//                            "Publisher",
-//                            text: $publisher
-//                        )
-//                            .keyboardType(.numberPad)
+                        NavigationLink(
+                            destination: PublishersSearchList(selectedItems: $publishers).navigationTitle("Search Publishers"),
+                            tag: Screen.addPublishers,
+                            selection: $screen,
+                            label: {
+                                HStack {
+                                    if publishers.count > 0 {
+                                        ForEach(publishers, id: \.self) { item in
+                                            SmallChip(background: .gray) {
+                                                HStack(alignment: .center, spacing: 4) {
+                                                    if let name = item.name {
+                                                        Text(name)
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    else {
+                                        Text("Add Publishers")
+                                            .opacity(0.3)
+                                    }
+                                }
+                            }
+                        )
                         
                         // Year Published
                         TextField(
@@ -198,16 +217,16 @@ struct iOSNewBookSheet: View {
                         Label("Editors", systemImage: "pencil")
                         
                         NavigationLink(
-                            destination: EditorsSearchList(selectedEditors: $editors).navigationTitle("Search Editors"),
+                            destination: EditorsSearchList(selectedItems: $editors).navigationTitle("Search Editors"),
                             tag: Screen.addEditors,
                             selection: $screen,
                             label: {
                                 HStack {
                                     if editors.count > 0 {
-                                        ForEach(editors, id: \.self) { editor in
+                                        ForEach(editors, id: \.self) { item in
                                             SmallChip(background: .gray) {
                                                 HStack(alignment: .center, spacing: 4) {
-                                                    if let name = editor.name {
+                                                    if let name = item.name {
                                                         Text(name)
                                                     }
                                                 }
@@ -252,6 +271,9 @@ struct iOSNewBookSheet: View {
                 newBook.pageCount = unwrapped
             }
             
+//            newBook.authors = authors
+//            newBook.editors = editors
+            
             newBook.readingStatus = readingStatus
             if addDateStarted {
                 newBook.dateStarted = dateStarted
@@ -261,7 +283,7 @@ struct iOSNewBookSheet: View {
             }
 
             newBook.bookFormat = bookFormat
-//            newBook.publisher = publisher
+//            newBook.publishers = publishers
             if let unwrapped = yearPublished {
                 newBook.yearPublished = unwrapped
             }

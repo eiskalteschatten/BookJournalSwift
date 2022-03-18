@@ -1,5 +1,5 @@
 //
-//  AuthorsSearchList.swift
+//  PublishersSearchList.swift
 //  BookJournal
 //
 //  Created by Alex Seifert on 18.03.22.
@@ -7,34 +7,34 @@
 
 import SwiftUI
 
-enum AuthorsSearchListScreen: Int {
+enum PublishersSearchListScreen: Int {
     case home, create
 }
 
-struct AuthorsSearchList: View {
-    @State private var screen: AuthorsSearchListScreen? = .home
+struct PublishersSearchList: View {
+    @State private var screen: PublishersSearchListScreen? = .home
     
     @Environment(\.managedObjectContext) private var viewContext
     
-    @Binding var selectedItems: [Author]
+    @Binding var selectedItems: [Publisher]
     
     @FetchRequest(
-        entity: Author.entity(),
-        sortDescriptors: [NSSortDescriptor(keyPath: \Author.name, ascending: false)]
-    ) private var authors: FetchedResults<Author>
+        entity: Publisher.entity(),
+        sortDescriptors: [NSSortDescriptor(keyPath: \Publisher.name, ascending: false)]
+    ) private var publishers: FetchedResults<Publisher>
     
     var body: some View {
-        SearchList<Author>(
-            title: "Search Authors",
-            data: authors.map { $0 },
+        SearchList<Publisher>(
+            title: "Search Publishers",
+            data: publishers.map { $0 },
             selectedData: $selectedItems,
             onDelete: delete
         )
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink(
-                    destination: CreateAuthor(screen: $screen),
-                    tag: AuthorsSearchListScreen.create,
+                    destination: CreatePublisher(screen: $screen),
+                    tag: PublishersSearchListScreen.create,
                     selection: $screen,
                     label: {
                         Image(systemName: "plus")
@@ -51,7 +51,7 @@ struct AuthorsSearchList: View {
     
     private func delete(offsets: IndexSet) {
         withAnimation {
-            offsets.map { authors[$0] }.forEach(viewContext.delete)
+            offsets.map { publishers[$0] }.forEach(viewContext.delete)
             offsets.forEach { i in selectedItems.remove(at: i) }
 
             do {
@@ -66,10 +66,10 @@ struct AuthorsSearchList: View {
     }
 }
 
-struct AuthorsSearchList_Previews: PreviewProvider {
-    @State static var items: [Author] = []
+struct PublishersSearchList_Previews: PreviewProvider {
+    @State static var items: [Publisher] = []
     
     static var previews: some View {
-        AuthorsSearchList(selectedItems: $items)
+        PublishersSearchList(selectedItems: $items)
     }
 }
