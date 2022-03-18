@@ -12,10 +12,24 @@ struct SearchSheet: View {
     
     var title: String
     
+    @State private var searchText = ""
+    
+    // TODO: replace with real items passed into this component
+    private let authors = ["Holly", "Josh", "Rhonda", "Ted"]
+    
     var body: some View {
         NavigationView {
-            VStack {
-                Text("Hello")
+            List {
+                ForEach(searchResults, id: \.self) { author in
+                    NavigationLink(destination: Text(author)) {
+                        Text(author)
+                    }
+                }
+            }
+            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always)) {
+                ForEach(searchResults, id: \.self) { result in
+                    Text(result).searchCompletion(result)
+                }
             }
             .navigationBarTitle(Text(title), displayMode: .inline)
                 .navigationBarItems(
@@ -25,6 +39,14 @@ struct SearchSheet: View {
                         Text("Done")
                     }
                 )
+        }
+    }
+    
+    var searchResults: [String] {
+            if searchText.isEmpty {
+            return authors
+        } else {
+            return authors.filter { $0.contains(searchText) }
         }
     }
 }
