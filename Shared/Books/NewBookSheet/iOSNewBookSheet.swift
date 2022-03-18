@@ -16,6 +16,7 @@ struct iOSNewBookSheet: View {
     @State private var pageCount: Int16?
     
     @State private var authors: [Author] = []
+    @State private var showAuthorsSheet = false
     
     @State private var readingStatus: String = ""
     @State private var addDateStarted = false
@@ -65,12 +66,15 @@ struct iOSNewBookSheet: View {
                         
                         HStack {
                             SmallChip(action: {
-                                // TODO: open authors sheet
+                                showAuthorsSheet.toggle()
                             }, background: .white) {
                                 HStack(alignment: .center, spacing: 4) {
                                     Image(systemName: "plus")
                                     Text("Add")
                                 }
+                            }
+                            .sheet(isPresented: $showAuthorsSheet) {
+                                AuthorsSearchSheet()
                             }
                             
                             if authors.count > 0 {
