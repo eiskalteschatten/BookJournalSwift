@@ -9,7 +9,7 @@ import SwiftUI
 import CoreData
 
 struct BookList: View {
-    var predicate: NSPredicate?
+    private var predicate: NSPredicate?
     
     @State private var showNewBookSheet = false
     @State private var selectedBook: Book?
