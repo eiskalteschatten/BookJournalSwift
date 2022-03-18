@@ -7,21 +7,27 @@
 
 import SwiftUI
 
-struct SearchSheet: View {
+struct SearchSheet<T>: View {
     @Environment(\.dismiss) var dismiss
     
     var title: String
+    @Binding var selectedData: [T]
     
     @State private var searchText = ""
+    @State var selectKeeper = Set<String>()
     
     // TODO: replace with real items passed into this component
     private let authors = ["Holly", "Josh", "Rhonda", "Ted"]
     
     var body: some View {
         NavigationView {
-            List {
+            List(selection: $selectKeeper) {
                 ForEach(searchResults, id: \.self) { author in
-                    NavigationLink(destination: Text(author)) {
+                    HStack {
+                        Image(systemName: "circle")
+                        
+//                        Image(systemName: "checkmark.circle.fill")
+//                            .foregroundColor(.yellow)
                         Text(author)
                     }
                 }
@@ -52,7 +58,9 @@ struct SearchSheet: View {
 }
 
 struct SearchSheet_Previews: PreviewProvider {
+    @State static var authors: [Author] = []
+    
     static var previews: some View {
-        SearchSheet(title: "Search for Something")
+        SearchSheet<Author>(title: "Search for Something", selectedData: $authors)
     }
 }

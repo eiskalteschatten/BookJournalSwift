@@ -74,7 +74,7 @@ struct iOSNewBookSheet: View {
                                 }
                             }
                             .sheet(isPresented: $showAuthorsSheet) {
-                                AuthorsSearchSheet()
+                                AuthorsSearchSheet(authors: $authors)
                             }
                             
                             if authors.count > 0 {

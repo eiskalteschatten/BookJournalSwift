@@ -8,13 +8,17 @@
 import SwiftUI
 
 struct AuthorsSearchSheet: View {
+    @Binding var authors: [Author]
+    
     var body: some View {
-        SearchSheet(title: "Search Authors")
+        SearchSheet<Author>(title: "Search Authors", selectedData: $authors)
     }
 }
 
 struct AuthorsSearchSheet_Previews: PreviewProvider {
+    @State static var authors: [Author] = []
+    
     static var previews: some View {
-        AuthorsSearchSheet()
+        AuthorsSearchSheet(authors: $authors)
     }
 }
