@@ -61,17 +61,25 @@ struct SearchSheet<T: AbstractName>: View {
 
 struct SearchSheet_Previews: PreviewProvider {
     @State static var authors: [Author] = []
+    static let context = PersistenceController.preview.container.viewContext
     
     static var previews: some View {
         SearchSheet<Author>(title: "Search for Something", data: getMockAuthors(), selectedData: $authors)
     }
     
     static func getMockAuthors() -> [Author] {
-        let mockAuthor1 = Author()
+        let mockAuthor1 = Author(context: context)
         mockAuthor1.name = "Liz"
         
-        let mockAuthor2 = Author()
+        let mockAuthor2 = Author(context: context)
         mockAuthor2.name = "Scott"
+        
+        do {
+            try context.save()
+        } catch {
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        }
         
         return [mockAuthor1, mockAuthor2]
     }
