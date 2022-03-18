@@ -67,6 +67,7 @@ struct iOSNewBookSheet: View {
                         HStack {
                             SmallChip(action: {
                                 showAuthorsSheet.toggle()
+                                createMockAuthors();
                             }, background: .white) {
                                 HStack(alignment: .center, spacing: 4) {
                                     Image(systemName: "plus")
@@ -80,7 +81,7 @@ struct iOSNewBookSheet: View {
                             if authors.count > 0 {
                                 ForEach(authors, id: \.self) { author in
                                     SmallChip(action: {
-                                        // TODO: open authors sheet
+                                        showAuthorsSheet.toggle()
                                     }, background: .green) {
                                         HStack(alignment: .center, spacing: 4) {
                                             if let name = author.name {
@@ -242,6 +243,22 @@ struct iOSNewBookSheet: View {
                 let nsError = error as NSError
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
+        }
+    }
+    
+    // TODO: Remove
+    func createMockAuthors() {
+        let mockAuthor1 = Author(context: viewContext)
+        mockAuthor1.name = "Liz"
+        
+        let mockAuthor2 = Author(context: viewContext)
+        mockAuthor2.name = "Scott"
+        
+        do {
+            try viewContext.save()
+        } catch {
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
     }
 }

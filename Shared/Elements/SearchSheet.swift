@@ -15,11 +15,10 @@ struct SearchSheet<T: AbstractName>: View {
     @Binding var selectedData: [T]
     
     @State private var searchText = ""
-    @State var selectKeeper = Set<String>()
     
     var body: some View {
         NavigationView {
-            List(selection: $selectKeeper) {
+            List {
                 ForEach(searchResults, id: \.self) { item in
                     HStack {
                         if item.name != nil {
@@ -35,7 +34,14 @@ struct SearchSheet<T: AbstractName>: View {
                         }
                     }
                     .onTapGesture {
-                        selectedData.append(item)
+                        if selectedData.contains(item) {
+                            if let index = selectedData.firstIndex(of: item) {
+                                selectedData.remove(at: index)
+                            }
+                        }
+                        else {
+                            selectedData.append(item)
+                        }
                     }
                 }
             }
