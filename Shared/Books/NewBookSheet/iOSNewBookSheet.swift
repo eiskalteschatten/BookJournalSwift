@@ -226,7 +226,7 @@ struct iOSNewBookSheet: View {
                         // Year Published
                         TextField(
                             "Year Published",
-                            value: $pageCount,
+                            value: $yearPublished,
                             format: .number
                         )
                             .keyboardType(.numberPad)
