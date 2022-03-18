@@ -66,10 +66,11 @@ struct iOSNewBookSheet: View {
                     .padding(.bottom)
                 
                 Form {
-                    // Authors
+                    // People
                     Section {
-                        Label("Authors", systemImage: "person.2")
+                        Label("People", systemImage: "person.2")
                         
+                        // Authors
                         NavigationLink(
                             destination: AuthorsSearchList(selectedItems: $authors).navigationTitle("Search Authors"),
                             tag: Screen.addAuthors,
@@ -89,6 +90,32 @@ struct iOSNewBookSheet: View {
                                     }
                                     else {
                                         Text("Add Authors")
+                                            .opacity(0.3)
+                                    }
+                                }
+                            }
+                        )
+                        
+                        // Editors
+                        NavigationLink(
+                            destination: EditorsSearchList(selectedItems: $editors).navigationTitle("Search Editors"),
+                            tag: Screen.addEditors,
+                            selection: $screen,
+                            label: {
+                                HStack {
+                                    if editors.count > 0 {
+                                        ForEach(editors, id: \.self) { item in
+                                            SmallChip(background: .gray) {
+                                                HStack(alignment: .center, spacing: 4) {
+                                                    if let name = item.name {
+                                                        Text(name)
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    else {
+                                        Text("Add Editors")
                                             .opacity(0.3)
                                     }
                                 }
@@ -210,36 +237,6 @@ struct iOSNewBookSheet: View {
                             text: $isbn
                         )
                             .keyboardType(.numberPad)
-                    }
-                    
-                    // Editors
-                    Section {
-                        Label("Editors", systemImage: "pencil")
-                        
-                        NavigationLink(
-                            destination: EditorsSearchList(selectedItems: $editors).navigationTitle("Search Editors"),
-                            tag: Screen.addEditors,
-                            selection: $screen,
-                            label: {
-                                HStack {
-                                    if editors.count > 0 {
-                                        ForEach(editors, id: \.self) { item in
-                                            SmallChip(background: .gray) {
-                                                HStack(alignment: .center, spacing: 4) {
-                                                    if let name = item.name {
-                                                        Text(name)
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                    else {
-                                        Text("Add Editors")
-                                            .opacity(0.3)
-                                    }
-                                }
-                            }
-                        )
                     }
                 }
             }
