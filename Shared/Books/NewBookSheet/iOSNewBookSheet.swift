@@ -69,12 +69,12 @@ struct iOSNewBookSheet: View {
                     Section {
                         Label("Authors", systemImage: "person.2")
                         
-                        HStack {
-                            NavigationLink(
-                                destination: AuthorsSearchList(selectedAuthors: $authors).navigationTitle("Search Authors"),
-                                tag: Screen.addAuthors,
-                                selection: $screen,
-                                label: {
+                        NavigationLink(
+                            destination: AuthorsSearchList(selectedAuthors: $authors).navigationTitle("Search Authors"),
+                            tag: Screen.addAuthors,
+                            selection: $screen,
+                            label: {
+                                HStack {
                                     if authors.count > 0 {
                                         ForEach(authors, id: \.self) { author in
                                             SmallChip(background: .green) {
@@ -86,16 +86,13 @@ struct iOSNewBookSheet: View {
                                             }
                                         }
                                     }
-                                    
-                                    SmallChip(background: .white) {
-                                        HStack(alignment: .center, spacing: 4) {
-                                            Image(systemName: "plus")
-                                            Text("Add")
-                                        }
+                                    else {
+                                        Text("Add Authors")
+                                            .opacity(0.3)
                                     }
                                 }
-                            )
-                        }
+                            }
+                        )
                     }
                     
                     Section("Status") {
