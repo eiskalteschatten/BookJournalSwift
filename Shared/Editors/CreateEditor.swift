@@ -21,6 +21,7 @@ struct CreateEditor: View {
                 text: $name
             )
         }
+        #if os(iOS)
         .navigationBarTitle(Text("Create an Editor"), displayMode: .inline)
             .navigationBarItems(
                 trailing: Button(action: {
@@ -30,6 +31,7 @@ struct CreateEditor: View {
                     Text("Save").bold()
                 }
             )
+        #endif
     }
     
     private func save() {

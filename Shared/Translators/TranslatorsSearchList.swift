@@ -31,6 +31,7 @@ struct TranslatorsSearchList: View {
             onDelete: delete
         )
         .toolbar {
+            #if os(iOS)
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink(
                     destination: CreateTranslator(screen: $screen),
@@ -41,7 +42,6 @@ struct TranslatorsSearchList: View {
                     }
                 )
             }
-            #if os(iOS)
             ToolbarItem(placement: .navigationBarTrailing) {
                 EditButton()
             }

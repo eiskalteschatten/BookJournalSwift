@@ -31,6 +31,7 @@ struct PublishersSearchList: View {
             onDelete: delete
         )
         .toolbar {
+            #if os(iOS)
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink(
                     destination: CreatePublisher(screen: $screen),
@@ -41,7 +42,6 @@ struct PublishersSearchList: View {
                     }
                 )
             }
-            #if os(iOS)
             ToolbarItem(placement: .navigationBarTrailing) {
                 EditButton()
             }

@@ -21,6 +21,7 @@ struct CreateAuthor: View {
                 text: $name
             )
         }
+        #if os(iOS)
         .navigationBarTitle(Text("Create an Author"), displayMode: .inline)
             .navigationBarItems(
                 trailing: Button(action: {
@@ -30,6 +31,7 @@ struct CreateAuthor: View {
                     Text("Save").bold()
                 }
             )
+        #endif
     }
     
     private func save() {

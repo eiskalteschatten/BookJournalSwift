@@ -31,6 +31,7 @@ struct EditorsSearchList: View {
             onDelete: delete
         )
         .toolbar {
+            #if os(iOS)
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink(
                     destination: CreateEditor(screen: $screen),
@@ -41,7 +42,6 @@ struct EditorsSearchList: View {
                     }
                 )
             }
-            #if os(iOS)
             ToolbarItem(placement: .navigationBarTrailing) {
                 EditButton()
             }

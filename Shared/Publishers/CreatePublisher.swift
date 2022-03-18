@@ -21,6 +21,7 @@ struct CreatePublisher: View {
                 text: $name
             )
         }
+        #if os(iOS)
         .navigationBarTitle(Text("Create a Publisher"), displayMode: .inline)
             .navigationBarItems(
                 trailing: Button(action: {
@@ -30,6 +31,7 @@ struct CreatePublisher: View {
                     Text("Save").bold()
                 }
             )
+        #endif
     }
     
     private func save() {

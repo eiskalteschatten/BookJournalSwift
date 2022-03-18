@@ -91,6 +91,7 @@ struct SearchList<T: AbstractName>: View {
             }
             .onDelete(perform: onDelete)
         }
+        #if os(iOS)
         .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always)) {
             ForEach(searchResults, id: \.self) { result in
                 if result.name != nil {
@@ -98,6 +99,7 @@ struct SearchList<T: AbstractName>: View {
                 }
             }
         }
+        #endif
     }
     
     var searchResults: [T] {
