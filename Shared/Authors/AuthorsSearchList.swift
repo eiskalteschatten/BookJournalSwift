@@ -1,5 +1,5 @@
 //
-//  AuthorsSearchSheet.swift
+//  AuthorsSearchList.swift
 //  BookJournal
 //
 //  Created by Alex Seifert on 18.03.22.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AuthorsSearchSheet: View {
+struct AuthorsSearchList: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @Binding var selectedAuthors: [Author]
@@ -18,7 +18,7 @@ struct AuthorsSearchSheet: View {
     ) private var authors: FetchedResults<Author>
     
     var body: some View {
-        SearchSheet<Author>(
+        SearchList<Author>(
             title: "Search Authors",
             data: authors.map { $0 },
             selectedData: $selectedAuthors,
@@ -31,10 +31,10 @@ struct AuthorsSearchSheet: View {
     }
 }
 
-struct AuthorsSearchSheet_Previews: PreviewProvider {
+struct AuthorsSearchList_Previews: PreviewProvider {
     @State static var authors: [Author] = []
     
     static var previews: some View {
-        AuthorsSearchSheet(selectedAuthors: $authors)
+        AuthorsSearchList(selectedAuthors: $authors)
     }
 }

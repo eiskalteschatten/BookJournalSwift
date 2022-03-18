@@ -9,7 +9,7 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    enum Screen: Int {
+    private enum Screen: Int {
         case allBooks, wishlist, currentlyReading, notReadYet, read, statistics
     }
     

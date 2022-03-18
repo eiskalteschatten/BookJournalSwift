@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9309D77F27E4A51500F19670 /* SearchSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9309D77E27E4A51500F19670 /* SearchSheet.swift */; };
-		9309D78027E4A51500F19670 /* SearchSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9309D77E27E4A51500F19670 /* SearchSheet.swift */; };
-		9309D78327E4A55F00F19670 /* AuthorsSearchSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9309D78227E4A55F00F19670 /* AuthorsSearchSheet.swift */; };
-		9309D78427E4A55F00F19670 /* AuthorsSearchSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9309D78227E4A55F00F19670 /* AuthorsSearchSheet.swift */; };
+		9309D77F27E4A51500F19670 /* SearchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9309D77E27E4A51500F19670 /* SearchList.swift */; };
+		9309D78027E4A51500F19670 /* SearchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9309D77E27E4A51500F19670 /* SearchList.swift */; };
+		9309D78327E4A55F00F19670 /* AuthorsSearchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9309D78227E4A55F00F19670 /* AuthorsSearchList.swift */; };
+		9309D78427E4A55F00F19670 /* AuthorsSearchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9309D78227E4A55F00F19670 /* AuthorsSearchList.swift */; };
 		93219900279D86E600CB6E76 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932198FF279D86E600CB6E76 /* Tests_iOS.swift */; };
 		93219902279D86E600CB6E76 /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93219901279D86E600CB6E76 /* Tests_iOSLaunchTests.swift */; };
 		9321990C279D86E600CB6E76 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9321990B279D86E600CB6E76 /* Tests_macOS.swift */; };
@@ -65,8 +65,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9309D77E27E4A51500F19670 /* SearchSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSheet.swift; sourceTree = "<group>"; };
-		9309D78227E4A55F00F19670 /* AuthorsSearchSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorsSearchSheet.swift; sourceTree = "<group>"; };
+		9309D77E27E4A51500F19670 /* SearchList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchList.swift; sourceTree = "<group>"; };
+		9309D78227E4A55F00F19670 /* AuthorsSearchList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorsSearchList.swift; sourceTree = "<group>"; };
 		932198E5279D86E400CB6E76 /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		932198E6279D86E400CB6E76 /* BookJournalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookJournalApp.swift; sourceTree = "<group>"; };
 		932198E7279D86E400CB6E76 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -129,7 +129,7 @@
 		9309D78127E4A54900F19670 /* Authors */ = {
 			isa = PBXGroup;
 			children = (
-				9309D78227E4A55F00F19670 /* AuthorsSearchSheet.swift */,
+				9309D78227E4A55F00F19670 /* AuthorsSearchList.swift */,
 			);
 			path = Authors;
 			sourceTree = "<group>";
@@ -250,7 +250,7 @@
 			children = (
 				939BB9F227CA785F0001B0DF /* Chip.swift */,
 				939BB9F527CA9BB40001B0DF /* SmallChip.swift */,
-				9309D77E27E4A51500F19670 /* SearchSheet.swift */,
+				9309D77E27E4A51500F19670 /* SearchList.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -421,11 +421,11 @@
 				93219915279D86E600CB6E76 /* Persistence.swift in Sources */,
 				9329054127C2932F000D15AE /* Constants.swift in Sources */,
 				9346662827C9841900D58DE7 /* Books.swift in Sources */,
-				9309D78327E4A55F00F19670 /* AuthorsSearchSheet.swift in Sources */,
+				9309D78327E4A55F00F19670 /* AuthorsSearchList.swift in Sources */,
 				9321990F279D86E600CB6E76 /* BookJournal.xcdatamodeld in Sources */,
 				9329054427C29C55000D15AE /* BookView.swift in Sources */,
 				93219913279D86E600CB6E76 /* ContentView.swift in Sources */,
-				9309D77F27E4A51500F19670 /* SearchSheet.swift in Sources */,
+				9309D77F27E4A51500F19670 /* SearchList.swift in Sources */,
 				9395168327C8301300F04CCF /* NewBookSheet.swift in Sources */,
 				939BB9F327CA785F0001B0DF /* Chip.swift in Sources */,
 				939BB9F627CA9BB40001B0DF /* SmallChip.swift in Sources */,
@@ -444,11 +444,11 @@
 				93219916279D86E600CB6E76 /* Persistence.swift in Sources */,
 				9346661D27C9407000D58DE7 /* MacNewBookSheet.swift in Sources */,
 				9346662927C9841900D58DE7 /* Books.swift in Sources */,
-				9309D78427E4A55F00F19670 /* AuthorsSearchSheet.swift in Sources */,
+				9309D78427E4A55F00F19670 /* AuthorsSearchList.swift in Sources */,
 				9329054227C2932F000D15AE /* Constants.swift in Sources */,
 				93219910279D86E600CB6E76 /* BookJournal.xcdatamodeld in Sources */,
 				9329054527C29C55000D15AE /* BookView.swift in Sources */,
-				9309D78027E4A51500F19670 /* SearchSheet.swift in Sources */,
+				9309D78027E4A51500F19670 /* SearchList.swift in Sources */,
 				93219914279D86E600CB6E76 /* ContentView.swift in Sources */,
 				939BB9F427CA785F0001B0DF /* Chip.swift in Sources */,
 				939BB9F727CA9BB40001B0DF /* SmallChip.swift in Sources */,

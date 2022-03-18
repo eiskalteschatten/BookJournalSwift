@@ -9,6 +9,12 @@ import SwiftUI
 import CoreData
 
 struct iOSNewBookSheet: View {
+    private enum Screen: Int {
+        case addAuthors
+    }
+    
+    @State private var screen: Screen?
+    
     @Environment(\.dismiss) var dismiss
     @Environment(\.managedObjectContext) private var viewContext
     
@@ -16,7 +22,6 @@ struct iOSNewBookSheet: View {
     @State private var pageCount: Int16?
     
     @State private var authors: [Author] = []
-    @State private var showAuthorsSheet = false
     
     @State private var readingStatus: String = ""
     @State private var addDateStarted = false
@@ -65,32 +70,35 @@ struct iOSNewBookSheet: View {
                         Label("Authors", systemImage: "person.2")
                         
                         HStack {
-                            SmallChip(action: {
-                                showAuthorsSheet.toggle()
-                                createMockAuthors();
-                            }, background: .white) {
-                                HStack(alignment: .center, spacing: 4) {
-                                    Image(systemName: "plus")
-                                    Text("Add")
-                                }
-                            }
-                            .sheet(isPresented: $showAuthorsSheet) {
-                                AuthorsSearchSheet(selectedAuthors: $authors)
-                            }
-                            
-                            if authors.count > 0 {
-                                ForEach(authors, id: \.self) { author in
-                                    SmallChip(action: {
-                                        showAuthorsSheet.toggle()
-                                    }, background: .green) {
-                                        HStack(alignment: .center, spacing: 4) {
-                                            if let name = author.name {
-                                                Text(name)
+                            NavigationLink(
+                                destination: AuthorsSearchList(selectedAuthors: $authors).navigationTitle("Search Authors"),
+                                tag: Screen.addAuthors,
+                                selection: $screen,
+                                label: {
+                                    if authors.count > 0 {
+                                        ForEach(authors, id: \.self) { author in
+                                            SmallChip(action: {
+                                                // ??
+                                            }, background: .green) {
+                                                HStack(alignment: .center, spacing: 4) {
+                                                    if let name = author.name {
+                                                        Text(name)
+                                                    }
+                                                }
                                             }
                                         }
                                     }
+                                    
+                                    SmallChip(action: {
+                                        // ??
+                                    }, background: .white) {
+                                        HStack(alignment: .center, spacing: 4) {
+                                            Image(systemName: "plus")
+                                            Text("Add")
+                                        }
+                                    }
                                 }
-                            }
+                            )
                         }
                     }
                     
