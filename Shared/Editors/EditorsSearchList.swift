@@ -1,5 +1,5 @@
 //
-//  AuthorsSearchList.swift
+//  EditorsSearchList.swift
 //  BookJournal
 //
 //  Created by Alex Seifert on 18.03.22.
@@ -7,34 +7,34 @@
 
 import SwiftUI
 
-enum AuthorsSearchListScreen: Int {
+enum EditorsSearchListScreen: Int {
     case home, create
 }
 
-struct AuthorsSearchList: View {
-    @State private var screen: AuthorsSearchListScreen? = .home
+struct EditorsSearchList: View {
+    @State private var screen: EditorsSearchListScreen? = .home
     
     @Environment(\.managedObjectContext) private var viewContext
     
-    @Binding var selectedAuthors: [Author]
+    @Binding var selectedEditors: [Editor]
     
     @FetchRequest(
-        entity: Author.entity(),
-        sortDescriptors: [NSSortDescriptor(keyPath: \Author.name, ascending: false)]
-    ) private var authors: FetchedResults<Author>
+        entity: Editor.entity(),
+        sortDescriptors: [NSSortDescriptor(keyPath: \Editor.name, ascending: false)]
+    ) private var editors: FetchedResults<Editor>
     
     var body: some View {
-        SearchList<Author>(
-            title: "Search Authors",
-            data: authors.map { $0 },
-            selectedData: $selectedAuthors,
-            onDelete: deleteAuthors
+        SearchList<Editor>(
+            title: "Search Editors",
+            data: editors.map { $0 },
+            selectedData: $selectedEditors,
+            onDelete: deleteEditors
         )
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink(
-                    destination: CreateAuthor(screen: $screen),
-                    tag: AuthorsSearchListScreen.create,
+                    destination: CreateEditor(screen: $screen),
+                    tag: EditorsSearchListScreen.create,
                     selection: $screen,
                     label: {
                         Image(systemName: "plus")
@@ -49,10 +49,10 @@ struct AuthorsSearchList: View {
         }
     }
     
-    private func deleteAuthors(offsets: IndexSet) {
+    private func deleteEditors(offsets: IndexSet) {
         withAnimation {
-            offsets.map { authors[$0] }.forEach(viewContext.delete)
-            offsets.forEach { i in selectedAuthors.remove(at: i) }
+            offsets.map { editors[$0] }.forEach(viewContext.delete)
+            offsets.forEach { i in selectedEditors.remove(at: i) }
 
             do {
                 try viewContext.save()
@@ -66,10 +66,10 @@ struct AuthorsSearchList: View {
     }
 }
 
-struct AuthorsSearchList_Previews: PreviewProvider {
-    @State static var authors: [Author] = []
+struct EditorsSearchList_Previews: PreviewProvider {
+    @State static var editors: [Editor] = []
     
     static var previews: some View {
-        AuthorsSearchList(selectedAuthors: $authors)
+        EditorsSearchList(selectedEditors: $editors)
     }
 }

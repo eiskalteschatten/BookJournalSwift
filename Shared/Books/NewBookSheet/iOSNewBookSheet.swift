@@ -10,7 +10,7 @@ import CoreData
 
 struct iOSNewBookSheet: View {
     private enum Screen: Int {
-        case addAuthors
+        case addAuthors, addEditors
     }
     
     @State private var screen: Screen?
@@ -22,6 +22,7 @@ struct iOSNewBookSheet: View {
     @State private var pageCount: Int16?
     
     @State private var authors: [Author] = []
+    @State private var editors: [Editor] = []
     
     @State private var readingStatus: String = ""
     @State private var addDateStarted = false
@@ -88,6 +89,36 @@ struct iOSNewBookSheet: View {
                                     }
                                     else {
                                         Text("Add Authors")
+                                            .opacity(0.3)
+                                    }
+                                }
+                            }
+                        )
+                    }
+                    
+                    // Editors
+                    Section {
+                        Label("Editors", systemImage: "pencil")
+                        
+                        NavigationLink(
+                            destination: EditorsSearchList(selectedEditors: $editors).navigationTitle("Search Editors"),
+                            tag: Screen.addEditors,
+                            selection: $screen,
+                            label: {
+                                HStack {
+                                    if editors.count > 0 {
+                                        ForEach(editors, id: \.self) { editor in
+                                            SmallChip(background: .gray) {
+                                                HStack(alignment: .center, spacing: 4) {
+                                                    if let name = editor.name {
+                                                        Text(name)
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    else {
+                                        Text("Add Editors")
                                             .opacity(0.3)
                                     }
                                 }
