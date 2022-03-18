@@ -51,7 +51,6 @@ struct BookView: View {
                             Text(book!.title!)
                                 .font(.title)
                             
-                            
                             if (book!.authors != nil) {
                                 // TODO: add chips
                                 ForEach(book!.authorArray, id: \.self) { author in

@@ -268,8 +268,8 @@ struct iOSNewBookSheet: View {
                 newBook.pageCount = unwrapped
             }
             
-//            newBook.authors = authors
-//            newBook.editors = editors
+            authors.forEach(newBook.addToAuthors)
+            editors.forEach(newBook.addToEditors)
             
             newBook.readingStatus = readingStatus
             if addDateStarted {
@@ -280,7 +280,7 @@ struct iOSNewBookSheet: View {
             }
 
             newBook.bookFormat = bookFormat
-//            newBook.publishers = publishers
+            publishers.forEach(newBook.addToPublishers)
             if let unwrapped = yearPublished {
                 newBook.yearPublished = unwrapped
             }
