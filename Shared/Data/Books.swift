@@ -6,7 +6,12 @@
 //
 
 enum BookReadingStatus: String, CaseIterable, Identifiable {
-    case notReadYet, currentlyReading, read, stoppedReading, takingABreak
+    case
+        notReadYet = "notReadYet",
+        currentlyReading = "currentlyReading",
+        read = "read",
+        stoppedReading = "stoppedReading",
+        takingABreak = "takingABreak"
     var id: Self { self }
 }
 
