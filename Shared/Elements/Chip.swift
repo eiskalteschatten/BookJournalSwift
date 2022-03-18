@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Chip<Content: View>: View {
-    var background: Color = .yellow
+    var background: Color = .accentColor
     var foregroundColor: Color = .black
     @ViewBuilder var content: Content
     
