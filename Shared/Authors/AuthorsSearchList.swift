@@ -52,6 +52,7 @@ struct AuthorsSearchList: View {
     private func deleteAuthors(offsets: IndexSet) {
         withAnimation {
             offsets.map { authors[$0] }.forEach(viewContext.delete)
+            offsets.forEach { i in selectedAuthors.remove(at: i) }
 
             do {
                 try viewContext.save()
