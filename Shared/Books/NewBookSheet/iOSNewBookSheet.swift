@@ -10,7 +10,7 @@ import CoreData
 
 struct iOSNewBookSheet: View {
     private enum Screen: Int {
-        case addAuthors, addEditors, addPublishers
+        case addAuthors, addEditors, addPublisher
     }
     
     @State private var screen: Screen?
@@ -31,7 +31,7 @@ struct iOSNewBookSheet: View {
     @State private var editors: [Editor] = []
     
     @State private var bookFormat: String = ""
-    @State private var publishers: [Publisher] = []
+    @State private var publisher: Publisher?
     @State private var yearPublished: Int16?
     @State private var isbn: String = ""
 
@@ -196,24 +196,22 @@ struct iOSNewBookSheet: View {
                         
                         // Publisher
                         NavigationLink(
-                            destination: PublishersSearchList(selectedItems: $publishers).navigationTitle("Search Publishers"),
-                            tag: Screen.addPublishers,
+                            destination: PublishersSearchList(selectedItem: $publisher).navigationTitle("Search Publishers"),
+                            tag: Screen.addPublisher,
                             selection: $screen,
                             label: {
                                 HStack {
-                                    if publishers.count > 0 {
-                                        ForEach(publishers, id: \.self) { item in
-                                            SmallChip(background: .gray) {
-                                                HStack(alignment: .center, spacing: 4) {
-                                                    if let name = item.name {
-                                                        Text(name)
-                                                    }
+                                    if publisher != nil {
+                                        SmallChip(background: .gray) {
+                                            HStack(alignment: .center, spacing: 4) {
+                                                if let name = publisher!.name {
+                                                    Text(name)
                                                 }
                                             }
                                         }
                                     }
                                     else {
-                                        Text("Add Publishers")
+                                        Text("Add Publisher")
                                             .opacity(0.3)
                                     }
                                 }
@@ -277,7 +275,9 @@ struct iOSNewBookSheet: View {
             editors.forEach(newBook.addToEditors)
 
             newBook.bookFormat = bookFormat
-            publishers.forEach(newBook.addToPublishers)
+            if let unwrapped = publisher {
+                newBook.publisher = unwrapped
+            }
             if let unwrapped = yearPublished {
                 newBook.yearPublished = unwrapped
             }

@@ -12,35 +12,82 @@ struct SearchList<T: AbstractName>: View {
     
     var title: String
     var data: [T]
-    @Binding var selectedData: [T]
+    @Binding var selectedDataArray: [T]
+    @Binding var selectedData: T?
     var onDelete: (_: IndexSet) -> Void
+    var singleSelection: Bool? = false
     
     @State private var searchText = ""
+    
+    init(
+        title: String,
+        data: [T],
+        selectedData: Binding<[T]>,
+        onDelete: @escaping (_: IndexSet) -> Void
+    ) {
+        self.title = title
+        self.data = data
+        self._selectedDataArray = selectedData
+        self._selectedData = Binding.constant(nil)
+        self.onDelete = onDelete
+        self.singleSelection = false
+    }
+    
+    init(
+        title: String,
+        data: [T],
+        selectedData: Binding<T?>,
+        onDelete: @escaping (_: IndexSet) -> Void,
+        singleSelection: Bool
+    ) {
+        self.title = title
+        self.data = data
+        self._selectedDataArray = Binding.constant([])
+        self._selectedData = selectedData
+        self.onDelete = onDelete
+        self.singleSelection = true
+    }
     
     var body: some View {
         List {
             ForEach(searchResults, id: \.self) { item in
                 HStack {
                     if item.name != nil {
-                        if selectedData.contains(item) {
-                            Image(systemName: "checkmark.circle.fill")
-                                .foregroundColor(.yellow)
+                        if singleSelection! {
+                            if selectedData == item {
+                                Image(systemName: "circle.inset.filled")
+                                    .foregroundColor(.accentColor)
+                            }
+                            else {
+                                Image(systemName: "circle")
+                            }
                         }
                         else {
-                            Image(systemName: "circle")
+                            if selectedDataArray.contains(item) {
+                                Image(systemName: "checkmark.circle.fill")
+                                    .foregroundColor(.accentColor)
+                            }
+                            else {
+                                Image(systemName: "circle")
+                            }
                         }
 
                         Text(item.name!)
                     }
                 }
                 .onTapGesture {
-                    if selectedData.contains(item) {
-                        if let index = selectedData.firstIndex(of: item) {
-                            selectedData.remove(at: index)
-                        }
+                    if singleSelection! {
+                        selectedData = selectedData == item ? nil : item
                     }
                     else {
-                        selectedData.append(item)
+                        if selectedDataArray.contains(item) {
+                            if let index = selectedDataArray.firstIndex(of: item) {
+                                selectedDataArray.remove(at: index)
+                            }
+                        }
+                        else {
+                            selectedDataArray.append(item)
+                        }
                     }
                 }
             }

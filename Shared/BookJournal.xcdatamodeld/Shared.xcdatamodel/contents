@@ -33,7 +33,7 @@
         <relationship name="languageReadIn" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Language" inverseName="booksReadIn" inverseEntity="Language"/>
         <relationship name="nationality" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Country" inverseName="books" inverseEntity="Country"/>
         <relationship name="originalLanguage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Language" inverseName="booksOriginallyInLanguage" inverseEntity="Language"/>
-        <relationship name="publishers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Publisher" inverseName="books" inverseEntity="Publisher"/>
+        <relationship name="publisher" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Publisher" inverseName="books" inverseEntity="Publisher"/>
         <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="books" inverseEntity="Tag" spotlightIndexingEnabled="YES"/>
         <relationship name="translator" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Translator" inverseName="books" inverseEntity="Translator"/>
     </entity>
@@ -55,7 +55,7 @@
         <relationship name="booksReadIn" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="languageReadIn" inverseEntity="Book" spotlightIndexingEnabled="YES"/>
     </entity>
     <entity name="Publisher" representedClassName="Publisher" parentEntity="AbstractName" syncable="YES" codeGenerationType="class">
-        <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="publishers" inverseEntity="Book" spotlightIndexingEnabled="YES"/>
+        <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="publisher" inverseEntity="Book" spotlightIndexingEnabled="YES"/>
     </entity>
     <entity name="Tag" representedClassName="Tag" parentEntity="AbstractName" syncable="YES" codeGenerationType="class">
         <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="tags" inverseEntity="Book" spotlightIndexingEnabled="YES"/>

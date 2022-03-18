@@ -16,7 +16,7 @@ struct PublishersSearchList: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     
-    @Binding var selectedItems: [Publisher]
+    @Binding var selectedItem: Publisher?
     
     @FetchRequest(
         entity: Publisher.entity(),
@@ -27,8 +27,9 @@ struct PublishersSearchList: View {
         SearchList<Publisher>(
             title: "Search Publishers",
             data: publishers.map { $0 },
-            selectedData: $selectedItems,
-            onDelete: delete
+            selectedData: $selectedItem,
+            onDelete: delete,
+            singleSelection: true
         )
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -52,7 +53,7 @@ struct PublishersSearchList: View {
     private func delete(offsets: IndexSet) {
         withAnimation {
             offsets.map { publishers[$0] }.forEach(viewContext.delete)
-            offsets.forEach { i in selectedItems.remove(at: i) }
+            selectedItem = nil
 
             do {
                 try viewContext.save()
@@ -67,9 +68,9 @@ struct PublishersSearchList: View {
 }
 
 struct PublishersSearchList_Previews: PreviewProvider {
-    @State static var items: [Publisher] = []
+    @State static var item: Publisher?
     
     static var previews: some View {
-        PublishersSearchList(selectedItems: $items)
+        PublishersSearchList(selectedItem: $item)
     }
 }
