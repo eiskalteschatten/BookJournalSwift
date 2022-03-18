@@ -23,12 +23,19 @@ struct SearchSheet<T: AbstractName>: View {
                 ForEach(searchResults, id: \.self) { item in
                     HStack {
                         if item.name != nil {
-                            Image(systemName: "circle")
-                            
-    //                        Image(systemName: "checkmark.circle.fill")
-    //                            .foregroundColor(.yellow)
+                            if selectedData.contains(item) {
+                                Image(systemName: "checkmark.circle.fill")
+                                    .foregroundColor(.yellow)
+                            }
+                            else {
+                                Image(systemName: "circle")
+                            }
+
                             Text(item.name!)
                         }
+                    }
+                    .onTapGesture {
+                        selectedData.append(item)
                     }
                 }
             }
