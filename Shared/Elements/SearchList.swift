@@ -15,8 +15,8 @@ struct SearchList<T: AbstractName>: View {
     @Binding var selectedDataArray: [T]
     @Binding var selectedData: T?
     var onDelete: (_: IndexSet) -> Void
-    var singleSelection: Bool? = false
     
+    private var singleSelection = false
     @State private var searchText = ""
     
     init(
@@ -30,15 +30,13 @@ struct SearchList<T: AbstractName>: View {
         self._selectedDataArray = selectedData
         self._selectedData = Binding.constant(nil)
         self.onDelete = onDelete
-        self.singleSelection = false
     }
     
     init(
         title: String,
         data: [T],
         selectedData: Binding<T?>,
-        onDelete: @escaping (_: IndexSet) -> Void,
-        singleSelection: Bool
+        onDelete: @escaping (_: IndexSet) -> Void
     ) {
         self.title = title
         self.data = data
@@ -53,7 +51,7 @@ struct SearchList<T: AbstractName>: View {
             ForEach(searchResults, id: \.self) { item in
                 HStack {
                     if item.name != nil {
-                        if singleSelection! {
+                        if singleSelection {
                             if selectedData == item {
                                 Image(systemName: "circle.inset.filled")
                                     .foregroundColor(.accentColor)
@@ -76,7 +74,7 @@ struct SearchList<T: AbstractName>: View {
                     }
                 }
                 .onTapGesture {
-                    if singleSelection! {
+                    if singleSelection {
                         selectedData = selectedData == item ? nil : item
                     }
                     else {

@@ -28,8 +28,7 @@ struct PublishersSearchList: View {
             title: "Search Publishers",
             data: publishers.map { $0 },
             selectedData: $selectedItem,
-            onDelete: delete,
-            singleSelection: true
+            onDelete: delete
         )
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
