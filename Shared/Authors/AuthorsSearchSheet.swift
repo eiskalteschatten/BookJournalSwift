@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AuthorsSearchSheet: View {
     var body: some View {
-        SearchSheet()
+        SearchSheet(title: "Search Authors")
     }
 }
 

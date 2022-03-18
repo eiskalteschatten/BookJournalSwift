@@ -8,13 +8,29 @@
 import SwiftUI
 
 struct SearchSheet: View {
+    @Environment(\.dismiss) var dismiss
+    
+    var title: String
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            VStack {
+                Text("Hello")
+            }
+            .navigationBarTitle(Text(title), displayMode: .inline)
+                .navigationBarItems(
+                    trailing: Button(action: {
+                        dismiss()
+                    }) {
+                        Text("Done")
+                    }
+                )
+        }
     }
 }
 
 struct SearchSheet_Previews: PreviewProvider {
     static var previews: some View {
-        SearchSheet()
+        SearchSheet(title: "Search for Something")
     }
 }
