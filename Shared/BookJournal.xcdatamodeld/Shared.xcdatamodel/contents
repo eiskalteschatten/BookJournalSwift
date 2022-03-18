@@ -28,10 +28,10 @@
         <attribute name="yearPublished" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="authors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Author" inverseName="books" inverseEntity="Author" spotlightIndexingEnabled="YES"/>
         <relationship name="categories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Category" inverseName="books" inverseEntity="Category" spotlightIndexingEnabled="YES"/>
+        <relationship name="countryOfOrigin" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Country" inverseName="books" inverseEntity="Country"/>
         <relationship name="editors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Editor" inverseName="books" inverseEntity="Editor" spotlightIndexingEnabled="YES"/>
         <relationship name="genres" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Genre" inverseName="books" inverseEntity="Genre" spotlightIndexingEnabled="YES"/>
         <relationship name="languageReadIn" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Language" inverseName="booksReadIn" inverseEntity="Language"/>
-        <relationship name="nationality" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Country" inverseName="books" inverseEntity="Country"/>
         <relationship name="originalLanguage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Language" inverseName="booksOriginallyInLanguage" inverseEntity="Language"/>
         <relationship name="publisher" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Publisher" inverseName="books" inverseEntity="Publisher"/>
         <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="books" inverseEntity="Tag" spotlightIndexingEnabled="YES"/>
@@ -42,7 +42,7 @@
         <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="categories" inverseEntity="Book" spotlightIndexingEnabled="YES"/>
     </entity>
     <entity name="Country" representedClassName="Country" parentEntity="AbstractName" syncable="YES" codeGenerationType="class">
-        <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="nationality" inverseEntity="Book" spotlightIndexingEnabled="YES"/>
+        <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="countryOfOrigin" inverseEntity="Book" spotlightIndexingEnabled="YES"/>
     </entity>
     <entity name="Editor" representedClassName="Editor" parentEntity="AbstractName" syncable="YES" codeGenerationType="class">
         <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="editors" inverseEntity="Book"/>

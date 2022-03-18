@@ -10,7 +10,7 @@ import CoreData
 
 struct iOSNewBookSheet: View {
     private enum Screen: Int {
-        case addAuthors, addEditors, addTranslators, addPublisher
+        case addAuthors, addEditors, addTranslators, addPublisher, addCountryOfOrigin
     }
     
     @State private var screen: Screen?
@@ -35,6 +35,8 @@ struct iOSNewBookSheet: View {
     @State private var publisher: Publisher?
     @State private var yearPublished: Int16?
     @State private var isbn: String = ""
+    
+    @State private var countryOfOrigin: Country?
 
     var body: some View {
         NavigationView {
@@ -142,7 +144,7 @@ struct iOSNewBookSheet: View {
                                         }
                                     }
                                     else {
-                                        Text("Add Authors")
+                                        Text("Authors")
                                             .opacity(0.3)
                                     }
                                 }
@@ -168,7 +170,7 @@ struct iOSNewBookSheet: View {
                                         }
                                     }
                                     else {
-                                        Text("Add Editors")
+                                        Text("Editors")
                                             .opacity(0.3)
                                     }
                                 }
@@ -194,7 +196,7 @@ struct iOSNewBookSheet: View {
                                         }
                                     }
                                     else {
-                                        Text("Add Translators")
+                                        Text("Translators")
                                             .opacity(0.3)
                                     }
                                 }
@@ -223,7 +225,7 @@ struct iOSNewBookSheet: View {
                         
                         // Publisher
                         NavigationLink(
-                            destination: PublishersSearchList(selectedItem: $publisher).navigationTitle("Search Publishers"),
+                            destination: PublishersSearchList(selectedItem: $publisher),
                             tag: Screen.addPublisher,
                             selection: $screen,
                             label: {
@@ -238,7 +240,7 @@ struct iOSNewBookSheet: View {
                                         }
                                     }
                                     else {
-                                        Text("Add Publisher")
+                                        Text("Publisher")
                                             .opacity(0.3)
                                     }
                                 }
@@ -259,6 +261,33 @@ struct iOSNewBookSheet: View {
                             text: $isbn
                         )
                             .keyboardType(.numberPad)
+                    }
+                    
+                    // World
+                    Section("World") {
+                        // Country of Origin
+                        NavigationLink(
+                            destination: CountriesSearchList(selectedItem: $countryOfOrigin),
+                            tag: Screen.addCountryOfOrigin,
+                            selection: $screen,
+                            label: {
+                                HStack {
+                                    if countryOfOrigin != nil {
+                                        SmallChip(background: .gray) {
+                                            HStack(alignment: .center, spacing: 4) {
+                                                if let name = countryOfOrigin!.name {
+                                                    Text(name)
+                                                }
+                                            }
+                                        }
+                                    }
+                                    else {
+                                        Text("Country of Origin")
+                                            .opacity(0.3)
+                                    }
+                                }
+                            }
+                        )
                     }
                 }
             }
@@ -310,6 +339,10 @@ struct iOSNewBookSheet: View {
                 newBook.yearPublished = unwrapped
             }
             newBook.isbn = isbn
+            
+            if let unwrapped = countryOfOrigin {
+                newBook.countryOfOrigin = unwrapped
+            }
             
             do {
                 try viewContext.save()

@@ -35,7 +35,7 @@ struct CountriesSearchList: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink(
                     destination: CreateCountry(screen: $screen),
-                    tag: PublishersSearchListScreen.create,
+                    tag: CountriesSearchListScreen.create,
                     selection: $screen,
                     label: {
                         Image(systemName: "plus")
