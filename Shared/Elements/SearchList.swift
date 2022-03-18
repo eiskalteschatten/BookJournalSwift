@@ -13,6 +13,7 @@ struct SearchList<T: AbstractName>: View {
     var title: String
     var data: [T]
     @Binding var selectedData: [T]
+    var onDelete: (_: IndexSet) -> Void
     
     @State private var searchText = ""
     
@@ -43,6 +44,7 @@ struct SearchList<T: AbstractName>: View {
                     }
                 }
             }
+            .onDelete(perform: onDelete)
         }
         .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always)) {
             ForEach(searchResults, id: \.self) { result in
@@ -71,7 +73,8 @@ struct SearchList_Previews: PreviewProvider {
         SearchList<Author>(
             title: "Search for Something",
             data: getMockAuthors(),
-            selectedData: $authors
+            selectedData: $authors,
+            onDelete: deleteAuthors
         )
     }
     
@@ -91,4 +94,6 @@ struct SearchList_Previews: PreviewProvider {
         
         return [mockAuthor1, mockAuthor2]
     }
+    
+    static func deleteAuthors(offsets: IndexSet) {}
 }
