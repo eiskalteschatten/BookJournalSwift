@@ -61,6 +61,7 @@ struct BookList: View {
     private func deleteBooks(offsets: IndexSet) {
         withAnimation {
             offsets.map { books[$0] }.forEach(viewContext.delete)
+            selectedBook = nil
 
             do {
                 try viewContext.save()
