@@ -38,7 +38,7 @@
         <relationship name="translators" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Translator" inverseName="books" inverseEntity="Translator"/>
     </entity>
     <entity name="Category" representedClassName="Category" parentEntity="AbstractName" syncable="YES" codeGenerationType="class">
-        <attribute name="color" optional="YES" attributeType="String"/>
+        <attribute name="color" optional="YES" attributeType="Binary"/>
         <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="categories" inverseEntity="Book" spotlightIndexingEnabled="YES"/>
     </entity>
     <entity name="Country" representedClassName="Country" parentEntity="AbstractName" syncable="YES" codeGenerationType="class">

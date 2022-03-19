@@ -13,6 +13,7 @@ struct CreateCategory: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @State private var name: String = ""
+    @State private var color: Color = CATEGORY_DEFAULT_COLOR
     
     var body: some View {
         Form {
@@ -20,6 +21,8 @@ struct CreateCategory: View {
                 "Name",
                 text: $name
             )
+            
+            ColorPicker("Category Color", selection: $color)
         }
         #if os(iOS)
         .navigationBarTitle(Text("Create a Category"), displayMode: .inline)
@@ -41,6 +44,12 @@ struct CreateCategory: View {
         newCategory.name = name
         
         do {
+            #if os(iOS)
+                try newCategory.color = NSKeyedArchiver.archivedData(withRootObject: UIColor(color), requiringSecureCoding: false)
+            #else
+                try newCategory.color = NSKeyedArchiver.archivedData(withRootObject: NSColor(color), requiringSecureCoding: false)
+            #endif
+
             try viewContext.save()
         } catch {
             // TODO: Replace this implementation with code to handle the error appropriately.
