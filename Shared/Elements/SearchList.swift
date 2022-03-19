@@ -93,6 +93,7 @@ struct SearchList<T: AbstractName>: View {
         }
         .listStyle(.plain)
         #if os(iOS)
+        .navigationBarTitle(Text(title), displayMode: .inline)
         .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always)) {
             ForEach(searchResults, id: \.self) { result in
                 if result.name != nil {

@@ -29,7 +29,6 @@ struct iOSNewBookSheet: View {
     
     @State private var authors: [Author] = []
     @State private var editors: [Editor] = []
-    @State private var translators: [Translator] = []
     
     @State private var bookFormat: String = ""
     @State private var publisher: Publisher?
@@ -37,6 +36,7 @@ struct iOSNewBookSheet: View {
     @State private var isbn: String = ""
     
     @State private var countryOfOrigin: Country?
+    @State private var translators: [Translator] = []
 
     var body: some View {
         NavigationView {
@@ -174,31 +174,6 @@ struct iOSNewBookSheet: View {
                                 }
                             }
                         )
-                        
-                        // Translators
-                        NavigationLink(
-                            destination: TranslatorsSearchList(selectedItems: $translators),
-                            tag: Screen.addTranslators,
-                            selection: $screen,
-                            label: {
-                                HStack {
-                                    if translators.count > 0 {
-                                        ForEach(translators, id: \.self) { item in
-                                            SmallChip(background: .gray) {
-                                                HStack(alignment: .center, spacing: 4) {
-                                                    if let name = item.name {
-                                                        Text(name)
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                    else {
-                                        Text("Translators")
-                                    }
-                                }
-                            }
-                        )
                     }
                     
                     // Page Count
@@ -269,6 +244,31 @@ struct iOSNewBookSheet: View {
                                         if let name = countryOfOrigin!.name {
                                             Text(name).opacity(0.5)
                                         }
+                                    }
+                                }
+                            }
+                        )
+                        
+                        // Translators
+                        NavigationLink(
+                            destination: TranslatorsSearchList(selectedItems: $translators),
+                            tag: Screen.addTranslators,
+                            selection: $screen,
+                            label: {
+                                HStack {
+                                    if translators.count > 0 {
+                                        ForEach(translators, id: \.self) { item in
+                                            SmallChip(background: .gray) {
+                                                HStack(alignment: .center, spacing: 4) {
+                                                    if let name = item.name {
+                                                        Text(name)
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    else {
+                                        Text("Translators")
                                     }
                                 }
                             }
