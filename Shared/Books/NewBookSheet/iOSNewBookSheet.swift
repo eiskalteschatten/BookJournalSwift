@@ -167,17 +167,7 @@ struct iOSNewBookSheet: View {
                             destination: PublishersSearchList(selectedItem: $publisher),
                             tag: Screen.addPublisher,
                             selection: $screen,
-                            label: {
-                                HStack {
-                                    Text("Publisher")
-                                    Spacer()
-                                    if publisher != nil {
-                                        if let name = publisher!.name {
-                                            Text(name).opacity(0.5)
-                                        }
-                                    }
-                                }
-                            }
+                            label: { PickerMimickerWithName<Publisher>(title: "Publisher", data: publisher) }
                         )
                         
                         // Year Published
@@ -203,17 +193,7 @@ struct iOSNewBookSheet: View {
                             destination: CountriesSearchList(selectedItem: $countryOfOrigin),
                             tag: Screen.addCountryOfOrigin,
                             selection: $screen,
-                            label: {
-                                HStack {
-                                    Text("Country of Origin")
-                                    Spacer()
-                                    if countryOfOrigin != nil {
-                                        if let name = countryOfOrigin!.name {
-                                            Text(name).opacity(0.5)
-                                        }
-                                    }
-                                }
-                            }
+                            label: { PickerMimickerWithName<Country>(title: "Country of Origin", data: countryOfOrigin) }
                         )
                         
                         // Translators
