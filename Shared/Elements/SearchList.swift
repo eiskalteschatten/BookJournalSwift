@@ -102,7 +102,7 @@ struct SearchList<T: AbstractName>: View {
         #endif
     }
     
-    var searchResults: [T] {
+    private var searchResults: [T] {
             if searchText.isEmpty {
                 return data
         } else {
