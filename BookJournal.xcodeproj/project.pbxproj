@@ -63,6 +63,7 @@
 		9369C1AF27E62FE000A39E57 /* PickerMimickerWithName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9369C1AD27E62FE000A39E57 /* PickerMimickerWithName.swift */; };
 		9369C1B227E631EC00A39E57 /* LanguagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9369C1B127E631EC00A39E57 /* LanguagePicker.swift */; };
 		9369C1B327E631EC00A39E57 /* LanguagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9369C1B127E631EC00A39E57 /* LanguagePicker.swift */; };
+		9369C1B627E6395B00A39E57 /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = 9369C1B527E6395B00A39E57 /* WrappingHStack */; };
 		9395168327C8301300F04CCF /* NewBookSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9395168227C8301300F04CCF /* NewBookSheet.swift */; };
 		939BB9EF27CA44D60001B0DF /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939BB9EE27CA44D60001B0DF /* CoreData.swift */; };
 		939BB9F027CA44D60001B0DF /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939BB9EE27CA44D60001B0DF /* CoreData.swift */; };
@@ -144,6 +145,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9369C1B627E6395B00A39E57 /* WrappingHStack in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,6 +383,9 @@
 			dependencies = (
 			);
 			name = "BookJournal (macOS)";
+			packageProductDependencies = (
+				9369C1B527E6395B00A39E57 /* WrappingHStack */,
+			);
 			productName = "BookJournal (macOS)";
 			productReference = 932198F4279D86E600CB6E76 /* BookJournal.app */;
 			productType = "com.apple.product-type.application";
@@ -989,6 +994,11 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		9369C1A427E628D200A39E57 /* WrappingHStack */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9369C1A327E628D200A39E57 /* XCRemoteSwiftPackageReference "WrappingHStack" */;
+			productName = WrappingHStack;
+		};
+		9369C1B527E6395B00A39E57 /* WrappingHStack */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9369C1A327E628D200A39E57 /* XCRemoteSwiftPackageReference "WrappingHStack" */;
 			productName = WrappingHStack;
