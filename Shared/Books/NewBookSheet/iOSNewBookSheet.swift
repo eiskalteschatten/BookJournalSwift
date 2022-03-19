@@ -172,7 +172,7 @@ struct iOSNewBookSheet: View {
                             destination: CategoriesSearchList(selectedItems: $categories),
                             tag: Screen.addCategories,
                             selection: $screen,
-                            label: { WrappingSmallChipsWithName<Category>(title: "Categories", data: categories, chipColor: CATEGORY_DEFAULT_COLOR) }
+                            label: { WrappingSmallChipsWithName<Category>(title: "Categories", data: categories, chipColor: CATEGORY_COLOR) }
                         )
                         
                         // Tags
