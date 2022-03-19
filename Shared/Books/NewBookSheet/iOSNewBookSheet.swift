@@ -38,6 +38,8 @@ struct iOSNewBookSheet: View {
     
     @State private var countryOfOrigin: Country?
     @State private var translators: [Translator] = []
+    @State private var originalLanguage: String = ""
+    @State private var languageReadIn: String = ""
 
     var body: some View {
         NavigationView {
@@ -203,6 +205,9 @@ struct iOSNewBookSheet: View {
                             selection: $screen,
                             label: { WrappingSmallChipsWithName<Translator>(title: "Translators", data: translators) }
                         )
+                        
+                        LanguagePicker(title: "Original Language", selection: $originalLanguage)
+                        LanguagePicker(title: "Language Read In", selection: $languageReadIn)
                     }
                 }
             }
@@ -244,7 +249,6 @@ struct iOSNewBookSheet: View {
             
             authors.forEach(newBook.addToAuthors)
             editors.forEach(newBook.addToEditors)
-            translators.forEach(newBook.addToTranslators)
 
             newBook.bookFormat = bookFormat
             if let unwrapped = publisher {
@@ -258,6 +262,9 @@ struct iOSNewBookSheet: View {
             if let unwrapped = countryOfOrigin {
                 newBook.countryOfOrigin = unwrapped
             }
+            translators.forEach(newBook.addToTranslators)
+            newBook.originalLanguage = originalLanguage
+            newBook.languageReadIn = languageReadIn
             
             do {
                 try viewContext.save()
