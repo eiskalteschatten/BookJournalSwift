@@ -19,9 +19,11 @@ struct LanguagePicker: View {
     var body: some View {
         let identifiers = NSLocale.availableLocaleIdentifiers
         let locale = NSLocale(localeIdentifier: NSLocale.current.languageCode ?? "en_US")
+        
         let languages = identifiers.map {
             NamedLanguage(name: locale.displayName(forKey: NSLocale.Key.identifier, value: $0)!, identifier: $0)
         }
+        
         let sortedLanguages = languages.sorted {
             return $0.name < $1.name
         }
