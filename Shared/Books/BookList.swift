@@ -44,7 +44,6 @@ struct BookList: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 EditButton()
             }
-            #endif
             ToolbarItem {
                 Button(action: {
                     showNewBookSheet.toggle()
@@ -52,6 +51,14 @@ struct BookList: View {
                     Label("Add Book", systemImage: "plus")
                 }
             }
+            #else
+            ToolbarItem {
+                Button(action: deleteBooks) {
+                    Label("Delete", systemImage: "trash")
+                }
+                .disabled(selectedBook == nil)
+            }
+            #endif
         }
         .sheet(isPresented: $showNewBookSheet) {
             NewBookSheet()
@@ -73,6 +80,12 @@ struct BookList: View {
             }
         }
     }
+    
+    #if os(macOS)
+    private func deleteBooks() {
+        // TODO
+    }
+    #endif
 }
 
 struct BookList_Previews: PreviewProvider {

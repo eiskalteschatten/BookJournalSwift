@@ -74,6 +74,7 @@ struct BookView: View {
             }
         }
         .toolbar {
+            #if os(iOS)
             ToolbarItem {
                 Button(action: editBook) {
                     Label("Edit", systemImage: "pencil")
@@ -86,9 +87,19 @@ struct BookView: View {
                 }
                 .disabled(book == nil)
             }
+            #else
+            ToolbarItem {
+                Button(action: {
+                    
+                }) {
+                    Label("Add Book", systemImage: "plus")
+                }
+            }
+            #endif
         }
     }
     
+    #if os(iOS)
     private func editBook() {
         // TODO
     }
@@ -96,6 +107,7 @@ struct BookView: View {
     private func deleteBooks() {
         // TODO
     }
+    #endif
 }
 
 struct BookView_Previews: PreviewProvider {
