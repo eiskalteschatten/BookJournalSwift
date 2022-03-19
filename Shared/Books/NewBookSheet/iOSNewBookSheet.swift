@@ -131,7 +131,7 @@ struct iOSNewBookSheet: View {
                             destination: AuthorsSearchList(selectedItems: $authors),
                             tag: Screen.addAuthors,
                             selection: $screen,
-                            label: { AbstractNameSmallChipContent<Author>(title: "Authors", data: authors, chipColor: .green) }
+                            label: { WrappingSmallChipsWithName<Author>(title: "Authors", data: authors, chipColor: .green) }
                         )
                         
                         // Editors
@@ -139,7 +139,7 @@ struct iOSNewBookSheet: View {
                             destination: EditorsSearchList(selectedItems: $editors),
                             tag: Screen.addEditors,
                             selection: $screen,
-                            label: { AbstractNameSmallChipContent<Editor>(title: "Editors", data: editors) }
+                            label: { WrappingSmallChipsWithName<Editor>(title: "Editors", data: editors) }
                         )
                     }
                     
@@ -221,7 +221,7 @@ struct iOSNewBookSheet: View {
                             destination: TranslatorsSearchList(selectedItems: $translators),
                             tag: Screen.addTranslators,
                             selection: $screen,
-                            label: { AbstractNameSmallChipContent<Translator>(title: "Translators", data: translators) }
+                            label: { WrappingSmallChipsWithName<Translator>(title: "Translators", data: translators) }
                         )
                     }
                 }

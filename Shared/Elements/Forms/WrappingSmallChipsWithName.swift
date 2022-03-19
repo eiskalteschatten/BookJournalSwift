@@ -1,5 +1,5 @@
 //
-//  AbstractNameSmallChipContent.swift
+//  WrappingSmallChipsWithName.swift
 //  BookJournal
 //
 //  Created by Alex Seifert on 19.03.22.
@@ -8,7 +8,7 @@
 import SwiftUI
 import WrappingHStack
 
-struct AbstractNameSmallChipContent<T: AbstractName>: View {
+struct WrappingSmallChipsWithName<T: AbstractName>: View {
     var title: String
     var data: [T]
     var chipColor: Color = .gray
@@ -37,12 +37,12 @@ struct AbstractNameSmallChipContent<T: AbstractName>: View {
     }
 }
 
-struct AbstractNameSmallChipContent_Previews: PreviewProvider {
+struct WrappingSmallChipsWithName_Previews: PreviewProvider {
     @State static var authors: [Author] = []
     static let context = PersistenceController.preview.container.viewContext
     
     static var previews: some View {
-        AbstractNameSmallChipContent(title: "Test Link", data: getMockAuthors())
+        WrappingSmallChipsWithName(title: "Test Link", data: getMockAuthors())
     }
     
     static func getMockAuthors() -> [Author] {
