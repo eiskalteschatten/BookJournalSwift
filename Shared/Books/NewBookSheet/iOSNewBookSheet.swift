@@ -145,7 +145,6 @@ struct iOSNewBookSheet: View {
                                     }
                                     else {
                                         Text("Authors")
-                                            .opacity(0.3)
                                     }
                                 }
                             }
@@ -171,7 +170,6 @@ struct iOSNewBookSheet: View {
                                     }
                                     else {
                                         Text("Editors")
-                                            .opacity(0.3)
                                     }
                                 }
                             }
@@ -197,7 +195,6 @@ struct iOSNewBookSheet: View {
                                     }
                                     else {
                                         Text("Translators")
-                                            .opacity(0.3)
                                     }
                                 }
                             }
@@ -241,7 +238,6 @@ struct iOSNewBookSheet: View {
                                     }
                                     else {
                                         Text("Publisher")
-                                            .opacity(0.3)
                                     }
                                 }
                             }

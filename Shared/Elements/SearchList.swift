@@ -91,6 +91,7 @@ struct SearchList<T: AbstractName>: View {
             }
             .onDelete(perform: onDelete)
         }
+        .listStyle(.plain)
         #if os(iOS)
         .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always)) {
             ForEach(searchResults, id: \.self) { result in
