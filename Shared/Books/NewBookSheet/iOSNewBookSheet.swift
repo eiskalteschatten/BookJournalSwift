@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import WrappingHStack
 
 struct iOSNewBookSheet: View {
     private enum Screen: Int {
@@ -255,9 +256,12 @@ struct iOSNewBookSheet: View {
                             tag: Screen.addTranslators,
                             selection: $screen,
                             label: {
-                                HStack {
+                                VStack(alignment: .leading, spacing: 1) {
+                                    Text("Translators")
+                                    
                                     if translators.count > 0 {
-                                        ForEach(translators, id: \.self) { item in
+                                        Spacer()
+                                        WrappingHStack(translators, id: \.self) { item in
                                             SmallChip(background: .gray) {
                                                 HStack(alignment: .center, spacing: 4) {
                                                     if let name = item.name {
@@ -265,10 +269,10 @@ struct iOSNewBookSheet: View {
                                                     }
                                                 }
                                             }
+                                            .padding(.horizontal, 1)
+                                            .padding(.vertical, 3)
                                         }
-                                    }
-                                    else {
-                                        Text("Translators")
+                                        .frame(minWidth: 250)
                                     }
                                 }
                             }

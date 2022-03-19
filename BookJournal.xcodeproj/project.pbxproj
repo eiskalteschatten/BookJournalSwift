@@ -56,6 +56,7 @@
 		9369C19F27E53FE000A39E57 /* CountriesSearchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9369C19D27E53FE000A39E57 /* CountriesSearchList.swift */; };
 		9369C1A127E5410800A39E57 /* CreateCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9369C1A027E5410800A39E57 /* CreateCountry.swift */; };
 		9369C1A227E5410800A39E57 /* CreateCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9369C1A027E5410800A39E57 /* CreateCountry.swift */; };
+		9369C1A527E628D200A39E57 /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = 9369C1A427E628D200A39E57 /* WrappingHStack */; };
 		9395168327C8301300F04CCF /* NewBookSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9395168227C8301300F04CCF /* NewBookSheet.swift */; };
 		939BB9EF27CA44D60001B0DF /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939BB9EE27CA44D60001B0DF /* CoreData.swift */; };
 		939BB9F027CA44D60001B0DF /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939BB9EE27CA44D60001B0DF /* CoreData.swift */; };
@@ -126,6 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9369C1A527E628D200A39E57 /* WrappingHStack in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +341,9 @@
 			dependencies = (
 			);
 			name = "BookJournal (iOS)";
+			packageProductDependencies = (
+				9369C1A427E628D200A39E57 /* WrappingHStack */,
+			);
 			productName = "BookJournal (iOS)";
 			productReference = 932198EE279D86E600CB6E76 /* BookJournal.app */;
 			productType = "com.apple.product-type.application";
@@ -431,6 +436,9 @@
 				Base,
 			);
 			mainGroup = 932198DE279D86E400CB6E76;
+			packageReferences = (
+				9369C1A327E628D200A39E57 /* XCRemoteSwiftPackageReference "WrappingHStack" */,
+			);
 			productRefGroup = 932198EF279D86E600CB6E76 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -941,6 +949,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9369C1A327E628D200A39E57 /* XCRemoteSwiftPackageReference "WrappingHStack" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dkk/WrappingHStack";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9369C1A427E628D200A39E57 /* WrappingHStack */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9369C1A327E628D200A39E57 /* XCRemoteSwiftPackageReference "WrappingHStack" */;
+			productName = WrappingHStack;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		932198E4279D86E400CB6E76 /* BookJournal.xcdatamodeld */ = {
