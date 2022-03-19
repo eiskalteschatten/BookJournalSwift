@@ -227,17 +227,12 @@ struct iOSNewBookSheet: View {
                             selection: $screen,
                             label: {
                                 HStack {
+                                    Text("Publisher")
+                                    Spacer()
                                     if publisher != nil {
-                                        SmallChip(background: .gray) {
-                                            HStack(alignment: .center, spacing: 4) {
-                                                if let name = publisher!.name {
-                                                    Text(name)
-                                                }
-                                            }
+                                        if let name = publisher!.name {
+                                            Text(name).opacity(0.5)
                                         }
-                                    }
-                                    else {
-                                        Text("Publisher")
                                     }
                                 }
                             }
@@ -268,18 +263,12 @@ struct iOSNewBookSheet: View {
                             selection: $screen,
                             label: {
                                 HStack {
+                                    Text("Country of Origin")
+                                    Spacer()
                                     if countryOfOrigin != nil {
-                                        SmallChip(background: .gray) {
-                                            HStack(alignment: .center, spacing: 4) {
-                                                if let name = countryOfOrigin!.name {
-                                                    Text(name)
-                                                }
-                                            }
+                                        if let name = countryOfOrigin!.name {
+                                            Text(name).opacity(0.5)
                                         }
-                                    }
-                                    else {
-                                        Text("Country of Origin")
-                                            .opacity(0.3)
                                     }
                                 }
                             }
