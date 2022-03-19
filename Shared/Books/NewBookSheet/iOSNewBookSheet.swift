@@ -11,7 +11,7 @@ import WrappingHStack
 
 struct iOSNewBookSheet: View {
     private enum Screen: Int {
-        case addAuthors, addEditors, addTranslators, addPublisher, addCountryOfOrigin
+        case addAuthors, addEditors, addGenres, addTranslators, addPublisher, addCountryOfOrigin
     }
     
     @State private var screen: Screen?
@@ -20,7 +20,6 @@ struct iOSNewBookSheet: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @State private var title: String = ""
-    @State private var pageCount: Int16?
     
     @State private var readingStatus: String = ""
     @State private var addDateStarted = false
@@ -30,6 +29,9 @@ struct iOSNewBookSheet: View {
     
     @State private var authors: [Author] = []
     @State private var editors: [Editor] = []
+    
+    @State private var pageCount: Int16?
+    @State private var genres: [Genre] = []
     
     @State private var bookFormat: String = ""
     @State private var publisher: Publisher?
@@ -133,7 +135,7 @@ struct iOSNewBookSheet: View {
                             destination: AuthorsSearchList(selectedItems: $authors),
                             tag: Screen.addAuthors,
                             selection: $screen,
-                            label: { WrappingSmallChipsWithName<Author>(title: "Authors", data: authors, chipColor: .green) }
+                            label: { WrappingSmallChipsWithName<Author>(title: "Authors", data: authors, chipColor: AUTHOR_COLOR) }
                         )
                         
                         // Editors
@@ -141,18 +143,30 @@ struct iOSNewBookSheet: View {
                             destination: EditorsSearchList(selectedItems: $editors),
                             tag: Screen.addEditors,
                             selection: $screen,
-                            label: { WrappingSmallChipsWithName<Editor>(title: "Editors", data: editors) }
+                            label: { WrappingSmallChipsWithName<Editor>(title: "Editors", data: editors, chipColor: EDITOR_COLOR) }
                         )
                     }
                     
-                    // Page Count
-                    Section("Page Count") {
+                    // Book Information
+                    Section("Book Information") {
+                        // Page Count
                         TextField(
                             "Page Count",
                             value: $pageCount,
                             format: .number
                         )
                             .keyboardType(.numberPad)
+                        
+                        // Genres
+                        NavigationLink(
+                            destination: GenresSearchList(selectedItems: $genres),
+                            tag: Screen.addGenres,
+                            selection: $screen,
+                            label: { WrappingSmallChipsWithName<Genre>(title: "Genres", data: genres, chipColor: GENRE_COLOR) }
+                        )
+                        
+                        // Categories: .blue
+                        // Tags: .red
                     }
                     
                     Section("Publication Details") {
@@ -203,7 +217,7 @@ struct iOSNewBookSheet: View {
                             destination: TranslatorsSearchList(selectedItems: $translators),
                             tag: Screen.addTranslators,
                             selection: $screen,
-                            label: { WrappingSmallChipsWithName<Translator>(title: "Translators", data: translators) }
+                            label: { WrappingSmallChipsWithName<Translator>(title: "Translators", data: translators, chipColor: TRANSLATOR_COLOR) }
                         )
                         
                         LanguagePicker(title: "Original Language", selection: $originalLanguage)
@@ -235,9 +249,6 @@ struct iOSNewBookSheet: View {
             newBook.updatedAt = Date()
             
             newBook.title = title
-            if let unwrapped = pageCount {
-                newBook.pageCount = unwrapped
-            }
                        
             newBook.readingStatus = readingStatus
             if addDateStarted {
@@ -249,6 +260,11 @@ struct iOSNewBookSheet: View {
             
             authors.forEach(newBook.addToAuthors)
             editors.forEach(newBook.addToEditors)
+            
+            if let unwrapped = pageCount {
+                newBook.pageCount = unwrapped
+            }
+            genres.forEach(newBook.addToGenres)
 
             newBook.bookFormat = bookFormat
             if let unwrapped = publisher {

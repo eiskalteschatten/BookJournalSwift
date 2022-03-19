@@ -64,6 +64,8 @@
 		9369C1B227E631EC00A39E57 /* LanguagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9369C1B127E631EC00A39E57 /* LanguagePicker.swift */; };
 		9369C1B327E631EC00A39E57 /* LanguagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9369C1B127E631EC00A39E57 /* LanguagePicker.swift */; };
 		9369C1B627E6395B00A39E57 /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = 9369C1B527E6395B00A39E57 /* WrappingHStack */; };
+		9369C1B927E6452400A39E57 /* GenresSearchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9369C1B827E6452400A39E57 /* GenresSearchList.swift */; };
+		9369C1BB27E6458000A39E57 /* CreateGenre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9369C1BA27E6458000A39E57 /* CreateGenre.swift */; };
 		9395168327C8301300F04CCF /* NewBookSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9395168227C8301300F04CCF /* NewBookSheet.swift */; };
 		939BB9EF27CA44D60001B0DF /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939BB9EE27CA44D60001B0DF /* CoreData.swift */; };
 		939BB9F027CA44D60001B0DF /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939BB9EE27CA44D60001B0DF /* CoreData.swift */; };
@@ -126,6 +128,8 @@
 		9369C1A927E62C1F00A39E57 /* WrappingSmallChipsWithName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrappingSmallChipsWithName.swift; sourceTree = "<group>"; };
 		9369C1AD27E62FE000A39E57 /* PickerMimickerWithName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerMimickerWithName.swift; sourceTree = "<group>"; };
 		9369C1B127E631EC00A39E57 /* LanguagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagePicker.swift; sourceTree = "<group>"; };
+		9369C1B827E6452400A39E57 /* GenresSearchList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresSearchList.swift; sourceTree = "<group>"; };
+		9369C1BA27E6458000A39E57 /* CreateGenre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGenre.swift; sourceTree = "<group>"; };
 		9395168227C8301300F04CCF /* NewBookSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBookSheet.swift; sourceTree = "<group>"; };
 		939BB9EE27CA44D60001B0DF /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		939BB9F227CA785F0001B0DF /* Chip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chip.swift; sourceTree = "<group>"; };
@@ -201,6 +205,7 @@
 				9369C19527E53BAE00A39E57 /* Translators */,
 				9369C18E27E5201900A39E57 /* Publishers */,
 				9369C19C27E53FBF00A39E57 /* Countries */,
+				9369C1B727E6451300A39E57 /* Genres */,
 				9329054027C2932F000D15AE /* Constants.swift */,
 				932198E9279D86E600CB6E76 /* Assets.xcassets */,
 				932198E4279D86E400CB6E76 /* BookJournal.xcdatamodeld */,
@@ -325,6 +330,15 @@
 				9369C1AD27E62FE000A39E57 /* PickerMimickerWithName.swift */,
 			);
 			path = Forms;
+			sourceTree = "<group>";
+		};
+		9369C1B727E6451300A39E57 /* Genres */ = {
+			isa = PBXGroup;
+			children = (
+				9369C1B827E6452400A39E57 /* GenresSearchList.swift */,
+				9369C1BA27E6458000A39E57 /* CreateGenre.swift */,
+			);
+			path = Genres;
 			sourceTree = "<group>";
 		};
 		939BB9ED27CA44AE0001B0DF /* Extensions */ = {
@@ -527,6 +541,7 @@
 				9329054127C2932F000D15AE /* Constants.swift in Sources */,
 				9369C18527E5128200A39E57 /* CreateAuthor.swift in Sources */,
 				9369C19327E520CC00A39E57 /* PublishersSearchList.swift in Sources */,
+				9369C1B927E6452400A39E57 /* GenresSearchList.swift in Sources */,
 				9346662827C9841900D58DE7 /* Books.swift in Sources */,
 				9309D78327E4A55F00F19670 /* AuthorsSearchList.swift in Sources */,
 				9321990F279D86E600CB6E76 /* BookJournal.xcdatamodeld in Sources */,
@@ -542,6 +557,7 @@
 				9369C19A27E53C3D00A39E57 /* CreateTranslator.swift in Sources */,
 				939BB9F327CA785F0001B0DF /* Chip.swift in Sources */,
 				939BB9F627CA9BB40001B0DF /* SmallChip.swift in Sources */,
+				9369C1BB27E6458000A39E57 /* CreateGenre.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
