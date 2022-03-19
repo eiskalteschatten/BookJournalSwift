@@ -47,197 +47,199 @@ struct iOSNewBookSheet: View {
 
     var body: some View {
         NavigationView {
-            VStack {
-                // Bookcover
-                Menu {
-                    Button {
-                        // TODO: add function
-                    } label: {
-                        Label("Choose Image", systemImage: "photo")
+            Form {
+                Section {
+                    VStack(alignment: .center) {
+                        // Bookcover
+                        Menu {
+                            Button {
+                                // TODO: add function
+                            } label: {
+                                Label("Choose Image", systemImage: "photo")
+                            }
+                            Button {
+                                // TODO: add function
+                            } label: {
+                                Label("Scan Image", systemImage: "viewfinder")
+                            }
+                        } label: {
+                            Image(systemName: "plus.square.dashed")
+                                .font(.system(size: 150))
+                        }
+                        .padding(.vertical)
+                        
+                        // Title
+                        TextField(
+                            "Enter title...",
+                            text: $title
+                        )
+                            .font(.system(size: 20, weight: .bold))
+                            .multilineTextAlignment(.center)
+                            .padding(.bottom)
                     }
-                    Button {
-                        // TODO: add function
-                    } label: {
-                        Label("Scan Image", systemImage: "viewfinder")
-                    }
-                } label: {
-                    Image(systemName: "plus.square.dashed")
-                        .font(.system(size: 200))
                 }
-                .padding(.vertical)
                 
-                // Title
-                TextField(
-                    "Enter title...",
-                    text: $title
-                )
-                    .font(.system(size: 20, weight: .bold))
-                    .multilineTextAlignment(.center)
-                    .padding(.bottom)
-                
-                Form {
-                    Section("Status") {
-                        // Reading Status
-                        Picker("Reading Status", selection: $readingStatus) {
-                            ForEach(BookReadingStatus.allCases) { status in
-                                Text(bookReadingStatusProperties[status]!)
-                                    .tag(status.rawValue)
-                            }
+                Section("Status") {
+                    // Reading Status
+                    Picker("Reading Status", selection: $readingStatus) {
+                        ForEach(BookReadingStatus.allCases) { status in
+                            Text(bookReadingStatusProperties[status]!)
+                                .tag(status.rawValue)
                         }
-                        
-                        // Date Started
-                        if !addDateStarted {
-                            Button("Add Date Started") {
+                    }
+                    
+                    // Date Started
+                    if !addDateStarted {
+                        Button("Add Date Started") {
+                            addDateStarted.toggle()
+                        }
+                    }
+                    else {
+                        HStack {
+                            DatePicker(selection: $dateStarted, displayedComponents: .date) {
+                                Text("Date Started")
+                            }
+                            
+                            Button {
                                 addDateStarted.toggle()
+                            } label: {
+                                Image(systemName: "xmark.circle")
+                                    .foregroundColor(.red)
                             }
+                            .padding(.leading, 5)
                         }
-                        else {
-                            HStack {
-                                DatePicker(selection: $dateStarted, displayedComponents: .date) {
-                                    Text("Date Started")
-                                }
-                                
-                                Button {
-                                    addDateStarted.toggle()
-                                } label: {
-                                    Image(systemName: "xmark.circle")
-                                        .foregroundColor(.red)
-                                }
-                                .padding(.leading, 5)
+                    }
+                    
+                    // Date Finished
+                    if !addDateFinished {
+                        Button("Add Date Finished") {
+                            addDateFinished.toggle()
+                        }
+                    }
+                    else {
+                        HStack {
+                            DatePicker(selection: $dateFinished, displayedComponents: .date) {
+                                Text("Date Finished")
                             }
-                        }
-                        
-                        // Date Finished
-                        if !addDateFinished {
-                            Button("Add Date Finished") {
+                            
+                            Button {
                                 addDateFinished.toggle()
+                            } label: {
+                                Image(systemName: "xmark.circle")
+                                    .foregroundColor(.red)
                             }
-                        }
-                        else {
-                            HStack {
-                                DatePicker(selection: $dateFinished, displayedComponents: .date) {
-                                    Text("Date Finished")
-                                }
-                                
-                                Button {
-                                    addDateFinished.toggle()
-                                } label: {
-                                    Image(systemName: "xmark.circle")
-                                        .foregroundColor(.red)
-                                }
-                                .padding(.leading, 5)
-                            }
+                            .padding(.leading, 5)
                         }
                     }
+                }
+                
+                // People
+                Section("People") {
+                    // Authors
+                    NavigationLink(
+                        destination: AuthorsSearchList(selectedItems: $authors),
+                        tag: Screen.addAuthors,
+                        selection: $screen,
+                        label: { WrappingSmallChipsWithName<Author>(title: "Authors", data: authors, chipColor: AUTHOR_COLOR) }
+                    )
                     
-                    // People
-                    Section("People") {
-                        // Authors
-                        NavigationLink(
-                            destination: AuthorsSearchList(selectedItems: $authors),
-                            tag: Screen.addAuthors,
-                            selection: $screen,
-                            label: { WrappingSmallChipsWithName<Author>(title: "Authors", data: authors, chipColor: AUTHOR_COLOR) }
-                        )
-                        
-                        // Editors
-                        NavigationLink(
-                            destination: EditorsSearchList(selectedItems: $editors),
-                            tag: Screen.addEditors,
-                            selection: $screen,
-                            label: { WrappingSmallChipsWithName<Editor>(title: "Editors", data: editors, chipColor: EDITOR_COLOR) }
-                        )
-                    }
+                    // Editors
+                    NavigationLink(
+                        destination: EditorsSearchList(selectedItems: $editors),
+                        tag: Screen.addEditors,
+                        selection: $screen,
+                        label: { WrappingSmallChipsWithName<Editor>(title: "Editors", data: editors, chipColor: EDITOR_COLOR) }
+                    )
+                }
+                
+                // Book Information
+                Section("Book Information") {
+                    // Page Count
+                    TextField(
+                        "Page Count",
+                        value: $pageCount,
+                        format: .number
+                    )
+                        .keyboardType(.numberPad)
                     
-                    // Book Information
-                    Section("Book Information") {
-                        // Page Count
-                        TextField(
-                            "Page Count",
-                            value: $pageCount,
-                            format: .number
-                        )
-                            .keyboardType(.numberPad)
-                        
-                        // Genres
-                        NavigationLink(
-                            destination: GenresSearchList(selectedItems: $genres),
-                            tag: Screen.addGenres,
-                            selection: $screen,
-                            label: { WrappingSmallChipsWithName<Genre>(title: "Genres", data: genres, chipColor: GENRE_COLOR) }
-                        )
-                        
-                        // Categories
-                        NavigationLink(
-                            destination: CategoriesSearchList(selectedItems: $categories),
-                            tag: Screen.addCategories,
-                            selection: $screen,
-                            label: { WrappingSmallChipsWithName<Category>(title: "Categories", data: categories, chipColor: CATEGORY_COLOR) }
-                        )
-                        
-                        // Tags
-                        NavigationLink(
-                            destination: TagsSearchList(selectedItems: $tags),
-                            tag: Screen.addTags,
-                            selection: $screen,
-                            label: { WrappingSmallChipsWithName<Tag>(title: "Tags", data: tags, chipColor: TAG_COLOR) }
-                        )
-                    }
+                    // Genres
+                    NavigationLink(
+                        destination: GenresSearchList(selectedItems: $genres),
+                        tag: Screen.addGenres,
+                        selection: $screen,
+                        label: { WrappingSmallChipsWithName<Genre>(title: "Genres", data: genres, chipColor: GENRE_COLOR) }
+                    )
                     
-                    Section("Publication Details") {
-                        // Book Format
-                        Picker("Book Format", selection: $bookFormat) {
-                            ForEach(BookFormat.allCases) { format in
-                                Label(bookFormatProperties[format]![0], systemImage: bookFormatProperties[format]![1])
-                                    .tag(format.rawValue)
-                            }
+                    // Categories
+                    NavigationLink(
+                        destination: CategoriesSearchList(selectedItems: $categories),
+                        tag: Screen.addCategories,
+                        selection: $screen,
+                        label: { WrappingSmallChipsWithName<Category>(title: "Categories", data: categories, chipColor: CATEGORY_COLOR) }
+                    )
+                    
+                    // Tags
+                    NavigationLink(
+                        destination: TagsSearchList(selectedItems: $tags),
+                        tag: Screen.addTags,
+                        selection: $screen,
+                        label: { WrappingSmallChipsWithName<Tag>(title: "Tags", data: tags, chipColor: TAG_COLOR) }
+                    )
+                }
+                
+                Section("Publication Details") {
+                    // Book Format
+                    Picker("Book Format", selection: $bookFormat) {
+                        ForEach(BookFormat.allCases) { format in
+                            Label(bookFormatProperties[format]![0], systemImage: bookFormatProperties[format]![1])
+                                .tag(format.rawValue)
                         }
-                        
-                        // Publisher
-                        NavigationLink(
-                            destination: PublishersSearchList(selectedItem: $publisher),
-                            tag: Screen.addPublisher,
-                            selection: $screen,
-                            label: { PickerMimickerWithName<Publisher>(title: "Publisher", data: publisher) }
-                        )
-                        
-                        // Year Published
-                        TextField(
-                            "Year Published",
-                            value: $yearPublished,
-                            format: .number
-                        )
-                            .keyboardType(.numberPad)
-                        
-                        // ISBN
-                        TextField(
-                            "ISBN",
-                            text: $isbn
-                        )
-                            .keyboardType(.numberPad)
                     }
                     
-                    // World
-                    Section("World") {
-                        // Country of Origin
-                        NavigationLink(
-                            destination: CountriesSearchList(selectedItem: $countryOfOrigin),
-                            tag: Screen.addCountryOfOrigin,
-                            selection: $screen,
-                            label: { PickerMimickerWithName<Country>(title: "Country of Origin", data: countryOfOrigin) }
-                        )
-                        
-                        // Translators
-                        NavigationLink(
-                            destination: TranslatorsSearchList(selectedItems: $translators),
-                            tag: Screen.addTranslators,
-                            selection: $screen,
-                            label: { WrappingSmallChipsWithName<Translator>(title: "Translators", data: translators, chipColor: TRANSLATOR_COLOR) }
-                        )
-                        
-                        LanguagePicker(title: "Original Language", selection: $originalLanguage)
-                        LanguagePicker(title: "Language Read In", selection: $languageReadIn)
-                    }
+                    // Publisher
+                    NavigationLink(
+                        destination: PublishersSearchList(selectedItem: $publisher),
+                        tag: Screen.addPublisher,
+                        selection: $screen,
+                        label: { PickerMimickerWithName<Publisher>(title: "Publisher", data: publisher) }
+                    )
+                    
+                    // Year Published
+                    TextField(
+                        "Year Published",
+                        value: $yearPublished,
+                        format: .number
+                    )
+                        .keyboardType(.numberPad)
+                    
+                    // ISBN
+                    TextField(
+                        "ISBN",
+                        text: $isbn
+                    )
+                        .keyboardType(.numberPad)
+                }
+                
+                // World
+                Section("World") {
+                    // Country of Origin
+                    NavigationLink(
+                        destination: CountriesSearchList(selectedItem: $countryOfOrigin),
+                        tag: Screen.addCountryOfOrigin,
+                        selection: $screen,
+                        label: { PickerMimickerWithName<Country>(title: "Country of Origin", data: countryOfOrigin) }
+                    )
+                    
+                    // Translators
+                    NavigationLink(
+                        destination: TranslatorsSearchList(selectedItems: $translators),
+                        tag: Screen.addTranslators,
+                        selection: $screen,
+                        label: { WrappingSmallChipsWithName<Translator>(title: "Translators", data: translators, chipColor: TRANSLATOR_COLOR) }
+                    )
+                    
+                    LanguagePicker(title: "Original Language", selection: $originalLanguage)
+                    LanguagePicker(title: "Language Read In", selection: $languageReadIn)
                 }
             }
             .navigationBarTitle(Text("Add a New Book"), displayMode: .inline)
