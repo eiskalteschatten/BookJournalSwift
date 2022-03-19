@@ -87,6 +87,11 @@ struct SearchList<T: AbstractName>: View {
                             selectedDataArray.append(item)
                         }
                     }
+                    
+                    #if os(iOS)
+                    let impactHeavy = UIImpactFeedbackGenerator(style: .heavy)
+                    impactHeavy.impactOccurred()
+                    #endif
                 }
             }
             .onDelete(perform: onDelete)
