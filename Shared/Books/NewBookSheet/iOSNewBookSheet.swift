@@ -11,7 +11,7 @@ import WrappingHStack
 
 struct iOSNewBookSheet: View {
     private enum Screen: Int {
-        case addAuthors, addEditors, addGenres, addTranslators, addPublisher, addCountryOfOrigin
+        case addAuthors, addEditors, addGenres, addTags, addTranslators, addPublisher, addCountryOfOrigin
     }
     
     @State private var screen: Screen?
@@ -32,6 +32,7 @@ struct iOSNewBookSheet: View {
     
     @State private var pageCount: Int16?
     @State private var genres: [Genre] = []
+    @State private var tags: [Tag] = []
     
     @State private var bookFormat: String = ""
     @State private var publisher: Publisher?
@@ -165,8 +166,13 @@ struct iOSNewBookSheet: View {
                             label: { WrappingSmallChipsWithName<Genre>(title: "Genres", data: genres, chipColor: GENRE_COLOR) }
                         )
                         
-                        // Categories: .blue
-                        // Tags: .red
+                        // Tags
+                        NavigationLink(
+                            destination: TagsSearchList(selectedItems: $tags),
+                            tag: Screen.addTags,
+                            selection: $screen,
+                            label: { WrappingSmallChipsWithName<Tag>(title: "Tags", data: tags, chipColor: TAG_COLOR) }
+                        )
                     }
                     
                     Section("Publication Details") {
@@ -265,6 +271,7 @@ struct iOSNewBookSheet: View {
                 newBook.pageCount = unwrapped
             }
             genres.forEach(newBook.addToGenres)
+            tags.forEach(newBook.addToTags)
 
             newBook.bookFormat = bookFormat
             if let unwrapped = publisher {
