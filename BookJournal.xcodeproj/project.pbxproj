@@ -66,6 +66,12 @@
 		9369C1B627E6395B00A39E57 /* WrappingHStack in Frameworks */ = {isa = PBXBuildFile; productRef = 9369C1B527E6395B00A39E57 /* WrappingHStack */; };
 		9369C1B927E6452400A39E57 /* GenresSearchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9369C1B827E6452400A39E57 /* GenresSearchList.swift */; };
 		9369C1BB27E6458000A39E57 /* CreateGenre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9369C1BA27E6458000A39E57 /* CreateGenre.swift */; };
+		9369C1BE27E6481500A39E57 /* TagsSearchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9369C1BD27E6481500A39E57 /* TagsSearchList.swift */; };
+		9369C1C027E6486100A39E57 /* CreateTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9369C1BF27E6486100A39E57 /* CreateTag.swift */; };
+		9369C1C127E6486500A39E57 /* CreateTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9369C1BF27E6486100A39E57 /* CreateTag.swift */; };
+		9369C1C227E6486800A39E57 /* TagsSearchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9369C1BD27E6481500A39E57 /* TagsSearchList.swift */; };
+		9369C1C327E6486B00A39E57 /* CreateGenre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9369C1BA27E6458000A39E57 /* CreateGenre.swift */; };
+		9369C1C427E6486E00A39E57 /* GenresSearchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9369C1B827E6452400A39E57 /* GenresSearchList.swift */; };
 		9395168327C8301300F04CCF /* NewBookSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9395168227C8301300F04CCF /* NewBookSheet.swift */; };
 		939BB9EF27CA44D60001B0DF /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939BB9EE27CA44D60001B0DF /* CoreData.swift */; };
 		939BB9F027CA44D60001B0DF /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939BB9EE27CA44D60001B0DF /* CoreData.swift */; };
@@ -130,6 +136,8 @@
 		9369C1B127E631EC00A39E57 /* LanguagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagePicker.swift; sourceTree = "<group>"; };
 		9369C1B827E6452400A39E57 /* GenresSearchList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresSearchList.swift; sourceTree = "<group>"; };
 		9369C1BA27E6458000A39E57 /* CreateGenre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGenre.swift; sourceTree = "<group>"; };
+		9369C1BD27E6481500A39E57 /* TagsSearchList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsSearchList.swift; sourceTree = "<group>"; };
+		9369C1BF27E6486100A39E57 /* CreateTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTag.swift; sourceTree = "<group>"; };
 		9395168227C8301300F04CCF /* NewBookSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBookSheet.swift; sourceTree = "<group>"; };
 		939BB9EE27CA44D60001B0DF /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		939BB9F227CA785F0001B0DF /* Chip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chip.swift; sourceTree = "<group>"; };
@@ -206,6 +214,7 @@
 				9369C18E27E5201900A39E57 /* Publishers */,
 				9369C19C27E53FBF00A39E57 /* Countries */,
 				9369C1B727E6451300A39E57 /* Genres */,
+				9369C1BC27E6480500A39E57 /* Tags */,
 				9329054027C2932F000D15AE /* Constants.swift */,
 				932198E9279D86E600CB6E76 /* Assets.xcassets */,
 				932198E4279D86E400CB6E76 /* BookJournal.xcdatamodeld */,
@@ -339,6 +348,15 @@
 				9369C1BA27E6458000A39E57 /* CreateGenre.swift */,
 			);
 			path = Genres;
+			sourceTree = "<group>";
+		};
+		9369C1BC27E6480500A39E57 /* Tags */ = {
+			isa = PBXGroup;
+			children = (
+				9369C1BD27E6481500A39E57 /* TagsSearchList.swift */,
+				9369C1BF27E6486100A39E57 /* CreateTag.swift */,
+			);
+			path = Tags;
 			sourceTree = "<group>";
 		};
 		939BB9ED27CA44AE0001B0DF /* Extensions */ = {
@@ -547,12 +565,14 @@
 				9321990F279D86E600CB6E76 /* BookJournal.xcdatamodeld in Sources */,
 				9329054427C29C55000D15AE /* BookView.swift in Sources */,
 				9369C1B227E631EC00A39E57 /* LanguagePicker.swift in Sources */,
+				9369C1BE27E6481500A39E57 /* TagsSearchList.swift in Sources */,
 				9369C19027E5204A00A39E57 /* CreatePublisher.swift in Sources */,
 				9369C1AA27E62C1F00A39E57 /* WrappingSmallChipsWithName.swift in Sources */,
 				93219913279D86E600CB6E76 /* ContentView.swift in Sources */,
 				9369C19727E53BC400A39E57 /* TranslatorsSearchList.swift in Sources */,
 				9369C19E27E53FE000A39E57 /* CountriesSearchList.swift in Sources */,
 				9309D77F27E4A51500F19670 /* SearchList.swift in Sources */,
+				9369C1C027E6486100A39E57 /* CreateTag.swift in Sources */,
 				9395168327C8301300F04CCF /* NewBookSheet.swift in Sources */,
 				9369C19A27E53C3D00A39E57 /* CreateTranslator.swift in Sources */,
 				939BB9F327CA785F0001B0DF /* Chip.swift in Sources */,
@@ -567,9 +587,12 @@
 			files = (
 				9329053F27C2916F000D15AE /* BookList.swift in Sources */,
 				939BB9F027CA44D60001B0DF /* CoreData.swift in Sources */,
+				9369C1C127E6486500A39E57 /* CreateTag.swift in Sources */,
 				93219912279D86E600CB6E76 /* BookJournalApp.swift in Sources */,
 				9346661C27C9406A00D58DE7 /* NewBookSheet.swift in Sources */,
+				9369C1C327E6486B00A39E57 /* CreateGenre.swift in Sources */,
 				9369C18A27E51D5500A39E57 /* EditorsSearchList.swift in Sources */,
+				9369C1C427E6486E00A39E57 /* GenresSearchList.swift in Sources */,
 				9369C18D27E51E1900A39E57 /* CreateEditor.swift in Sources */,
 				9369C1A227E5410800A39E57 /* CreateCountry.swift in Sources */,
 				9346342827C2DFA6003B233F /* BookListItem.swift in Sources */,
@@ -590,6 +613,7 @@
 				9369C19F27E53FE000A39E57 /* CountriesSearchList.swift in Sources */,
 				9309D78027E4A51500F19670 /* SearchList.swift in Sources */,
 				93219914279D86E600CB6E76 /* ContentView.swift in Sources */,
+				9369C1C227E6486800A39E57 /* TagsSearchList.swift in Sources */,
 				9369C19B27E53C3D00A39E57 /* CreateTranslator.swift in Sources */,
 				939BB9F427CA785F0001B0DF /* Chip.swift in Sources */,
 				939BB9F727CA9BB40001B0DF /* SmallChip.swift in Sources */,
