@@ -131,24 +131,7 @@ struct iOSNewBookSheet: View {
                             destination: AuthorsSearchList(selectedItems: $authors),
                             tag: Screen.addAuthors,
                             selection: $screen,
-                            label: {
-                                HStack {
-                                    if authors.count > 0 {
-                                        ForEach(authors, id: \.self) { item in
-                                            SmallChip(background: .green) {
-                                                HStack(alignment: .center, spacing: 4) {
-                                                    if let name = item.name {
-                                                        Text(name)
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                    else {
-                                        Text("Authors")
-                                    }
-                                }
-                            }
+                            label: { AbstractNameSmallChipContent<Author>(title: "Authors", data: authors, chipColor: .green) }
                         )
                         
                         // Editors
@@ -156,24 +139,7 @@ struct iOSNewBookSheet: View {
                             destination: EditorsSearchList(selectedItems: $editors),
                             tag: Screen.addEditors,
                             selection: $screen,
-                            label: {
-                                HStack {
-                                    if editors.count > 0 {
-                                        ForEach(editors, id: \.self) { item in
-                                            SmallChip(background: .gray) {
-                                                HStack(alignment: .center, spacing: 4) {
-                                                    if let name = item.name {
-                                                        Text(name)
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                    else {
-                                        Text("Editors")
-                                    }
-                                }
-                            }
+                            label: { AbstractNameSmallChipContent<Editor>(title: "Editors", data: editors) }
                         )
                     }
                     
@@ -255,27 +221,7 @@ struct iOSNewBookSheet: View {
                             destination: TranslatorsSearchList(selectedItems: $translators),
                             tag: Screen.addTranslators,
                             selection: $screen,
-                            label: {
-                                VStack(alignment: .leading, spacing: 1) {
-                                    Text("Translators")
-                                    
-                                    if translators.count > 0 {
-                                        Spacer()
-                                        WrappingHStack(translators, id: \.self) { item in
-                                            SmallChip(background: .gray) {
-                                                HStack(alignment: .center, spacing: 4) {
-                                                    if let name = item.name {
-                                                        Text(name)
-                                                    }
-                                                }
-                                            }
-                                            .padding(.horizontal, 1)
-                                            .padding(.vertical, 3)
-                                        }
-                                        .frame(minWidth: 250)
-                                    }
-                                }
-                            }
+                            label: { AbstractNameSmallChipContent<Translator>(title: "Translators", data: translators) }
                         )
                     }
                 }
