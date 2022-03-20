@@ -16,6 +16,8 @@ struct MacNewBookWindowView: View {
     @StateObject private var newBookFormModel = NewBookFormModel()
     
     var body: some View {
+        let spacerHeight = 25.0
+        
         VStack(alignment: .trailing) {
             HStack {
                 VStack {
@@ -39,7 +41,7 @@ struct MacNewBookWindowView: View {
                 .padding(.trailing, 25)
                 
                 Form {
-                    Group {
+                    Section {
                         // Title
                         TextField(
                             "Title:",
@@ -98,9 +100,12 @@ struct MacNewBookWindowView: View {
                             }
                         }
                     }
+                    
+                    Spacer()
+                        .frame(height: spacerHeight)
                         
         //            // People
-        //            Group {
+        //            Section("People") {
         //                // Authors
         //                NavigationLink(
         //                    destination: AuthorsSearchList(selectedItems: $authors),
@@ -117,9 +122,12 @@ struct MacNewBookWindowView: View {
         //                    label: { WrappingSmallChipsWithName<Editor>(title: "Editors", data: editors, chipColor: EDITOR_COLOR) }
         //                )
         //            }
+                    
+//                    Spacer()
+//                        .frame(height: spacerHeight)
                         
                     // Book Information
-                    Group {
+                    Section("Book Information") {
                         // Page Count
                         TextField(
                             "Page Count:",
@@ -152,7 +160,10 @@ struct MacNewBookWindowView: View {
         //                )
                         }
                         
-                    Group {
+                    Spacer()
+                        .frame(height: spacerHeight)
+                    
+                    Section("Publication Details") {
                         // Book Format
                         Picker("Book Format:", selection: $newBookFormModel.bookFormat) {
                             ForEach(BookFormat.allCases) { format in
@@ -182,9 +193,12 @@ struct MacNewBookWindowView: View {
                             text: $newBookFormModel.isbn
                         )
                     }
-                        
+                    
+                    Spacer()
+                        .frame(height: spacerHeight)
+                    
                     // World
-        //            Group {
+        //            Section("World") {
         //                // Country of Origin
         //                NavigationLink(
         //                    destination: CountriesSearchList(selectedItem: $countryOfOrigin),
