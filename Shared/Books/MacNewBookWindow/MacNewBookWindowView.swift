@@ -6,43 +6,16 @@
 //
 
 import SwiftUI
-import CoreData
 
 struct MacNewBookWindowView: View {
     private enum Screen: Int {
         case addAuthors, addEditors, addGenres, addCategories, addTags, addTranslators, addPublisher, addCountryOfOrigin
     }
     
-    @State private var screen: Screen?
-    
-    @Environment(\.dismiss) var dismiss
     @Environment(\.managedObjectContext) private var viewContext
     
-    @State private var title: String = ""
-    
-    @State private var readingStatus: String = ""
-    @State private var addDateStarted = false
-    @State private var dateStarted: Date = Date()
-    @State private var addDateFinished = false
-    @State private var dateFinished: Date = Date()
-    
-    @State private var authors: [Author] = []
-    @State private var editors: [Editor] = []
-    
-    @State private var pageCount: Int16?
-    @State private var genres: [Genre] = []
-    @State private var categories: [Category] = []
-    @State private var tags: [Tag] = []
-    
-    @State private var bookFormat: String = ""
-    @State private var publisher: Publisher?
-    @State private var yearPublished: Int16?
-    @State private var isbn: String = ""
-    
-    @State private var countryOfOrigin: Country?
-    @State private var translators: [Translator] = []
-    @State private var originalLanguage: String = ""
-    @State private var languageReadIn: String = ""
+    @State private var screen: Screen?
+    @StateObject private var newBookForm = NewBookForm()
     
     var body: some View {
         HStack {
@@ -71,11 +44,11 @@ struct MacNewBookWindowView: View {
                     // Title
                     TextField(
                         "Title:",
-                        text: $title
+                        text: $newBookForm.title
                     )
                     
                     // Reading Status
-                    Picker("Reading Status:", selection: $readingStatus) {
+                    Picker("Reading Status:", selection: $newBookForm.readingStatus) {
                         ForEach(BookReadingStatus.allCases) { status in
                             Text(bookReadingStatusProperties[status]!)
                                 .tag(status.rawValue)
@@ -83,19 +56,19 @@ struct MacNewBookWindowView: View {
                     }
                     
                     // Date Started
-                    if !addDateStarted {
+                    if !newBookForm.addDateStarted {
                         Button("Add Date Started") {
-                            addDateStarted.toggle()
+                            newBookForm.addDateStarted.toggle()
                         }
                     }
                     else {
                         HStack {
-                            DatePicker(selection: $dateStarted, displayedComponents: .date) {
+                            DatePicker(selection: $newBookForm.dateStarted, displayedComponents: .date) {
                                 Text("Date Started:")
                             }
                             
                             Button {
-                                addDateStarted.toggle()
+                                newBookForm.addDateStarted.toggle()
                             } label: {
                                 Image(systemName: "xmark.circle")
                                     .foregroundColor(.red)
@@ -105,19 +78,19 @@ struct MacNewBookWindowView: View {
                     }
                     
                     // Date Finished
-                    if !addDateFinished {
+                    if !newBookForm.addDateFinished {
                         Button("Add Date Finished") {
-                            addDateFinished.toggle()
+                            newBookForm.addDateFinished.toggle()
                         }
                     }
                     else {
                         HStack {
-                            DatePicker(selection: $dateFinished, displayedComponents: .date) {
+                            DatePicker(selection: $newBookForm.dateFinished, displayedComponents: .date) {
                                 Text("Date Finished:")
                             }
                             
                             Button {
-                                addDateFinished.toggle()
+                                newBookForm.addDateFinished.toggle()
                             } label: {
                                 Image(systemName: "xmark.circle")
                                     .foregroundColor(.red)
@@ -151,7 +124,7 @@ struct MacNewBookWindowView: View {
                     // Page Count
                     TextField(
                         "Page Count:",
-                        value: $pageCount,
+                        value: $newBookForm.pageCount,
                         format: .number
                     )
                         
@@ -182,7 +155,7 @@ struct MacNewBookWindowView: View {
                     
                 Group {
                     // Book Format
-                    Picker("Book Format:", selection: $bookFormat) {
+                    Picker("Book Format:", selection: $newBookForm.bookFormat) {
                         ForEach(BookFormat.allCases) { format in
                             Label(bookFormatProperties[format]![0], systemImage: bookFormatProperties[format]![1])
                                 .tag(format.rawValue)
@@ -200,14 +173,14 @@ struct MacNewBookWindowView: View {
                     // Year Published
                     TextField(
                         "Year Published:",
-                        value: $yearPublished,
+                        value: $newBookForm.yearPublished,
                         format: .number
                     )
                     
                     // ISBN
                     TextField(
                         "ISBN:",
-                        text: $isbn
+                        text: $newBookForm.isbn
                     )
                 }
                     
@@ -235,70 +208,17 @@ struct MacNewBookWindowView: View {
                 
                 HStack {
                     Button("Cancel", action: {
-                        dismiss()
+//                        dismiss()
                     })
                     Button("Save", action: {
-                        addBook()
-                        dismiss()
+                        newBookForm.addBook()
+//                        dismiss()
                     })
                 }
             }
         }
         .padding(15)
         .frame(minWidth: 700)
-    }
-    
-    private func addBook() {
-        withAnimation {
-            let newBook = Book(context: viewContext)
-            newBook.createdAt = Date()
-            newBook.updatedAt = Date()
-            
-            newBook.title = title
-                       
-            newBook.readingStatus = readingStatus
-            if addDateStarted {
-                newBook.dateStarted = dateStarted
-            }
-            if addDateFinished {
-                newBook.dateFinished = dateFinished
-            }
-            
-            authors.forEach(newBook.addToAuthors)
-            editors.forEach(newBook.addToEditors)
-            
-            if let unwrapped = pageCount {
-                newBook.pageCount = unwrapped
-            }
-            genres.forEach(newBook.addToGenres)
-            categories.forEach(newBook.addToCategories)
-            tags.forEach(newBook.addToTags)
-
-            newBook.bookFormat = bookFormat
-            if let unwrapped = publisher {
-                newBook.publisher = unwrapped
-            }
-            if let unwrapped = yearPublished {
-                newBook.yearPublished = unwrapped
-            }
-            newBook.isbn = isbn
-            
-            if let unwrapped = countryOfOrigin {
-                newBook.countryOfOrigin = unwrapped
-            }
-            translators.forEach(newBook.addToTranslators)
-            newBook.originalLanguage = originalLanguage
-            newBook.languageReadIn = languageReadIn
-            
-            do {
-                try viewContext.save()
-            } catch {
-                // TODO: Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
     }
 }
 

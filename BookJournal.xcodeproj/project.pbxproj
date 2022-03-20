@@ -82,6 +82,8 @@
 		939BB9F427CA785F0001B0DF /* Chip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939BB9F227CA785F0001B0DF /* Chip.swift */; };
 		939BB9F627CA9BB40001B0DF /* SmallChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939BB9F527CA9BB40001B0DF /* SmallChip.swift */; };
 		939BB9F727CA9BB40001B0DF /* SmallChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939BB9F527CA9BB40001B0DF /* SmallChip.swift */; };
+		93A8F9A827E778CB00C8E8C5 /* NewBookForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A8F9A727E778CB00C8E8C5 /* NewBookForm.swift */; };
+		93A8F9A927E778CB00C8E8C5 /* NewBookForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A8F9A727E778CB00C8E8C5 /* NewBookForm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +149,7 @@
 		939BB9EE27CA44D60001B0DF /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		939BB9F227CA785F0001B0DF /* Chip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chip.swift; sourceTree = "<group>"; };
 		939BB9F527CA9BB40001B0DF /* SmallChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallChip.swift; sourceTree = "<group>"; };
+		93A8F9A727E778CB00C8E8C5 /* NewBookForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBookForm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,6 +279,7 @@
 		9346342227C2A5BF003B233F /* Books */ = {
 			isa = PBXGroup;
 			children = (
+				93A8F9AA27E77E5400C8E8C5 /* Utils */,
 				9369C1D327E76EC500A39E57 /* MacNewBookWindow */,
 				9346661627C93EC100D58DE7 /* iOSNewBookSheet.swift */,
 				9329053D27C2916F000D15AE /* BookList.swift */,
@@ -392,6 +396,14 @@
 				9369C1B127E631EC00A39E57 /* LanguagePicker.swift */,
 			);
 			path = Elements;
+			sourceTree = "<group>";
+		};
+		93A8F9AA27E77E5400C8E8C5 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				93A8F9A727E778CB00C8E8C5 /* NewBookForm.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -588,6 +600,7 @@
 				9369C19727E53BC400A39E57 /* TranslatorsSearchList.swift in Sources */,
 				9369C19E27E53FE000A39E57 /* CountriesSearchList.swift in Sources */,
 				9309D77F27E4A51500F19670 /* SearchList.swift in Sources */,
+				93A8F9A827E778CB00C8E8C5 /* NewBookForm.swift in Sources */,
 				9369C1C027E6486100A39E57 /* CreateTag.swift in Sources */,
 				9369C19A27E53C3D00A39E57 /* CreateTranslator.swift in Sources */,
 				9369C1C727E64B3600A39E57 /* CategoriesSearchList.swift in Sources */,
@@ -625,6 +638,7 @@
 				9369C1CB27E64B8B00A39E57 /* CreateCategory.swift in Sources */,
 				9369C19127E5204A00A39E57 /* CreatePublisher.swift in Sources */,
 				9369C1AB27E62C1F00A39E57 /* WrappingSmallChipsWithName.swift in Sources */,
+				93A8F9A927E778CB00C8E8C5 /* NewBookForm.swift in Sources */,
 				9329054527C29C55000D15AE /* BookView.swift in Sources */,
 				9369C19827E53BC400A39E57 /* TranslatorsSearchList.swift in Sources */,
 				9369C19F27E53FE000A39E57 /* CountriesSearchList.swift in Sources */,
