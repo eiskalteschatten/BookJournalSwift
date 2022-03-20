@@ -144,7 +144,6 @@
 		9369C1BF27E6486100A39E57 /* CreateTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTag.swift; sourceTree = "<group>"; };
 		9369C1C627E64B3600A39E57 /* CategoriesSearchList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesSearchList.swift; sourceTree = "<group>"; };
 		9369C1C927E64B8B00A39E57 /* CreateCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCategory.swift; sourceTree = "<group>"; };
-		9369C1D227E76D9D00A39E57 /* BookJournal--macOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "BookJournal--macOS--Info.plist"; sourceTree = "<group>"; };
 		9369C1D427E76ED700A39E57 /* MacNewBookWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacNewBookWindow.swift; sourceTree = "<group>"; };
 		939BB9EE27CA44D60001B0DF /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		939BB9F227CA785F0001B0DF /* Chip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chip.swift; sourceTree = "<group>"; };
@@ -197,7 +196,6 @@
 		932198DE279D86E400CB6E76 = {
 			isa = PBXGroup;
 			children = (
-				9369C1D227E76D9D00A39E57 /* BookJournal--macOS--Info.plist */,
 				932198E3279D86E400CB6E76 /* Shared */,
 				932198F5279D86E600CB6E76 /* macOS */,
 				932198FE279D86E600CB6E76 /* Tests iOS */,
