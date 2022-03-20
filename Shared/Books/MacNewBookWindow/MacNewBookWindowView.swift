@@ -15,7 +15,7 @@ struct MacNewBookWindowView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @State private var screen: Screen?
-    @StateObject private var newBookForm = NewBookForm()
+    @StateObject private var newBookFormModel = NewBookFormModel()
     
     var body: some View {
         HStack {
@@ -44,11 +44,11 @@ struct MacNewBookWindowView: View {
                     // Title
                     TextField(
                         "Title:",
-                        text: $newBookForm.title
+                        text: $newBookFormModel.title
                     )
                     
                     // Reading Status
-                    Picker("Reading Status:", selection: $newBookForm.readingStatus) {
+                    Picker("Reading Status:", selection: $newBookFormModel.readingStatus) {
                         ForEach(BookReadingStatus.allCases) { status in
                             Text(bookReadingStatusProperties[status]!)
                                 .tag(status.rawValue)
@@ -56,19 +56,19 @@ struct MacNewBookWindowView: View {
                     }
                     
                     // Date Started
-                    if !newBookForm.addDateStarted {
+                    if !newBookFormModel.addDateStarted {
                         Button("Add Date Started") {
-                            newBookForm.addDateStarted.toggle()
+                            newBookFormModel.addDateStarted.toggle()
                         }
                     }
                     else {
                         HStack {
-                            DatePicker(selection: $newBookForm.dateStarted, displayedComponents: .date) {
+                            DatePicker(selection: $newBookFormModel.dateStarted, displayedComponents: .date) {
                                 Text("Date Started:")
                             }
                             
                             Button {
-                                newBookForm.addDateStarted.toggle()
+                                newBookFormModel.addDateStarted.toggle()
                             } label: {
                                 Image(systemName: "xmark.circle")
                                     .foregroundColor(.red)
@@ -78,19 +78,19 @@ struct MacNewBookWindowView: View {
                     }
                     
                     // Date Finished
-                    if !newBookForm.addDateFinished {
+                    if !newBookFormModel.addDateFinished {
                         Button("Add Date Finished") {
-                            newBookForm.addDateFinished.toggle()
+                            newBookFormModel.addDateFinished.toggle()
                         }
                     }
                     else {
                         HStack {
-                            DatePicker(selection: $newBookForm.dateFinished, displayedComponents: .date) {
+                            DatePicker(selection: $newBookFormModel.dateFinished, displayedComponents: .date) {
                                 Text("Date Finished:")
                             }
                             
                             Button {
-                                newBookForm.addDateFinished.toggle()
+                                newBookFormModel.addDateFinished.toggle()
                             } label: {
                                 Image(systemName: "xmark.circle")
                                     .foregroundColor(.red)
@@ -124,7 +124,7 @@ struct MacNewBookWindowView: View {
                     // Page Count
                     TextField(
                         "Page Count:",
-                        value: $newBookForm.pageCount,
+                        value: $newBookFormModel.pageCount,
                         format: .number
                     )
                         
@@ -155,7 +155,7 @@ struct MacNewBookWindowView: View {
                     
                 Group {
                     // Book Format
-                    Picker("Book Format:", selection: $newBookForm.bookFormat) {
+                    Picker("Book Format:", selection: $newBookFormModel.bookFormat) {
                         ForEach(BookFormat.allCases) { format in
                             Label(bookFormatProperties[format]![0], systemImage: bookFormatProperties[format]![1])
                                 .tag(format.rawValue)
@@ -173,14 +173,14 @@ struct MacNewBookWindowView: View {
                     // Year Published
                     TextField(
                         "Year Published:",
-                        value: $newBookForm.yearPublished,
+                        value: $newBookFormModel.yearPublished,
                         format: .number
                     )
                     
                     // ISBN
                     TextField(
                         "ISBN:",
-                        text: $newBookForm.isbn
+                        text: $newBookFormModel.isbn
                     )
                 }
                     
@@ -211,7 +211,7 @@ struct MacNewBookWindowView: View {
 //                        dismiss()
                     })
                     Button("Save", action: {
-                        newBookForm.addBook()
+                        newBookFormModel.addBook()
 //                        dismiss()
                     })
                 }
@@ -219,6 +219,9 @@ struct MacNewBookWindowView: View {
         }
         .padding(15)
         .frame(minWidth: 700)
+        .onAppear() {
+            newBookFormModel.viewContext = viewContext
+        }
     }
 }
 
