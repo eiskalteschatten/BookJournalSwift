@@ -11,6 +11,7 @@ import SwiftUI
 final class MacNewBookWindow: NSWindow {
     override func close() {
         // TODO: prompt user for unsaved changes
+        // if viewContext.hasChanges { ... }
         super.close()
     }
 }

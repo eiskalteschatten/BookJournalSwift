@@ -211,7 +211,7 @@ struct MacNewBookWindowView: View {
 //                        dismiss()
                     })
                     Button("Save", action: {
-                        newBookFormModel.saveBook(viewContext: viewContext)
+                        newBookFormModel.saveBook()
 //                        dismiss()
                     })
                 }

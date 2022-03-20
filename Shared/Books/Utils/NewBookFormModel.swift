@@ -35,7 +35,10 @@ class NewBookFormModel: ObservableObject {
     @Published var originalLanguage: String = ""
     @Published var languageReadIn: String = ""
     
-    func saveBook(viewContext: NSManagedObjectContext) {
+    func saveBook() {
+        let persistenceController = PersistenceController.shared
+        let viewContext = persistenceController.container.viewContext
+        
         withAnimation {
             let newBook = Book(context: viewContext)
             newBook.createdAt = Date()
