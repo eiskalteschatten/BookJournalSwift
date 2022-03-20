@@ -16,7 +16,7 @@ struct MacNewBookWindowView: View {
     @StateObject private var newBookFormModel = NewBookFormModel()
     
     var body: some View {
-        let spacerHeight = 30.0
+        let spacerHeight = 10.0
         
         VStack(alignment: .trailing) {
             HStack {
@@ -41,7 +41,7 @@ struct MacNewBookWindowView: View {
                 .padding(.trailing, 25)
                 
                 Form {
-                    Section {
+                    Group {
                         // Title
                         TextField(
                             "Title:",
@@ -55,12 +55,12 @@ struct MacNewBookWindowView: View {
                                     .tag(status.rawValue)
                             }
                         }
+                        
+                        Divider()
+                            .padding(.vertical, spacerHeight)
                     }
                     
-                    Spacer()
-                        .frame(height: spacerHeight)
-                    
-                    Section {
+                    Group {
                         // Date Started
                         Toggle("Add Date Started", isOn: $newBookFormModel.addDateStarted)
                         
@@ -76,35 +76,35 @@ struct MacNewBookWindowView: View {
                             Text("Date Finished:")
                         }
                         .disabled(newBookFormModel.addDateFinished == false)
+                        
+                        Divider()
+                            .padding(.vertical, spacerHeight)
                     }
                     
-                    Spacer()
-                        .frame(height: spacerHeight)
+                    // People
+                    Group {
+                        // Authors
+                        NavigationLink(
+                            destination: AuthorsSearchList(selectedItems: $newBookFormModel.authors),
+                            tag: Screen.addAuthors,
+                            selection: $screen,
+                            label: { WrappingSmallChipsWithName<Author>(title: "Authors", data: newBookFormModel.authors, chipColor: AUTHOR_COLOR) }
+                        )
+        
+                        // Editors
+                        NavigationLink(
+                            destination: EditorsSearchList(selectedItems: $newBookFormModel.editors),
+                            tag: Screen.addEditors,
+                            selection: $screen,
+                            label: { WrappingSmallChipsWithName<Editor>(title: "Editors", data: newBookFormModel.editors, chipColor: EDITOR_COLOR) }
+                        )
                         
-        //            // People
-        //            Section("People") {
-        //                // Authors
-        //                NavigationLink(
-        //                    destination: AuthorsSearchList(selectedItems: $authors),
-        //                    tag: Screen.addAuthors,
-        //                    selection: $screen,
-        //                    label: { WrappingSmallChipsWithName<Author>(title: "Authors", data: authors, chipColor: AUTHOR_COLOR) }
-        //                )
-        //
-        //                // Editors
-        //                NavigationLink(
-        //                    destination: EditorsSearchList(selectedItems: $editors),
-        //                    tag: Screen.addEditors,
-        //                    selection: $screen,
-        //                    label: { WrappingSmallChipsWithName<Editor>(title: "Editors", data: editors, chipColor: EDITOR_COLOR) }
-        //                )
-        //            }
+                        Divider()
+                            .padding(.vertical, spacerHeight)
+                    }
                     
-//                    Spacer()
-//                        .frame(height: spacerHeight)
-                        
                     // Book Information
-                    Section("Book Information") {
+                    Group {
                         // Page Count
                         TextField(
                             "Page Count:",
@@ -112,35 +112,35 @@ struct MacNewBookWindowView: View {
                             format: .number
                         )
                             
-        //                // Genres
-        //                NavigationLink(
-        //                    destination: GenresSearchList(selectedItems: $genres),
-        //                    tag: Screen.addGenres,
-        //                    selection: $screen,
-        //                    label: { WrappingSmallChipsWithName<Genre>(title: "Genres", data: genres, chipColor: GENRE_COLOR) }
-        //                )
-        //
-        //                // Categories
-        //                NavigationLink(
-        //                    destination: CategoriesSearchList(selectedItems: $categories),
-        //                    tag: Screen.addCategories,
-        //                    selection: $screen,
-        //                    label: { WrappingSmallChipsWithName<Category>(title: "Categories", data: categories, chipColor: CATEGORY_COLOR) }
-        //                )
-        //
-        //                // Tags
-        //                NavigationLink(
-        //                    destination: TagsSearchList(selectedItems: $tags),
-        //                    tag: Screen.addTags,
-        //                    selection: $screen,
-        //                    label: { WrappingSmallChipsWithName<Tag>(title: "Tags", data: tags, chipColor: TAG_COLOR) }
-        //                )
-                        }
+                        // Genres
+                        NavigationLink(
+                            destination: GenresSearchList(selectedItems: $newBookFormModel.genres),
+                            tag: Screen.addGenres,
+                            selection: $screen,
+                            label: { WrappingSmallChipsWithName<Genre>(title: "Genres", data: newBookFormModel.genres, chipColor: GENRE_COLOR) }
+                        )
+        
+                        // Categories
+                        NavigationLink(
+                            destination: CategoriesSearchList(selectedItems: $newBookFormModel.categories),
+                            tag: Screen.addCategories,
+                            selection: $screen,
+                            label: { WrappingSmallChipsWithName<Category>(title: "Categories", data: newBookFormModel.categories, chipColor: CATEGORY_COLOR) }
+                        )
+        
+                        // Tags
+                        NavigationLink(
+                            destination: TagsSearchList(selectedItems: $newBookFormModel.tags),
+                            tag: Screen.addTags,
+                            selection: $screen,
+                            label: { WrappingSmallChipsWithName<Tag>(title: "Tags", data: newBookFormModel.tags, chipColor: TAG_COLOR) }
+                        )
                         
-                    Spacer()
-                        .frame(height: spacerHeight)
-                    
-                    Section("Publication Details") {
+                        Divider()
+                            .padding(.vertical, spacerHeight)
+                    }
+                        
+                    Group {
                         // Book Format
                         Picker("Book Format:", selection: $newBookFormModel.bookFormat) {
                             ForEach(BookFormat.allCases) { format in
@@ -149,13 +149,13 @@ struct MacNewBookWindowView: View {
                             }
                         }
                             
-        //                // Publisher
-        //                NavigationLink(
-        //                    destination: PublishersSearchList(selectedItem: $publisher),
-        //                    tag: Screen.addPublisher,
-        //                    selection: $screen,
-        //                    label: { PickerMimickerWithName<Publisher>(title: "Publisher", data: publisher) }
-        //                )
+                        // Publisher
+                        NavigationLink(
+                            destination: PublishersSearchList(selectedItem: $newBookFormModel.publisher),
+                            tag: Screen.addPublisher,
+                            selection: $screen,
+                            label: { PickerMimickerWithName<Publisher>(title: "Publisher", data: newBookFormModel.publisher) }
+                        )
                             
                         // Year Published
                         TextField(
@@ -169,33 +169,32 @@ struct MacNewBookWindowView: View {
                             "ISBN:",
                             text: $newBookFormModel.isbn
                         )
+                        
+                        Divider()
+                            .padding(.vertical, spacerHeight)
                     }
                     
-                    Spacer()
-                        .frame(height: spacerHeight)
-                    
                     // World
-        //            Section("World") {
-        //                // Country of Origin
-        //                NavigationLink(
-        //                    destination: CountriesSearchList(selectedItem: $countryOfOrigin),
-        //                    tag: Screen.addCountryOfOrigin,
-        //                    selection: $screen,
-        //                    label: { PickerMimickerWithName<Country>(title: "Country of Origin", data: countryOfOrigin) }
-        //                )
-        //
-        //                // Translators
-        //                NavigationLink(
-        //                    destination: TranslatorsSearchList(selectedItems: $translators),
-        //                    tag: Screen.addTranslators,
-        //                    selection: $screen,
-        //                    label: { WrappingSmallChipsWithName<Translator>(title: "Translators", data: translators, chipColor: TRANSLATOR_COLOR) }
-        //                )
-        //
-        //                LanguagePicker(title: "Original Language", selection: $originalLanguage)
-        //                LanguagePicker(title: "Language Read In", selection: $languageReadIn)
-        //            }
-                    
+                    Group {
+                        // Country of Origin
+                        NavigationLink(
+                            destination: CountriesSearchList(selectedItem: $newBookFormModel.countryOfOrigin),
+                            tag: Screen.addCountryOfOrigin,
+                            selection: $screen,
+                            label: { PickerMimickerWithName<Country>(title: "Country of Origin", data: newBookFormModel.countryOfOrigin) }
+                        )
+        
+                        // Translators
+                        NavigationLink(
+                            destination: TranslatorsSearchList(selectedItems: $newBookFormModel.translators),
+                            tag: Screen.addTranslators,
+                            selection: $screen,
+                            label: { WrappingSmallChipsWithName<Translator>(title: "Translators", data: newBookFormModel.translators, chipColor: TRANSLATOR_COLOR) }
+                        )
+        
+                        LanguagePicker(title: "Original Language", selection: $newBookFormModel.originalLanguage)
+                        LanguagePicker(title: "Language Read In", selection: $newBookFormModel.languageReadIn)
+                    }
                 }
             }
             .padding(.bottom, 15)
