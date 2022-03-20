@@ -16,7 +16,7 @@ struct MacNewBookWindowView: View {
     @StateObject private var newBookFormModel = NewBookFormModel()
     
     var body: some View {
-        let spacerHeight = 25.0
+        let spacerHeight = 30.0
         
         VStack(alignment: .trailing) {
             HStack {
@@ -55,50 +55,27 @@ struct MacNewBookWindowView: View {
                                     .tag(status.rawValue)
                             }
                         }
-                        
+                    }
+                    
+                    Spacer()
+                        .frame(height: spacerHeight)
+                    
+                    Section {
                         // Date Started
-                        if !newBookFormModel.addDateStarted {
-                            Button("Add Date Started") {
-                                newBookFormModel.addDateStarted.toggle()
-                            }
+                        Toggle("Add Date Started", isOn: $newBookFormModel.addDateStarted)
+                        
+                        DatePicker(selection: $newBookFormModel.dateStarted, displayedComponents: .date) {
+                            Text("Date Started:")
                         }
-                        else {
-                            HStack {
-                                DatePicker(selection: $newBookFormModel.dateStarted, displayedComponents: .date) {
-                                    Text("Date Started:")
-                                }
-                                
-                                Button {
-                                    newBookFormModel.addDateStarted.toggle()
-                                } label: {
-                                    Image(systemName: "xmark.circle")
-                                        .foregroundColor(.red)
-                                }
-                                .padding(.leading, 5)
-                            }
-                        }
+                        .disabled(newBookFormModel.addDateStarted == false)
                         
                         // Date Finished
-                        if !newBookFormModel.addDateFinished {
-                            Button("Add Date Finished") {
-                                newBookFormModel.addDateFinished.toggle()
-                            }
+                        Toggle("Add Date Finished", isOn: $newBookFormModel.addDateFinished)
+                    
+                        DatePicker(selection: $newBookFormModel.dateFinished, displayedComponents: .date) {
+                            Text("Date Finished:")
                         }
-                        else {
-                            HStack {
-                                DatePicker(selection: $newBookFormModel.dateFinished, displayedComponents: .date) {
-                                    Text("Date Finished:")
-                                }
-                                
-                                Button {
-                                    newBookFormModel.addDateFinished.toggle()
-                                } label: {
-                                    Image(systemName: "xmark.circle")
-                                        .foregroundColor(.red)
-                                }
-                                .padding(.leading, 5)
-                            }
-                        }
+                        .disabled(newBookFormModel.addDateFinished == false)
                     }
                     
                     Spacer()
