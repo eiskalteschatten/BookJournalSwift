@@ -11,9 +11,7 @@ struct MacNewBookWindowView: View {
     private enum Screen: Int {
         case addAuthors, addEditors, addGenres, addCategories, addTags, addTranslators, addPublisher, addCountryOfOrigin
     }
-    
-    @Environment(\.managedObjectContext) private var viewContext
-    
+       
     @State private var screen: Screen?
     @StateObject private var newBookFormModel = NewBookFormModel()
     

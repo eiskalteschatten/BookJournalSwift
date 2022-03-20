@@ -279,7 +279,7 @@
 		9346342227C2A5BF003B233F /* Books */ = {
 			isa = PBXGroup;
 			children = (
-				93A8F9AA27E77E5400C8E8C5 /* Utils */,
+				93A8F9AA27E77E5400C8E8C5 /* Models */,
 				9369C1D327E76EC500A39E57 /* MacNewBookWindow */,
 				9346661627C93EC100D58DE7 /* iOSNewBookSheet.swift */,
 				9329053D27C2916F000D15AE /* BookList.swift */,
@@ -398,12 +398,12 @@
 			path = Elements;
 			sourceTree = "<group>";
 		};
-		93A8F9AA27E77E5400C8E8C5 /* Utils */ = {
+		93A8F9AA27E77E5400C8E8C5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				93A8F9A727E778CB00C8E8C5 /* NewBookFormModel.swift */,
 			);
-			path = Utils;
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
