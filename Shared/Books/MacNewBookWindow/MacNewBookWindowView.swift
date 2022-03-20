@@ -206,11 +206,11 @@ struct MacNewBookWindowView: View {
                 
                 HStack {
                     Button("Cancel", action: {
-//                        dismiss()
+                        NSApplication.shared.keyWindow?.close()
                     })
                     Button("Save", action: {
                         newBookFormModel.saveBook()
-//                        dismiss()
+                        NSApplication.shared.keyWindow?.close()
                     })
                 }
             }
