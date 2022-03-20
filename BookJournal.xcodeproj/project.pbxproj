@@ -34,8 +34,7 @@
 		9346342727C2DFA6003B233F /* BookListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9346342627C2DFA6003B233F /* BookListItem.swift */; };
 		9346342827C2DFA6003B233F /* BookListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9346342627C2DFA6003B233F /* BookListItem.swift */; };
 		9346661727C93EC100D58DE7 /* iOSNewBookSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9346661627C93EC100D58DE7 /* iOSNewBookSheet.swift */; };
-		9346661C27C9406A00D58DE7 /* NewBookSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9395168227C8301300F04CCF /* NewBookSheet.swift */; };
-		9346661D27C9407000D58DE7 /* MacNewBookSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9346661827C93FD000D58DE7 /* MacNewBookSheet.swift */; };
+		9346661D27C9407000D58DE7 /* MacNewBookWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9346661827C93FD000D58DE7 /* MacNewBookWindowView.swift */; };
 		9346662827C9841900D58DE7 /* Books.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9346662727C9841900D58DE7 /* Books.swift */; };
 		9346662927C9841900D58DE7 /* Books.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9346662727C9841900D58DE7 /* Books.swift */; };
 		9369C18527E5128200A39E57 /* CreateAuthor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9369C18427E5128200A39E57 /* CreateAuthor.swift */; };
@@ -76,7 +75,8 @@
 		9369C1C827E64B3800A39E57 /* CategoriesSearchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9369C1C627E64B3600A39E57 /* CategoriesSearchList.swift */; };
 		9369C1CA27E64B8B00A39E57 /* CreateCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9369C1C927E64B8B00A39E57 /* CreateCategory.swift */; };
 		9369C1CB27E64B8B00A39E57 /* CreateCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9369C1C927E64B8B00A39E57 /* CreateCategory.swift */; };
-		9395168327C8301300F04CCF /* NewBookSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9395168227C8301300F04CCF /* NewBookSheet.swift */; };
+		9369C1D127E76C9000A39E57 /* MacNewBookWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9346661827C93FD000D58DE7 /* MacNewBookWindowView.swift */; };
+		9369C1D527E76ED700A39E57 /* MacNewBookWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9369C1D427E76ED700A39E57 /* MacNewBookWindow.swift */; };
 		939BB9EF27CA44D60001B0DF /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939BB9EE27CA44D60001B0DF /* CoreData.swift */; };
 		939BB9F027CA44D60001B0DF /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939BB9EE27CA44D60001B0DF /* CoreData.swift */; };
 		939BB9F327CA785F0001B0DF /* Chip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939BB9F227CA785F0001B0DF /* Chip.swift */; };
@@ -124,7 +124,7 @@
 		9329054327C29C55000D15AE /* BookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookView.swift; sourceTree = "<group>"; };
 		9346342627C2DFA6003B233F /* BookListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListItem.swift; sourceTree = "<group>"; };
 		9346661627C93EC100D58DE7 /* iOSNewBookSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSNewBookSheet.swift; sourceTree = "<group>"; };
-		9346661827C93FD000D58DE7 /* MacNewBookSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacNewBookSheet.swift; sourceTree = "<group>"; };
+		9346661827C93FD000D58DE7 /* MacNewBookWindowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacNewBookWindowView.swift; sourceTree = "<group>"; };
 		9346662727C9841900D58DE7 /* Books.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Books.swift; sourceTree = "<group>"; };
 		9369C18427E5128200A39E57 /* CreateAuthor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAuthor.swift; sourceTree = "<group>"; };
 		9369C18827E51D5500A39E57 /* EditorsSearchList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorsSearchList.swift; sourceTree = "<group>"; };
@@ -144,7 +144,8 @@
 		9369C1BF27E6486100A39E57 /* CreateTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTag.swift; sourceTree = "<group>"; };
 		9369C1C627E64B3600A39E57 /* CategoriesSearchList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesSearchList.swift; sourceTree = "<group>"; };
 		9369C1C927E64B8B00A39E57 /* CreateCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCategory.swift; sourceTree = "<group>"; };
-		9395168227C8301300F04CCF /* NewBookSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBookSheet.swift; sourceTree = "<group>"; };
+		9369C1D227E76D9D00A39E57 /* BookJournal--macOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "BookJournal--macOS--Info.plist"; sourceTree = "<group>"; };
+		9369C1D427E76ED700A39E57 /* MacNewBookWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacNewBookWindow.swift; sourceTree = "<group>"; };
 		939BB9EE27CA44D60001B0DF /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		939BB9F227CA785F0001B0DF /* Chip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chip.swift; sourceTree = "<group>"; };
 		939BB9F527CA9BB40001B0DF /* SmallChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallChip.swift; sourceTree = "<group>"; };
@@ -196,6 +197,7 @@
 		932198DE279D86E400CB6E76 = {
 			isa = PBXGroup;
 			children = (
+				9369C1D227E76D9D00A39E57 /* BookJournal--macOS--Info.plist */,
 				932198E3279D86E400CB6E76 /* Shared */,
 				932198F5279D86E600CB6E76 /* macOS */,
 				932198FE279D86E600CB6E76 /* Tests iOS */,
@@ -277,22 +279,13 @@
 		9346342227C2A5BF003B233F /* Books */ = {
 			isa = PBXGroup;
 			children = (
-				9346661527C93EA700D58DE7 /* NewBookSheet */,
+				9369C1D327E76EC500A39E57 /* MacNewBookWindow */,
+				9346661627C93EC100D58DE7 /* iOSNewBookSheet.swift */,
 				9329053D27C2916F000D15AE /* BookList.swift */,
 				9329054327C29C55000D15AE /* BookView.swift */,
 				9346342627C2DFA6003B233F /* BookListItem.swift */,
 			);
 			path = Books;
-			sourceTree = "<group>";
-		};
-		9346661527C93EA700D58DE7 /* NewBookSheet */ = {
-			isa = PBXGroup;
-			children = (
-				9395168227C8301300F04CCF /* NewBookSheet.swift */,
-				9346661627C93EC100D58DE7 /* iOSNewBookSheet.swift */,
-				9346661827C93FD000D58DE7 /* MacNewBookSheet.swift */,
-			);
-			path = NewBookSheet;
 			sourceTree = "<group>";
 		};
 		9346662627C9840200D58DE7 /* Data */ = {
@@ -373,6 +366,15 @@
 				9369C1C927E64B8B00A39E57 /* CreateCategory.swift */,
 			);
 			path = Categories;
+			sourceTree = "<group>";
+		};
+		9369C1D327E76EC500A39E57 /* MacNewBookWindow */ = {
+			isa = PBXGroup;
+			children = (
+				9346661827C93FD000D58DE7 /* MacNewBookWindowView.swift */,
+				9369C1D427E76ED700A39E57 /* MacNewBookWindow.swift */,
+			);
+			path = MacNewBookWindow;
 			sourceTree = "<group>";
 		};
 		939BB9ED27CA44AE0001B0DF /* Extensions */ = {
@@ -585,12 +587,12 @@
 				9369C19027E5204A00A39E57 /* CreatePublisher.swift in Sources */,
 				9369C1CA27E64B8B00A39E57 /* CreateCategory.swift in Sources */,
 				9369C1AA27E62C1F00A39E57 /* WrappingSmallChipsWithName.swift in Sources */,
+				9369C1D127E76C9000A39E57 /* MacNewBookWindowView.swift in Sources */,
 				93219913279D86E600CB6E76 /* ContentView.swift in Sources */,
 				9369C19727E53BC400A39E57 /* TranslatorsSearchList.swift in Sources */,
 				9369C19E27E53FE000A39E57 /* CountriesSearchList.swift in Sources */,
 				9309D77F27E4A51500F19670 /* SearchList.swift in Sources */,
 				9369C1C027E6486100A39E57 /* CreateTag.swift in Sources */,
-				9395168327C8301300F04CCF /* NewBookSheet.swift in Sources */,
 				9369C19A27E53C3D00A39E57 /* CreateTranslator.swift in Sources */,
 				9369C1C727E64B3600A39E57 /* CategoriesSearchList.swift in Sources */,
 				939BB9F327CA785F0001B0DF /* Chip.swift in Sources */,
@@ -607,7 +609,6 @@
 				939BB9F027CA44D60001B0DF /* CoreData.swift in Sources */,
 				9369C1C127E6486500A39E57 /* CreateTag.swift in Sources */,
 				93219912279D86E600CB6E76 /* BookJournalApp.swift in Sources */,
-				9346661C27C9406A00D58DE7 /* NewBookSheet.swift in Sources */,
 				9369C1C327E6486B00A39E57 /* CreateGenre.swift in Sources */,
 				9369C18A27E51D5500A39E57 /* EditorsSearchList.swift in Sources */,
 				9369C1C427E6486E00A39E57 /* GenresSearchList.swift in Sources */,
@@ -616,7 +617,8 @@
 				9346342827C2DFA6003B233F /* BookListItem.swift in Sources */,
 				9369C1AF27E62FE000A39E57 /* PickerMimickerWithName.swift in Sources */,
 				93219916279D86E600CB6E76 /* Persistence.swift in Sources */,
-				9346661D27C9407000D58DE7 /* MacNewBookSheet.swift in Sources */,
+				9346661D27C9407000D58DE7 /* MacNewBookWindowView.swift in Sources */,
+				9369C1D527E76ED700A39E57 /* MacNewBookWindow.swift in Sources */,
 				9369C18627E5128200A39E57 /* CreateAuthor.swift in Sources */,
 				9369C19427E520CC00A39E57 /* PublishersSearchList.swift in Sources */,
 				9346662927C9841900D58DE7 /* Books.swift in Sources */,
@@ -864,6 +866,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "BookJournal--macOS--Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -895,6 +898,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "BookJournal--macOS--Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (

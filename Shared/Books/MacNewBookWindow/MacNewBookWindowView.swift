@@ -1,5 +1,5 @@
 //
-//  MacNewBookSheet.swift
+//  MacNewBookWindowView.swift
 //  BookJournal (iOS)
 //
 //  Created by Alex Seifert on 25.02.22.
@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreData
 
-struct MacNewBookSheet: View {
+struct MacNewBookWindowView: View {
     private enum Screen: Int {
         case addAuthors, addEditors, addGenres, addCategories, addTags, addTranslators, addPublisher, addCountryOfOrigin
     }
@@ -301,11 +301,11 @@ struct MacNewBookSheet: View {
     }
 }
 
-struct MacNewBookSheet_Previews: PreviewProvider {
+struct MacNewBookWindowView_Previews: PreviewProvider {
     static var previews: some View {
         let context = PersistenceController.preview.container.viewContext
         Group {
-            MacNewBookSheet().preferredColorScheme(.dark).environment(\.managedObjectContext, context)
+            MacNewBookWindowView().preferredColorScheme(.dark).environment(\.managedObjectContext, context)
         }
     }
 }

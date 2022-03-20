@@ -11,9 +11,12 @@ import CoreData
 struct BookList: View {
     private var predicate: NSPredicate?
     
-    @State private var showNewBookSheet = false
     @State private var selectedBook: Book?
     @Environment(\.managedObjectContext) private var viewContext
+    
+    #if os(iOS)
+    @State private var showNewBookSheet = false
+    #endif
 
     @FetchRequest private var books: FetchedResults<Book>
     
@@ -47,15 +50,21 @@ struct BookList: View {
             #endif
             ToolbarItem {
                 Button(action: {
+                    #if os(iOS)
                     showNewBookSheet.toggle()
+                    #else
+                    openNewBookWindow()
+                    #endif
                 }) {
                     Label("Add Book", systemImage: "plus")
                 }
             }
         }
+        #if os(iOS)
         .sheet(isPresented: $showNewBookSheet) {
-            NewBookSheet()
+            iOSNewBookSheet()
         }
+        #endif
     }
 
     private func deleteBooks(offsets: IndexSet) {
