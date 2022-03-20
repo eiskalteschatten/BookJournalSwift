@@ -211,7 +211,7 @@ struct MacNewBookWindowView: View {
 //                        dismiss()
                     })
                     Button("Save", action: {
-                        newBookFormModel.addBook()
+                        newBookFormModel.saveBook(viewContext: viewContext)
 //                        dismiss()
                     })
                 }
@@ -219,9 +219,6 @@ struct MacNewBookWindowView: View {
         }
         .padding(15)
         .frame(minWidth: 700)
-        .onAppear() {
-            newBookFormModel.viewContext = viewContext
-        }
     }
 }
 
