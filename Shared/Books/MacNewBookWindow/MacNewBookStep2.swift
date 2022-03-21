@@ -25,26 +25,26 @@ struct MacNewBookStep2: View {
                     }
                 }
                 
+                Divider()
+                    .padding(.vertical)
+                
                 Group {
                     // Date Started
-                    Toggle("Add Date Started", isOn: $bookModel.addDateStarted.animation())
+                    Toggle("Add Date Started", isOn: $bookModel.addDateStarted)
                     
-                    if bookModel.addDateStarted {
-                        DatePicker(selection: $bookModel.dateStarted, displayedComponents: .date) {
-                            Text("Date Started:")
-                        }
-                        .transition(.scale)
+                    DatePicker(selection: $bookModel.dateStarted, displayedComponents: .date) {
+                        Text("Date Started:")
                     }
+                    .disabled(!bookModel.addDateStarted)
+                    .padding(.bottom)
                     
                     // Date Finished
-                    Toggle("Add Date Finished", isOn: $bookModel.addDateFinished.animation())
+                    Toggle("Add Date Finished", isOn: $bookModel.addDateFinished)
                 
-                    if bookModel.addDateFinished {
-                        DatePicker(selection: $bookModel.dateFinished, displayedComponents: .date) {
-                            Text("Date Finished:")
-                        }
-                        .transition(.scale)
+                    DatePicker(selection: $bookModel.dateFinished, displayedComponents: .date) {
+                        Text("Date Finished:")
                     }
+                    .disabled(!bookModel.addDateFinished)
                 }
             }
         }
