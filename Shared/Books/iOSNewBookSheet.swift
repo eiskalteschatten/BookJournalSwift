@@ -63,47 +63,23 @@ struct iOSNewBookSheet: View {
                     }
                     
                     // Date Started
-                    if !bookModel.addDateStarted {
-                        Button("Add Date Started") {
-                            bookModel.addDateStarted.toggle()
+                    Toggle("Add Date Started", isOn: $bookModel.addDateStarted.animation())
+                    
+                    if bookModel.addDateStarted {
+                        DatePicker(selection: $bookModel.dateStarted, displayedComponents: .date) {
+                            Text("Date Started:")
                         }
-                    }
-                    else {
-                        HStack {
-                            DatePicker(selection: $bookModel.dateStarted, displayedComponents: .date) {
-                                Text("Date Started")
-                            }
-                            
-                            Button {
-                                bookModel.addDateStarted.toggle()
-                            } label: {
-                                Image(systemName: "xmark.circle")
-                                    .foregroundColor(.red)
-                            }
-                            .padding(.leading, 5)
-                        }
+                        .transition(.scale)
                     }
                     
                     // Date Finished
-                    if !bookModel.addDateFinished {
-                        Button("Add Date Finished") {
-                            bookModel.addDateFinished.toggle()
+                    Toggle("Add Date Finished", isOn: $bookModel.addDateFinished.animation())
+                
+                    if bookModel.addDateFinished {
+                        DatePicker(selection: $bookModel.dateFinished, displayedComponents: .date) {
+                            Text("Date Finished:")
                         }
-                    }
-                    else {
-                        HStack {
-                            DatePicker(selection: $bookModel.dateFinished, displayedComponents: .date) {
-                                Text("Date Finished")
-                            }
-                            
-                            Button {
-                                bookModel.addDateFinished.toggle()
-                            } label: {
-                                Image(systemName: "xmark.circle")
-                                    .foregroundColor(.red)
-                            }
-                            .padding(.leading, 5)
-                        }
+                        .transition(.scale)
                     }
                 }
                 
