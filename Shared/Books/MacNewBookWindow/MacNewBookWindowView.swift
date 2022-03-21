@@ -16,48 +16,16 @@ struct MacNewBookWindowView: View {
     @StateObject private var bookModel = BookModel()
     
     var body: some View {
-        let spacerHeight = 10.0
-        
         VStack {
-            Form {
-                Group {
-                    // Reading Status
-                    Picker("Reading Status:", selection: $bookModel.readingStatus) {
-                        ForEach(BookReadingStatus.allCases) { status in
-                            Text(bookReadingStatusProperties[status]!)
-                                .tag(status.rawValue)
-                        }
-                    }
-                    
-                    Divider()
-                        .padding(.vertical, spacerHeight)
-                }
-                
-                Group {
-                    // Date Started
-                    Toggle("Add Date Started", isOn: $bookModel.addDateStarted.animation())
-                    
-                    if bookModel.addDateStarted {
-                        DatePicker(selection: $bookModel.dateStarted, displayedComponents: .date) {
-                            Text("Date Started:")
-                        }
-                        .transition(.scale)
-                    }
-                    
-                    // Date Finished
-                    Toggle("Add Date Finished", isOn: $bookModel.addDateFinished.animation())
-                
-                    if bookModel.addDateFinished {
-                        DatePicker(selection: $bookModel.dateFinished, displayedComponents: .date) {
-                            Text("Date Finished:")
-                        }
-                        .transition(.scale)
-                    }
-                    
-                    Divider()
-                        .padding(.vertical, spacerHeight)
-                }
-                
+            switch screen {
+            case .step1:
+                MacNewBookStep1(bookModel: bookModel)
+            case .step2:
+                MacNewBookStep2(bookModel: bookModel)
+            default:
+                MacNewBookStep1(bookModel: bookModel)
+            }
+            
                 // People
 //                Group {
 //                    // Authors
@@ -169,11 +137,11 @@ struct MacNewBookWindowView: View {
 //                        label: { WrappingSmallChipsWithName<Translator>(title: "Translators", data: bookModel.translators, chipColor: TRANSLATOR_COLOR) }
 //                    )
 //    
-////                        LanguagePicker(title: "Original Language", selection: $bookModel.originalLanguage)
-////                        LanguagePicker(title: "Language Read In", selection: $bookModel.languageReadIn)
+//                        LanguagePicker(title: "Original Language", selection: $bookModel.originalLanguage)
+//                        LanguagePicker(title: "Language Read In", selection: $bookModel.languageReadIn)
 //                }
-            }
-            .padding(.bottom, 15)
+//            }
+//            .padding(.bottom, 15)
             
             HStack {
                 Button("Cancel", action: {
@@ -190,7 +158,7 @@ struct MacNewBookWindowView: View {
         }
         .padding(.horizontal, 15)
         .padding(.leading, 15)
-        .frame(minWidth: 700)
+        .frame(minWidth: 450, minHeight: 500)
     }
 }
 

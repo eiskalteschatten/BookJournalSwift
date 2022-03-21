@@ -20,7 +20,7 @@ func openNewBookWindow() {
     let contentView = MacNewBookWindowView()
     
     let window = MacNewBookWindow(
-        contentRect: NSRect(x: 0, y: 0, width: 500, height: 600),
+        contentRect: NSRect(x: 0, y: 0, width: 450, height: 500),
         styleMask: [.titled, .closable, .miniaturizable],
         backing: .buffered,
         defer: false

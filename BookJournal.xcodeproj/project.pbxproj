@@ -85,6 +85,7 @@
 		939BB9F727CA9BB40001B0DF /* SmallChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939BB9F527CA9BB40001B0DF /* SmallChip.swift */; };
 		93A8F9A827E778CB00C8E8C5 /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A8F9A727E778CB00C8E8C5 /* BookModel.swift */; };
 		93A8F9A927E778CB00C8E8C5 /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A8F9A727E778CB00C8E8C5 /* BookModel.swift */; };
+		93B2051627E8B71200E9D858 /* MacNewBookStep2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B2051527E8B71200E9D858 /* MacNewBookStep2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -152,6 +153,7 @@
 		939BB9F227CA785F0001B0DF /* Chip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chip.swift; sourceTree = "<group>"; };
 		939BB9F527CA9BB40001B0DF /* SmallChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallChip.swift; sourceTree = "<group>"; };
 		93A8F9A727E778CB00C8E8C5 /* BookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
+		93B2051527E8B71200E9D858 /* MacNewBookStep2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacNewBookStep2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -377,6 +379,7 @@
 				9346661827C93FD000D58DE7 /* MacNewBookWindowView.swift */,
 				9369C1D427E76ED700A39E57 /* MacNewBookWindow.swift */,
 				93548C8927E8AA50004524B7 /* MacNewBookStep1.swift */,
+				93B2051527E8B71200E9D858 /* MacNewBookStep2.swift */,
 			);
 			path = MacNewBookWindow;
 			sourceTree = "<group>";
@@ -635,6 +638,7 @@
 				9369C19427E520CC00A39E57 /* PublishersSearchList.swift in Sources */,
 				9346662927C9841900D58DE7 /* Books.swift in Sources */,
 				9309D78427E4A55F00F19670 /* AuthorsSearchList.swift in Sources */,
+				93B2051627E8B71200E9D858 /* MacNewBookStep2.swift in Sources */,
 				9329054227C2932F000D15AE /* Constants.swift in Sources */,
 				93219910279D86E600CB6E76 /* BookJournal.xcdatamodeld in Sources */,
 				9369C1B327E631EC00A39E57 /* LanguagePicker.swift in Sources */,
