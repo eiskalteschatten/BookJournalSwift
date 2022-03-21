@@ -1,6 +1,6 @@
 //
 //  MacNewBookWindowView.swift
-//  BookJournal (iOS)
+//  BookJournal (macOS)
 //
 //  Created by Alex Seifert on 25.02.22.
 //
@@ -19,35 +19,18 @@ struct MacNewBookWindowView: View {
         let spacerHeight = 10.0
         
         VStack(alignment: .trailing) {
-            HStack {
-                VStack {
-                    // Bookcover
-                    Image(systemName: "plus.square.dashed")
-                        .font(.system(size: 150))
-                        .foregroundColor(.accentColor)
-                    
-                    Button {
-                        // TODO: add function
-                    } label: {
-                        Text("Choose Image")
-                    }
-                    
-                    Button {
-                        // TODO: add function
-                    } label: {
-                        Text("Scan Image")
-                    }
-                }
-                .padding(.trailing, 25)
-                
+            HStack(alignment: .leading) {
+//                VStack(alignment: .leading) {
+//                    Text("Bookcover & Title")
+//                    Text("Status")
+//                    Text("People")
+//                    Text("Book Information")
+//                    Text("Publication Details")
+//                    Text("World")
+//                }
+//
                 Form {
                     Group {
-                        // Title
-                        TextField(
-                            "Title:",
-                            text: $bookModel.title
-                        )
-                        
                         // Reading Status
                         Picker("Reading Status:", selection: $bookModel.readingStatus) {
                             ForEach(BookReadingStatus.allCases) { status in
