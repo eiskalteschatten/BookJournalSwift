@@ -14,26 +14,23 @@ struct MacNewBookStep3: View {
         VStack {
             MacNewBookStepTitle("People")
             
-            Form {
-                // Authors
-                Text("Authors")
-        //        NavigationLink(
-        //            destination: AuthorsSearchList(selectedItems: $bookModel.authors),
-        //            tag: Screen.addAuthors,
-        //            selection: $screen,
-        //            label: { WrappingSmallChipsWithName<Author>(title: "Authors", data: bookModel.authors, chipColor: AUTHOR_COLOR) }
-        //        )
-        //
-                Text("Editors")
-        //        // Editors
-        //        NavigationLink(
-        //            destination: EditorsSearchList(selectedItems: $bookModel.editors),
-        //            tag: Screen.addEditors,
-        //            selection: $screen,
-        //            label: { WrappingSmallChipsWithName<Editor>(title: "Editors", data: bookModel.editors, chipColor: EDITOR_COLOR) }
-        //        )
-            }
+            // Authors
+            MacChipsEditor<Author>(title: "Authors", data: bookModel.authors, chipColor: AUTHOR_COLOR, editAction: editAuthorsAction)
+            
+            Divider()
+                .padding(.vertical)
+
+            // Editors
+            MacChipsEditor<Editor>(title: "Editors", data: bookModel.editors, chipColor: EDITOR_COLOR, editAction: editEditorsAction)
         }
+    }
+    
+    private func editAuthorsAction() {
+        
+    }
+    
+    private func editEditorsAction() {
+        
     }
 }
 

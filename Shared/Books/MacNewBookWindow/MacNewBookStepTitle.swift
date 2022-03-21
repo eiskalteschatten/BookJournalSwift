@@ -17,7 +17,7 @@ struct MacNewBookStepTitle: View {
     var body: some View {
         Text(title)
             .font(.system(.title))
-            .padding(.bottom, 35)
+            .padding(.bottom)
     }
 }
 

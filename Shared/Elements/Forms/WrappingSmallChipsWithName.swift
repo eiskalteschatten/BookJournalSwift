@@ -9,13 +9,15 @@ import SwiftUI
 import WrappingHStack
 
 struct WrappingSmallChipsWithName<T: AbstractName>: View {
-    var title: String
+    var title: String?
     var data: [T]
     var chipColor: Color = .gray
     
     var body: some View {
         VStack(alignment: .leading, spacing: 1) {
-            Text(title)
+            if title != nil {
+                Text(title!)
+            }
             
             if data.count > 0 {
                 Spacer()

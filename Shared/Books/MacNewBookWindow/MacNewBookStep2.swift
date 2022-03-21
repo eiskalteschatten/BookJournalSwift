@@ -15,13 +15,11 @@ struct MacNewBookStep2: View {
             MacNewBookStepTitle("Book Status")
             
             Form {
-                Group {
-                    // Reading Status
-                    Picker("Reading Status:", selection: $bookModel.readingStatus) {
-                        ForEach(BookReadingStatus.allCases) { status in
-                            Text(bookReadingStatusProperties[status]!)
-                                .tag(status.rawValue)
-                        }
+                // Reading Status
+                Picker("Reading Status:", selection: $bookModel.readingStatus) {
+                    ForEach(BookReadingStatus.allCases) { status in
+                        Text(bookReadingStatusProperties[status]!)
+                            .tag(status.rawValue)
                     }
                 }
                 
