@@ -15,6 +15,8 @@ struct MacNewBookWindowView: View {
     @State private var screen: MacNewBookWindowViewScreen = .step1
     @StateObject private var bookModel = BookModel()
     
+    private let lastStep: MacNewBookWindowViewScreen = .step6
+    
     var body: some View {
         VStack {
             Group {
@@ -157,15 +159,33 @@ struct MacNewBookWindowView: View {
             
             HStack {
                 Button("Cancel", action: {
+                    // TODO: prompt user for unsaved changes
+                    // if viewContext.hasChanges { ... }
                     NSApplication.shared.keyWindow?.close()
                 })
                 .keyboardShortcut(.cancelAction)
                 
-                Button("Save", action: {
-                    bookModel.saveBook()
-                    NSApplication.shared.keyWindow?.close()
-                })
-                .keyboardShortcut(.defaultAction)
+                Spacer()
+                
+                if screen != lastStep {
+                    if screen != .step1 {
+                        Button("Previous", action: {
+
+                        })
+                    }
+                    
+                    Button("Next", action: {
+
+                    })
+                    .keyboardShortcut(.defaultAction)
+                }
+                else {
+                    Button("Finish", action: {
+                        bookModel.saveBook()
+                        NSApplication.shared.keyWindow?.close()
+                    })
+                    .keyboardShortcut(.defaultAction)
+                }
             }
         }
         .padding()
