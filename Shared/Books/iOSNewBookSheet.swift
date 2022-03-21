@@ -22,7 +22,7 @@ struct iOSNewBookSheet: View {
     var body: some View {
         NavigationView {
             Form {
-                Section {
+                Section("Bookcover & Title") {
                     VStack(alignment: .center) {
                         // Bookcover
                         Menu {
