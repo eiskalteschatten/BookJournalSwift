@@ -17,14 +17,17 @@ struct MacNewBookWindowView: View {
     
     var body: some View {
         VStack {
-            switch screen {
-            case .step1:
-                MacNewBookStep1(bookModel: bookModel)
-            case .step2:
-                MacNewBookStep2(bookModel: bookModel)
-            default:
-                MacNewBookStep1(bookModel: bookModel)
+            Group {
+                switch screen {
+                case .step1:
+                    MacNewBookStep1(bookModel: bookModel)
+                case .step2:
+                    MacNewBookStep2(bookModel: bookModel)
+                default:
+                    MacNewBookStep1(bookModel: bookModel)
+                }
             }
+            .frame(maxHeight: .infinity)
             
                 // People
 //                Group {
@@ -144,6 +147,15 @@ struct MacNewBookWindowView: View {
 //            .padding(.bottom, 15)
             
             HStack {
+                Image(systemName: "circle.fill")
+                    .font(.system(size: 7))
+                
+                Image(systemName: "circle")
+                    .font(.system(size: 7))
+            }
+            .padding(.vertical)
+            
+            HStack {
                 Button("Cancel", action: {
                     NSApplication.shared.keyWindow?.close()
                 })
@@ -156,8 +168,7 @@ struct MacNewBookWindowView: View {
                 .keyboardShortcut(.defaultAction)
             }
         }
-        .padding(.horizontal, 15)
-        .padding(.leading, 15)
+        .padding()
         .frame(minWidth: 450, minHeight: 500)
     }
 }
