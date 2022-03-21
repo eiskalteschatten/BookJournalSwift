@@ -62,20 +62,24 @@ struct MacNewBookWindowView: View {
                     
                     Group {
                         // Date Started
-                        Toggle("Add Date Started", isOn: $bookModel.addDateStarted)
+                        Toggle("Add Date Started", isOn: $bookModel.addDateStarted.animation())
                         
-                        DatePicker(selection: $bookModel.dateStarted, displayedComponents: .date) {
-                            Text("Date Started:")
+                        if bookModel.addDateStarted {
+                            DatePicker(selection: $bookModel.dateStarted, displayedComponents: .date) {
+                                Text("Date Started:")
+                            }
+                            .transition(.scale)
                         }
-                        .disabled(bookModel.addDateStarted == false)
                         
                         // Date Finished
-                        Toggle("Add Date Finished", isOn: $bookModel.addDateFinished)
+                        Toggle("Add Date Finished", isOn: $bookModel.addDateFinished.animation())
                     
-                        DatePicker(selection: $bookModel.dateFinished, displayedComponents: .date) {
-                            Text("Date Finished:")
+                        if bookModel.addDateFinished {
+                            DatePicker(selection: $bookModel.dateFinished, displayedComponents: .date) {
+                                Text("Date Finished:")
+                            }
+                            .transition(.scale)
                         }
-                        .disabled(bookModel.addDateFinished == false)
                         
                         Divider()
                             .padding(.vertical, spacerHeight)
@@ -192,8 +196,8 @@ struct MacNewBookWindowView: View {
                             label: { WrappingSmallChipsWithName<Translator>(title: "Translators", data: bookModel.translators, chipColor: TRANSLATOR_COLOR) }
                         )
         
-                        LanguagePicker(title: "Original Language", selection: $bookModel.originalLanguage)
-                        LanguagePicker(title: "Language Read In", selection: $bookModel.languageReadIn)
+//                        LanguagePicker(title: "Original Language", selection: $bookModel.originalLanguage)
+//                        LanguagePicker(title: "Language Read In", selection: $bookModel.languageReadIn)
                     }
                 }
             }
