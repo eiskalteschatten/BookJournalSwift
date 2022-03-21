@@ -1,5 +1,5 @@
 //
-//  NewBookFormModel.swift
+//  BookModel.swift
 //  BookJournal
 //
 //  Created by Alex Seifert on 20.03.22.
@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreData
 
-class NewBookFormModel: ObservableObject {
+class BookModel: ObservableObject {
     @Published var title: String = ""
     
     @Published var readingStatus: String = ""

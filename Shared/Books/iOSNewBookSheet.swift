@@ -17,7 +17,7 @@ struct iOSNewBookSheet: View {
     @Environment(\.dismiss) var dismiss
 
     @State private var screen: Screen?
-    @StateObject private var newBookFormModel = NewBookFormModel()
+    @StateObject private var bookModel = BookModel()
 
     var body: some View {
         NavigationView {
@@ -45,7 +45,7 @@ struct iOSNewBookSheet: View {
                         // Title
                         TextField(
                             "Enter title...",
-                            text: $newBookFormModel.title
+                            text: $bookModel.title
                         )
                             .font(.system(size: 20, weight: .bold))
                             .multilineTextAlignment(.center)
@@ -55,7 +55,7 @@ struct iOSNewBookSheet: View {
                 
                 Section("Status") {
                     // Reading Status
-                    Picker("Reading Status", selection: $newBookFormModel.readingStatus) {
+                    Picker("Reading Status", selection: $bookModel.readingStatus) {
                         ForEach(BookReadingStatus.allCases) { status in
                             Text(bookReadingStatusProperties[status]!)
                                 .tag(status.rawValue)
@@ -63,19 +63,19 @@ struct iOSNewBookSheet: View {
                     }
                     
                     // Date Started
-                    if !newBookFormModel.addDateStarted {
+                    if !bookModel.addDateStarted {
                         Button("Add Date Started") {
-                            newBookFormModel.addDateStarted.toggle()
+                            bookModel.addDateStarted.toggle()
                         }
                     }
                     else {
                         HStack {
-                            DatePicker(selection: $newBookFormModel.dateStarted, displayedComponents: .date) {
+                            DatePicker(selection: $bookModel.dateStarted, displayedComponents: .date) {
                                 Text("Date Started")
                             }
                             
                             Button {
-                                newBookFormModel.addDateStarted.toggle()
+                                bookModel.addDateStarted.toggle()
                             } label: {
                                 Image(systemName: "xmark.circle")
                                     .foregroundColor(.red)
@@ -85,19 +85,19 @@ struct iOSNewBookSheet: View {
                     }
                     
                     // Date Finished
-                    if !newBookFormModel.addDateFinished {
+                    if !bookModel.addDateFinished {
                         Button("Add Date Finished") {
-                            newBookFormModel.addDateFinished.toggle()
+                            bookModel.addDateFinished.toggle()
                         }
                     }
                     else {
                         HStack {
-                            DatePicker(selection: $newBookFormModel.dateFinished, displayedComponents: .date) {
+                            DatePicker(selection: $bookModel.dateFinished, displayedComponents: .date) {
                                 Text("Date Finished")
                             }
                             
                             Button {
-                                newBookFormModel.addDateFinished.toggle()
+                                bookModel.addDateFinished.toggle()
                             } label: {
                                 Image(systemName: "xmark.circle")
                                     .foregroundColor(.red)
@@ -111,18 +111,18 @@ struct iOSNewBookSheet: View {
                 Section("People") {
                     // Authors
                     NavigationLink(
-                        destination: AuthorsSearchList(selectedItems: $newBookFormModel.authors),
+                        destination: AuthorsSearchList(selectedItems: $bookModel.authors),
                         tag: Screen.addAuthors,
                         selection: $screen,
-                        label: { WrappingSmallChipsWithName<Author>(title: "Authors", data: newBookFormModel.authors, chipColor: AUTHOR_COLOR) }
+                        label: { WrappingSmallChipsWithName<Author>(title: "Authors", data: bookModel.authors, chipColor: AUTHOR_COLOR) }
                     )
                     
                     // Editors
                     NavigationLink(
-                        destination: EditorsSearchList(selectedItems: $newBookFormModel.editors),
+                        destination: EditorsSearchList(selectedItems: $bookModel.editors),
                         tag: Screen.addEditors,
                         selection: $screen,
-                        label: { WrappingSmallChipsWithName<Editor>(title: "Editors", data: newBookFormModel.editors, chipColor: EDITOR_COLOR) }
+                        label: { WrappingSmallChipsWithName<Editor>(title: "Editors", data: bookModel.editors, chipColor: EDITOR_COLOR) }
                     )
                 }
                 
@@ -131,39 +131,39 @@ struct iOSNewBookSheet: View {
                     // Page Count
                     TextField(
                         "Page Count",
-                        value: $newBookFormModel.pageCount,
+                        value: $bookModel.pageCount,
                         format: .number
                     )
                         .keyboardType(.numberPad)
                     
                     // Genres
                     NavigationLink(
-                        destination: GenresSearchList(selectedItems: $newBookFormModel.genres),
+                        destination: GenresSearchList(selectedItems: $bookModel.genres),
                         tag: Screen.addGenres,
                         selection: $screen,
-                        label: { WrappingSmallChipsWithName<Genre>(title: "Genres", data: newBookFormModel.genres, chipColor: GENRE_COLOR) }
+                        label: { WrappingSmallChipsWithName<Genre>(title: "Genres", data: bookModel.genres, chipColor: GENRE_COLOR) }
                     )
                     
                     // Categories
                     NavigationLink(
-                        destination: CategoriesSearchList(selectedItems: $newBookFormModel.categories),
+                        destination: CategoriesSearchList(selectedItems: $bookModel.categories),
                         tag: Screen.addCategories,
                         selection: $screen,
-                        label: { WrappingSmallChipsWithName<Category>(title: "Categories", data: newBookFormModel.categories, chipColor: CATEGORY_COLOR) }
+                        label: { WrappingSmallChipsWithName<Category>(title: "Categories", data: bookModel.categories, chipColor: CATEGORY_COLOR) }
                     )
                     
                     // Tags
                     NavigationLink(
-                        destination: TagsSearchList(selectedItems: $newBookFormModel.tags),
+                        destination: TagsSearchList(selectedItems: $bookModel.tags),
                         tag: Screen.addTags,
                         selection: $screen,
-                        label: { WrappingSmallChipsWithName<Tag>(title: "Tags", data: newBookFormModel.tags, chipColor: TAG_COLOR) }
+                        label: { WrappingSmallChipsWithName<Tag>(title: "Tags", data: bookModel.tags, chipColor: TAG_COLOR) }
                     )
                 }
                 
                 Section("Publication Details") {
                     // Book Format
-                    Picker("Book Format", selection: $newBookFormModel.bookFormat) {
+                    Picker("Book Format", selection: $bookModel.bookFormat) {
                         ForEach(BookFormat.allCases) { format in
                             Label(bookFormatProperties[format]![0], systemImage: bookFormatProperties[format]![1])
                                 .tag(format.rawValue)
@@ -172,16 +172,16 @@ struct iOSNewBookSheet: View {
                     
                     // Publisher
                     NavigationLink(
-                        destination: PublishersSearchList(selectedItem: $newBookFormModel.publisher),
+                        destination: PublishersSearchList(selectedItem: $bookModel.publisher),
                         tag: Screen.addPublisher,
                         selection: $screen,
-                        label: { PickerMimickerWithName<Publisher>(title: "Publisher", data: newBookFormModel.publisher) }
+                        label: { PickerMimickerWithName<Publisher>(title: "Publisher", data: bookModel.publisher) }
                     )
                     
                     // Year Published
                     TextField(
                         "Year Published",
-                        value: $newBookFormModel.yearPublished,
+                        value: $bookModel.yearPublished,
                         format: .number
                     )
                         .keyboardType(.numberPad)
@@ -189,7 +189,7 @@ struct iOSNewBookSheet: View {
                     // ISBN
                     TextField(
                         "ISBN",
-                        text: $newBookFormModel.isbn
+                        text: $bookModel.isbn
                     )
                         .keyboardType(.numberPad)
                 }
@@ -198,22 +198,22 @@ struct iOSNewBookSheet: View {
                 Section("World") {
                     // Country of Origin
                     NavigationLink(
-                        destination: CountriesSearchList(selectedItem: $newBookFormModel.countryOfOrigin),
+                        destination: CountriesSearchList(selectedItem: $bookModel.countryOfOrigin),
                         tag: Screen.addCountryOfOrigin,
                         selection: $screen,
-                        label: { PickerMimickerWithName<Country>(title: "Country of Origin", data: newBookFormModel.countryOfOrigin) }
+                        label: { PickerMimickerWithName<Country>(title: "Country of Origin", data: bookModel.countryOfOrigin) }
                     )
                     
                     // Translators
                     NavigationLink(
-                        destination: TranslatorsSearchList(selectedItems: $newBookFormModel.translators),
+                        destination: TranslatorsSearchList(selectedItems: $bookModel.translators),
                         tag: Screen.addTranslators,
                         selection: $screen,
-                        label: { WrappingSmallChipsWithName<Translator>(title: "Translators", data: newBookFormModel.translators, chipColor: TRANSLATOR_COLOR) }
+                        label: { WrappingSmallChipsWithName<Translator>(title: "Translators", data: bookModel.translators, chipColor: TRANSLATOR_COLOR) }
                     )
                     
-                    LanguagePicker(title: "Original Language", selection: $newBookFormModel.originalLanguage)
-                    LanguagePicker(title: "Language Read In", selection: $newBookFormModel.languageReadIn)
+                    LanguagePicker(title: "Original Language", selection: $bookModel.originalLanguage)
+                    LanguagePicker(title: "Language Read In", selection: $bookModel.languageReadIn)
                 }
             }
             .navigationBarTitle(Text("Add a New Book"), displayMode: .inline)
@@ -224,7 +224,7 @@ struct iOSNewBookSheet: View {
                         Text("Cancel")
                     },
                     trailing: Button(action: {
-                        newBookFormModel.saveBook()
+                        bookModel.saveBook()
                         dismiss()
                     }) {
                         Text("Save").bold()
