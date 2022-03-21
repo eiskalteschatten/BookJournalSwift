@@ -29,8 +29,11 @@ func openNewBookWindow() {
     window.center()
     window.setFrameAutosaveName("NewBookWindow")
     window.title = "Add a New Book"
-    window.toolbarStyle = .unifiedCompact
     window.isReleasedWhenClosed = false
+    window.isMovableByWindowBackground  = true
+    window.titleVisibility = .hidden
+    window.titlebarAppearsTransparent = true
+    window.styleMask.insert(.fullSizeContentView)
 
     window.contentView = NSHostingView(rootView: contentView)
     window.makeKeyAndOrderFront(nil)
