@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum MacNewBookWindowViewScreen: Int {
+enum MacNewBookWindowViewScreen: Int, CaseIterable {
     case step1, step2, step3, step4, step5, step6
 }
 
@@ -149,11 +149,11 @@ struct MacNewBookWindowView: View {
 //            .padding(.bottom, 15)
             
             HStack {
-                Image(systemName: "circle.fill")
-                    .font(.system(size: 7))
-                
-                Image(systemName: "circle")
-                    .font(.system(size: 7))
+                ForEach(MacNewBookWindowViewScreen.allCases, id: \.self) { step in
+                    let imageName = screen.rawValue == step.rawValue ? "circle.fill" : "circle"
+                    Image(systemName: imageName)
+                        .font(.system(size: 7))
+                }
             }
             .padding(.vertical)
             
@@ -169,14 +169,10 @@ struct MacNewBookWindowView: View {
                 
                 if screen != lastStep {
                     if screen != .step1 {
-                        Button("Previous", action: {
-
-                        })
+                        Button("Previous", action: goToPrevStep)
                     }
                     
-                    Button("Next", action: {
-
-                    })
+                    Button("Next", action: goToNextStep)
                     .keyboardShortcut(.defaultAction)
                 }
                 else {
@@ -190,6 +186,18 @@ struct MacNewBookWindowView: View {
         }
         .padding()
         .frame(minWidth: 450, minHeight: 500)
+    }
+    
+    private func goToPrevStep() {
+        if screen.rawValue > 0 {
+            screen = MacNewBookWindowViewScreen.allCases[screen.rawValue - 1]
+        }
+    }
+    
+    private func goToNextStep() {
+        if screen.rawValue < lastStep.rawValue {
+            screen = MacNewBookWindowViewScreen.allCases[screen.rawValue + 1]
+        }
     }
 }
 
