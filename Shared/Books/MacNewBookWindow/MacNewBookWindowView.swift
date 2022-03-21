@@ -159,8 +159,6 @@ struct MacNewBookWindowView: View {
             
             HStack {
                 Button("Cancel", action: {
-                    // TODO: prompt user for unsaved changes
-                    // if viewContext.hasChanges { ... }
                     NSApplication.shared.keyWindow?.close()
                 })
                 .keyboardShortcut(.cancelAction)
