@@ -11,36 +11,40 @@ struct MacNewBookStep2: View {
     @ObservedObject var bookModel: BookModel
     
     var body: some View {
-        Form {
-            Group {
-                // Reading Status
-                Picker("Reading Status:", selection: $bookModel.readingStatus) {
-                    ForEach(BookReadingStatus.allCases) { status in
-                        Text(bookReadingStatusProperties[status]!)
-                            .tag(status.rawValue)
+        VStack {
+            MacNewBookStepTitle("Book Status")
+            
+            Form {
+                Group {
+                    // Reading Status
+                    Picker("Reading Status:", selection: $bookModel.readingStatus) {
+                        ForEach(BookReadingStatus.allCases) { status in
+                            Text(bookReadingStatusProperties[status]!)
+                                .tag(status.rawValue)
+                        }
                     }
                 }
-            }
-            
-            Group {
-                // Date Started
-                Toggle("Add Date Started", isOn: $bookModel.addDateStarted.animation())
                 
-                if bookModel.addDateStarted {
-                    DatePicker(selection: $bookModel.dateStarted, displayedComponents: .date) {
-                        Text("Date Started:")
+                Group {
+                    // Date Started
+                    Toggle("Add Date Started", isOn: $bookModel.addDateStarted.animation())
+                    
+                    if bookModel.addDateStarted {
+                        DatePicker(selection: $bookModel.dateStarted, displayedComponents: .date) {
+                            Text("Date Started:")
+                        }
+                        .transition(.scale)
                     }
-                    .transition(.scale)
-                }
+                    
+                    // Date Finished
+                    Toggle("Add Date Finished", isOn: $bookModel.addDateFinished.animation())
                 
-                // Date Finished
-                Toggle("Add Date Finished", isOn: $bookModel.addDateFinished.animation())
-            
-                if bookModel.addDateFinished {
-                    DatePicker(selection: $bookModel.dateFinished, displayedComponents: .date) {
-                        Text("Date Finished:")
+                    if bookModel.addDateFinished {
+                        DatePicker(selection: $bookModel.dateFinished, displayedComponents: .date) {
+                            Text("Date Finished:")
+                        }
+                        .transition(.scale)
                     }
-                    .transition(.scale)
                 }
             }
         }
@@ -52,5 +56,6 @@ struct MacNewBookStep2_Previews: PreviewProvider {
     
     static var previews: some View {
         MacNewBookStep2(bookModel: bookModel)
+            .frame(height: 500.0)
     }
 }

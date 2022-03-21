@@ -90,6 +90,7 @@
 		93B2051A27E8CAD900E9D858 /* MacNewBookStep4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B2051927E8CAD900E9D858 /* MacNewBookStep4.swift */; };
 		93B2051C27E8CB2300E9D858 /* MacNewBookStep5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B2051B27E8CB2300E9D858 /* MacNewBookStep5.swift */; };
 		93B2051E27E8CB6200E9D858 /* MacNewBookStep6.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B2051D27E8CB6200E9D858 /* MacNewBookStep6.swift */; };
+		93B2052027E8D02300E9D858 /* MacNewBookStepTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B2051F27E8D02300E9D858 /* MacNewBookStepTitle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,6 +163,7 @@
 		93B2051927E8CAD900E9D858 /* MacNewBookStep4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacNewBookStep4.swift; sourceTree = "<group>"; };
 		93B2051B27E8CB2300E9D858 /* MacNewBookStep5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacNewBookStep5.swift; sourceTree = "<group>"; };
 		93B2051D27E8CB6200E9D858 /* MacNewBookStep6.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacNewBookStep6.swift; sourceTree = "<group>"; };
+		93B2051F27E8D02300E9D858 /* MacNewBookStepTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacNewBookStepTitle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -392,6 +394,7 @@
 				93B2051927E8CAD900E9D858 /* MacNewBookStep4.swift */,
 				93B2051B27E8CB2300E9D858 /* MacNewBookStep5.swift */,
 				93B2051D27E8CB6200E9D858 /* MacNewBookStep6.swift */,
+				93B2051F27E8D02300E9D858 /* MacNewBookStepTitle.swift */,
 			);
 			path = MacNewBookWindow;
 			sourceTree = "<group>";
@@ -634,6 +637,7 @@
 			files = (
 				9329053F27C2916F000D15AE /* BookList.swift in Sources */,
 				939BB9F027CA44D60001B0DF /* CoreData.swift in Sources */,
+				93B2052027E8D02300E9D858 /* MacNewBookStepTitle.swift in Sources */,
 				9369C1C127E6486500A39E57 /* CreateTag.swift in Sources */,
 				93219912279D86E600CB6E76 /* BookJournalApp.swift in Sources */,
 				9369C1C327E6486B00A39E57 /* CreateGenre.swift in Sources */,

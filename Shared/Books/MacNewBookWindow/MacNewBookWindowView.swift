@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-enum MacNewBookWindowViewScreen: Int, CaseIterable {
-    case step1, step2, step3, step4, step5, step6
-}
-
 struct MacNewBookWindowView: View {
-    @State private var screen: MacNewBookWindowViewScreen = .step1
+    private enum Screen: Int, CaseIterable {
+        case step1, step2, step3, step4, step5, step6
+    }
+    
+    @State private var screen: Screen = .step1
     @StateObject private var bookModel = BookModel()
     
-    private let lastStep: MacNewBookWindowViewScreen = .step6
+    private let lastStep: Screen = .step6
     
     var body: some View {
         VStack {
@@ -35,10 +35,10 @@ struct MacNewBookWindowView: View {
                     MacNewBookStep6(bookModel: bookModel)
                 }
             }
-            .frame(maxHeight: .infinity)
+            .frame(maxHeight: .infinity, alignment: .top)
             
             HStack {
-                ForEach(MacNewBookWindowViewScreen.allCases, id: \.self) { step in
+                ForEach(Screen.allCases, id: \.self) { step in
                     let imageName = screen.rawValue == step.rawValue ? "circle.fill" : "circle"
                     Image(systemName: imageName)
                         .font(.system(size: 7))
@@ -54,11 +54,11 @@ struct MacNewBookWindowView: View {
                 
                 Spacer()
                 
+                if screen != .step1 {
+                    Button("Previous", action: goToPrevStep)
+                }
+                
                 if screen != lastStep {
-                    if screen != .step1 {
-                        Button("Previous", action: goToPrevStep)
-                    }
-                    
                     Button("Next", action: goToNextStep)
                     .keyboardShortcut(.defaultAction)
                 }
@@ -77,13 +77,13 @@ struct MacNewBookWindowView: View {
     
     private func goToPrevStep() {
         if screen.rawValue > 0 {
-            screen = MacNewBookWindowViewScreen.allCases[screen.rawValue - 1]
+            screen = Screen.allCases[screen.rawValue - 1]
         }
     }
     
     private func goToNextStep() {
         if screen.rawValue < lastStep.rawValue {
-            screen = MacNewBookWindowViewScreen.allCases[screen.rawValue + 1]
+            screen = Screen.allCases[screen.rawValue + 1]
         }
     }
 }

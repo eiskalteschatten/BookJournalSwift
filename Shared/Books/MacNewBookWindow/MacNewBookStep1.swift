@@ -12,6 +12,8 @@ struct MacNewBookStep1: View {
     
     var body: some View {
         VStack {
+            MacNewBookStepTitle("Bookcover & Title")
+            
             // Bookcover
             Image(systemName: "plus.square.dashed")
                 .font(.system(size: 150))
@@ -31,9 +33,13 @@ struct MacNewBookStep1: View {
             
             // Title
             TextField(
-                "Title:",
+                "Enter Title...",
                 text: $bookModel.title
             )
+            .textFieldStyle(PlainTextFieldStyle())
+            .font(.system(size: 20, weight: .bold))
+            .multilineTextAlignment(.center)
+            .padding(.top, 35)
         }
     }
 }
