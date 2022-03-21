@@ -53,7 +53,7 @@ struct iOSNewBookSheet: View {
                     }
                 }
                 
-                Section("Status") {
+                Section("Book Status") {
                     // Reading Status
                     Picker("Reading Status", selection: $bookModel.readingStatus) {
                         ForEach(BookReadingStatus.allCases) { status in
