@@ -25,128 +25,17 @@ struct MacNewBookWindowView: View {
                     MacNewBookStep1(bookModel: bookModel)
                 case .step2:
                     MacNewBookStep2(bookModel: bookModel)
-                default:
-                    MacNewBookStep1(bookModel: bookModel)
+                case .step3:
+                    MacNewBookStep3(bookModel: bookModel)
+                case .step4:
+                    MacNewBookStep4(bookModel: bookModel)
+                case .step5:
+                    MacNewBookStep5(bookModel: bookModel)
+                case .step6:
+                    MacNewBookStep6(bookModel: bookModel)
                 }
             }
             .frame(maxHeight: .infinity)
-            
-                // People
-//                Group {
-//                    // Authors
-//                    NavigationLink(
-//                        destination: AuthorsSearchList(selectedItems: $bookModel.authors),
-//                        tag: Screen.addAuthors,
-//                        selection: $screen,
-//                        label: { WrappingSmallChipsWithName<Author>(title: "Authors", data: bookModel.authors, chipColor: AUTHOR_COLOR) }
-//                    )
-//
-//                    // Editors
-//                    NavigationLink(
-//                        destination: EditorsSearchList(selectedItems: $bookModel.editors),
-//                        tag: Screen.addEditors,
-//                        selection: $screen,
-//                        label: { WrappingSmallChipsWithName<Editor>(title: "Editors", data: bookModel.editors, chipColor: EDITOR_COLOR) }
-//                    )
-//
-//                    Divider()
-//                        .padding(.vertical, spacerHeight)
-//                }
-                
-                // Book Information
-//                Group {
-//                    // Page Count
-//                    TextField(
-//                        "Page Count:",
-//                        value: $bookModel.pageCount,
-//                        format: .number
-//                    )
-//
-//                    // Genres
-//                    NavigationLink(
-//                        destination: GenresSearchList(selectedItems: $bookModel.genres),
-//                        tag: Screen.addGenres,
-//                        selection: $screen,
-//                        label: { WrappingSmallChipsWithName<Genre>(title: "Genres", data: bookModel.genres, chipColor: GENRE_COLOR) }
-//                    )
-//
-//                    // Categories
-//                    NavigationLink(
-//                        destination: CategoriesSearchList(selectedItems: $bookModel.categories),
-//                        tag: Screen.addCategories,
-//                        selection: $screen,
-//                        label: { WrappingSmallChipsWithName<Category>(title: "Categories", data: bookModel.categories, chipColor: CATEGORY_COLOR) }
-//                    )
-//
-//                    // Tags
-//                    NavigationLink(
-//                        destination: TagsSearchList(selectedItems: $bookModel.tags),
-//                        tag: Screen.addTags,
-//                        selection: $screen,
-//                        label: { WrappingSmallChipsWithName<Tag>(title: "Tags", data: bookModel.tags, chipColor: TAG_COLOR) }
-//                    )
-//
-//                    Divider()
-//                        .padding(.vertical, spacerHeight)
-//                }
-                    
-//                Group {
-//                    // Book Format
-//                    Picker("Book Format:", selection: $bookModel.bookFormat) {
-//                        ForEach(BookFormat.allCases) { format in
-//                            Label(bookFormatProperties[format]![0], systemImage: bookFormatProperties[format]![1])
-//                                .tag(format.rawValue)
-//                        }
-//                    }
-//
-//                    // Publisher
-//                    NavigationLink(
-//                        destination: PublishersSearchList(selectedItem: $bookModel.publisher),
-//                        tag: Screen.addPublisher,
-//                        selection: $screen,
-//                        label: { PickerMimickerWithName<Publisher>(title: "Publisher", data: bookModel.publisher) }
-//                    )
-//
-//                    // Year Published
-//                    TextField(
-//                        "Year Published:",
-//                        value: $bookModel.yearPublished,
-//                        format: .number
-//                    )
-//
-//                    // ISBN
-//                    TextField(
-//                        "ISBN:",
-//                        text: $bookModel.isbn
-//                    )
-//
-//                    Divider()
-//                        .padding(.vertical, spacerHeight)
-//                }
-                
-                // World
-//                Group {
-//                    // Country of Origin
-//                    NavigationLink(
-//                        destination: CountriesSearchList(selectedItem: $bookModel.countryOfOrigin),
-//                        tag: Screen.addCountryOfOrigin,
-//                        selection: $screen,
-//                        label: { PickerMimickerWithName<Country>(title: "Country of Origin", data: bookModel.countryOfOrigin) }
-//                    )
-//    
-//                    // Translators
-//                    NavigationLink(
-//                        destination: TranslatorsSearchList(selectedItems: $bookModel.translators),
-//                        tag: Screen.addTranslators,
-//                        selection: $screen,
-//                        label: { WrappingSmallChipsWithName<Translator>(title: "Translators", data: bookModel.translators, chipColor: TRANSLATOR_COLOR) }
-//                    )
-//    
-//                        LanguagePicker(title: "Original Language", selection: $bookModel.originalLanguage)
-//                        LanguagePicker(title: "Language Read In", selection: $bookModel.languageReadIn)
-//                }
-//            }
-//            .padding(.bottom, 15)
             
             HStack {
                 ForEach(MacNewBookWindowViewScreen.allCases, id: \.self) { step in
