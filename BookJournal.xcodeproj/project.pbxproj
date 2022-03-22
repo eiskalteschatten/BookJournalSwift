@@ -389,8 +389,8 @@
 		9369C1D327E76EC500A39E57 /* MacNewBookWindow */ = {
 			isa = PBXGroup;
 			children = (
-				9346661827C93FD000D58DE7 /* MacNewBookWindowView.swift */,
 				9369C1D427E76ED700A39E57 /* MacNewBookWindow.swift */,
+				9346661827C93FD000D58DE7 /* MacNewBookWindowView.swift */,
 				93548C8927E8AA50004524B7 /* MacNewBookStep1.swift */,
 				93B2051527E8B71200E9D858 /* MacNewBookStep2.swift */,
 				93B2051727E8CA6C00E9D858 /* MacNewBookStep3.swift */,

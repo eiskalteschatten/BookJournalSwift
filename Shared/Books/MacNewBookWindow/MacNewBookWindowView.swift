@@ -40,8 +40,13 @@ struct MacNewBookWindowView: View {
             HStack {
                 ForEach(Screen.allCases, id: \.self) { step in
                     let imageName = screen.rawValue == step.rawValue ? "circle.fill" : "circle"
-                    Image(systemName: imageName)
-                        .font(.system(size: 7))
+                    Button(action: {
+                        screen = step
+                    }, label: {
+                        Image(systemName: imageName)
+                            .font(.system(size: 7))
+                    })
+                    .buttonStyle(.plain)
                 }
             }
             .padding(.vertical)
