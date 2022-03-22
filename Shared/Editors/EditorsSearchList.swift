@@ -30,8 +30,8 @@ struct EditorsSearchList: View {
             selectedData: $selectedItems,
             onDelete: delete
         )
+        #if os(iOS)
         .toolbar {
-            #if os(iOS)
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink(
                     destination: CreateEditor(screen: $screen),
@@ -45,8 +45,8 @@ struct EditorsSearchList: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 EditButton()
             }
-            #endif
         }
+        #endif
     }
     
     private func delete(offsets: IndexSet) {

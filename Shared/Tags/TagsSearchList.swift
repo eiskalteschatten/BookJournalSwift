@@ -30,8 +30,8 @@ struct TagsSearchList: View {
             selectedData: $selectedItems,
             onDelete: delete
         )
+        #if os(iOS)
         .toolbar {
-            #if os(iOS)
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink(
                     destination: CreateTag(screen: $screen),
@@ -45,8 +45,8 @@ struct TagsSearchList: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 EditButton()
             }
-            #endif
         }
+        #endif
     }
     
     private func delete(offsets: IndexSet) {
