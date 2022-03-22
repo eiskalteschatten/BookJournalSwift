@@ -47,66 +47,86 @@ struct SearchList<T: AbstractName>: View {
     }
     
     var body: some View {
-        List {
-            ForEach(searchResults, id: \.self) { item in
-                HStack {
-                    if item.name != nil {
-                        if singleSelection {
-                            if selectedData == item {
-                                Image(systemName: "circle.inset.filled")
-                                    .foregroundColor(.accentColor)
+        VStack {
+            #if os(macOS)
+            HStack {
+                Text(title)
+                    .font(.system(.headline))
+                    .padding(.vertical)
+                
+//                Button()
+            }
+            #endif
+            
+            List {
+                ForEach(searchResults, id: \.self) { item in
+                    HStack {
+                        if item.name != nil {
+                            if singleSelection {
+                                if selectedData == item {
+                                    Image(systemName: "circle.inset.filled")
+                                        .foregroundColor(.accentColor)
+                                }
+                                else {
+                                    Image(systemName: "circle")
+                                }
                             }
                             else {
-                                Image(systemName: "circle")
+                                if selectedDataArray.contains(item) {
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .foregroundColor(.accentColor)
+                                }
+                                else {
+                                    Image(systemName: "circle")
+                                }
                             }
+
+                            Text(item.name!)
+                        }
+                    }
+                    .onTapGesture {
+                        if singleSelection {
+                            selectedData = selectedData == item ? nil : item
                         }
                         else {
                             if selectedDataArray.contains(item) {
-                                Image(systemName: "checkmark.circle.fill")
-                                    .foregroundColor(.accentColor)
+                                if let index = selectedDataArray.firstIndex(of: item) {
+                                    selectedDataArray.remove(at: index)
+                                }
                             }
                             else {
-                                Image(systemName: "circle")
+                                selectedDataArray.append(item)
                             }
                         }
-
-                        Text(item.name!)
+                        
+                        #if os(iOS)
+                        let impactHeavy = UIImpactFeedbackGenerator(style: .heavy)
+                        impactHeavy.impactOccurred()
+                        #endif
                     }
                 }
-                .onTapGesture {
-                    if singleSelection {
-                        selectedData = selectedData == item ? nil : item
+                .onDelete(perform: onDelete)
+            }
+            .listStyle(.plain)
+            #if os(iOS)
+            .navigationBarTitle(Text(title), displayMode: .inline)
+            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always)) {
+                ForEach(searchResults, id: \.self) { result in
+                    if result.name != nil {
+                        Text(result.name!).searchCompletion(result.name!)
                     }
-                    else {
-                        if selectedDataArray.contains(item) {
-                            if let index = selectedDataArray.firstIndex(of: item) {
-                                selectedDataArray.remove(at: index)
-                            }
-                        }
-                        else {
-                            selectedDataArray.append(item)
-                        }
-                    }
-                    
-                    #if os(iOS)
-                    let impactHeavy = UIImpactFeedbackGenerator(style: .heavy)
-                    impactHeavy.impactOccurred()
-                    #endif
                 }
             }
-            .onDelete(perform: onDelete)
-        }
-        .listStyle(.plain)
-        #if os(iOS)
-        .navigationBarTitle(Text(title), displayMode: .inline)
-        .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always)) {
-            ForEach(searchResults, id: \.self) { result in
-                if result.name != nil {
-                    Text(result.name!).searchCompletion(result.name!)
+            #else
+            .searchable(text: $searchText) {
+                ForEach(searchResults, id: \.self) { result in
+                    if result.name != nil {
+                        Text(result.name!).searchCompletion(result.name!)
+                    }
                 }
             }
+            #endif
         }
-        #endif
     }
     
     private var searchResults: [T] {

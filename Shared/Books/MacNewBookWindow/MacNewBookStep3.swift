@@ -10,27 +10,34 @@ import SwiftUI
 struct MacNewBookStep3: View {
     @ObservedObject var bookModel: BookModel
     
+    @State private var showEditAuthorsSheet = false
+    @State private var showEditEditorsSheet = false
+    
     var body: some View {
         VStack {
             MacNewBookStepTitle("People")
             
             // Authors
             MacChipsEditor<Author>(title: "Authors", data: bookModel.authors, chipColor: AUTHOR_COLOR, editAction: editAuthorsAction)
-            
-            Divider()
-                .padding(.vertical)
+                .padding(.bottom)
+                .sheet(isPresented: $showEditAuthorsSheet) {
+                    AuthorsSearchList(selectedItems: $bookModel.authors)
+                }
 
             // Editors
             MacChipsEditor<Editor>(title: "Editors", data: bookModel.editors, chipColor: EDITOR_COLOR, editAction: editEditorsAction)
+                .sheet(isPresented: $showEditEditorsSheet) {
+                    EditorsSearchList(selectedItems: $bookModel.editors)
+                }
         }
     }
     
     private func editAuthorsAction() {
-        
+        showEditAuthorsSheet.toggle()
     }
     
     private func editEditorsAction() {
-        
+        showEditEditorsSheet.toggle()
     }
 }
 

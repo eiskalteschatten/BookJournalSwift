@@ -30,8 +30,8 @@ struct AuthorsSearchList: View {
             selectedData: $selectedItems,
             onDelete: delete
         )
-        #if os(iOS)
         .toolbar {
+            #if os(iOS)
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink(
                     destination: CreateAuthor(screen: $screen),
@@ -45,7 +45,16 @@ struct AuthorsSearchList: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 EditButton()
             }
+            #else
+            ToolbarItem() {
+                Button(action: {}, label: {
+                    Text("Add")
+                })
+            }
+            #endif
         }
+        #if os(macOS)
+        .frame(minWidth: 300)
         #endif
     }
     
