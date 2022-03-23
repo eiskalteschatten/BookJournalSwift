@@ -11,7 +11,7 @@ struct MacNewBookStep3: View {
     @ObservedObject var bookModel: BookModel
     
     @State private var showNewAuthorSheet = false
-    @State private var showEditEditorsSheet = false
+    @State private var showNewEditorSheet = false
     
     var body: some View {
         VStack {
@@ -36,34 +36,25 @@ struct MacNewBookStep3: View {
                 CreateAuthor(showScreen: $showNewAuthorSheet)
             }
             
-//            MacChipsEditor<Author>(title: "Authors", data: bookModel.authors, chipColor: AUTHOR_COLOR, editAction: editAuthorsAction)
-//                .padding(.bottom)
-//                .sheet(isPresented: $showEditAuthorsSheet) {
-//                    AuthorsSearchList(selectedItems: $bookModel.authors)
-//                }
-
             // Editors
             VStack(alignment: .leading) {
                 HStack {
                     Text("Editors")
                     Spacer()
-                    Button(action: {}, label: {
+                    Button(action: {
+                        showNewEditorSheet.toggle()
+                    }, label: {
                         Text("New Editor")
                     })
                 }
                 
                 EditorsSearchList(selectedItems: $bookModel.editors)
             }
+            .sheet(isPresented: $showNewEditorSheet) {
+                CreateEditor(showScreen: $showNewEditorSheet)
+            }
             
-//            MacChipsEditor<Editor>(title: "Editors", data: bookModel.editors, chipColor: EDITOR_COLOR, editAction: editEditorsAction)
-//                .sheet(isPresented: $showEditEditorsSheet) {
-//                    EditorsSearchList(selectedItems: $bookModel.editors)
-//                }
         }
-    }
-    
-    private func editEditorsAction() {
-        showEditEditorsSheet.toggle()
     }
 }
 

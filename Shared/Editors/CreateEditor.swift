@@ -8,33 +8,31 @@
 import SwiftUI
 
 struct CreateEditor: View {
+    #if os(iOS)
     @Binding var screen: EditorsSearchListScreen?
+    #else
+    @Binding var showScreen: Bool
+    #endif
     
     @Environment(\.managedObjectContext) private var viewContext
     
     @State private var name: String = ""
     
     var body: some View {
-        Form {
-            TextField(
-                "Name",
-                text: $name
-            )
+        CreateElementView(title: "Create an Editor", close: close, save: save) {
+            Form {
+                TextField(
+                    "Name",
+                    text: $name
+                )
+            }
         }
-        #if os(iOS)
-        .navigationBarTitle(Text("Create an Editor"), displayMode: .inline)
-            .navigationBarItems(
-                trailing: Button(action: {
-                    save()
-                    screen = .home
-                }) {
-                    Text("Save").bold()
-                }
-            )
-        #endif
     }
     
     private func save() {
+        let persistenceController = PersistenceController.shared
+        let viewContext = persistenceController.container.viewContext
+        
         let newEditor = Editor(context: viewContext)
         newEditor.createdAt = Date()
         newEditor.updatedAt = Date()
@@ -49,12 +47,28 @@ struct CreateEditor: View {
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
     }
+    
+    private func close() {
+        #if os(iOS)
+        screen = .home
+        #else
+        showScreen.toggle()
+        #endif
+    }
 }
 
 struct CreateEditor_Previews: PreviewProvider {
+    #if os(iOS)
     @State static var screen: EditorsSearchListScreen?
+    #else
+    @State static var showScreen: Bool = true
+    #endif
     
     static var previews: some View {
+        #if os(iOS)
         CreateEditor(screen: $screen)
+        #else
+        CreateEditor(showScreen: $showScreen)
+        #endif
     }
 }
