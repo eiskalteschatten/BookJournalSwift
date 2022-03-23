@@ -17,57 +17,14 @@ struct CreateAuthor: View {
     @State private var name: String = ""
     
     var body: some View {
-        VStack {
-            #if os(macOS)
-            Text("Create Author")
-                .font(.system(.title3))
-            #endif
-            
+        CreateElementView(title: "Create an Author", close: close, save: save) {
             Form {
                 TextField(
                     "Name",
                     text: $name
                 )
             }
-            #if os(iOS)
-            .navigationBarTitle(Text("Create an Author"), displayMode: .inline)
-                .navigationBarItems(
-                    trailing: Button(action: {
-                        save()
-                        screen = .home
-                    }) {
-                        Text("Save").bold()
-                    }
-                )
-            #else
-            .padding(.bottom)
-            #endif
-            
-            #if os(macOS)
-            HStack {
-                Spacer()
-
-                Button(action: {
-                    showScreen.toggle()
-                }, label: {
-                    Text("Cancel")
-                })
-                .keyboardShortcut(.cancelAction)
-                
-                Button(action: {
-                    save()
-                    showScreen.toggle()
-                }, label: {
-                    Text("Save")
-                })
-                .keyboardShortcut(.defaultAction)
-            }
-            #endif
         }
-        #if os(macOS)
-        .frame(minWidth: 300)
-        .padding()
-        #endif
     }
     
     private func save() {
@@ -87,6 +44,14 @@ struct CreateAuthor: View {
             let nsError = error as NSError
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
+    }
+    
+    private func close() {
+        #if os(iOS)
+        screen = .home
+        #else
+        showScreen.toggle()
+        #endif
     }
 }
 
