@@ -49,13 +49,9 @@ struct SearchList<T: AbstractName>: View {
     var body: some View {
         VStack {
             #if os(macOS)
-            HStack {
-                Text(title)
-                    .font(.system(.headline))
-                    .padding(.vertical)
-                
-//                Button()
-            }
+            Text(title)
+                .font(.system(.headline))
+                .padding(.vertical)
             #endif
             
             List {

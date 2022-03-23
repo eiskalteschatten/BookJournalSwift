@@ -45,12 +45,6 @@ struct AuthorsSearchList: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 EditButton()
             }
-            #else
-            ToolbarItem() {
-                Button(action: {}, label: {
-                    Text("Add")
-                })
-            }
             #endif
         }
         #if os(macOS)
