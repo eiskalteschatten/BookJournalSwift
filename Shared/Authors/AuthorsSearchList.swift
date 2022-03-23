@@ -46,8 +46,6 @@ struct AuthorsSearchList: View {
                 EditButton()
             }
         }
-        #else
-        .frame(minWidth: 200)
         #endif
     }
     
