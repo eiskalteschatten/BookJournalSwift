@@ -50,52 +50,62 @@ struct SearchList<T: AbstractName>: View {
         VStack {
             List {
                 ForEach(searchResults, id: \.self) { item in
-                    HStack {
-                        if item.name != nil {
-                            if singleSelection {
-                                if selectedData == item {
-                                    Image(systemName: "circle.inset.filled")
-                                        .foregroundColor(.accentColor)
+                    if item.name != nil {
+                        VStack(alignment: .leading) {
+                            HStack {
+                                if singleSelection {
+                                    if selectedData == item {
+                                        Image(systemName: "circle.inset.filled")
+                                            .foregroundColor(.accentColor)
+                                    }
+                                    else {
+                                        Image(systemName: "circle")
+                                    }
                                 }
                                 else {
-                                    Image(systemName: "circle")
+                                    if selectedDataArray.contains(item) {
+                                        Image(systemName: "checkmark.circle.fill")
+                                            .foregroundColor(.accentColor)
+                                    }
+                                    else {
+                                        Image(systemName: "circle")
+                                    }
                                 }
-                            }
-                            else {
-                                if selectedDataArray.contains(item) {
-                                    Image(systemName: "checkmark.circle.fill")
-                                        .foregroundColor(.accentColor)
-                                }
-                                else {
-                                    Image(systemName: "circle")
-                                }
-                            }
 
-                            Text(item.name!)
-                        }
-                    }
-                    .onTapGesture {
-                        if singleSelection {
-                            selectedData = selectedData == item ? nil : item
-                        }
-                        else {
-                            if selectedDataArray.contains(item) {
-                                if let index = selectedDataArray.firstIndex(of: item) {
-                                    selectedDataArray.remove(at: index)
+                                Text(item.name!)
+                            }
+                            .onTapGesture {
+                                if singleSelection {
+                                    selectedData = selectedData == item ? nil : item
                                 }
+                                else {
+                                    if selectedDataArray.contains(item) {
+                                        if let index = selectedDataArray.firstIndex(of: item) {
+                                            selectedDataArray.remove(at: index)
+                                        }
+                                    }
+                                    else {
+                                        selectedDataArray.append(item)
+                                    }
+                                }
+                                
+                                #if os(iOS)
+                                let impactHeavy = UIImpactFeedbackGenerator(style: .heavy)
+                                impactHeavy.impactOccurred()
+                                #endif
                             }
-                            else {
-                                selectedDataArray.append(item)
+                            
+                            #if os(macOS)
+                            if item != searchResults.last {
+                                Divider()
+                                    .padding(.leading, 23)
                             }
+                            #endif
                         }
-                        
-                        #if os(iOS)
-                        let impactHeavy = UIImpactFeedbackGenerator(style: .heavy)
-                        impactHeavy.impactOccurred()
-                        #endif
                     }
                 }
                 .onDelete(perform: onDelete)
+                
             }
             .listStyle(.plain)
             #if os(iOS)
