@@ -8,33 +8,29 @@
 import SwiftUI
 
 struct CreateCategory: View {
+    #if os(iOS)
     @Binding var screen: CategoriesSearchListScreen?
-    
-    @Environment(\.managedObjectContext) private var viewContext
+    #else
+    @Binding var showScreen: Bool
+    #endif
     
     @State private var name: String = ""
     
     var body: some View {
-        Form {
-            TextField(
-                "Name",
-                text: $name
-            )
+        CreateElementView(title: "Create a Category", close: close, save: save) {
+            Form {
+                TextField(
+                    "Name",
+                    text: $name
+                )
+            }
         }
-        #if os(iOS)
-        .navigationBarTitle(Text("Create a Category"), displayMode: .inline)
-            .navigationBarItems(
-                trailing: Button(action: {
-                    save()
-                    screen = .home
-                }) {
-                    Text("Save").bold()
-                }
-            )
-        #endif
     }
     
     private func save() {
+        let persistenceController = PersistenceController.shared
+        let viewContext = persistenceController.container.viewContext
+        
         let newCategory = Category(context: viewContext)
         newCategory.createdAt = Date()
         newCategory.updatedAt = Date()
@@ -49,12 +45,28 @@ struct CreateCategory: View {
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
     }
+    
+    private func close() {
+        #if os(iOS)
+        screen = .home
+        #else
+        showScreen.toggle()
+        #endif
+    }
 }
 
 struct CreateCategory_Previews: PreviewProvider {
+    #if os(iOS)
     @State static var screen: CategoriesSearchListScreen?
+    #else
+    @State static var showScreen: Bool = true
+    #endif
     
     static var previews: some View {
+        #if os(iOS)
         CreateCategory(screen: $screen)
+        #else
+        CreateCategory(showScreen: $showScreen)
+        #endif
     }
 }

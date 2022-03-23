@@ -8,33 +8,29 @@
 import SwiftUI
 
 struct CreateTag: View {
+    #if os(iOS)
     @Binding var screen: TagsSearchListScreen?
-    
-    @Environment(\.managedObjectContext) private var viewContext
+    #else
+    @Binding var showScreen: Bool
+    #endif
     
     @State private var name: String = ""
     
     var body: some View {
-        Form {
-            TextField(
-                "Name",
-                text: $name
-            )
+        CreateElementView(title: "Create a Tag", close: close, save: save) {
+            Form {
+                TextField(
+                    "Name",
+                    text: $name
+                )
+            }
         }
-        #if os(iOS)
-        .navigationBarTitle(Text("Create a Tag"), displayMode: .inline)
-            .navigationBarItems(
-                trailing: Button(action: {
-                    save()
-                    screen = .home
-                }) {
-                    Text("Save").bold()
-                }
-            )
-        #endif
     }
     
     private func save() {
+        let persistenceController = PersistenceController.shared
+        let viewContext = persistenceController.container.viewContext
+        
         let newTag = Tag(context: viewContext)
         newTag.createdAt = Date()
         newTag.updatedAt = Date()
@@ -49,12 +45,28 @@ struct CreateTag: View {
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
     }
+    
+    private func close() {
+        #if os(iOS)
+        screen = .home
+        #else
+        showScreen.toggle()
+        #endif
+    }
 }
 
 struct CreateTag_Previews: PreviewProvider {
+    #if os(iOS)
     @State static var screen: TagsSearchListScreen?
+    #else
+    @State static var showScreen: Bool = true
+    #endif
     
     static var previews: some View {
+        #if os(iOS)
         CreateTag(screen: $screen)
+        #else
+        CreateTag(showScreen: $showScreen)
+        #endif
     }
 }

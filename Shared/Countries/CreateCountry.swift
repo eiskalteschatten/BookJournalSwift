@@ -8,33 +8,29 @@
 import SwiftUI
 
 struct CreateCountry: View {
+    #if os(iOS)
     @Binding var screen: CountriesSearchListScreen?
-    
-    @Environment(\.managedObjectContext) private var viewContext
+    #else
+    @Binding var showScreen: Bool
+    #endif
     
     @State private var name: String = ""
     
     var body: some View {
-        Form {
-            TextField(
-                "Name",
-                text: $name
-            )
+        CreateElementView(title: "Create a Country", close: close, save: save) {
+            Form {
+                TextField(
+                    "Name",
+                    text: $name
+                )
+            }
         }
-        #if os(iOS)
-        .navigationBarTitle(Text("Create a Country"), displayMode: .inline)
-            .navigationBarItems(
-                trailing: Button(action: {
-                    save()
-                    screen = .home
-                }) {
-                    Text("Save").bold()
-                }
-            )
-        #endif
     }
     
     private func save() {
+        let persistenceController = PersistenceController.shared
+        let viewContext = persistenceController.container.viewContext
+        
         let newCountry = Country(context: viewContext)
         newCountry.createdAt = Date()
         newCountry.updatedAt = Date()
@@ -49,12 +45,28 @@ struct CreateCountry: View {
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
     }
+    
+    private func close() {
+        #if os(iOS)
+        screen = .home
+        #else
+        showScreen.toggle()
+        #endif
+    }
 }
 
 struct CreateCountry_Previews: PreviewProvider {
+    #if os(iOS)
     @State static var screen: CountriesSearchListScreen?
+    #else
+    @State static var showScreen: Bool = true
+    #endif
     
     static var previews: some View {
+        #if os(iOS)
         CreateCountry(screen: $screen)
+        #else
+        CreateCountry(showScreen: $showScreen)
+        #endif
     }
 }

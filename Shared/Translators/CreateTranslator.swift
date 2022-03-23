@@ -8,33 +8,29 @@
 import SwiftUI
 
 struct CreateTranslator: View {
+    #if os(iOS)
     @Binding var screen: TranslatorsSearchListScreen?
-    
-    @Environment(\.managedObjectContext) private var viewContext
+    #else
+    @Binding var showScreen: Bool
+    #endif
     
     @State private var name: String = ""
     
     var body: some View {
-        Form {
-            TextField(
-                "Name",
-                text: $name
-            )
+        CreateElementView(title: "Create a Translator", close: close, save: save) {
+            Form {
+                TextField(
+                    "Name",
+                    text: $name
+                )
+            }
         }
-        #if os(iOS)
-        .navigationBarTitle(Text("Create a Translator"), displayMode: .inline)
-            .navigationBarItems(
-                trailing: Button(action: {
-                    save()
-                    screen = .home
-                }) {
-                    Text("Save").bold()
-                }
-            )
-        #endif
     }
     
     private func save() {
+        let persistenceController = PersistenceController.shared
+        let viewContext = persistenceController.container.viewContext
+        
         let newTranslator = Translator(context: viewContext)
         newTranslator.createdAt = Date()
         newTranslator.updatedAt = Date()
@@ -49,12 +45,28 @@ struct CreateTranslator: View {
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
     }
+    
+    private func close() {
+        #if os(iOS)
+        screen = .home
+        #else
+        showScreen.toggle()
+        #endif
+    }
 }
 
 struct CreateTranslator_Previews: PreviewProvider {
+    #if os(iOS)
     @State static var screen: TranslatorsSearchListScreen?
+    #else
+    @State static var showScreen: Bool = true
+    #endif
     
     static var previews: some View {
+        #if os(iOS)
         CreateTranslator(screen: $screen)
+        #else
+        CreateTranslator(showScreen: $showScreen)
+        #endif
     }
 }
