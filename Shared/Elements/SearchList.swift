@@ -48,6 +48,11 @@ struct SearchList<T: AbstractName>: View {
     
     var body: some View {
         VStack {
+            #if os(macOS)
+            TextField("Search", text: $searchText)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+            #endif
+            
             List {
                 ForEach(searchResults, id: \.self) { item in
                     if item.name != nil {

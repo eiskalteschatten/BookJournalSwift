@@ -31,10 +31,12 @@ struct MacNewBookStep3: View {
                 
                 AuthorsSearchList(selectedItems: $bookModel.authors)
             }
-            .padding(.bottom)
             .sheet(isPresented: $showNewAuthorSheet) {
                 CreateAuthor(showScreen: $showNewAuthorSheet)
             }
+            
+            Divider()
+                .padding(.vertical)
             
             // Editors
             VStack(alignment: .leading) {
