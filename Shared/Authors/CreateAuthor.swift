@@ -42,14 +42,14 @@ struct CreateAuthor: View {
             
             #if os(macOS)
             HStack {
+                Spacer()
+
                 Button(action: {
                     showScreen.toggle()
                 }, label: {
                     Text("Cancel")
                 })
                 .keyboardShortcut(.cancelAction)
-                
-                Spacer()
                 
                 Button(action: {
                     save()
