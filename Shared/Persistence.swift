@@ -54,5 +54,14 @@ struct PersistenceController {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
+        
+        #if DEBUG
+        if container.persistentStoreCoordinator.persistentStores.first?.url != nil {
+            print("sqlite path: ", container.persistentStoreCoordinator.persistentStores.first!.url!.absoluteString)
+        }
+        else {
+            print("sqlite path: Cannot determine!")
+        }
+        #endif
     }
 }
