@@ -55,7 +55,8 @@ struct AuthorsSearchList: View {
     private func delete(offsets: IndexSet) {
         withAnimation {
             offsets.map { authors[$0] }.forEach(viewContext.delete)
-            offsets.forEach { i in selectedItems.remove(at: i) }
+            // TODO: fix this bug by finding the index of the value first since the offset doesn't match the selectedItems index
+//            offsets.forEach { i in selectedItems.remove(at: i) }
 
             do {
                 try viewContext.save()
