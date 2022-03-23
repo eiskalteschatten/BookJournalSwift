@@ -20,6 +20,11 @@ struct CreateAuthor: View {
     
     var body: some View {
         VStack {
+            #if os(macOS)
+            Text("Create Author")
+                .font(.system(.title3))
+            #endif
+            
             Form {
                 TextField(
                     "Name",
