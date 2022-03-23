@@ -14,8 +14,6 @@ struct CreateAuthor: View {
     @Binding var showScreen: Bool
     #endif
     
-    @Environment(\.managedObjectContext) private var viewContext
-    
     @State private var name: String = ""
     
     var body: some View {
@@ -73,6 +71,9 @@ struct CreateAuthor: View {
     }
     
     private func save() {
+        let persistenceController = PersistenceController.shared
+        let viewContext = persistenceController.container.viewContext
+        
         let newAuthor = Author(context: viewContext)
         newAuthor.createdAt = Date()
         newAuthor.updatedAt = Date()
