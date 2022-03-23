@@ -53,7 +53,6 @@ struct MacNewBookStep3: View {
             .sheet(isPresented: $showNewEditorSheet) {
                 CreateEditor(showScreen: $showNewEditorSheet)
             }
-            
         }
     }
 }

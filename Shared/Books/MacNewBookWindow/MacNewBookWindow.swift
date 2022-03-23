@@ -17,7 +17,10 @@ final class MacNewBookWindow: NSWindow {
 }
 
 func openNewBookWindow() {
+    let persistenceController = PersistenceController.shared
+    
     let contentView = MacNewBookWindowView()
+        .environment(\.managedObjectContext, persistenceController.container.viewContext)
     
     let window = MacNewBookWindow(
         contentRect: NSRect(x: 0, y: 0, width: 450, height: 500),

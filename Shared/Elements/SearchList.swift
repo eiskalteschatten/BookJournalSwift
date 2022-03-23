@@ -120,7 +120,7 @@ struct SearchList<T: AbstractName>: View {
     }
     
     private var searchResults: [T] {
-            if searchText.isEmpty {
+        if searchText.isEmpty {
                 return data
         } else {
             return data.filter { $0.name != nil ? $0.name!.contains(searchText) : false }
