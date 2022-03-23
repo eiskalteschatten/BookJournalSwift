@@ -8,29 +8,62 @@
 import SwiftUI
 
 struct CreateAuthor: View {
+    #if os(iOS)
     @Binding var screen: AuthorsSearchListScreen?
+    #else
+    @Binding var showScreen: Bool
+    #endif
     
     @Environment(\.managedObjectContext) private var viewContext
     
     @State private var name: String = ""
     
     var body: some View {
-        Form {
-            TextField(
-                "Name",
-                text: $name
-            )
-        }
-        #if os(iOS)
-        .navigationBarTitle(Text("Create an Author"), displayMode: .inline)
-            .navigationBarItems(
-                trailing: Button(action: {
+        VStack {
+            Form {
+                TextField(
+                    "Name",
+                    text: $name
+                )
+            }
+            #if os(iOS)
+            .navigationBarTitle(Text("Create an Author"), displayMode: .inline)
+                .navigationBarItems(
+                    trailing: Button(action: {
+                        save()
+                        screen = .home
+                    }) {
+                        Text("Save").bold()
+                    }
+                )
+            #else
+            .padding(.bottom)
+            #endif
+            
+            #if os(macOS)
+            HStack {
+                Button(action: {
+                    showScreen.toggle()
+                }, label: {
+                    Text("Cancel")
+                })
+                .keyboardShortcut(.cancelAction)
+                
+                Spacer()
+                
+                Button(action: {
                     save()
-                    screen = .home
-                }) {
-                    Text("Save").bold()
-                }
-            )
+                    showScreen.toggle()
+                }, label: {
+                    Text("Save")
+                })
+                .keyboardShortcut(.defaultAction)
+            }
+            #endif
+        }
+        #if os(macOS)
+        .frame(minWidth: 300)
+        .padding()
         #endif
     }
     
@@ -52,9 +85,17 @@ struct CreateAuthor: View {
 }
 
 struct CreateAuthor_Previews: PreviewProvider {
+    #if os(iOS)
     @State static var screen: AuthorsSearchListScreen?
+    #else
+    @State static var showScreen: Bool = true
+    #endif
     
     static var previews: some View {
+        #if os(iOS)
         CreateAuthor(screen: $screen)
+        #else
+        CreateAuthor(showScreen: $showScreen)
+        #endif
     }
 }

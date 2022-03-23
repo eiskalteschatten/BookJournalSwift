@@ -10,7 +10,7 @@ import SwiftUI
 struct MacNewBookStep3: View {
     @ObservedObject var bookModel: BookModel
     
-    @State private var showEditAuthorsSheet = false
+    @State private var showNewAuthorSheet = false
     @State private var showEditEditorsSheet = false
     
     var body: some View {
@@ -18,22 +18,48 @@ struct MacNewBookStep3: View {
             MacNewBookStepTitle("People")
             
             // Authors
-            MacChipsEditor<Author>(title: "Authors", data: bookModel.authors, chipColor: AUTHOR_COLOR, editAction: editAuthorsAction)
-                .padding(.bottom)
-                .sheet(isPresented: $showEditAuthorsSheet) {
-                    AuthorsSearchList(selectedItems: $bookModel.authors)
+            VStack(alignment: .leading) {
+                HStack {
+                    Text("Authors")
+                    Spacer()
+                    Button(action: {
+                        showNewAuthorSheet.toggle()
+                    }, label: {
+                        Text("New Author")
+                    })
                 }
+                
+                AuthorsSearchList(selectedItems: $bookModel.authors)
+            }
+            .padding(.bottom)
+            .sheet(isPresented: $showNewAuthorSheet) {
+                CreateAuthor(showScreen: $showNewAuthorSheet)
+            }
+            
+//            MacChipsEditor<Author>(title: "Authors", data: bookModel.authors, chipColor: AUTHOR_COLOR, editAction: editAuthorsAction)
+//                .padding(.bottom)
+//                .sheet(isPresented: $showEditAuthorsSheet) {
+//                    AuthorsSearchList(selectedItems: $bookModel.authors)
+//                }
 
             // Editors
-            MacChipsEditor<Editor>(title: "Editors", data: bookModel.editors, chipColor: EDITOR_COLOR, editAction: editEditorsAction)
-                .sheet(isPresented: $showEditEditorsSheet) {
-                    EditorsSearchList(selectedItems: $bookModel.editors)
+            VStack(alignment: .leading) {
+                HStack {
+                    Text("Editors")
+                    Spacer()
+                    Button(action: {}, label: {
+                        Text("New Editor")
+                    })
                 }
+                
+                EditorsSearchList(selectedItems: $bookModel.editors)
+            }
+            
+//            MacChipsEditor<Editor>(title: "Editors", data: bookModel.editors, chipColor: EDITOR_COLOR, editAction: editEditorsAction)
+//                .sheet(isPresented: $showEditEditorsSheet) {
+//                    EditorsSearchList(selectedItems: $bookModel.editors)
+//                }
         }
-    }
-    
-    private func editAuthorsAction() {
-        showEditAuthorsSheet.toggle()
     }
     
     private func editEditorsAction() {

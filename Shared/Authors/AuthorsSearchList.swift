@@ -48,7 +48,7 @@ struct AuthorsSearchList: View {
             #endif
         }
         #if os(macOS)
-        .frame(minWidth: 300)
+        .frame(minWidth: 200)
         #endif
     }
     

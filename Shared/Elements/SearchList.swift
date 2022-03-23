@@ -48,12 +48,6 @@ struct SearchList<T: AbstractName>: View {
     
     var body: some View {
         VStack {
-            #if os(macOS)
-            Text(title)
-                .font(.system(.headline))
-                .padding(.vertical)
-            #endif
-            
             List {
                 ForEach(searchResults, id: \.self) { item in
                     HStack {
