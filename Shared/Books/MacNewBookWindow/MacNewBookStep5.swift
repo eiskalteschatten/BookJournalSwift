@@ -16,23 +16,6 @@ struct MacNewBookStep5: View {
         VStack {
             MacNewBookStepTitle("Publication Details")
             
-            Form {
-                // Book Format
-                Picker("Book Format:", selection: $bookModel.bookFormat) {
-                    ForEach(BookFormat.allCases) { format in
-                        Label(bookFormatProperties[format]![0], systemImage: bookFormatProperties[format]![1])
-                            .tag(format.rawValue)
-                    }
-                }
-                
-                // Page Count
-                TextField(
-                    "Page Count:",
-                    value: $bookModel.pageCount,
-                    format: .number
-                )
-            }
-
             // Publisher
             VStack(alignment: .leading) {
                 HStack {
@@ -51,8 +34,23 @@ struct MacNewBookStep5: View {
             .sheet(isPresented: $showNewPublisherSheet) {
                 CreatePublisher(showScreen: $showNewPublisherSheet)
             }
-
+            
             Form {
+                // Book Format
+                Picker("Book Format:", selection: $bookModel.bookFormat) {
+                    ForEach(BookFormat.allCases) { format in
+                        Label(bookFormatProperties[format]![0], systemImage: bookFormatProperties[format]![1])
+                            .tag(format.rawValue)
+                    }
+                }
+                
+                // Page Count
+                TextField(
+                    "Page Count:",
+                    value: $bookModel.pageCount,
+                    format: .number
+                )
+                
                 // Year Published
                 TextField(
                     "Year Published:",

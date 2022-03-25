@@ -10,32 +10,54 @@ import SwiftUI
 struct MacNewBookStep6: View {
     @ObservedObject var bookModel: BookModel
     
+    @State private var showNewCountrySheet = false
+    @State private var showNewTranslatorSheet = false
+    
     var body: some View {
         VStack {
             MacNewBookStepTitle("World")
             
-            Form {
-                // Country of Origin
-                Text("Country of Origin")
-        //        NavigationLink(
-        //            destination: CountriesSearchList(selectedItem: $bookModel.countryOfOrigin),
-        //            tag: Screen.addCountryOfOrigin,
-        //            selection: $screen,
-        //            label: { PickerMimickerWithName<Country>(title: "Country of Origin", data: bookModel.countryOfOrigin) }
-        //        )
-
-                // Translators
-                Text("Translators")
-        //        NavigationLink(
-        //            destination: TranslatorsSearchList(selectedItems: $bookModel.translators),
-        //            tag: Screen.addTranslators,
-        //            selection: $screen,
-        //            label: { WrappingSmallChipsWithName<Translator>(title: "Translators", data: bookModel.translators, chipColor: TRANSLATOR_COLOR) }
-        //        )
+            // Country of Origin
+            VStack(alignment: .leading) {
+                HStack {
+                    Text("Country of Origin")
+                    Spacer()
+                    Button(action: {
+                        showNewCountrySheet.toggle()
+                    }, label: {
+                        Text("New Country")
+                    })
+                }
+                
+                CountriesSearchList(selectedItem: $bookModel.countryOfOrigin)
+            }
+            .sheet(isPresented: $showNewCountrySheet) {
+                CreateCountry(showScreen: $showNewCountrySheet)
+            }
+            
+            Divider()
+                .padding(.vertical)
+            
+            // Translators
+            VStack(alignment: .leading) {
+                HStack {
+                    Text("Translators")
+                    Spacer()
+                    Button(action: {
+                        showNewTranslatorSheet.toggle()
+                    }, label: {
+                        Text("New Translator")
+                    })
+                }
+                
+                TranslatorsSearchList(selectedItems: $bookModel.translators)
+            }
+            .sheet(isPresented: $showNewTranslatorSheet) {
+                CreateTranslator(showScreen: $showNewTranslatorSheet)
+            }
 
 //                LanguagePicker(title: "Original Language", selection: $bookModel.originalLanguage)
 //                LanguagePicker(title: "Language Read In", selection: $bookModel.languageReadIn)
-            }
         }
     }
 }
