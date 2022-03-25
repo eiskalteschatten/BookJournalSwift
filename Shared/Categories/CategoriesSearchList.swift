@@ -52,7 +52,13 @@ struct CategoriesSearchList: View {
     private func delete(offsets: IndexSet) {
         withAnimation {
             offsets.map { categories[$0] }.forEach(viewContext.delete)
-            offsets.forEach { i in selectedItems.remove(at: i) }
+            
+            offsets.map { categories[$0] }.forEach { item in
+                let index = selectedItems.firstIndex(of: item)
+                if index != nil {
+                    selectedItems.remove(at: index!)
+                }
+            }
 
             do {
                 try viewContext.save()
