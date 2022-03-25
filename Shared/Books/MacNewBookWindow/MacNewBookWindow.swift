@@ -23,8 +23,8 @@ func openNewBookWindow() {
         .environment(\.managedObjectContext, persistenceController.container.viewContext)
     
     let window = MacNewBookWindow(
-        contentRect: NSRect(x: 0, y: 0, width: 450, height: 500),
-        styleMask: [.titled, .closable, .miniaturizable],
+        contentRect: NSRect(x: 0, y: 0, width: 450, height: 550),
+        styleMask: [.titled, .closable, .miniaturizable, .resizable],
         backing: .buffered,
         defer: false
     )

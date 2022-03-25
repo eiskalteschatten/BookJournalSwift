@@ -10,44 +10,72 @@ import SwiftUI
 struct MacNewBookStep4: View {
     @ObservedObject var bookModel: BookModel
     
+    @State private var showNewGenreSheet = false
+    @State private var showNewCategorySheet = false
+    @State private var showNewTagSheet = false
+    
     var body: some View {
         VStack {
-            MacNewBookStepTitle("Book Information")
-            
-            Form {
-                // Page Count
-                TextField(
-                    "Page Count:",
-                    value: $bookModel.pageCount,
-                    format: .number
-                )
+            MacNewBookStepTitle("Categorization")
 
-                // Genres
-                Text("Genres")
-        //        NavigationLink(
-        //            destination: GenresSearchList(selectedItems: $bookModel.genres),
-        //            tag: Screen.addGenres,
-        //            selection: $screen,
-        //            label: { WrappingSmallChipsWithName<Genre>(title: "Genres", data: bookModel.genres, chipColor: GENRE_COLOR) }
-        //        )
-        //
-                Text("Categories")
-        //        // Categories
-        //        NavigationLink(
-        //            destination: CategoriesSearchList(selectedItems: $bookModel.categories),
-        //            tag: Screen.addCategories,
-        //            selection: $screen,
-        //            label: { WrappingSmallChipsWithName<Category>(title: "Categories", data: bookModel.categories, chipColor: CATEGORY_COLOR) }
-        //        )
-        //
-                Text("Tags")
-        //        // Tags
-        //        NavigationLink(
-        //            destination: TagsSearchList(selectedItems: $bookModel.tags),
-        //            tag: Screen.addTags,
-        //            selection: $screen,
-        //            label: { WrappingSmallChipsWithName<Tag>(title: "Tags", data: bookModel.tags, chipColor: TAG_COLOR) }
-        //        )
+            // Genres
+            VStack(alignment: .leading) {
+                HStack {
+                    Text("Genres")
+                    Spacer()
+                    Button(action: {
+                        showNewGenreSheet.toggle()
+                    }, label: {
+                        Text("New Genre")
+                    })
+                }
+                
+                GenresSearchList(selectedItems: $bookModel.genres)
+            }
+            .sheet(isPresented: $showNewGenreSheet) {
+                CreateGenre(showScreen: $showNewGenreSheet)
+            }
+            
+            Divider()
+                .padding(.vertical)
+        
+            // Categories
+            VStack(alignment: .leading) {
+                HStack {
+                    Text("Categories")
+                    Spacer()
+                    Button(action: {
+                        showNewCategorySheet.toggle()
+                    }, label: {
+                        Text("New Category")
+                    })
+                }
+                
+                CategoriesSearchList(selectedItems: $bookModel.categories)
+            }
+            .sheet(isPresented: $showNewCategorySheet) {
+                CreateCategory(showScreen: $showNewCategorySheet)
+            }
+            
+            Divider()
+                .padding(.vertical)
+        
+            // Tags
+            VStack(alignment: .leading) {
+                HStack {
+                    Text("Tags")
+                    Spacer()
+                    Button(action: {
+                        showNewTagSheet.toggle()
+                    }, label: {
+                        Text("New Tag")
+                    })
+                }
+                
+                TagsSearchList(selectedItems: $bookModel.tags)
+            }
+            .sheet(isPresented: $showNewTagSheet) {
+                CreateTag(showScreen: $showNewTagSheet)
             }
         }
     }

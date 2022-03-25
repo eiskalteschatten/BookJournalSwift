@@ -10,6 +10,8 @@ import SwiftUI
 struct MacNewBookStep5: View {
     @ObservedObject var bookModel: BookModel
     
+    @State private var showNewPublisherSheet = false
+    
     var body: some View {
         VStack {
             MacNewBookStepTitle("Publication Details")
@@ -22,16 +24,35 @@ struct MacNewBookStep5: View {
                             .tag(format.rawValue)
                     }
                 }
+                
+                // Page Count
+                TextField(
+                    "Page Count:",
+                    value: $bookModel.pageCount,
+                    format: .number
+                )
+            }
 
-                // Publisher
-                Text("Publisher")
-        //        NavigationLink(
-        //            destination: PublishersSearchList(selectedItem: $bookModel.publisher),
-        //            tag: Screen.addPublisher,
-        //            selection: $screen,
-        //            label: { PickerMimickerWithName<Publisher>(title: "Publisher", data: bookModel.publisher) }
-        //        )
+            // Publisher
+            VStack(alignment: .leading) {
+                HStack {
+                    Text("Publisher")
+                    Spacer()
+                    Button(action: {
+                        showNewPublisherSheet.toggle()
+                    }, label: {
+                        Text("New Publisher")
+                    })
+                }
+                
+                PublishersSearchList(selectedItem: $bookModel.publisher)
+            }
+            .padding(.vertical)
+            .sheet(isPresented: $showNewPublisherSheet) {
+                CreatePublisher(showScreen: $showNewPublisherSheet)
+            }
 
+            Form {
                 // Year Published
                 TextField(
                     "Year Published:",
