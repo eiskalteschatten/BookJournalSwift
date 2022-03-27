@@ -27,14 +27,15 @@ struct iOSNewBookSheet: View {
                     VStack(alignment: .center) {
                         // Bookcover
                         Menu {
-                            Button {
+                            Button(action: {
                                 // TODO: add function
-                            } label: {
+                            }) {
                                 Label("Choose Image", systemImage: "photo")
                             }
-                            Button {
+                            
+                            Button(action: {
                                 // TODO: add function
-                            } label: {
+                            }) {
                                 Label("Scan Image", systemImage: "viewfinder")
                             }
                         } label: {
@@ -84,7 +85,6 @@ struct iOSNewBookSheet: View {
                     }
                 }
                 
-                // People
                 Section("People") {
                     // Authors
                     NavigationLink(
@@ -103,7 +103,6 @@ struct iOSNewBookSheet: View {
                     )
                 }
                 
-                // Categorization
                 Section("Categorization") {
                     // Categories
                     NavigationLink(
@@ -171,7 +170,6 @@ struct iOSNewBookSheet: View {
                         .keyboardType(.numberPad)
                 }
                 
-                // World
                 Section("World") {
                     // Country of Origin
                     NavigationLink(
