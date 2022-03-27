@@ -102,24 +102,8 @@ struct iOSNewBookSheet: View {
                     )
                 }
                 
-                // Book Information
-                Section("Book Information") {
-                    // Page Count
-                    TextField(
-                        "Page Count",
-                        value: $bookModel.pageCount,
-                        format: .number
-                    )
-                        .keyboardType(.numberPad)
-                    
-                    // Genres
-                    NavigationLink(
-                        destination: GenresSearchList(selectedItems: $bookModel.genres),
-                        tag: Screen.addGenres,
-                        selection: $screen,
-                        label: { WrappingSmallChipsWithName<Genre>(title: "Genres", data: bookModel.genres, chipColor: GENRE_COLOR) }
-                    )
-                    
+                // Categorization
+                Section("Categorization") {
                     // Categories
                     NavigationLink(
                         destination: CategoriesSearchList(selectedItems: $bookModel.categories),
@@ -135,17 +119,17 @@ struct iOSNewBookSheet: View {
                         selection: $screen,
                         label: { WrappingSmallChipsWithName<Tag>(title: "Tags", data: bookModel.tags, chipColor: TAG_COLOR) }
                     )
+                    
+                    // Genres
+                    NavigationLink(
+                        destination: GenresSearchList(selectedItems: $bookModel.genres),
+                        tag: Screen.addGenres,
+                        selection: $screen,
+                        label: { WrappingSmallChipsWithName<Genre>(title: "Genres", data: bookModel.genres, chipColor: GENRE_COLOR) }
+                    )
                 }
                 
                 Section("Publication Details") {
-                    // Book Format
-                    Picker("Book Format", selection: $bookModel.bookFormat) {
-                        ForEach(BookFormat.allCases) { format in
-                            Label(bookFormatProperties[format]![0], systemImage: bookFormatProperties[format]![1])
-                                .tag(format.rawValue)
-                        }
-                    }
-                    
                     // Publisher
                     NavigationLink(
                         destination: PublishersSearchList(selectedItem: $bookModel.publisher),
@@ -153,6 +137,14 @@ struct iOSNewBookSheet: View {
                         selection: $screen,
                         label: { PickerMimickerWithName<Publisher>(title: "Publisher", data: bookModel.publisher) }
                     )
+                    
+                    // Book Format
+                    Picker("Book Format", selection: $bookModel.bookFormat) {
+                        ForEach(BookFormat.allCases) { format in
+                            Label(bookFormatProperties[format]![0], systemImage: bookFormatProperties[format]![1])
+                                .tag(format.rawValue)
+                        }
+                    }
                     
                     // Year Published
                     TextField(
@@ -166,6 +158,14 @@ struct iOSNewBookSheet: View {
                     TextField(
                         "ISBN",
                         text: $bookModel.isbn
+                    )
+                        .keyboardType(.numberPad)
+                    
+                    // Page Count
+                    TextField(
+                        "Page Count",
+                        value: $bookModel.pageCount,
+                        format: .number
                     )
                         .keyboardType(.numberPad)
                 }
