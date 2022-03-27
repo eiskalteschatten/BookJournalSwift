@@ -45,6 +45,9 @@ func getBookcover(book: Book) -> Image {
         // TODO: add actual default cover image
         : Image("DefaultBookCover")
     #else
-    // TODO
+    return book.bookcover != nil
+        ? Image(uiImage: UIImage(data: book.bookcover!)!)
+        // TODO: add actual default cover image
+        : Image("DefaultBookCover")
     #endif
 }
