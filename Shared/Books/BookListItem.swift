@@ -13,8 +13,9 @@ struct BookListItem: View {
     
     var body: some View {
         HStack(alignment: .center, spacing: 10) {
-            // TODO: add actual cover image
-            Image("DefaultBookCover")
+            let bookcover = getBookcover(book: book)
+            
+            bookcover
                 .resizable()
                 .scaledToFit()
                 .frame(width: 50.0, height: 77.0)

@@ -14,11 +14,13 @@ struct BookView: View {
     var body: some View {
         VStack {
             if book != nil {
+                let bookcover = getBookcover(book: book!)
+                
                 ScrollView {
                     ZStack {
                         GeometryReader { geometry in
                             if geometry.frame(in: .global).minY <= 0 {
-                                Image("DefaultBookCover")
+                                bookcover
                                     .resizable()
                                     .scaledToFill()
                                     .frame(width: geometry.size.width, height: geometry.size.height)
@@ -28,7 +30,7 @@ struct BookView: View {
                                     .opacity(0.4)
                             }
                             else {
-                                Image("DefaultBookCover")
+                                bookcover
                                     .resizable()
                                     .scaledToFill()
                                     .frame(width: geometry.size.width, height: geometry.size.height + geometry.frame(in: .global).minY)
@@ -41,8 +43,7 @@ struct BookView: View {
                         .frame(height: 200)
                         
                         VStack(spacing: 30.0) {
-                            // TODO: add actual cover image
-                            Image("DefaultBookCover")
+                            bookcover
                                 .resizable()
                                 .frame(width: 200.0, height: 307.0)
                                 .scaledToFit()

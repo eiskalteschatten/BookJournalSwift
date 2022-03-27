@@ -5,6 +5,8 @@
 //  Created by Alex Seifert on 25.02.22.
 //
 
+import SwiftUI
+
 enum BookReadingStatus: String, CaseIterable, Identifiable {
     case
         notReadYet = "notReadYet",
@@ -35,3 +37,14 @@ let bookFormatProperties: [BookFormat: [String]] = [
     .audiobook: ["Audiobook", "airpodsmax"],
     .other: ["Other", "questionmark"]
 ]
+
+func getBookcover(book: Book) -> Image {
+    #if os(macOS)
+    return book.bookcover != nil
+        ? Image(nsImage: NSImage(data: book.bookcover!)!)
+        // TODO: add actual default cover image
+        : Image("DefaultBookCover")
+    #else
+    // TODO
+    #endif
+}
