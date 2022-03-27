@@ -16,7 +16,28 @@ struct LanguagePicker: View {
         let identifier: String;
     }
     
+    @State private var sortedLanguages: [NamedLanguage] = []
+    
     var body: some View {
+        Group {
+            if sortedLanguages.count == 0 {
+                ProgressView()
+            }
+            else {
+                Picker(title, selection: $selection) {
+                    ForEach(sortedLanguages, id: \.self) { language in
+                        Text(language.name)
+                            .tag(language.identifier)
+                    }
+                }
+            }
+        }
+        .task {
+            await getSortedLanguages()
+        }
+    }
+    
+    private func getSortedLanguages() async {
         let identifiers = NSLocale.availableLocaleIdentifiers
         let locale = NSLocale(localeIdentifier: NSLocale.current.languageCode ?? "en_US")
         
@@ -24,15 +45,8 @@ struct LanguagePicker: View {
             NamedLanguage(name: locale.displayName(forKey: NSLocale.Key.identifier, value: $0)!, identifier: $0)
         }
         
-        let sortedLanguages = languages.sorted {
+        sortedLanguages = languages.sorted {
             return $0.name < $1.name
-        }
-        
-        Picker(title, selection: $selection) {
-            ForEach(sortedLanguages, id: \.self) { language in
-                Text(language.name)
-                    .tag(language.identifier)
-            }
         }
     }
 }
