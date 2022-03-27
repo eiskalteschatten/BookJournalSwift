@@ -18,6 +18,7 @@ struct iOSNewBookSheet: View {
 
     @State private var screen: Screen?
     @StateObject private var bookModel = BookModel()
+    @State private var presentCloseAlert = false
 
     var body: some View {
         NavigationView {
@@ -192,10 +193,16 @@ struct iOSNewBookSheet: View {
                     LanguagePicker(title: "Language Read In", selection: $bookModel.languageReadIn)
                 }
             }
+            .alert("Are you sure you want to cancel?", isPresented: $presentCloseAlert, actions: {
+                Button("No", role: .cancel, action: { presentCloseAlert = false })
+                Button("Yes", role: .destructive, action: { dismiss() })
+            }, message: {
+                Text("Your changes will be lost if you continue.")
+            })
             .navigationBarTitle(Text("Add a New Book"), displayMode: .inline)
                 .navigationBarItems(
                     leading: Button(action: {
-                        dismiss()
+                        presentCloseAlert = true
                     }) {
                         Text("Cancel")
                     },
