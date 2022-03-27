@@ -50,7 +50,7 @@ struct MacNewBookStep5: View {
                 )
             }
         }
-        Shared/Books/MacNewBookWindow/MacNewBookStep6.swift    }
+    }
 }
 
 struct MacNewBookStep5_Previews: PreviewProvider {
