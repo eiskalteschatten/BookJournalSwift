@@ -34,8 +34,10 @@ struct MacNewBookStep7: View {
             Divider()
                 .padding(.vertical)
 
-            LanguagePicker(title: originalLanguageTitle, selection: $bookModel.originalLanguage)
-            LanguagePicker(title: languageReadInTitle, selection: $bookModel.languageReadIn)
+            Form {
+                LanguagePicker(title: originalLanguageTitle, selection: $bookModel.originalLanguage)
+                LanguagePicker(title: languageReadInTitle, selection: $bookModel.languageReadIn)
+            }
         }
     }
 }
