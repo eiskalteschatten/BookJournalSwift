@@ -10,9 +10,26 @@ import SwiftUI
 
 final class MacNewBookWindow: NSWindow {
     override func close() {
-        // TODO: prompt user for unsaved changes
-        // if viewContext.hasChanges { ... }
-        super.close()
+        let persistenceController = PersistenceController.shared
+        let viewContext = persistenceController.container.viewContext
+        
+        if viewContext.hasChanges {
+            let alert = NSAlert()
+            alert.messageText = "Are you sure you want to close this window?"
+            alert.informativeText = "Your changes will be lost if you continue."
+            alert.addButton(withTitle: "No")
+            alert.addButton(withTitle: "Yes")
+            alert.alertStyle = .warning
+            
+            let dontClose = alert.runModal() == NSApplication.ModalResponse.alertFirstButtonReturn
+        
+            if !dontClose {
+                super.close()
+            }
+        }
+        else {
+            super.close()
+        }
     }
 }
 
