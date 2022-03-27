@@ -53,7 +53,8 @@ struct BookList: View {
                     #if os(iOS)
                     showNewBookSheet.toggle()
                     #else
-                    openNewBookWindow()
+                    let newBookWindow = MacNewBookWindowManager()
+                    newBookWindow.openWindow()
                     #endif
                 }) {
                     Label("Add Book", systemImage: "plus")

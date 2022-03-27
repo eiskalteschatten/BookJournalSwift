@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MacNewBookWindowView: View {
+    var newBookWindow: MacNewBookWindowManager?
+    
     private enum Screen: Int, CaseIterable {
         case step1, step2, step3, step4, step5, step6, step7
     }
@@ -56,7 +58,7 @@ struct MacNewBookWindowView: View {
             
             HStack {
                 Button("Cancel", action: {
-                    NSApplication.shared.keyWindow?.close()
+                    newBookWindow?.close()
                 })
                 .keyboardShortcut(.cancelAction)
                 
@@ -73,7 +75,7 @@ struct MacNewBookWindowView: View {
                 else {
                     Button("Finish", action: {
                         bookModel.saveBook()
-                        NSApplication.shared.keyWindow?.close()
+                        newBookWindow?.close()
                     })
                     .keyboardShortcut(.defaultAction)
                 }

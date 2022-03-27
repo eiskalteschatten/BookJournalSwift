@@ -8,12 +8,11 @@
 import Cocoa
 import SwiftUI
 
-final class MacNewBookWindow: NSWindow {
+class MacNewBookWindow: NSWindow {
+    var viewContext: NSManagedObjectContext?
+    
     override func close() {
-        let persistenceController = PersistenceController.shared
-        let viewContext = persistenceController.container.viewContext
-        
-        if viewContext.hasChanges {
+        if viewContext != nil && viewContext!.hasChanges {
             let alert = NSAlert()
             alert.messageText = "Are you sure you want to close this window?"
             alert.informativeText = "Your changes will be lost if you continue."
@@ -22,7 +21,7 @@ final class MacNewBookWindow: NSWindow {
             alert.alertStyle = .warning
             
             let dontClose = alert.runModal() == NSApplication.ModalResponse.alertFirstButtonReturn
-        
+            
             if !dontClose {
                 super.close()
             }
@@ -33,28 +32,44 @@ final class MacNewBookWindow: NSWindow {
     }
 }
 
-func openNewBookWindow() {
-    let persistenceController = PersistenceController.shared
+class MacNewBookWindowManager {
+    var window: MacNewBookWindow?
     
-    let contentView = MacNewBookWindowView()
-        .environment(\.managedObjectContext, persistenceController.container.viewContext)
+    private var viewContext: NSManagedObjectContext?
     
-    let window = MacNewBookWindow(
-        contentRect: NSRect(x: 0, y: 0, width: 450, height: 550),
-        styleMask: [.titled, .closable, .miniaturizable, .resizable],
-        backing: .buffered,
-        defer: false
-    )
+    init() {
+        let persistenceController = PersistenceController.shared
+        viewContext = persistenceController.container.viewContext
+    }
     
-    window.center()
-    window.setFrameAutosaveName("NewBookWindow")
-    window.title = "Add a New Book"
-    window.isReleasedWhenClosed = false
-    window.isMovableByWindowBackground  = true
-    window.titleVisibility = .hidden
-    window.titlebarAppearsTransparent = true
-    window.styleMask.insert(.fullSizeContentView)
+    func openWindow() {
+        if viewContext != nil {
+            let contentView = MacNewBookWindowView(newBookWindow: self)
+                .environment(\.managedObjectContext, viewContext!)
+            
+            window = MacNewBookWindow(
+                contentRect: NSRect(x: 0, y: 0, width: 450, height: 550),
+                styleMask: [.titled, .closable, .miniaturizable, .resizable],
+                backing: .buffered,
+                defer: false
+            )
 
-    window.contentView = NSHostingView(rootView: contentView)
-    window.makeKeyAndOrderFront(nil)
+            window!.viewContext = viewContext
+            window!.center()
+            window!.setFrameAutosaveName("NewBookWindow")
+            window!.title = "Add a New Book"
+            window!.isReleasedWhenClosed = false
+            window!.isMovableByWindowBackground  = true
+            window!.titleVisibility = .hidden
+            window!.titlebarAppearsTransparent = true
+            window!.styleMask.insert(.fullSizeContentView)
+
+            window!.contentView = NSHostingView(rootView: contentView)
+            window!.makeKeyAndOrderFront(nil)
+        }
+    }
+    
+    func close() {
+        window?.close()
+    }
 }
