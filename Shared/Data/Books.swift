@@ -22,7 +22,7 @@ let bookReadingStatusProperties: [BookReadingStatus: String] = [
     .currentlyReading: "Currently Reading",
     .read: "Read",
     .stoppedReading: "Stopped Reading",
-    .takingABreak: "Taking a Break",
+    .takingABreak: "Taking a Break"
 ]
 
 enum BookFormat: String, CaseIterable, Identifiable {
