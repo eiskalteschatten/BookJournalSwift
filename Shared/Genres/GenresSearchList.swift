@@ -16,6 +16,10 @@ struct GenresSearchList: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     
+    #if os(macOS)
+    @State private var showCreateSheet = false
+    #endif
+    
     @Binding var selectedItems: [Genre]
     
     @FetchRequest(
@@ -25,9 +29,14 @@ struct GenresSearchList: View {
     
     var body: some View {
         SearchList<Genre>(
-            title: "Search Genres",
+            title: "Genres",
             data: genres.map { $0 },
             selectedData: $selectedItems,
+            addElementMac: {
+                #if os(macOS)
+                showCreateSheet.toggle()
+                #endif
+            },
             onDelete: delete
         )
         #if os(iOS)
@@ -45,6 +54,10 @@ struct GenresSearchList: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 EditButton()
             }
+        }
+        #else
+        .sheet(isPresented: $showCreateSheet) {
+            CreateGenre(showScreen: $showCreateSheet)
         }
         #endif
     }

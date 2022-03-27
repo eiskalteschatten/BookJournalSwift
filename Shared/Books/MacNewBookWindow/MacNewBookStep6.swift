@@ -11,7 +11,6 @@ struct MacNewBookStep6: View {
     @ObservedObject var bookModel: BookModel
     
     @State private var showNewCountrySheet = false
-    @State private var showNewTranslatorSheet = false
     
     var body: some View {
         VStack {
@@ -39,22 +38,7 @@ struct MacNewBookStep6: View {
                 .padding(.vertical)
             
             // Translators
-            VStack(alignment: .leading) {
-                HStack {
-                    Text("Translators")
-                    Spacer()
-                    Button(action: {
-                        showNewTranslatorSheet.toggle()
-                    }, label: {
-                        Text("New Translator")
-                    })
-                }
-                
-                TranslatorsSearchList(selectedItems: $bookModel.translators)
-            }
-            .sheet(isPresented: $showNewTranslatorSheet) {
-                CreateTranslator(showScreen: $showNewTranslatorSheet)
-            }
+            TranslatorsSearchList(selectedItems: $bookModel.translators)
 
 //                LanguagePicker(title: "Original Language", selection: $bookModel.originalLanguage)
 //                LanguagePicker(title: "Language Read In", selection: $bookModel.languageReadIn)

@@ -10,73 +10,24 @@ import SwiftUI
 struct MacNewBookStep4: View {
     @ObservedObject var bookModel: BookModel
     
-    @State private var showNewGenreSheet = false
-    @State private var showNewCategorySheet = false
-    @State private var showNewTagSheet = false
-    
     var body: some View {
         VStack {
             MacNewBookStepTitle("Categorization")
 
             // Genres
-            VStack(alignment: .leading) {
-                HStack {
-                    Text("Genres")
-                    Spacer()
-                    Button(action: {
-                        showNewGenreSheet.toggle()
-                    }, label: {
-                        Text("New Genre")
-                    })
-                }
-                
-                GenresSearchList(selectedItems: $bookModel.genres)
-            }
-            .sheet(isPresented: $showNewGenreSheet) {
-                CreateGenre(showScreen: $showNewGenreSheet)
-            }
+            GenresSearchList(selectedItems: $bookModel.genres)
             
             Divider()
                 .padding(.vertical)
         
             // Categories
-            VStack(alignment: .leading) {
-                HStack {
-                    Text("Categories")
-                    Spacer()
-                    Button(action: {
-                        showNewCategorySheet.toggle()
-                    }, label: {
-                        Text("New Category")
-                    })
-                }
-                
-                CategoriesSearchList(selectedItems: $bookModel.categories)
-            }
-            .sheet(isPresented: $showNewCategorySheet) {
-                CreateCategory(showScreen: $showNewCategorySheet)
-            }
+            CategoriesSearchList(selectedItems: $bookModel.categories)
             
             Divider()
                 .padding(.vertical)
         
             // Tags
-            VStack(alignment: .leading) {
-                HStack {
-                    Text("Tags")
-                    Spacer()
-                    Button(action: {
-                        showNewTagSheet.toggle()
-                    }, label: {
-                        Text("New Tag")
-                    })
-                }
-                
-                TagsSearchList(selectedItems: $bookModel.tags)
-            }
-            .sheet(isPresented: $showNewTagSheet) {
-                CreateTag(showScreen: $showNewTagSheet)
-            }
+            TagsSearchList(selectedItems: $bookModel.tags)
         }
     }
 }

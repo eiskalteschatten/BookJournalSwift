@@ -16,6 +16,10 @@ struct EditorsSearchList: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     
+    #if os(macOS)
+    @State private var showCreateSheet = false
+    #endif
+    
     @Binding var selectedItems: [Editor]
     
     @FetchRequest(
@@ -25,9 +29,14 @@ struct EditorsSearchList: View {
     
     var body: some View {
         SearchList<Editor>(
-            title: "Search Editors",
+            title: "Editors",
             data: editors.map { $0 },
             selectedData: $selectedItems,
+            addElementMac: {
+                #if os(macOS)
+                showCreateSheet.toggle()
+                #endif
+            },
             onDelete: delete
         )
         #if os(iOS)
@@ -45,6 +54,10 @@ struct EditorsSearchList: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 EditButton()
             }
+        }
+        #else
+        .sheet(isPresented: $showCreateSheet) {
+            CreateEditor(showScreen: $showCreateSheet)
         }
         #endif
     }

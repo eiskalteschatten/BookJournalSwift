@@ -16,6 +16,10 @@ struct TranslatorsSearchList: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     
+    #if os(macOS)
+    @State private var showCreateSheet = false
+    #endif
+    
     @Binding var selectedItems: [Translator]
     
     @FetchRequest(
@@ -25,9 +29,14 @@ struct TranslatorsSearchList: View {
     
     var body: some View {
         SearchList<Translator>(
-            title: "Search Translators",
+            title: "Translators",
             data: translators.map { $0 },
             selectedData: $selectedItems,
+            addElementMac: {
+                #if os(macOS)
+                showCreateSheet.toggle()
+                #endif
+            },
             onDelete: delete
         )
         #if os(iOS)
@@ -45,6 +54,10 @@ struct TranslatorsSearchList: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 EditButton()
             }
+        }
+        #else
+        .sheet(isPresented: $showCreateSheet) {
+            CreateTranslator(showScreen: $showCreateSheet)
         }
         #endif
     }

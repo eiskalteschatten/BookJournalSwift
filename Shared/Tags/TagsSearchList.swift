@@ -16,6 +16,10 @@ struct TagsSearchList: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     
+    #if os(macOS)
+    @State private var showCreateSheet = false
+    #endif
+    
     @Binding var selectedItems: [Tag]
     
     @FetchRequest(
@@ -25,9 +29,14 @@ struct TagsSearchList: View {
     
     var body: some View {
         SearchList<Tag>(
-            title: "Search Tags",
+            title: "Tags",
             data: tags.map { $0 },
             selectedData: $selectedItems,
+            addElementMac: {
+                #if os(macOS)
+                showCreateSheet.toggle()
+                #endif
+            },
             onDelete: delete
         )
         #if os(iOS)
@@ -45,6 +54,10 @@ struct TagsSearchList: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 EditButton()
             }
+        }
+        #else
+        .sheet(isPresented: $showCreateSheet) {
+            CreateTag(showScreen: $showCreateSheet)
         }
         #endif
     }

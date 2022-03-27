@@ -16,6 +16,10 @@ struct PublishersSearchList: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     
+    #if os(macOS)
+    @State private var showCreateSheet = false
+    #endif
+    
     @Binding var selectedItem: Publisher?
     
     @FetchRequest(
@@ -25,9 +29,14 @@ struct PublishersSearchList: View {
     
     var body: some View {
         SearchList<Publisher>(
-            title: "Search Publishers",
+            title: "Publishers",
             data: publishers.map { $0 },
             selectedData: $selectedItem,
+            addElementMac: {
+                #if os(macOS)
+                showCreateSheet.toggle()
+                #endif
+            },
             onDelete: delete
         )
         #if os(iOS)
@@ -45,6 +54,10 @@ struct PublishersSearchList: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 EditButton()
             }
+        }
+        #else
+        .sheet(isPresented: $showCreateSheet) {
+            CreatePublisher(showScreen: $showCreateSheet)
         }
         #endif
     }

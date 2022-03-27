@@ -10,30 +10,13 @@ import SwiftUI
 struct MacNewBookStep5: View {
     @ObservedObject var bookModel: BookModel
     
-    @State private var showNewPublisherSheet = false
-    
     var body: some View {
         VStack {
             MacNewBookStepTitle("Publication Details")
             
             // Publisher
-            VStack(alignment: .leading) {
-                HStack {
-                    Text("Publisher")
-                    Spacer()
-                    Button(action: {
-                        showNewPublisherSheet.toggle()
-                    }, label: {
-                        Text("New Publisher")
-                    })
-                }
-                
-                PublishersSearchList(selectedItem: $bookModel.publisher)
-            }
-            .padding(.vertical)
-            .sheet(isPresented: $showNewPublisherSheet) {
-                CreatePublisher(showScreen: $showNewPublisherSheet)
-            }
+            PublishersSearchList(selectedItem: $bookModel.publisher)
+                .padding(.vertical)
             
             Form {
                 // Book Format
