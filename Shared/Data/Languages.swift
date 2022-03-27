@@ -5,6 +5,8 @@
 //  Created by Alex Seifert on 27.03.22.
 //
 
+import Cocoa
+
 struct Language: Decodable, Hashable {
     let name: String
     let nativeName: String
@@ -16,11 +18,12 @@ struct Language: Decodable, Hashable {
     }
     
     init(from decoder: Decoder) throws {
+        let locale = NSLocale(localeIdentifier: NSLocale.current.languageCode ?? "en_US")
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        name = try container.decode(String.self, forKey: CodingKeys.name)
-        nativeName = try container.decode(String.self, forKey: CodingKeys.nativeName)
         code = container.codingPath.first!.stringValue
+        name = locale.displayName(forKey: NSLocale.Key.identifier, value: code)!
+        nativeName = try container.decode(String.self, forKey: CodingKeys.nativeName)
     }
 }
 
