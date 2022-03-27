@@ -14,6 +14,7 @@ struct SearchList<T: AbstractName>: View {
     var data: [T]
     @Binding var selectedDataArray: [T]
     @Binding var selectedData: T?
+    var addElementMac: (() -> Void)?
     var onDelete: (_: IndexSet) -> Void
     
     private var singleSelection = false
@@ -23,12 +24,14 @@ struct SearchList<T: AbstractName>: View {
         title: String,
         data: [T],
         selectedData: Binding<[T]>,
+        addElementMac: (() -> Void)? = nil,
         onDelete: @escaping (_: IndexSet) -> Void
     ) {
         self.title = title
         self.data = data
         self._selectedDataArray = selectedData
         self._selectedData = Binding.constant(nil)
+        self.addElementMac = addElementMac
         self.onDelete = onDelete
     }
     
@@ -36,21 +39,37 @@ struct SearchList<T: AbstractName>: View {
         title: String,
         data: [T],
         selectedData: Binding<T?>,
+        addElementMac: (() -> Void)? = nil,
         onDelete: @escaping (_: IndexSet) -> Void
     ) {
         self.title = title
         self.data = data
         self._selectedDataArray = Binding.constant([])
         self._selectedData = selectedData
+        self.addElementMac = addElementMac
         self.onDelete = onDelete
         self.singleSelection = true
     }
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             #if os(macOS)
-            TextField("Search", text: $searchText)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+            HStack {
+                Text(title)
+                
+                Spacer()
+                
+                TextField("Search", text: $searchText)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .frame(maxWidth: 200)
+                
+                if addElementMac != nil {
+                    Button(action: addElementMac!, label: {
+                        Image(systemName: "plus")
+                    })
+                    .buttonStyle(.plain)
+                }
+            }
             #endif
             
             List {
@@ -153,6 +172,7 @@ struct SearchList_Previews: PreviewProvider {
             title: "Search for Something",
             data: getMockAuthors(),
             selectedData: $authors,
+            addElementMac: addElementMac,
             onDelete: deleteAuthors
         )
     }
@@ -174,5 +194,6 @@ struct SearchList_Previews: PreviewProvider {
         return [mockAuthor1, mockAuthor2]
     }
     
+    static func addElementMac() {}
     static func deleteAuthors(offsets: IndexSet) {}
 }

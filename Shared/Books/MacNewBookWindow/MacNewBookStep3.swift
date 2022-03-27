@@ -10,7 +10,6 @@ import SwiftUI
 struct MacNewBookStep3: View {
     @ObservedObject var bookModel: BookModel
     
-    @State private var showNewAuthorSheet = false
     @State private var showNewEditorSheet = false
     
     var body: some View {
@@ -18,22 +17,7 @@ struct MacNewBookStep3: View {
             MacNewBookStepTitle("People")
             
             // Authors
-            VStack(alignment: .leading) {
-                HStack {
-                    Text("Authors")
-                    Spacer()
-                    Button(action: {
-                        showNewAuthorSheet.toggle()
-                    }, label: {
-                        Text("New Author")
-                    })
-                }
-                
-                AuthorsSearchList(selectedItems: $bookModel.authors)
-            }
-            .sheet(isPresented: $showNewAuthorSheet) {
-                CreateAuthor(showScreen: $showNewAuthorSheet)
-            }
+            AuthorsSearchList(selectedItems: $bookModel.authors)
             
             Divider()
                 .padding(.vertical)
