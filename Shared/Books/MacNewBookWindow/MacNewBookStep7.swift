@@ -10,14 +10,6 @@ import SwiftUI
 struct MacNewBookStep7: View {
     @ObservedObject var bookModel: BookModel
     
-    #if os(macOS)
-    private let originalLanguageTitle = "Original Language:"
-    private let languageReadInTitle = "Language Read In:"
-    #else
-    private let originalLanguageTitle = "Original Language"
-    private let languageReadInTitle = "Language Read In"
-    #endif
-    
     var body: some View {
         VStack {
             MacNewBookStepTitle("World")
@@ -35,8 +27,8 @@ struct MacNewBookStep7: View {
                 .padding(.vertical)
 
             Form {
-                LanguagePicker(title: originalLanguageTitle, selection: $bookModel.originalLanguage)
-                LanguagePicker(title: languageReadInTitle, selection: $bookModel.languageReadIn)
+                LanguagePicker(title: "Original Language:", selection: $bookModel.originalLanguage)
+                LanguagePicker(title: "Language Read In:", selection: $bookModel.languageReadIn)
             }
         }
     }
