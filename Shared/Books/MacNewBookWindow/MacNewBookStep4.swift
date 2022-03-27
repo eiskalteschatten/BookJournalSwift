@@ -14,12 +14,6 @@ struct MacNewBookStep4: View {
         VStack {
             MacNewBookStepTitle("Categorization")
 
-            // Genres
-            GenresSearchList(selectedItems: $bookModel.genres)
-            
-            Divider()
-                .padding(.vertical)
-        
             // Categories
             CategoriesSearchList(selectedItems: $bookModel.categories)
             

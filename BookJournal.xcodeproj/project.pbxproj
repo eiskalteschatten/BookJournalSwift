@@ -94,6 +94,7 @@
 		93B2052227E8F19800E9D858 /* MacChipsEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B2052127E8F19800E9D858 /* MacChipsEditor.swift */; };
 		93C6E78527EB71C900E0E986 /* CreateElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C6E78427EB71C900E0E986 /* CreateElementView.swift */; };
 		93C6E78627EB71C900E0E986 /* CreateElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C6E78427EB71C900E0E986 /* CreateElementView.swift */; };
+		93ED4AA827F08BA4006031A2 /* MacNewBookStep7.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ED4AA727F08BA4006031A2 /* MacNewBookStep7.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -169,6 +170,7 @@
 		93B2051F27E8D02300E9D858 /* MacNewBookStepTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacNewBookStepTitle.swift; sourceTree = "<group>"; };
 		93B2052127E8F19800E9D858 /* MacChipsEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacChipsEditor.swift; sourceTree = "<group>"; };
 		93C6E78427EB71C900E0E986 /* CreateElementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateElementView.swift; sourceTree = "<group>"; };
+		93ED4AA727F08BA4006031A2 /* MacNewBookStep7.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacNewBookStep7.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -400,6 +402,7 @@
 				93B2051927E8CAD900E9D858 /* MacNewBookStep4.swift */,
 				93B2051B27E8CB2300E9D858 /* MacNewBookStep5.swift */,
 				93B2051D27E8CB6200E9D858 /* MacNewBookStep6.swift */,
+				93ED4AA727F08BA4006031A2 /* MacNewBookStep7.swift */,
 				93B2051F27E8D02300E9D858 /* MacNewBookStepTitle.swift */,
 			);
 			path = MacNewBookWindow;
@@ -676,6 +679,7 @@
 				9369C1AB27E62C1F00A39E57 /* WrappingSmallChipsWithName.swift in Sources */,
 				93A8F9A927E778CB00C8E8C5 /* BookModel.swift in Sources */,
 				9329054527C29C55000D15AE /* BookView.swift in Sources */,
+				93ED4AA827F08BA4006031A2 /* MacNewBookStep7.swift in Sources */,
 				9369C19827E53BC400A39E57 /* TranslatorsSearchList.swift in Sources */,
 				93548C8A27E8AA50004524B7 /* MacNewBookStep1.swift in Sources */,
 				9369C19F27E53FE000A39E57 /* CountriesSearchList.swift in Sources */,

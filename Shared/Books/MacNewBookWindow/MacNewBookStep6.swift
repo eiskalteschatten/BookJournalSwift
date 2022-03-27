@@ -10,23 +10,43 @@ import SwiftUI
 struct MacNewBookStep6: View {
     @ObservedObject var bookModel: BookModel
     
-    @State private var showNewCountrySheet = false
-    
     var body: some View {
         VStack {
-            MacNewBookStepTitle("World")
+            MacNewBookStepTitle("Publication Details")
             
-            // Country of Origin
-            CountriesSearchList(title: "Country of Origin", selectedItem: $bookModel.countryOfOrigin)
-            
-            Divider()
+            // Publisher
+            PublishersSearchList(title: "Publisher", selectedItem: $bookModel.publisher)
                 .padding(.vertical)
             
-            // Translators
-            TranslatorsSearchList(selectedItems: $bookModel.translators)
+            Form {
+                // Book Format
+                Picker("Book Format:", selection: $bookModel.bookFormat) {
+                    ForEach(BookFormat.allCases) { format in
+                        Label(bookFormatProperties[format]![0], systemImage: bookFormatProperties[format]![1])
+                            .tag(format.rawValue)
+                    }
+                }
+                
+                // Year Published
+                TextField(
+                    "Year Published:",
+                    value: $bookModel.yearPublished,
+                    format: .number
+                )
 
-//                LanguagePicker(title: "Original Language", selection: $bookModel.originalLanguage)
-//                LanguagePicker(title: "Language Read In", selection: $bookModel.languageReadIn)
+                // ISBN
+                TextField(
+                    "ISBN:",
+                    text: $bookModel.isbn
+                )
+                
+                // Page Count
+                TextField(
+                    "Page Count:",
+                    value: $bookModel.pageCount,
+                    format: .number
+                )
+            }
         }
     }
 }

@@ -9,13 +9,13 @@ import SwiftUI
 
 struct MacNewBookWindowView: View {
     private enum Screen: Int, CaseIterable {
-        case step1, step2, step3, step4, step5, step6
+        case step1, step2, step3, step4, step5, step6, step7
     }
     
     @State private var screen: Screen = .step1
     @StateObject private var bookModel = BookModel()
     
-    private let lastStep: Screen = .step6
+    private let lastStep: Screen = .step7
     
     var body: some View {
         VStack {
@@ -33,6 +33,8 @@ struct MacNewBookWindowView: View {
                     MacNewBookStep5(bookModel: bookModel)
                 case .step6:
                     MacNewBookStep6(bookModel: bookModel)
+                case .step7:
+                    MacNewBookStep7(bookModel: bookModel)
                 }
             }
             .frame(maxHeight: .infinity, alignment: .top)
