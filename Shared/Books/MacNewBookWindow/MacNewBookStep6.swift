@@ -17,22 +17,7 @@ struct MacNewBookStep6: View {
             MacNewBookStepTitle("World")
             
             // Country of Origin
-            VStack(alignment: .leading) {
-                HStack {
-                    Text("Country of Origin")
-                    Spacer()
-                    Button(action: {
-                        showNewCountrySheet.toggle()
-                    }, label: {
-                        Text("New Country")
-                    })
-                }
-                
-                CountriesSearchList(selectedItem: $bookModel.countryOfOrigin)
-            }
-            .sheet(isPresented: $showNewCountrySheet) {
-                CreateCountry(showScreen: $showNewCountrySheet)
-            }
+            CountriesSearchList(title: "Country of Origin", selectedItem: $bookModel.countryOfOrigin)
             
             Divider()
                 .padding(.vertical)

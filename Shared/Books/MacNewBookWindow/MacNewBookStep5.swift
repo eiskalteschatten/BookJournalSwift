@@ -15,7 +15,7 @@ struct MacNewBookStep5: View {
             MacNewBookStepTitle("Publication Details")
             
             // Publisher
-            PublishersSearchList(selectedItem: $bookModel.publisher)
+            PublishersSearchList(title: "Publisher", selectedItem: $bookModel.publisher)
                 .padding(.vertical)
             
             Form {

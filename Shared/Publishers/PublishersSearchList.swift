@@ -20,6 +20,7 @@ struct PublishersSearchList: View {
     @State private var showCreateSheet = false
     #endif
     
+    var title = "Publishers"
     @Binding var selectedItem: Publisher?
     
     @FetchRequest(
@@ -29,7 +30,7 @@ struct PublishersSearchList: View {
     
     var body: some View {
         SearchList<Publisher>(
-            title: "Publishers",
+            title: title,
             data: publishers.map { $0 },
             selectedData: $selectedItem,
             addElementMac: {

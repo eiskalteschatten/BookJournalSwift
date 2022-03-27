@@ -20,6 +20,7 @@ struct GenresSearchList: View {
     @State private var showCreateSheet = false
     #endif
     
+    var title = "Genres"
     @Binding var selectedItems: [Genre]
     
     @FetchRequest(
@@ -29,7 +30,7 @@ struct GenresSearchList: View {
     
     var body: some View {
         SearchList<Genre>(
-            title: "Genres",
+            title: title,
             data: genres.map { $0 },
             selectedData: $selectedItems,
             addElementMac: {
