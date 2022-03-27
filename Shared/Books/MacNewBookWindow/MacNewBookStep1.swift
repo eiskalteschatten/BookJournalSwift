@@ -19,6 +19,8 @@ struct MacNewBookStep1: View {
                 if let bookcover = bookModel.bookcover {
                     let image = NSImage(data: bookcover)
                     Image(nsImage: image!)
+                        .resizable()
+                        .scaledToFit()
                 }
                 else {
                     Image(systemName: "plus.square.dashed")
@@ -27,7 +29,9 @@ struct MacNewBookStep1: View {
                 }
             }
             .buttonStyle(.plain)
-                
+            .frame(maxHeight: 250)
+            .padding(.bottom)
+            
             Button(action: chooseBookcoverImage) {
                 Text("Choose Image")
             }
