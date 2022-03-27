@@ -12,43 +12,10 @@ struct MacNewBookStep6: View {
     
     var body: some View {
         VStack {
-            MacNewBookStepTitle("Publication Details")
+            MacNewBookStepTitle("Genres")
             
-            // Publisher
-            PublishersSearchList(title: "Publisher", selectedItem: $bookModel.publisher)
-                
-            Divider()
-                .padding(.vertical)
-            
-            Form {
-                // Book Format
-                Picker("Book Format:", selection: $bookModel.bookFormat) {
-                    ForEach(BookFormat.allCases) { format in
-                        Label(bookFormatProperties[format]![0], systemImage: bookFormatProperties[format]![1])
-                            .tag(format.rawValue)
-                    }
-                }
-                
-                // Year Published
-                TextField(
-                    "Year Published:",
-                    value: $bookModel.yearPublished,
-                    format: .number
-                )
-
-                // ISBN
-                TextField(
-                    "ISBN:",
-                    text: $bookModel.isbn
-                )
-                
-                // Page Count
-                TextField(
-                    "Page Count:",
-                    value: $bookModel.pageCount,
-                    format: .number
-                )
-            }
+            // Genres
+            GenresSearchList(selectedItems: $bookModel.genres)
         }
     }
 }
