@@ -5,7 +5,7 @@
 //  Created by Alex Seifert on 27.03.22.
 //
 
-import Cocoa
+import Foundation
 
 struct Language: Decodable, Hashable {
     let name: String
