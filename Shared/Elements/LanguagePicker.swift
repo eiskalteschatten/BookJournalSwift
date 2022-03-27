@@ -30,11 +30,7 @@ struct LanguagePicker: View {
         let data = try! Data(contentsOf: url)
         let decoder = JSONDecoder()
         let decoded = try! decoder.decode(DecodedLanguageArray.self, from: data)
-        let unsortedLanguages = decoded.array
-        
-        languages = unsortedLanguages.sorted {
-            return $0.name < $1.name
-        }
+        languages = decoded.array
     }
 }
 

@@ -53,6 +53,8 @@ struct DecodedLanguageArray: Decodable {
             tempArray.append(decodedObject)
         }
 
-        array = tempArray
+        array = tempArray.sorted {
+            return $0.name < $1.name
+        }
     }
 }
