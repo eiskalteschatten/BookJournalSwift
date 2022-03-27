@@ -15,20 +15,21 @@ struct MacNewBookStep1: View {
             MacNewBookStepTitle("Bookcover & Title")
             
             // Bookcover
-            Image(systemName: "plus.square.dashed")
-                .font(.system(size: 150))
-                .foregroundColor(.accentColor)
-            
-            Button {
-                // TODO: add function
-            } label: {
-                Text("Choose Image")
+            Button(action: chooseBookcoverImage) {
+                if let bookcover = bookModel.bookcover {
+                    let image = NSImage(data: bookcover)
+                    Image(nsImage: image!)
+                }
+                else {
+                    Image(systemName: "plus.square.dashed")
+                        .font(.system(size: 150))
+                        .foregroundColor(.accentColor)
+                }
             }
-            
-            Button {
-                // TODO: add function
-            } label: {
-                Text("Scan Image")
+            .buttonStyle(.plain)
+                
+            Button(action: chooseBookcoverImage) {
+                Text("Choose Image")
             }
             
             // Title
@@ -40,6 +41,29 @@ struct MacNewBookStep1: View {
             .font(.system(size: 20, weight: .bold))
             .multilineTextAlignment(.center)
             .padding(.top, 35)
+        }
+    }
+    
+    private func chooseBookcoverImage() {
+        let panel = NSOpenPanel()
+        panel.prompt = "Choose Image"
+        panel.worksWhenModal = true
+        panel.canChooseDirectories = false
+        panel.canChooseFiles = true
+        panel.allowedContentTypes = [.image]
+        panel.allowsMultipleSelection = false
+        
+        if panel.runModal() == .OK {
+            if panel.url != nil {
+                do {
+                    try bookModel.bookcover = Data(contentsOf: panel.url!)
+                } catch {
+                    // TODO: Replace this implementation with code to handle the error appropriately.
+                    // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                    let nsError = error as NSError
+                    fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                }
+            }
         }
     }
 }

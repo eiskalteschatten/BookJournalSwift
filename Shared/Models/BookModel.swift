@@ -9,6 +9,8 @@ import SwiftUI
 import CoreData
 
 class BookModel: ObservableObject {
+    @Published var bookcover: Data?
+    
     @Published var title: String = ""
     
     @Published var readingStatus: String = ""
@@ -48,6 +50,9 @@ class BookModel: ObservableObject {
             newBook.createdAt = Date()
             newBook.updatedAt = Date()
             
+            if let unwrapped = bookcover {
+                newBook.bookcover = unwrapped
+            }
             newBook.title = title
                        
             newBook.readingStatus = readingStatus
