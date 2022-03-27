@@ -16,6 +16,8 @@ struct MacNewBookStep6: View {
             
             // Publisher
             PublishersSearchList(title: "Publisher", selectedItem: $bookModel.publisher)
+                
+            Divider()
                 .padding(.vertical)
             
             Form {
