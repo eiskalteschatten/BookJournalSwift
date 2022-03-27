@@ -431,8 +431,8 @@
 				939BB9F227CA785F0001B0DF /* Chip.swift */,
 				939BB9F527CA9BB40001B0DF /* SmallChip.swift */,
 				9309D77E27E4A51500F19670 /* SearchList.swift */,
-				9369C1B127E631EC00A39E57 /* LanguagePicker.swift */,
 				93C6E78427EB71C900E0E986 /* CreateElementView.swift */,
+				9369C1B127E631EC00A39E57 /* LanguagePicker.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";

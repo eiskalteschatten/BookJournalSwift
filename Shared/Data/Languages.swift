@@ -58,3 +58,11 @@ struct DecodedLanguageArray: Decodable {
         }
     }
 }
+
+func getAllLanguages() async -> [Language] {
+    let url = Bundle.main.url(forResource: "languages", withExtension: "json")!
+    let data = try! Data(contentsOf: url)
+    let decoder = JSONDecoder()
+    let decoded = try! decoder.decode(DecodedLanguageArray.self, from: data)
+    return decoded.array
+}

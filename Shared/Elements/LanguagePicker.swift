@@ -21,16 +21,8 @@ struct LanguagePicker: View {
             }
         }
         .task {
-            await getLanguages()
+            languages = await getAllLanguages()
         }
-    }
-    
-    private func getLanguages() async {
-        let url = Bundle.main.url(forResource: "languages", withExtension: "json")!
-        let data = try! Data(contentsOf: url)
-        let decoder = JSONDecoder()
-        let decoded = try! decoder.decode(DecodedLanguageArray.self, from: data)
-        languages = decoded.array
     }
 }
 
