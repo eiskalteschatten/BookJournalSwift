@@ -8,11 +8,13 @@
 import Cocoa
 import SwiftUI
 
+fileprivate let CLOSE_WITH_PROMPT_DEFAULT = true
+
 class MacNewBookWindow: NSWindow {
-    var viewContext: NSManagedObjectContext?
+    var closeWithPrompt = CLOSE_WITH_PROMPT_DEFAULT
     
     override func close() {
-        if viewContext != nil && viewContext!.hasChanges {
+        if closeWithPrompt {
             let alert = NSAlert()
             alert.messageText = "Are you sure you want to close this window?"
             alert.informativeText = "Your changes will be lost if you continue."
@@ -54,7 +56,6 @@ class MacNewBookWindowManager {
                 defer: false
             )
 
-            window!.viewContext = viewContext
             window!.center()
             window!.setFrameAutosaveName("NewBookWindow")
             window!.title = "Add a New Book"
@@ -69,7 +70,8 @@ class MacNewBookWindowManager {
         }
     }
     
-    func close() {
+    func close(closeWithPrompt: Bool = CLOSE_WITH_PROMPT_DEFAULT) {
+        window?.closeWithPrompt = closeWithPrompt
         window?.close()
     }
 }

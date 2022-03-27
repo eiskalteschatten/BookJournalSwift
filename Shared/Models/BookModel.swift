@@ -20,27 +20,31 @@ class BookModel: ObservableObject {
     @Published var authors: [Author] = []
     @Published var editors: [Editor] = []
     
-    @Published var pageCount: Int16?
-    @Published var genres: [Genre] = []
     @Published var categories: [Category] = []
     @Published var tags: [Tag] = []
+    @Published var genres: [Genre] = []
     
     @Published var bookFormat: String = ""
     @Published var publisher: Publisher?
     @Published var yearPublished: Int16?
     @Published var isbn: String = ""
+    @Published var pageCount: Int16?
     
     @Published var countryOfOrigin: Country?
     @Published var translators: [Translator] = []
     @Published var originalLanguage: String = ""
     @Published var languageReadIn: String = ""
     
-    func saveBook() {
+    private var viewContext: NSManagedObjectContext?
+    
+    init() {
         let persistenceController = PersistenceController.shared
-        let viewContext = persistenceController.container.viewContext
-        
+        viewContext = persistenceController.container.viewContext
+    }
+    
+    func saveBook() {
         withAnimation {
-            let newBook = Book(context: viewContext)
+            let newBook = Book(context: viewContext!)
             newBook.createdAt = Date()
             newBook.updatedAt = Date()
             
@@ -57,12 +61,9 @@ class BookModel: ObservableObject {
             authors.forEach(newBook.addToAuthors)
             editors.forEach(newBook.addToEditors)
             
-            if let unwrapped = pageCount {
-                newBook.pageCount = unwrapped
-            }
-            genres.forEach(newBook.addToGenres)
             categories.forEach(newBook.addToCategories)
             tags.forEach(newBook.addToTags)
+            genres.forEach(newBook.addToGenres)
 
             newBook.bookFormat = bookFormat
             if let unwrapped = publisher {
@@ -72,6 +73,9 @@ class BookModel: ObservableObject {
                 newBook.yearPublished = unwrapped
             }
             newBook.isbn = isbn
+            if let unwrapped = pageCount {
+                newBook.pageCount = unwrapped
+            }
             
             if let unwrapped = countryOfOrigin {
                 newBook.countryOfOrigin = unwrapped
@@ -81,7 +85,9 @@ class BookModel: ObservableObject {
             newBook.languageReadIn = languageReadIn
             
             do {
-                try viewContext.save()
+                if viewContext!.hasChanges {
+                    try viewContext!.save()
+                }
             } catch {
                 // TODO: Replace this implementation with code to handle the error appropriately.
                 // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
