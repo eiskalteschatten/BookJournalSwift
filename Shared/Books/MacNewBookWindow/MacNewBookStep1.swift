@@ -12,7 +12,7 @@ struct MacNewBookStep1: View {
     
     var body: some View {
         VStack {
-            MacNewBookStepTitle("Bookcover & Title")
+            MacNewBookStepTitle("Book Cover & Title")
             
             // Bookcover
             Button(action: chooseBookcoverImage) {

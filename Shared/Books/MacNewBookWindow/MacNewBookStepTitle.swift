@@ -23,6 +23,6 @@ struct MacNewBookStepTitle: View {
 
 struct MacNewBookStepTitle_Previews: PreviewProvider {
     static var previews: some View {
-        MacNewBookStepTitle("Bookcover & Title")
+        MacNewBookStepTitle("Book Cover & Title")
     }
 }
