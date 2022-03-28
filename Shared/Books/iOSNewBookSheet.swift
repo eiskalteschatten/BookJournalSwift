@@ -45,8 +45,16 @@ struct iOSNewBookSheet: View {
                                 Label("Scan Image", systemImage: "viewfinder")
                             }
                         } label: {
-                            Image(systemName: "plus.square.dashed")
-                                .font(.system(size: 150))
+                            if let bookcover = bookModel.bookcover {
+                                let image = UIImage(data: bookcover)
+                                Image(uiImage: image!)
+                                    .resizable()
+                                    .scaledToFit()
+                            }
+                            else {
+                                Image(systemName: "plus.square.dashed")
+                                    .font(.system(size: 150))
+                            }
                         }
                         .padding(.vertical)
                         .sheet(isPresented: $presentImagePicker) {
