@@ -50,7 +50,11 @@ struct iOSNewBookSheet: View {
                         }
                         .padding(.vertical)
                         .sheet(isPresented: $presentImagePicker) {
-                            ImagePicker(sourceType: imagePickerSourceType, selectedImage: $bookcoverUIImage)
+                            ImagePicker(
+                                sourceType: imagePickerSourceType,
+                                selectedImage: $bookcoverUIImage,
+                                selectedImageData: $bookModel.bookcover
+                            )
                         }
                         
                         // Title
