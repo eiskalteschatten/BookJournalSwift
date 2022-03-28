@@ -33,14 +33,14 @@ struct iOSNewBookSheet: View {
                         Menu {
                             Button(action: {
                                 imagePickerSourceType = .photoLibrary
-                                bookcoverUIImage = true
+                                presentImagePicker = true
                             }) {
                                 Label("Choose Image", systemImage: "photo")
                             }
                             
                             Button(action: {
                                 imagePickerSourceType = .camera
-                                bookcoverUIImage = true
+                                presentImagePicker = true
                             }) {
                                 Label("Scan Image", systemImage: "viewfinder")
                             }
