@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 import CoreData
 import WrappingHStack
 
@@ -19,6 +20,9 @@ struct iOSNewBookSheet: View {
     @State private var screen: Screen?
     @StateObject private var bookModel = BookModel()
     @State private var presentCloseAlert = false
+    @State private var presentImagePicker = false
+    @State private var imagePickerSourceType: UIImagePickerController.SourceType = .photoLibrary
+    @State private var bookcoverUIImage = UIImage()
 
     var body: some View {
         NavigationView {
@@ -28,13 +32,15 @@ struct iOSNewBookSheet: View {
                         // Bookcover
                         Menu {
                             Button(action: {
-                                // TODO: add function
+                                imagePickerSourceType = .photoLibrary
+                                bookcoverUIImage = true
                             }) {
                                 Label("Choose Image", systemImage: "photo")
                             }
                             
                             Button(action: {
-                                // TODO: add function
+                                imagePickerSourceType = .camera
+                                bookcoverUIImage = true
                             }) {
                                 Label("Scan Image", systemImage: "viewfinder")
                             }
@@ -43,6 +49,9 @@ struct iOSNewBookSheet: View {
                                 .font(.system(size: 150))
                         }
                         .padding(.vertical)
+                        .sheet(isPresented: $presentImagePicker) {
+                            ImagePicker(sourceType: imagePickerSourceType, selectedImage: $bookcoverUIImage)
+                        }
                         
                         // Title
                         TextField(
