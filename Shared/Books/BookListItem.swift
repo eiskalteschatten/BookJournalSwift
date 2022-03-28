@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import WrappingHStack
 
 struct BookListItem: View {
     var book: Book
@@ -24,12 +25,20 @@ struct BookListItem: View {
             VStack(alignment: .leading, spacing: 3.0) {
                 Text(book.title!)
                     .font(Font.body.bold())
+                    .padding(.bottom, 5)
                 
-                if (book.authors != nil) {
-                    // TODO: add chips
-                    ForEach(book.authorArray, id: \.self) { author in
+                if (book.authors != nil && book.authorArray.count > 0) {
+                    WrappingHStack(book.authorArray, id: \.self) { author in
                         Text(author.wrappedName)
                             .font(.footnote)
+                            .padding(.vertical, 2)
+                            .padding(.horizontal, 3)
+                            .background(
+                                RoundedRectangle(cornerRadius: 5, style: .continuous)
+                                    .fill(AUTHOR_COLOR)
+                            )
+                            .foregroundColor(.black)
+                            .padding(.vertical, 3)
                     }
                 }
             }
