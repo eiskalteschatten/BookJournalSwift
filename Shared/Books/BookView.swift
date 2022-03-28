@@ -42,21 +42,26 @@ struct BookView: View {
                         }
                         .frame(height: 200)
                         
-                        VStack(spacing: 30.0) {
-                            bookcover
-                                .resizable()
-                                .frame(width: 200.0, height: 307.0)
-                                .scaledToFit()
-                                .shadow(radius: 5)
+                        VStack {
+                            VStack(spacing: 30) {
+                                bookcover
+                                    .resizable()
+                                    .frame(width: 200.0, height: 307.0)
+                                    .scaledToFit()
+                                    .shadow(radius: 5)
+                                
+                                Text(book!.title!)
+                                    .font(.title)
+                            }
                             
-                            Text(book!.title!)
-                                .font(.title)
-                            
-                            if (book!.authors != nil) {
-                                // TODO: add chips
-                                ForEach(book!.authorArray, id: \.self) { author in
-                                    Text(author.wrappedName)
-                                        .font(.title2)
+                            VStack(alignment: .leading, spacing: 30) {
+                                if (book!.authors != nil) {
+                                    VStack(alignment: .leading, spacing: 10) {
+                                        Text("Authors")
+                                            .font(.title2)
+                                        
+                                        WrappingSmallChipsWithName<Author>(data: book!.authorArray, chipColor: AUTHOR_COLOR)
+                                    }
                                 }
                             }
                         }
