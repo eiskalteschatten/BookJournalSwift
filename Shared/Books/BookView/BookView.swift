@@ -54,16 +54,7 @@ struct BookView: View {
                                     .font(.title)
                             }
                             
-                            VStack(alignment: .leading, spacing: 30) {
-                                if (book!.authors != nil) {
-                                    VStack(alignment: .leading, spacing: 10) {
-                                        Text("Authors")
-                                            .font(.title2)
-                                        
-                                        WrappingSmallChipsWithName<Author>(data: book!.authorArray, chipColor: AUTHOR_COLOR)
-                                    }
-                                }
-                            }
+                            BookViewAuthors(authors: book!.authorArray)
                         }
                         .offset(y: 100.0)
                     }

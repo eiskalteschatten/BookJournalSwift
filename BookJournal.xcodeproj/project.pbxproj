@@ -32,6 +32,8 @@
 		9329054427C29C55000D15AE /* BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9329054327C29C55000D15AE /* BookView.swift */; };
 		9329054527C29C55000D15AE /* BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9329054327C29C55000D15AE /* BookView.swift */; };
 		93390AA127F20267003C26D3 /* iOSImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93390AA027F20267003C26D3 /* iOSImagePicker.swift */; };
+		93390AA627F20DD6003C26D3 /* BookViewAuthors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93390AA527F20DD6003C26D3 /* BookViewAuthors.swift */; };
+		93390AA727F20DD6003C26D3 /* BookViewAuthors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93390AA527F20DD6003C26D3 /* BookViewAuthors.swift */; };
 		9346342727C2DFA6003B233F /* BookListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9346342627C2DFA6003B233F /* BookListItem.swift */; };
 		9346342827C2DFA6003B233F /* BookListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9346342627C2DFA6003B233F /* BookListItem.swift */; };
 		9346661727C93EC100D58DE7 /* iOSNewBookSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9346661627C93EC100D58DE7 /* iOSNewBookSheet.swift */; };
@@ -141,6 +143,7 @@
 		9329054327C29C55000D15AE /* BookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookView.swift; sourceTree = "<group>"; };
 		93390AA027F20267003C26D3 /* iOSImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSImagePicker.swift; sourceTree = "<group>"; };
 		93390AA227F203D0003C26D3 /* BookJournal--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "BookJournal--iOS--Info.plist"; sourceTree = "<group>"; };
+		93390AA527F20DD6003C26D3 /* BookViewAuthors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewAuthors.swift; sourceTree = "<group>"; };
 		9346342627C2DFA6003B233F /* BookListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListItem.swift; sourceTree = "<group>"; };
 		9346661627C93EC100D58DE7 /* iOSNewBookSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSNewBookSheet.swift; sourceTree = "<group>"; };
 		9346661827C93FD000D58DE7 /* MacNewBookWindowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacNewBookWindowView.swift; sourceTree = "<group>"; };
@@ -309,14 +312,23 @@
 			path = Navigation;
 			sourceTree = "<group>";
 		};
+		93390AA327F20DAD003C26D3 /* BookView */ = {
+			isa = PBXGroup;
+			children = (
+				9329054327C29C55000D15AE /* BookView.swift */,
+				93390AA527F20DD6003C26D3 /* BookViewAuthors.swift */,
+			);
+			path = BookView;
+			sourceTree = "<group>";
+		};
 		9346342227C2A5BF003B233F /* Books */ = {
 			isa = PBXGroup;
 			children = (
 				9369C1D327E76EC500A39E57 /* MacNewBookWindow */,
+				93390AA327F20DAD003C26D3 /* BookView */,
 				9346661627C93EC100D58DE7 /* iOSNewBookSheet.swift */,
 				9329053D27C2916F000D15AE /* BookList.swift */,
 				9346342627C2DFA6003B233F /* BookListItem.swift */,
-				9329054327C29C55000D15AE /* BookView.swift */,
 			);
 			path = Books;
 			sourceTree = "<group>";
@@ -645,6 +657,7 @@
 				9369C19027E5204A00A39E57 /* CreatePublisher.swift in Sources */,
 				9369C1CA27E64B8B00A39E57 /* CreateCategory.swift in Sources */,
 				9369C1AA27E62C1F00A39E57 /* WrappingSmallChipsWithName.swift in Sources */,
+				93390AA627F20DD6003C26D3 /* BookViewAuthors.swift in Sources */,
 				93219913279D86E600CB6E76 /* ContentView.swift in Sources */,
 				9369C19727E53BC400A39E57 /* TranslatorsSearchList.swift in Sources */,
 				9369C19E27E53FE000A39E57 /* CountriesSearchList.swift in Sources */,
@@ -672,6 +685,7 @@
 				9369C18A27E51D5500A39E57 /* EditorsSearchList.swift in Sources */,
 				9369C1C427E6486E00A39E57 /* GenresSearchList.swift in Sources */,
 				9369C18D27E51E1900A39E57 /* CreateEditor.swift in Sources */,
+				93390AA727F20DD6003C26D3 /* BookViewAuthors.swift in Sources */,
 				938B1AA427F0981800FDAE4F /* Languages.swift in Sources */,
 				93B2051E27E8CB6200E9D858 /* MacNewBookStep6.swift in Sources */,
 				9369C1A227E5410800A39E57 /* CreateCountry.swift in Sources */,
