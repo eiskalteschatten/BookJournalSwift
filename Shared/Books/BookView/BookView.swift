@@ -42,7 +42,7 @@ struct BookView: View {
                         }
                         .frame(height: 200)
                         
-                        VStack {
+                        VStack(spacing: 30) {
                             VStack(spacing: 30) {
                                 #if os(macOS)
                                 let frameHeight = 400.0
@@ -64,6 +64,8 @@ struct BookView: View {
                             BookViewAuthors(authors: book!.authorArray)
                         }
                         .offset(y: 100.0)
+                        .frame(maxWidth: 800.0)
+                        .padding()
                     }
                 }
                 #if os(iOS)
