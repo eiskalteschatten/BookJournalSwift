@@ -34,6 +34,7 @@
 		93390AA127F20267003C26D3 /* iOSImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93390AA027F20267003C26D3 /* iOSImagePicker.swift */; };
 		93390AA627F20DD6003C26D3 /* BookViewAuthors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93390AA527F20DD6003C26D3 /* BookViewAuthors.swift */; };
 		93390AA727F20DD6003C26D3 /* BookViewAuthors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93390AA527F20DD6003C26D3 /* BookViewAuthors.swift */; };
+		93436C9B27F2FE27000EAB4A /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93436C9A27F2FE27000EAB4A /* UIImage.swift */; };
 		9346342727C2DFA6003B233F /* BookListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9346342627C2DFA6003B233F /* BookListItem.swift */; };
 		9346342827C2DFA6003B233F /* BookListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9346342627C2DFA6003B233F /* BookListItem.swift */; };
 		9346661727C93EC100D58DE7 /* iOSNewBookSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9346661627C93EC100D58DE7 /* iOSNewBookSheet.swift */; };
@@ -144,6 +145,7 @@
 		93390AA027F20267003C26D3 /* iOSImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSImagePicker.swift; sourceTree = "<group>"; };
 		93390AA227F203D0003C26D3 /* BookJournal--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "BookJournal--iOS--Info.plist"; sourceTree = "<group>"; };
 		93390AA527F20DD6003C26D3 /* BookViewAuthors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewAuthors.swift; sourceTree = "<group>"; };
+		93436C9A27F2FE27000EAB4A /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		9346342627C2DFA6003B233F /* BookListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListItem.swift; sourceTree = "<group>"; };
 		9346661627C93EC100D58DE7 /* iOSNewBookSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSNewBookSheet.swift; sourceTree = "<group>"; };
 		9346661827C93FD000D58DE7 /* MacNewBookWindowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacNewBookWindowView.swift; sourceTree = "<group>"; };
@@ -436,6 +438,7 @@
 			isa = PBXGroup;
 			children = (
 				939BB9EE27CA44D60001B0DF /* CoreData.swift */,
+				93436C9A27F2FE27000EAB4A /* UIImage.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -655,6 +658,7 @@
 				9369C1B227E631EC00A39E57 /* LanguagePicker.swift in Sources */,
 				9369C1BE27E6481500A39E57 /* TagsSearchList.swift in Sources */,
 				9369C19027E5204A00A39E57 /* CreatePublisher.swift in Sources */,
+				93436C9B27F2FE27000EAB4A /* UIImage.swift in Sources */,
 				9369C1CA27E64B8B00A39E57 /* CreateCategory.swift in Sources */,
 				9369C1AA27E62C1F00A39E57 /* WrappingSmallChipsWithName.swift in Sources */,
 				93390AA627F20DD6003C26D3 /* BookViewAuthors.swift in Sources */,
