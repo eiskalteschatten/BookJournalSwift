@@ -44,10 +44,17 @@ struct BookView: View {
                         
                         VStack {
                             VStack(spacing: 30) {
+                                #if os(macOS)
+                                let frameHeight = 400.0
+                                #else
+                                let frameHeight = 307.0
+                                #endif
+                                
                                 bookcover
                                     .resizable()
-                                    .frame(width: 200.0, height: 307.0)
                                     .scaledToFit()
+                                    .frame(height: frameHeight)
+                                    .padding(.horizontal)
                                     .shadow(radius: 5)
                                 
                                 Text(book!.title!)
