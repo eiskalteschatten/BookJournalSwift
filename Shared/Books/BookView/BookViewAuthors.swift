@@ -12,7 +12,7 @@ struct BookViewAuthors: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 30) {
-            if (authors != nil) {
+            if authors != nil && authors!.count > 0 {
                 VStack(alignment: .leading, spacing: 10) {
                     Text("Authors")
                         .font(.title2)
