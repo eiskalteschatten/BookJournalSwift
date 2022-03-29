@@ -15,6 +15,7 @@ struct BookView: View {
         VStack {
             if book != nil {
                 let bookcover = getBookcover(book: book!)
+                let offset = 100.0
                 
                 ScrollView {
                     ZStack {
@@ -63,9 +64,10 @@ struct BookView: View {
                             
                             BookViewAuthors(authors: book!.authorArray)
                         }
-                        .offset(y: 100.0)
+                        .offset(y: offset)
                         .frame(maxWidth: 800.0)
                         .padding()
+                        .padding(.bottom, offset)
                     }
                 }
                 #if os(iOS)
