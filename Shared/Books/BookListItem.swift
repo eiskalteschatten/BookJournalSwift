@@ -25,21 +25,12 @@ struct BookListItem: View {
             VStack(alignment: .leading, spacing: 3.0) {
                 Text(book.title!)
                     .font(Font.body.bold())
-                    .padding(.bottom, 5)
+                    .padding(.bottom, 2)
                 
                 if (book.authors != nil && book.authorArray.count > 0) {
-                    WrappingHStack(book.authorArray, id: \.self) { author in
-                        Text(author.wrappedName)
-                            .font(.footnote)
-                            .padding(.vertical, 2)
-                            .padding(.horizontal, 3)
-                            .background(
-                                RoundedRectangle(cornerRadius: 5, style: .continuous)
-                                    .fill(AUTHOR_COLOR)
-                            )
-                            .foregroundColor(.black)
-                            .padding(.vertical, 3)
-                    }
+                    let authors = book.authorArray.map{ $0.name ?? "" }.joined(separator: ", ")
+                    Text(authors)
+                        .font(.footnote)
                 }
             }
         }
