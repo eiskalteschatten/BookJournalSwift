@@ -18,49 +18,10 @@ struct iOSBookView: View {
                 
                 ScrollView {
                     ZStack {
-                        GeometryReader { geometry in
-                            if geometry.frame(in: .global).minY <= 0 {
-                                bookcover
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: geometry.size.width, height: geometry.size.height)
-                                    .offset(y: geometry.frame(in: .global).minY / 9)
-                                    .clipped()
-                                    .blur(radius: 30)
-                                    .opacity(0.4)
-                            }
-                            else {
-                                bookcover
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: geometry.size.width, height: geometry.size.height + geometry.frame(in: .global).minY)
-                                    .clipped()
-                                    .offset(y: -geometry.frame(in: .global).minY)
-                                    .blur(radius: 30)
-                                    .opacity(0.4)
-                            }
-                        }
-                        .frame(height: 200)
+                        BookViewBookCoverBlur(bookcover: bookcover)
                         
                         VStack(spacing: 30) {
-                            VStack(spacing: 30) {
-                                #if os(macOS)
-                                let frameHeight = 400.0
-                                #else
-                                let frameHeight = 307.0
-                                #endif
-                                
-                                bookcover
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(height: frameHeight)
-                                    .padding(.horizontal)
-                                    .shadow(radius: 5)
-                                
-                                Text(book!.title!)
-                                    .font(.title)
-                            }
-                            
+                            BookViewBookCoverTitle(bookcover: bookcover, title: book!.title!)
                             BookViewAuthors(authors: book!.sortedAuthors)
                             BookViewEditors(editors: book!.sortedEditors)
                         }
@@ -70,9 +31,7 @@ struct iOSBookView: View {
                         .padding(.bottom, offset)
                     }
                 }
-                #if os(iOS)
                 .edgesIgnoringSafeArea(.top)
-                #endif
             }
             else {
                 // TODO: show a monochrome version of the app icon
