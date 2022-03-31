@@ -1,14 +1,13 @@
 //
-//  BookView.swift
-//  BookJournal
+//  iOSBookView.swift
+//  BookJournal (iOS)
 //
-//  Created by Alex Seifert on 20.02.22.
+//  Created by Alex Seifert on 31.03.22.
 //
 
 import SwiftUI
-import CoreData
 
-struct BookView: View {
+struct iOSBookView: View {
     var book: Book?
     
     var body: some View {
@@ -63,6 +62,7 @@ struct BookView: View {
                             }
                             
                             BookViewAuthors(authors: book!.sortedAuthors)
+                            BookViewEditors(editors: book!.sortedEditors)
                         }
                         .offset(y: offset)
                         .frame(maxWidth: 800.0)
@@ -106,13 +106,14 @@ struct BookView: View {
     }
 }
 
-struct BookView_Previews: PreviewProvider {
+struct iOSBookView_Previews: PreviewProvider {
     static var previews: some View {
         let context = PersistenceController.preview.container.viewContext
         let book = Book(context: context)
         Group {
-            BookView(book: book).preferredColorScheme(.dark).padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/).frame(height: /*@START_MENU_TOKEN@*/800.0/*@END_MENU_TOKEN@*/).environment(\.managedObjectContext, context)
-            BookView(book: book).preferredColorScheme(.light).padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/).frame(height: 800.0).environment(\.managedObjectContext, context)
+            iOSBookView(book: book).preferredColorScheme(.dark).padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/).frame(height: /*@START_MENU_TOKEN@*/800.0/*@END_MENU_TOKEN@*/).environment(\.managedObjectContext, context)
+            iOSBookView(book: book).preferredColorScheme(.light).padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/).frame(height: 800.0).environment(\.managedObjectContext, context)
         }
     }
 }
+

@@ -86,7 +86,11 @@ struct ContentView: View {
             // TODO: something other than just text
             Text("Select a category")
             
-            BookView()
+            #if os(macOS)
+            MacBookView()
+            #else
+            iOSBookView()
+            #endif
         }
     }
 }

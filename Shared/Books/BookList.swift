@@ -16,6 +16,9 @@ struct BookList: View {
     
     #if os(iOS)
     @State private var showNewBookSheet = false
+    private typealias BookView = iOSBookView
+    #else
+    private typealias BookView = MacBookView
     #endif
 
     @FetchRequest private var books: FetchedResults<Book>
