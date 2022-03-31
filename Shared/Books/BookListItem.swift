@@ -27,8 +27,8 @@ struct BookListItem: View {
                     .font(Font.body.bold())
                     .padding(.bottom, 2)
                 
-                if (book.authors != nil && book.authorArray.count > 0) {
-                    let authors = book.authorArray.map{ $0.name ?? "" }.joined(separator: ", ")
+                if (book.authors != nil && book.sortedAuthors.count > 0) {
+                    let authors = book.sortedAuthors.map{ $0.name ?? "" }.joined(separator: ", ")
                     Text(authors)
                         .font(.footnote)
                 }

@@ -62,7 +62,7 @@ struct BookView: View {
                                     .font(.title)
                             }
                             
-                            BookViewAuthors(authors: book!.authorArray)
+                            BookViewAuthors(authors: book!.sortedAuthors)
                         }
                         .offset(y: offset)
                         .frame(maxWidth: 800.0)

@@ -6,7 +6,7 @@
 //
 
 extension Book {
-    public var authorArray: [Author] {
+    public var sortedAuthors: [Author] {
         let set = authors as? Set<Author> ?? []
         return set.sorted {
             $0.wrappedName < $1.wrappedName
