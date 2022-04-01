@@ -112,7 +112,7 @@ struct iOSNewBookSheet: View {
                         destination: AuthorsSearchList(selectedItems: $bookModel.authors),
                         tag: Screen.addAuthors,
                         selection: $screen,
-                        label: { WrappingSmallChipsWithName<Author>(title: "Authors", data: bookModel.authors, chipColor: AUTHOR_COLOR) }
+                        label: { WrappingSmallChipsWithName<Author>(title: "Authors", data: bookModel.authors, chipColor: AUTHOR_COLOR, alignment: .leading) }
                     )
                     
                     // Editors
@@ -120,7 +120,7 @@ struct iOSNewBookSheet: View {
                         destination: EditorsSearchList(selectedItems: $bookModel.editors),
                         tag: Screen.addEditors,
                         selection: $screen,
-                        label: { WrappingSmallChipsWithName<Editor>(title: "Editors", data: bookModel.editors, chipColor: EDITOR_COLOR) }
+                        label: { WrappingSmallChipsWithName<Editor>(title: "Editors", data: bookModel.editors, chipColor: EDITOR_COLOR, alignment: .leading) }
                     )
                 }
                 
@@ -130,7 +130,7 @@ struct iOSNewBookSheet: View {
                         destination: CategoriesSearchList(selectedItems: $bookModel.categories),
                         tag: Screen.addCategories,
                         selection: $screen,
-                        label: { WrappingSmallChipsWithName<Category>(title: "Categories", data: bookModel.categories, chipColor: CATEGORY_COLOR) }
+                        label: { WrappingSmallChipsWithName<Category>(title: "Categories", data: bookModel.categories, chipColor: CATEGORY_COLOR, alignment: .leading) }
                     )
                     
                     // Tags
@@ -138,7 +138,7 @@ struct iOSNewBookSheet: View {
                         destination: TagsSearchList(selectedItems: $bookModel.tags),
                         tag: Screen.addTags,
                         selection: $screen,
-                        label: { WrappingSmallChipsWithName<Tag>(title: "Tags", data: bookModel.tags, chipColor: TAG_COLOR) }
+                        label: { WrappingSmallChipsWithName<Tag>(title: "Tags", data: bookModel.tags, chipColor: TAG_COLOR, alignment: .leading) }
                     )
                     
                     // Genres
@@ -146,7 +146,7 @@ struct iOSNewBookSheet: View {
                         destination: GenresSearchList(selectedItems: $bookModel.genres),
                         tag: Screen.addGenres,
                         selection: $screen,
-                        label: { WrappingSmallChipsWithName<Genre>(title: "Genres", data: bookModel.genres, chipColor: GENRE_COLOR) }
+                        label: { WrappingSmallChipsWithName<Genre>(title: "Genres", data: bookModel.genres, chipColor: GENRE_COLOR, alignment: .leading) }
                     )
                 }
                 
@@ -205,7 +205,7 @@ struct iOSNewBookSheet: View {
                         destination: TranslatorsSearchList(selectedItems: $bookModel.translators),
                         tag: Screen.addTranslators,
                         selection: $screen,
-                        label: { WrappingSmallChipsWithName<Translator>(title: "Translators", data: bookModel.translators, chipColor: TRANSLATOR_COLOR) }
+                        label: { WrappingSmallChipsWithName<Translator>(title: "Translators", data: bookModel.translators, chipColor: TRANSLATOR_COLOR, alignment: .leading) }
                     )
                     
                     LanguagePicker(title: "Original Language", selection: $bookModel.originalLanguage)

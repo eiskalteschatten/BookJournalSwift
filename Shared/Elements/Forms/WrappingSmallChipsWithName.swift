@@ -12,9 +12,10 @@ struct WrappingSmallChipsWithName<T: AbstractName>: View {
     var title: String?
     var data: [T]
     var chipColor: Color = .gray
+    var alignment: HorizontalAlignment = .center
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 1) {
+        VStack(alignment: alignment, spacing: 1) {
             if title != nil {
                 Text(title!)
             }
@@ -22,7 +23,7 @@ struct WrappingSmallChipsWithName<T: AbstractName>: View {
             if data.count > 0 {
                 Spacer()
                 
-                WrappingHStack(data, id: \.self) { item in
+                WrappingHStack(data, id: \.self, alignment: alignment) { item in
                     SmallChip(background: chipColor) {
                         HStack(alignment: .center, spacing: 4) {
                             if let name = item.name {

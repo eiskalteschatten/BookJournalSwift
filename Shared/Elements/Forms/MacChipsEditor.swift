@@ -27,7 +27,7 @@ struct MacChipsEditor<T: AbstractName>: View {
             
             GroupBox {
                 ScrollView {
-                    WrappingSmallChipsWithName<T>(data: data, chipColor: chipColor)
+                    WrappingSmallChipsWithName<T>(data: data, chipColor: chipColor, alignment: .leading)
                 }
                 .frame(maxWidth: .infinity, minHeight: minHeight, maxHeight: maxHeight)
             }
