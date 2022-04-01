@@ -22,12 +22,12 @@ struct MacBookView: View {
                         BookViewBookCoverBlur(bookcover: bookcover)
                         
                         VStack(spacing: 30) {
-                            BookViewBookCoverTitle(bookcover: bookcover, title: book!.title!)
-                            
-                            HStack(spacing: 5) {
+                            VStack(spacing: 10) {
+                                BookViewBookCoverTitle(bookcover: bookcover, title: book!.title!)
                                 BookViewAuthors(authors: book!.sortedAuthors)
-                                BookViewEditors(editors: book!.sortedEditors)
                             }
+                            
+                            BookViewEditors(editors: book!.sortedEditors)
                         }
                         .offset(y: offset)
                         .frame(maxWidth: 800.0)

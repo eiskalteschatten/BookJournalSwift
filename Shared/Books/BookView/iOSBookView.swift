@@ -21,8 +21,11 @@ struct iOSBookView: View {
                         BookViewBookCoverBlur(bookcover: bookcover)
                         
                         VStack(spacing: 30) {
-                            BookViewBookCoverTitle(bookcover: bookcover, title: book!.title!)
-                            BookViewAuthors(authors: book!.sortedAuthors)
+                            VStack(spacing: 10) {
+                                BookViewBookCoverTitle(bookcover: bookcover, title: book!.title!)
+                                BookViewAuthors(authors: book!.sortedAuthors)
+                            }
+                            
                             BookViewEditors(editors: book!.sortedEditors)
                         }
                         .offset(y: offset)

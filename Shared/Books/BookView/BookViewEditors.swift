@@ -17,7 +17,7 @@ struct BookViewEditors: View {
                     Text("Editors")
                         .font(.title2)
                     
-                    WrappingSmallChipsWithName<Editor>(data: editors!, chipColor: EDITOR_COLOR)
+                    WrappingSmallChipsWithName<Editor>(data: editors!, chipColor: EDITOR_COLOR, alignment: .leading)
                 }
             }
         }

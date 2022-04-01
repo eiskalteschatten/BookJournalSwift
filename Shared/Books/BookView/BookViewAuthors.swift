@@ -11,15 +11,8 @@ struct BookViewAuthors: View {
     var authors: [Author]?
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 30) {
-            if authors != nil && authors!.count > 0 {
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("Authors")
-                        .font(.title2)
-                    
-                    WrappingSmallChipsWithName<Author>(data: authors!, chipColor: AUTHOR_COLOR)
-                }
-            }
+        if authors != nil {
+            WrappingSmallChipsWithName<Author>(data: authors!, chipColor: AUTHOR_COLOR)
         }
     }
 }
