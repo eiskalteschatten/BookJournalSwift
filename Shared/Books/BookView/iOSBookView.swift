@@ -29,7 +29,6 @@ struct iOSBookView: View {
                             BookViewEditors(editors: book!.sortedEditors)
                         }
                         .offset(y: offset)
-                        .frame(maxWidth: 800.0)
                         .padding()
                         .padding(.bottom, offset)
                     }
