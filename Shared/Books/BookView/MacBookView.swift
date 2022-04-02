@@ -25,6 +25,12 @@ struct MacBookView: View {
                             VStack(spacing: 10) {
                                 BookViewBookCoverTitle(bookcover: bookcover, title: unwrappedBook.title!)
                                 BookViewAuthors(authors: unwrappedBook.sortedAuthors)
+                                
+                                if let status = unwrappedBook.readingStatus {
+                                    if let statusKey = BookReadingStatus(rawValue: status) {
+                                        Text(bookReadingStatusProperties[statusKey]!)
+                                    }
+                                }
                             }
                             
                             MacBookViewGroupBox(title: "Editors", icon: "person.2.wave.2") {
@@ -79,7 +85,8 @@ struct MacBookView: View {
 struct MacBookView_Previews: PreviewProvider {
     static var previews: some View {
         let context = PersistenceController.preview.container.viewContext
-        let book = Book(context: context)
+        let book = context.registeredObjects.first(where: { $0 is Book }) as! Book
+        
         Group {
             MacBookView(book: book).preferredColorScheme(.dark).padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/).frame(height: /*@START_MENU_TOKEN@*/800.0/*@END_MENU_TOKEN@*/).environment(\.managedObjectContext, context)
 //            MacBookView(book: book).preferredColorScheme(.light).padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/).frame(height: 800.0).environment(\.managedObjectContext, context)
