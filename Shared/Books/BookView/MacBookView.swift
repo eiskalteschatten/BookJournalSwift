@@ -13,8 +13,8 @@ struct MacBookView: View {
     
     var body: some View {
         VStack {
-            if book != nil {
-                let bookcover = getBookcover(book: book!)
+            if let unwrappedBook = book {
+                let bookcover = getBookcover(book: unwrappedBook)
                 let offset = 100.0
                 
                 ScrollView {
@@ -23,13 +23,13 @@ struct MacBookView: View {
                         
                         VStack(spacing: 30) {
                             VStack(spacing: 10) {
-                                BookViewBookCoverTitle(bookcover: bookcover, title: book!.title!)
-                                BookViewAuthors(authors: book!.sortedAuthors)
+                                BookViewBookCoverTitle(bookcover: bookcover, title: unwrappedBook.title!)
+                                BookViewAuthors(authors: unwrappedBook.sortedAuthors)
                             }
                             
                             MacBookViewGroupBox(title: "Editors", icon: "person.2.wave.2") {
-                                if book!.editors != nil && book!.sortedEditors.count > 0 {
-                                    let editors = book!.sortedEditors.map{ $0.name ?? "" }.joined(separator: ", ")
+                                if unwrappedBook.editors != nil && unwrappedBook.sortedEditors.count > 0 {
+                                    let editors = unwrappedBook.sortedEditors.map{ $0.name ?? "" }.joined(separator: ", ")
                                     Text(editors)
                                 }
                                 else {

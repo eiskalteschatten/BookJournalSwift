@@ -12,8 +12,8 @@ struct iOSBookView: View {
     
     var body: some View {
         VStack {
-            if book != nil {
-                let bookcover = getBookcover(book: book!)
+            if let unwrappedBook = book {
+                let bookcover = getBookcover(book: unwrappedBook)
                 let offset = 100.0
                 
                 ScrollView {
@@ -22,14 +22,14 @@ struct iOSBookView: View {
                         
                         VStack(spacing: 30) {
                             VStack(spacing: 10) {
-                                BookViewBookCoverTitle(bookcover: bookcover, title: book!.title!)
-                                BookViewAuthors(authors: book!.sortedAuthors)
+                                BookViewBookCoverTitle(bookcover: bookcover, title: unwrappedBook.title!)
+                                BookViewAuthors(authors: unwrappedBook.sortedAuthors)
                             }
                             
-                            if book!.editors != nil && book!.sortedEditors.count > 0 {
+                            if unwrappedBook.editors != nil && unwrappedBook.sortedEditors.count > 0 {
                                 iOSBookViewGroupBox(title: "Editors", icon: "person.2.wave.2") {
                                     VStack(alignment: .leading) {
-                                        let editors = book!.sortedEditors.map{ $0.name ?? "" }.joined(separator: ", ")
+                                        let editors = unwrappedBook.sortedEditors.map{ $0.name ?? "" }.joined(separator: ", ")
                                         Text(editors)
                                     }
                                     .frame(maxWidth: .infinity, alignment: .leading)
