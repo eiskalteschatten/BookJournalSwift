@@ -81,6 +81,7 @@
 		9369C1CB27E64B8B00A39E57 /* CreateCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9369C1C927E64B8B00A39E57 /* CreateCategory.swift */; };
 		9369C1D527E76ED700A39E57 /* MacNewBookWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9369C1D427E76ED700A39E57 /* MacNewBookWindow.swift */; };
 		93882F2127F86F8D00D5AA61 /* iOSBookViewGroupBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93882F2027F86F8D00D5AA61 /* iOSBookViewGroupBox.swift */; };
+		93882F2327F870F800D5AA61 /* MacBookViewGroupBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93882F2227F870F800D5AA61 /* MacBookViewGroupBox.swift */; };
 		938B1AA027F0975200FDAE4F /* languages.json in Resources */ = {isa = PBXBuildFile; fileRef = 938B1A9F27F0975200FDAE4F /* languages.json */; };
 		938B1AA127F0975200FDAE4F /* languages.json in Resources */ = {isa = PBXBuildFile; fileRef = 938B1A9F27F0975200FDAE4F /* languages.json */; };
 		938B1AA327F0981800FDAE4F /* Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938B1AA227F0981800FDAE4F /* Languages.swift */; };
@@ -107,8 +108,6 @@
 		93D77C9627F59FDF00443B00 /* BookViewBookCoverBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D77C9427F59FDF00443B00 /* BookViewBookCoverBlur.swift */; };
 		93D77C9827F5A0CC00443B00 /* BookViewBookCoverTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D77C9727F5A0CC00443B00 /* BookViewBookCoverTitle.swift */; };
 		93D77C9927F5A0CC00443B00 /* BookViewBookCoverTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D77C9727F5A0CC00443B00 /* BookViewBookCoverTitle.swift */; };
-		93E6F7F227F59B950098FFB6 /* BookViewEditors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E6F7F127F59B940098FFB6 /* BookViewEditors.swift */; };
-		93E6F7F327F59B950098FFB6 /* BookViewEditors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E6F7F127F59B940098FFB6 /* BookViewEditors.swift */; };
 		93ED4AA827F08BA4006031A2 /* MacNewBookStep7.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ED4AA727F08BA4006031A2 /* MacNewBookStep7.swift */; };
 /* End PBXBuildFile section */
 
@@ -178,6 +177,7 @@
 		9369C1C927E64B8B00A39E57 /* CreateCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCategory.swift; sourceTree = "<group>"; };
 		9369C1D427E76ED700A39E57 /* MacNewBookWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacNewBookWindow.swift; sourceTree = "<group>"; };
 		93882F2027F86F8D00D5AA61 /* iOSBookViewGroupBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSBookViewGroupBox.swift; sourceTree = "<group>"; };
+		93882F2227F870F800D5AA61 /* MacBookViewGroupBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacBookViewGroupBox.swift; sourceTree = "<group>"; };
 		938B1A9F27F0975200FDAE4F /* languages.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = languages.json; sourceTree = "<group>"; };
 		938B1AA227F0981800FDAE4F /* Languages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Languages.swift; sourceTree = "<group>"; };
 		939BB9EE27CA44D60001B0DF /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
@@ -195,7 +195,6 @@
 		93D77C9227F59E1900443B00 /* iOSBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSBookView.swift; sourceTree = "<group>"; };
 		93D77C9427F59FDF00443B00 /* BookViewBookCoverBlur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewBookCoverBlur.swift; sourceTree = "<group>"; };
 		93D77C9727F5A0CC00443B00 /* BookViewBookCoverTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewBookCoverTitle.swift; sourceTree = "<group>"; };
-		93E6F7F127F59B940098FFB6 /* BookViewEditors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewEditors.swift; sourceTree = "<group>"; };
 		93ED4AA727F08BA4006031A2 /* MacNewBookStep7.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacNewBookStep7.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -335,7 +334,6 @@
 				93D77C9427F59FDF00443B00 /* BookViewBookCoverBlur.swift */,
 				93D77C9727F5A0CC00443B00 /* BookViewBookCoverTitle.swift */,
 				93390AA527F20DD6003C26D3 /* BookViewAuthors.swift */,
-				93E6F7F127F59B940098FFB6 /* BookViewEditors.swift */,
 			);
 			path = BookView;
 			sourceTree = "<group>";
@@ -455,6 +453,7 @@
 			isa = PBXGroup;
 			children = (
 				93882F2027F86F8D00D5AA61 /* iOSBookViewGroupBox.swift */,
+				93882F2227F870F800D5AA61 /* MacBookViewGroupBox.swift */,
 			);
 			path = BookViewGroupBox;
 			sourceTree = "<group>";
@@ -684,7 +683,6 @@
 				9369C1B227E631EC00A39E57 /* LanguagePicker.swift in Sources */,
 				9369C1BE27E6481500A39E57 /* TagsSearchList.swift in Sources */,
 				9369C19027E5204A00A39E57 /* CreatePublisher.swift in Sources */,
-				93E6F7F227F59B950098FFB6 /* BookViewEditors.swift in Sources */,
 				93436C9B27F2FE27000EAB4A /* UIImage.swift in Sources */,
 				9369C1CA27E64B8B00A39E57 /* CreateCategory.swift in Sources */,
 				9369C1AA27E62C1F00A39E57 /* WrappingSmallChipsWithName.swift in Sources */,
@@ -726,7 +724,6 @@
 				9346342827C2DFA6003B233F /* BookListItem.swift in Sources */,
 				9369C1AF27E62FE000A39E57 /* PickerMimickerWithName.swift in Sources */,
 				93B2051827E8CA6C00E9D858 /* MacNewBookStep3.swift in Sources */,
-				93E6F7F327F59B950098FFB6 /* BookViewEditors.swift in Sources */,
 				93219916279D86E600CB6E76 /* Persistence.swift in Sources */,
 				9346661D27C9407000D58DE7 /* MacNewBookWindowView.swift in Sources */,
 				9369C1D527E76ED700A39E57 /* MacNewBookWindow.swift in Sources */,
@@ -749,6 +746,7 @@
 				93ED4AA827F08BA4006031A2 /* MacNewBookStep7.swift in Sources */,
 				93D77C9927F5A0CC00443B00 /* BookViewBookCoverTitle.swift in Sources */,
 				9369C19827E53BC400A39E57 /* TranslatorsSearchList.swift in Sources */,
+				93882F2327F870F800D5AA61 /* MacBookViewGroupBox.swift in Sources */,
 				93548C8A27E8AA50004524B7 /* MacNewBookStep1.swift in Sources */,
 				9369C19F27E53FE000A39E57 /* CountriesSearchList.swift in Sources */,
 				9309D78027E4A51500F19670 /* SearchList.swift in Sources */,

@@ -27,7 +27,17 @@ struct MacBookView: View {
                                 BookViewAuthors(authors: book!.sortedAuthors)
                             }
                             
-                            BookViewEditors(editors: book!.sortedEditors)
+                            if book!.editors != nil && book!.sortedEditors.count > 0 {
+                                MacBookViewGroupBox(title: "Editors", icon: "person.2.wave.2") {
+                                    VStack(alignment: .leading) {
+                                        ForEach(book!.sortedEditors) { editor in
+                                            if let name = editor.name {
+                                                Text(name)
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                         .offset(y: offset)
                         .frame(maxWidth: 800.0)
