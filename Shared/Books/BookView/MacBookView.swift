@@ -28,15 +28,7 @@ struct MacBookView: View {
                             }
                             
                             HStack(spacing: 50) {
-                                if let status = unwrappedBook.readingStatus {
-                                    if let statusKey = BookReadingStatus(rawValue: status) {
-                                        BookViewTextWithLabel(label: "Reading Status", text: bookReadingStatusProperties[statusKey]!)
-                                    }
-                                }
-                                else {
-                                    BookViewTextWithLabel(label: "Reading Status", text: "")
-                                }
-                                
+                                BookViewTextWithLabel(label: "Reading Status", text: unwrappedBook.readingStatusString ?? "")
                                 BookViewTextWithLabel(label: "Date Started", text: unwrappedBook.dateStartedFormatted)
                                 BookViewTextWithLabel(label: "Date Finished", text: unwrappedBook.dateFinishedFormatted)
                                 BookViewTextWithLabel(label: "Page Count", text: unwrappedBook.pageCount > 0 ? String(unwrappedBook.pageCount) : "")
@@ -44,6 +36,7 @@ struct MacBookView: View {
                             
                             HStack(spacing: 50) {
                                 BookViewTextWithLabel(label: "Publisher", text: unwrappedBook.publisher?.name ?? "")
+                                BookViewTextWithLabel(label: "Book Format", text: unwrappedBook.bookFormatStrings[0])
                             }
                             
                             HStack(alignment: .top, spacing: 30) {

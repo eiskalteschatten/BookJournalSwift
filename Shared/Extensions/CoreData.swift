@@ -59,6 +59,30 @@ extension Book {
             return ""
         }
     }
+    
+    public var readingStatusString: String? {
+        if let status = readingStatus {
+            if let statusKey = BookReadingStatus(rawValue: status) {
+                return bookReadingStatusProperties[statusKey]
+            }
+            
+            return nil
+        }
+        
+        return nil
+    }
+    
+    public var bookFormatStrings: [String] {
+        if let format = bookFormat {
+            if let formatKey = BookFormat(rawValue: format) {
+                return bookFormatProperties[formatKey] ?? [""]
+            }
+            
+            return [""]
+        }
+        
+        return [""]
+    }
 }
 
 extension AbstractName {
