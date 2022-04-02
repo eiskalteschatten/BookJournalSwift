@@ -17,6 +17,8 @@ struct PersistenceController {
             let newBook = Book(context: viewContext)
             newBook.createdAt = Date()
             newBook.updatedAt = Date()
+            newBook.dateStarted = Date()
+            newBook.dateFinished = Date()
             
             newBook.title = "Preview Book";
             

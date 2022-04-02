@@ -25,11 +25,21 @@ struct MacBookView: View {
                             VStack(spacing: 10) {
                                 BookViewBookCoverTitle(bookcover: bookcover, title: unwrappedBook.title!)
                                 BookViewAuthors(authors: unwrappedBook.sortedAuthors)
-                                
+                            }
+                            
+                            HStack(spacing: 50) {
                                 if let status = unwrappedBook.readingStatus {
                                     if let statusKey = BookReadingStatus(rawValue: status) {
-                                        Text(bookReadingStatusProperties[statusKey]!)
+                                        BookViewTextWithLabel(label: "Reading Status", text: bookReadingStatusProperties[statusKey]!)
                                     }
+                                }
+                                
+                                if unwrappedBook.dateStarted != nil {
+                                    BookViewTextWithLabel(label: "Date Started", text: unwrappedBook.dateStartedFormatted)
+                                }
+                                
+                                if unwrappedBook.dateFinished != nil {
+                                    BookViewTextWithLabel(label: "Date Finished", text: unwrappedBook.dateFinishedFormatted)
                                 }
                             }
                             

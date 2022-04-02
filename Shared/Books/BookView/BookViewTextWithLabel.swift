@@ -12,7 +12,7 @@ struct BookViewTextWithLabel: View {
     let text: String
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 2) {
             Text(label)
                 .font(.system(.footnote))
                 .textCase(.uppercase)
