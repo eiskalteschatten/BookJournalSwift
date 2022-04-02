@@ -15,7 +15,6 @@ struct iOSBookViewGroupBox<Content: View>: View {
     var body: some View {
         GroupBox(label:
             Label(title, systemImage: icon)
-                .foregroundColor(.accentColor)
                 .padding(.bottom, 3)
         ) {
             content

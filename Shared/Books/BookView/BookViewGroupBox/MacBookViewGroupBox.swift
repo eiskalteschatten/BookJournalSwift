@@ -15,7 +15,6 @@ struct MacBookViewGroupBox<Content: View>: View {
     var body: some View {
         VStack(alignment: .leading) {
             Label(title, systemImage: icon)
-                .foregroundColor(.accentColor)
                 .font(.system(.title3))
                 .padding(.bottom, 3)
 
