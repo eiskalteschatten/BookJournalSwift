@@ -26,7 +26,18 @@ struct iOSBookView: View {
                                 BookViewAuthors(authors: book!.sortedAuthors)
                             }
                             
-                            BookViewEditors(editors: book!.sortedEditors)
+                            if book!.editors != nil && book!.sortedEditors.count > 0 {
+                                iOSBookViewGroupBox(title: "Editors", icon: "person.2.wave.2") {
+                                    VStack(alignment: .leading) {
+                                        ForEach(book!.sortedEditors) { editor in
+                                            if let name = editor.name {
+                                                Text(name)
+                                            }
+                                        }
+                                    }
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                }
+                            }
                         }
                         .offset(y: offset)
                         .padding()
