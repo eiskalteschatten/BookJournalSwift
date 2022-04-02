@@ -11,14 +11,20 @@ struct BookViewEditors: View {
     var editors: [Editor]?
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 30) {
-            if editors != nil && editors!.count > 0 {
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("Editors")
-                        .font(.title2)
-                    
-                    WrappingSmallChipsWithName<Editor>(data: editors!, chipColor: EDITOR_COLOR, alignment: .leading)
+        GroupBox(label:
+            Label("Editors", systemImage: "person.2.wave.2")
+                .foregroundColor(.accentColor)
+                .padding(.bottom, 3)
+        ) {
+            if editors != nil {
+                VStack(alignment: .leading) {
+                    ForEach(editors!) { editor in
+                        if let name = editor.name {
+                            Text(name)
+                        }
+                    }
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
             }
         }
     }
