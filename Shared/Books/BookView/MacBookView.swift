@@ -43,13 +43,35 @@ struct MacBookView: View {
                                 }
                             }
                             
+                            HStack(spacing: 20) {
+                                MacBookViewGroupBox(title: "Categories", icon: "folder") {
+                                    if unwrappedBook.categories != nil && unwrappedBook.sortedCategories.count > 0 {
+                                        WrappingSmallChipsWithName<Category>(data: unwrappedBook.sortedCategories, chipColor: CATEGORY_COLOR, alignment: .leading)
+                                    }
+                                    else {
+                                        Text("No categories selected")
+                                    }
+                                }
+                                
+                                MacBookViewGroupBox(title: "Tags", icon: "tag") {
+                                    if let unwrappedTags = unwrappedBook.tags {
+                                        if unwrappedTags.allObjects.count > 0 {
+                                            WrappingSmallChipsWithName<Tag>(data: unwrappedTags.allObjects as! [Tag], chipColor: TAG_COLOR, alignment: .leading)
+                                        }
+                                        else {
+                                            Text("No tags selected")
+                                        }
+                                    }
+                                }
+                            }
+                            
                             MacBookViewGroupBox(title: "Editors", icon: "person.2.wave.2") {
                                 if unwrappedBook.editors != nil && unwrappedBook.sortedEditors.count > 0 {
                                     let editors = unwrappedBook.sortedEditors.map{ $0.name ?? "" }.joined(separator: ", ")
                                     Text(editors)
                                 }
                                 else {
-                                    Text("No editors given")
+                                    Text("No editors selected")
                                 }
                             }
                         }
@@ -98,8 +120,8 @@ struct MacBookView_Previews: PreviewProvider {
         let book = context.registeredObjects.first(where: { $0 is Book }) as! Book
         
         Group {
-            MacBookView(book: book).preferredColorScheme(.dark).padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/).frame(height: /*@START_MENU_TOKEN@*/800.0/*@END_MENU_TOKEN@*/).environment(\.managedObjectContext, context)
-//            MacBookView(book: book).preferredColorScheme(.light).padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/).frame(height: 800.0).environment(\.managedObjectContext, context)
+            MacBookView(book: book).preferredColorScheme(.dark).padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/).frame(height: 1200).environment(\.managedObjectContext, context)
+//            MacBookView(book: book).preferredColorScheme(.light).padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/).frame(height: 1200.0).environment(\.managedObjectContext, context)
         }
     }
 }

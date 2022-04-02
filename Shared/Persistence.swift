@@ -31,6 +31,16 @@ struct PersistenceController {
             newEditor.name = "Ms. Editor"
             
             newBook.addToEditors(newEditor)
+            
+            let newCategory = Category(context: viewContext)
+            newCategory.name = "Cranky Books"
+            
+            newBook.addToCategories(newCategory)
+            
+            let newTag = Tag(context: viewContext)
+            newTag.name = "Hilarious"
+            
+            newBook.addToTags(newTag)
         }
         do {
             try viewContext.save()

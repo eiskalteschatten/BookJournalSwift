@@ -22,6 +22,13 @@ extension Book {
         }
     }
     
+    public var sortedCategories: [Category] {
+        let set = categories as? Set<Category> ?? []
+        return set.sorted {
+            $0.wrappedName < $1.wrappedName
+        }
+    }
+    
     public var dateStartedFormatted: String {
         if let unwrapped = dateStarted {
             let dateFormatter = DateFormatter()

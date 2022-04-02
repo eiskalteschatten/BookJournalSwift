@@ -11,8 +11,8 @@ struct BookViewAuthors: View {
     var authors: [Author]?
     
     var body: some View {
-        if authors != nil {
-            WrappingSmallChipsWithName<Author>(data: authors!, chipColor: AUTHOR_COLOR)
+        if let unwrappedAuthors = authors {
+            WrappingSmallChipsWithName<Author>(data: unwrappedAuthors, chipColor: AUTHOR_COLOR)
         }
     }
 }
