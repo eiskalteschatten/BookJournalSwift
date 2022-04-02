@@ -29,13 +29,8 @@ struct MacBookView: View {
                             
                             MacBookViewGroupBox(title: "Editors", icon: "person.2.wave.2") {
                                 if book!.editors != nil && book!.sortedEditors.count > 0 {
-                                    VStack(alignment: .leading) {
-                                        ForEach(book!.sortedEditors) { editor in
-                                            if let name = editor.name {
-                                                Text(name)
-                                            }
-                                        }
-                                    }
+                                    let editors = book!.sortedEditors.map{ $0.name ?? "" }.joined(separator: ", ")
+                                    Text(editors)
                                 }
                                 else {
                                     Text("No editors given")

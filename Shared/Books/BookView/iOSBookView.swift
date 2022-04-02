@@ -29,11 +29,8 @@ struct iOSBookView: View {
                             if book!.editors != nil && book!.sortedEditors.count > 0 {
                                 iOSBookViewGroupBox(title: "Editors", icon: "person.2.wave.2") {
                                     VStack(alignment: .leading) {
-                                        ForEach(book!.sortedEditors) { editor in
-                                            if let name = editor.name {
-                                                Text(name)
-                                            }
-                                        }
+                                        let editors = book!.sortedEditors.map{ $0.name ?? "" }.joined(separator: ", ")
+                                        Text(editors)
                                     }
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                 }
