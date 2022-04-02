@@ -33,14 +33,17 @@ struct MacBookView: View {
                                         BookViewTextWithLabel(label: "Reading Status", text: bookReadingStatusProperties[statusKey]!)
                                     }
                                 }
-                                
-                                if unwrappedBook.dateStarted != nil {
-                                    BookViewTextWithLabel(label: "Date Started", text: unwrappedBook.dateStartedFormatted)
+                                else {
+                                    BookViewTextWithLabel(label: "Reading Status", text: "")
                                 }
                                 
-                                if unwrappedBook.dateFinished != nil {
-                                    BookViewTextWithLabel(label: "Date Finished", text: unwrappedBook.dateFinishedFormatted)
-                                }
+                                BookViewTextWithLabel(label: "Date Started", text: unwrappedBook.dateStartedFormatted)
+                                BookViewTextWithLabel(label: "Date Finished", text: unwrappedBook.dateFinishedFormatted)
+                                BookViewTextWithLabel(label: "Page Count", text: unwrappedBook.pageCount > 0 ? String(unwrappedBook.pageCount) : "")
+                            }
+                            
+                            HStack(spacing: 50) {
+                                BookViewTextWithLabel(label: "Publisher", text: unwrappedBook.publisher?.name ?? "")
                             }
                             
                             HStack(alignment: .top, spacing: 30) {
