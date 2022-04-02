@@ -35,8 +35,10 @@ struct MacBookView: View {
                             }
                             
                             HStack(spacing: 50) {
-                                BookViewTextWithLabel(label: "Publisher", text: unwrappedBook.publisher?.name ?? "")
                                 BookViewTextWithLabel(label: "Book Format", text: unwrappedBook.bookFormatStrings[0])
+                                BookViewTextWithLabel(label: "Publisher", text: unwrappedBook.publisher?.name ?? "")
+                                BookViewTextWithLabel(label: "Year Published", text: unwrappedBook.yearPublished > 0 ? String(unwrappedBook.yearPublished) : "")
+                                BookViewTextWithLabel(label: "ISBN", text: unwrappedBook.isbn ?? "")
                             }
                             
                             HStack(alignment: .top, spacing: 30) {
