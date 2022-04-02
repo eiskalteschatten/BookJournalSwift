@@ -13,13 +13,21 @@ struct MacBookViewGroupBox<Content: View>: View {
     @ViewBuilder var content: Content
     
     var body: some View {
-        GroupBox(label:
+        VStack(alignment: .leading) {
             Label(title, systemImage: icon)
                 .foregroundColor(.accentColor)
+                .font(.system(.title3))
                 .padding(.bottom, 3)
-        ) {
+
             content
         }
+        .padding(.vertical, 15)
+        .padding(.horizontal, 20)
+        .frame(minWidth: 350, alignment: .leading)
+        .background(
+            RoundedRectangle(cornerRadius: 10.0)
+                .fill(.regularMaterial)
+        )
     }
 }
 
