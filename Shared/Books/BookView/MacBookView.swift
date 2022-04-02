@@ -43,7 +43,27 @@ struct MacBookView: View {
                                 }
                             }
                             
-                            HStack(spacing: 20) {
+                            HStack(alignment: .top, spacing: 30) {
+                                MacBookViewGroupBox(title: "Editors", icon: "person.2.wave.2") {
+                                    if unwrappedBook.editors != nil && unwrappedBook.sortedEditors.count > 0 {
+                                        WrappingSmallChipsWithName<Editor>(data: unwrappedBook.sortedEditors, chipColor: EDITOR_COLOR, alignment: .leading)
+                                    }
+                                    else {
+                                        Text("No editors selected")
+                                    }
+                                }
+                                
+                                MacBookViewGroupBox(title: "Genres", icon: "text.book.closed") {
+                                    if unwrappedBook.genres != nil && unwrappedBook.sortedGenres.count > 0 {
+                                        WrappingSmallChipsWithName<Genre>(data: unwrappedBook.sortedGenres, chipColor: GENRE_COLOR, alignment: .leading)
+                                    }
+                                    else {
+                                        Text("No genres selected")
+                                    }
+                                }
+                            }
+                            
+                            HStack(alignment: .top, spacing: 20) {
                                 MacBookViewGroupBox(title: "Categories", icon: "folder") {
                                     if unwrappedBook.categories != nil && unwrappedBook.sortedCategories.count > 0 {
                                         WrappingSmallChipsWithName<Category>(data: unwrappedBook.sortedCategories, chipColor: CATEGORY_COLOR, alignment: .leading)
@@ -62,16 +82,6 @@ struct MacBookView: View {
                                             Text("No tags selected")
                                         }
                                     }
-                                }
-                            }
-                            
-                            MacBookViewGroupBox(title: "Editors", icon: "person.2.wave.2") {
-                                if unwrappedBook.editors != nil && unwrappedBook.sortedEditors.count > 0 {
-                                    let editors = unwrappedBook.sortedEditors.map{ $0.name ?? "" }.joined(separator: ", ")
-                                    Text(editors)
-                                }
-                                else {
-                                    Text("No editors selected")
                                 }
                             }
                         }

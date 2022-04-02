@@ -41,6 +41,11 @@ struct PersistenceController {
             newTag.name = "Hilarious"
             
             newBook.addToTags(newTag)
+            
+            let newGenre = Genre(context: viewContext)
+            newGenre.name = "Horror"
+            
+            newBook.addToGenres(newGenre)
         }
         do {
             try viewContext.save()

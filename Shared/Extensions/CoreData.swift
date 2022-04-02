@@ -29,6 +29,13 @@ extension Book {
         }
     }
     
+    public var sortedGenres: [Genre] {
+        let set = genres as? Set<Genre> ?? []
+        return set.sorted {
+            $0.wrappedName < $1.wrappedName
+        }
+    }
+    
     public var dateStartedFormatted: String {
         if let unwrapped = dateStarted {
             let dateFormatter = DateFormatter()
