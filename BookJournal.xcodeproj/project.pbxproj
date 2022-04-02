@@ -86,6 +86,8 @@
 		938B1AA127F0975200FDAE4F /* languages.json in Resources */ = {isa = PBXBuildFile; fileRef = 938B1A9F27F0975200FDAE4F /* languages.json */; };
 		938B1AA327F0981800FDAE4F /* Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938B1AA227F0981800FDAE4F /* Languages.swift */; };
 		938B1AA427F0981800FDAE4F /* Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938B1AA227F0981800FDAE4F /* Languages.swift */; };
+		9390CA0327F8DF3600C7FF7B /* BookViewTextWithLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9390CA0227F8DF3600C7FF7B /* BookViewTextWithLabel.swift */; };
+		9390CA0427F8DF3600C7FF7B /* BookViewTextWithLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9390CA0227F8DF3600C7FF7B /* BookViewTextWithLabel.swift */; };
 		939BB9EF27CA44D60001B0DF /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939BB9EE27CA44D60001B0DF /* CoreData.swift */; };
 		939BB9F027CA44D60001B0DF /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939BB9EE27CA44D60001B0DF /* CoreData.swift */; };
 		939BB9F327CA785F0001B0DF /* Chip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939BB9F227CA785F0001B0DF /* Chip.swift */; };
@@ -180,6 +182,7 @@
 		93882F2227F870F800D5AA61 /* MacBookViewGroupBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacBookViewGroupBox.swift; sourceTree = "<group>"; };
 		938B1A9F27F0975200FDAE4F /* languages.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = languages.json; sourceTree = "<group>"; };
 		938B1AA227F0981800FDAE4F /* Languages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Languages.swift; sourceTree = "<group>"; };
+		9390CA0227F8DF3600C7FF7B /* BookViewTextWithLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewTextWithLabel.swift; sourceTree = "<group>"; };
 		939BB9EE27CA44D60001B0DF /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		939BB9F227CA785F0001B0DF /* Chip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chip.swift; sourceTree = "<group>"; };
 		939BB9F527CA9BB40001B0DF /* SmallChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallChip.swift; sourceTree = "<group>"; };
@@ -328,9 +331,10 @@
 		93390AA327F20DAD003C26D3 /* BookView */ = {
 			isa = PBXGroup;
 			children = (
-				93882F1F27F86F7300D5AA61 /* BookViewGroupBox */,
 				9329054327C29C55000D15AE /* MacBookView.swift */,
 				93D77C9227F59E1900443B00 /* iOSBookView.swift */,
+				93882F1F27F86F7300D5AA61 /* BookViewGroupBox */,
+				9390CA0227F8DF3600C7FF7B /* BookViewTextWithLabel.swift */,
 				93D77C9427F59FDF00443B00 /* BookViewBookCoverBlur.swift */,
 				93D77C9727F5A0CC00443B00 /* BookViewBookCoverTitle.swift */,
 				93390AA527F20DD6003C26D3 /* BookViewAuthors.swift */,
@@ -680,6 +684,7 @@
 				938B1AA327F0981800FDAE4F /* Languages.swift in Sources */,
 				93D77C9827F5A0CC00443B00 /* BookViewBookCoverTitle.swift in Sources */,
 				9321990F279D86E600CB6E76 /* BookJournal.xcdatamodeld in Sources */,
+				9390CA0327F8DF3600C7FF7B /* BookViewTextWithLabel.swift in Sources */,
 				9369C1B227E631EC00A39E57 /* LanguagePicker.swift in Sources */,
 				9369C1BE27E6481500A39E57 /* TagsSearchList.swift in Sources */,
 				9369C19027E5204A00A39E57 /* CreatePublisher.swift in Sources */,
@@ -717,6 +722,7 @@
 				9369C18A27E51D5500A39E57 /* EditorsSearchList.swift in Sources */,
 				9369C1C427E6486E00A39E57 /* GenresSearchList.swift in Sources */,
 				9369C18D27E51E1900A39E57 /* CreateEditor.swift in Sources */,
+				9390CA0427F8DF3600C7FF7B /* BookViewTextWithLabel.swift in Sources */,
 				93390AA727F20DD6003C26D3 /* BookViewAuthors.swift in Sources */,
 				938B1AA427F0981800FDAE4F /* Languages.swift in Sources */,
 				93B2051E27E8CB6200E9D858 /* MacNewBookStep6.swift in Sources */,
