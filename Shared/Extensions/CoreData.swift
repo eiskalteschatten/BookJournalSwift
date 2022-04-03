@@ -22,6 +22,13 @@ extension Book {
         }
     }
     
+    public var sortedTranslators: [Translator] {
+        let set = translators as? Set<Translator> ?? []
+        return set.sorted {
+            $0.wrappedName < $1.wrappedName
+        }
+    }
+    
     public var sortedCategories: [Category] {
         let set = categories as? Set<Category> ?? []
         return set.sorted {
@@ -82,6 +89,26 @@ extension Book {
         }
         
         return [""]
+    }
+    
+    public var languageReadInLocalizedName: String {
+        if let unwrapped = languageReadIn {
+            let locale: Locale = .current
+            return locale.localizedString(forLanguageCode: unwrapped) ?? ""
+        }
+        else {
+            return ""
+        }
+    }
+    
+    public var originalLanguageLocalizedName: String {
+        if let unwrapped = originalLanguage {
+            let locale: Locale = .current
+            return locale.localizedString(forLanguageCode: unwrapped) ?? ""
+        }
+        else {
+            return ""
+        }
     }
 }
 

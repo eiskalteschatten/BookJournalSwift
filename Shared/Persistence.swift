@@ -50,6 +50,19 @@ struct PersistenceController {
             newGenre.name = "Horror"
             
             newBook.addToGenres(newGenre)
+            
+            let newTranslator = Translator(context: viewContext)
+            newTranslator.name = "Mr. Trans"
+            
+            newBook.addToTranslators(newTranslator)
+            
+            newBook.languageReadIn = "de"
+            newBook.originalLanguage = "fr"
+            
+            let newCountry = Country(context: viewContext)
+            newCountry.name = "United Kingdom"
+            
+            newBook.countryOfOrigin = newCountry
         }
         do {
             try viewContext.save()

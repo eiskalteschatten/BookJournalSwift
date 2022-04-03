@@ -17,7 +17,8 @@ struct MacBookView: View {
                 let bookcover = getBookcover(book: unwrappedBook)
                 let offset = 100.0
                 let maxWidth = 800.0
-                let groupBoxSpacing = 30.0
+                let textWithLabelSpacing = 50.0
+                let groupBoxSpacing = 20.0
                 let groupBoxWidth = (maxWidth / 2) - (groupBoxSpacing / 2)
                 
                 ScrollView {
@@ -30,14 +31,14 @@ struct MacBookView: View {
                                 BookViewAuthors(authors: unwrappedBook.sortedAuthors)
                             }
                             
-                            HStack(spacing: 50) {
+                            HStack(spacing: textWithLabelSpacing) {
                                 BookViewTextWithLabel(label: "Reading Status", text: unwrappedBook.readingStatusString ?? "")
                                 BookViewTextWithLabel(label: "Date Started", text: unwrappedBook.dateStartedFormatted)
                                 BookViewTextWithLabel(label: "Date Finished", text: unwrappedBook.dateFinishedFormatted)
                                 BookViewTextWithLabel(label: "Page Count", text: unwrappedBook.pageCount > 0 ? String(unwrappedBook.pageCount) : "")
                             }
                             
-                            HStack(spacing: 50) {
+                            HStack(spacing: textWithLabelSpacing) {
                                 BookViewTextWithLabel(label: "Book Format", text: unwrappedBook.bookFormatStrings[0])
                                 BookViewTextWithLabel(label: "Publisher", text: unwrappedBook.publisher?.name ?? "")
                                 BookViewTextWithLabel(label: "Year Published", text: unwrappedBook.yearPublished > 0 ? String(unwrappedBook.yearPublished) : "")
@@ -82,6 +83,25 @@ struct MacBookView: View {
                                         else {
                                             Text("No tags selected")
                                         }
+                                    }
+                                }
+                            }
+                            
+                            HStack(alignment: .top, spacing: groupBoxSpacing) {
+                                MacBookViewGroupBox(title: "Translators", icon: "person.2", width: groupBoxWidth) {
+                                    if unwrappedBook.translators != nil && unwrappedBook.sortedTranslators.count > 0 {
+                                        WrappingSmallChipsWithName<Translator>(data: unwrappedBook.sortedTranslators, chipColor: TRANSLATOR_COLOR, alignment: .leading)
+                                    }
+                                    else {
+                                        Text("No translators selected")
+                                    }
+                                }
+                                
+                                MacBookViewGroupBox(title: "World", icon: "globe", width: groupBoxWidth) {
+                                    HStack(spacing: 20) {
+                                        BookViewTextWithLabel(label: "Country of Origin", text: unwrappedBook.countryOfOrigin?.name ?? "")
+                                        BookViewTextWithLabel(label: "Language Read In", text: unwrappedBook.languageReadInLocalizedName)
+                                        BookViewTextWithLabel(label: "Original Language", text: unwrappedBook.originalLanguageLocalizedName)
                                     }
                                 }
                             }
