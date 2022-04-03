@@ -10,6 +10,7 @@ import SwiftUI
 struct iOSBookViewGroupBox<Content: View>: View {
     var title: String
     var icon: String
+    var width: CGFloat?
     @ViewBuilder var content: Content
     
     var body: some View {
@@ -19,6 +20,7 @@ struct iOSBookViewGroupBox<Content: View>: View {
         ) {
             content
         }
+        .frame(width: width)
     }
 }
 
