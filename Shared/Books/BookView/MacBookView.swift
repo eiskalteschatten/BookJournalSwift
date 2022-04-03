@@ -17,12 +17,14 @@ struct MacBookView: View {
                 let bookcover = getBookcover(book: unwrappedBook)
                 let offset = 100.0
                 let maxWidth = 800.0
+                let groupBoxSpacing = 30.0
+                let groupBoxWidth = (maxWidth / 2) - (groupBoxSpacing / 2)
                 
                 ScrollView {
                     ZStack {
                         BookViewBookCoverBlur(bookcover: bookcover)
                         
-                        VStack(spacing: 30) {
+                        VStack(spacing: groupBoxSpacing) {
                             VStack(spacing: 10) {
                                 BookViewBookCoverTitle(bookcover: bookcover, title: unwrappedBook.title!)
                                 BookViewAuthors(authors: unwrappedBook.sortedAuthors)
@@ -42,8 +44,8 @@ struct MacBookView: View {
                                 BookViewTextWithLabel(label: "ISBN", text: unwrappedBook.isbn ?? "")
                             }
                             
-                            HStack(alignment: .top, spacing: 30) {
-                                MacBookViewGroupBox(title: "Editors", icon: "person.2.wave.2") {
+                            HStack(alignment: .top, spacing: groupBoxSpacing) {
+                                MacBookViewGroupBox(title: "Editors", icon: "person.2.wave.2", width: groupBoxWidth) {
                                     if unwrappedBook.editors != nil && unwrappedBook.sortedEditors.count > 0 {
                                         WrappingSmallChipsWithName<Editor>(data: unwrappedBook.sortedEditors, chipColor: EDITOR_COLOR, alignment: .leading)
                                     }
@@ -52,7 +54,7 @@ struct MacBookView: View {
                                     }
                                 }
                                 
-                                MacBookViewGroupBox(title: "Genres", icon: "text.book.closed") {
+                                MacBookViewGroupBox(title: "Genres", icon: "text.book.closed", width: groupBoxWidth) {
                                     if unwrappedBook.genres != nil && unwrappedBook.sortedGenres.count > 0 {
                                         WrappingSmallChipsWithName<Genre>(data: unwrappedBook.sortedGenres, chipColor: GENRE_COLOR, alignment: .leading)
                                     }
@@ -62,8 +64,8 @@ struct MacBookView: View {
                                 }
                             }
                             
-                            HStack(alignment: .top, spacing: 20) {
-                                MacBookViewGroupBox(title: "Categories", icon: "folder") {
+                            HStack(alignment: .top, spacing: groupBoxSpacing) {
+                                MacBookViewGroupBox(title: "Categories", icon: "folder", width: groupBoxWidth) {
                                     if unwrappedBook.categories != nil && unwrappedBook.sortedCategories.count > 0 {
                                         WrappingSmallChipsWithName<Category>(data: unwrappedBook.sortedCategories, chipColor: CATEGORY_COLOR, alignment: .leading)
                                     }
@@ -72,7 +74,7 @@ struct MacBookView: View {
                                     }
                                 }
                                 
-                                MacBookViewGroupBox(title: "Tags", icon: "tag") {
+                                MacBookViewGroupBox(title: "Tags", icon: "tag", width: groupBoxWidth) {
                                     if let unwrappedTags = unwrappedBook.tags {
                                         if unwrappedTags.allObjects.count > 0 {
                                             WrappingSmallChipsWithName<Tag>(data: unwrappedTags.allObjects as! [Tag], chipColor: TAG_COLOR, alignment: .leading)
