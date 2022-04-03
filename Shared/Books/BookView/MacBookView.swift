@@ -182,7 +182,7 @@ struct MacBookView_Previews: PreviewProvider {
         
         Group {
             MacBookView(book: book).preferredColorScheme(.dark).padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/).frame(height: 2000).environment(\.managedObjectContext, context)
-//            MacBookView(book: book).preferredColorScheme(.light).padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/).frame(height: 2000.0).environment(\.managedObjectContext, context)
+            MacBookView(book: book).preferredColorScheme(.light).padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/).frame(height: 2000.0).environment(\.managedObjectContext, context)
         }
     }
 }
