@@ -21,125 +21,137 @@ struct MacBookView: View {
                 let groupBoxSpacing = 20.0
                 let groupBoxWidth = (maxWidth / 2) - (groupBoxSpacing / 2)
                 
-                ScrollView {
-                    ZStack {
-                        BookViewBookCoverBlur(bookcover: bookcover)
-                        
-                        VStack(spacing: groupBoxSpacing) {
-                            VStack(spacing: 10) {
-                                BookViewBookCoverTitle(bookcover: bookcover, title: unwrappedBook.title!)
-                                BookViewAuthors(authors: unwrappedBook.sortedAuthors)
-                            }
+                GeometryReader { metrics in
+                    ScrollView {
+                        ZStack {
+                            BookViewBookCoverBlur(bookcover: bookcover)
                             
-                            BookViewRating(rating: Int(unwrappedBook.rating))
-                            
-                            Spacer()
-                            
-                            Group {
-                                HStack(spacing: textWithLabelSpacing) {
-                                    BookViewTextWithLabel(label: "Page Count", text: unwrappedBook.pageCount > 0 ? String(unwrappedBook.pageCount) : "")
-                                    BookViewTextWithLabel(label: "Reading Status", text: unwrappedBook.readingStatusString ?? "")
-                                    BookViewTextWithLabel(label: "Date Started", text: unwrappedBook.dateStartedFormatted)
-                                    BookViewTextWithLabel(label: "Date Finished", text: unwrappedBook.dateFinishedFormatted)
+                            VStack(spacing: groupBoxSpacing) {
+                                VStack(spacing: 10) {
+                                    BookViewBookCoverTitle(bookcover: bookcover, title: unwrappedBook.title!)
+                                    BookViewAuthors(authors: unwrappedBook.sortedAuthors)
                                 }
                                 
-                                HStack(spacing: textWithLabelSpacing) {
-                                    BookViewTextWithLabel(label: "Book Format", text: unwrappedBook.bookFormatStrings[0])
-                                    BookViewTextWithLabel(label: "Publisher", text: unwrappedBook.publisher?.name ?? "")
-                                    BookViewTextWithLabel(label: "Year Published", text: unwrappedBook.yearPublished > 0 ? String(unwrappedBook.yearPublished) : "")
-                                    BookViewTextWithLabel(label: "ISBN", text: unwrappedBook.isbn ?? "")
-                                }
-                            }
-                            
-                            Spacer()
-                            
-                            Group {
-                                HStack(alignment: .top, spacing: groupBoxSpacing) {
-                                    MacBookViewGroupBox(title: "Editors", icon: "person.2.wave.2", width: groupBoxWidth) {
-                                        if unwrappedBook.editors != nil && unwrappedBook.sortedEditors.count > 0 {
-                                            WrappingSmallChipsWithName<Editor>(data: unwrappedBook.sortedEditors, chipColor: EDITOR_COLOR, alignment: .leading)
-                                        }
-                                        else {
-                                            Text("No editors selected")
-                                        }
+                                BookViewRating(rating: Int(unwrappedBook.rating))
+                                
+                                Spacer()
+                                
+                                Group {
+                                    let width = metrics.size.width * 0.15
+                                    
+                                    HStack(spacing: textWithLabelSpacing) {
+                                        BookViewTextWithLabel(label: "Page Count", text: unwrappedBook.pageCount > 0 ? String(unwrappedBook.pageCount) : "")
+                                            .frame(width: width)
+                                        BookViewTextWithLabel(label: "Reading Status", text: unwrappedBook.readingStatusString ?? "")
+                                            .frame(width: width)
+                                        BookViewTextWithLabel(label: "Date Started", text: unwrappedBook.dateStartedFormatted)
+                                            .frame(width: width)
+                                        BookViewTextWithLabel(label: "Date Finished", text: unwrappedBook.dateFinishedFormatted)
+                                            .frame(width: width)
                                     }
                                     
-                                    MacBookViewGroupBox(title: "Genres", icon: "text.book.closed", width: groupBoxWidth) {
-                                        if unwrappedBook.genres != nil && unwrappedBook.sortedGenres.count > 0 {
-                                            WrappingSmallChipsWithName<Genre>(data: unwrappedBook.sortedGenres, chipColor: GENRE_COLOR, alignment: .leading)
-                                        }
-                                        else {
-                                            Text("No genres selected")
-                                        }
+                                    HStack(spacing: textWithLabelSpacing) {
+                                        BookViewTextWithLabel(label: "Book Format", text: unwrappedBook.bookFormatStrings[0])
+                                            .frame(width: width)
+                                        BookViewTextWithLabel(label: "Publisher", text: unwrappedBook.publisher?.name ?? "")
+                                            .frame(width: width)
+                                        BookViewTextWithLabel(label: "Year Published", text: unwrappedBook.yearPublished > 0 ? String(unwrappedBook.yearPublished) : "")
+                                            .frame(width: width)
+                                        BookViewTextWithLabel(label: "ISBN", text: unwrappedBook.isbn ?? "")
+                                            .frame(width: width)
                                     }
                                 }
                                 
-                                HStack(alignment: .top, spacing: groupBoxSpacing) {
-                                    MacBookViewGroupBox(title: "Categories", icon: "folder", width: groupBoxWidth) {
-                                        if unwrappedBook.categories != nil && unwrappedBook.sortedCategories.count > 0 {
-                                            WrappingSmallChipsWithName<Category>(data: unwrappedBook.sortedCategories, chipColor: CATEGORY_COLOR, alignment: .leading)
-                                        }
-                                        else {
-                                            Text("No categories selected")
-                                        }
-                                    }
-                                    
-                                    MacBookViewGroupBox(title: "Tags", icon: "tag", width: groupBoxWidth) {
-                                        if let unwrappedTags = unwrappedBook.tags {
-                                            if unwrappedTags.allObjects.count > 0 {
-                                                WrappingSmallChipsWithName<Tag>(data: unwrappedTags.allObjects as! [Tag], chipColor: TAG_COLOR, alignment: .leading)
+                                Spacer()
+                                
+                                Group {
+                                    HStack(alignment: .top, spacing: groupBoxSpacing) {
+                                        MacBookViewGroupBox(title: "Editors", icon: "person.2.wave.2", width: groupBoxWidth) {
+                                            if unwrappedBook.editors != nil && unwrappedBook.sortedEditors.count > 0 {
+                                                WrappingSmallChipsWithName<Editor>(data: unwrappedBook.sortedEditors, chipColor: EDITOR_COLOR, alignment: .leading)
                                             }
                                             else {
-                                                Text("No tags selected")
+                                                Text("No editors selected")
+                                            }
+                                        }
+                                        
+                                        MacBookViewGroupBox(title: "Genres", icon: "text.book.closed", width: groupBoxWidth) {
+                                            if unwrappedBook.genres != nil && unwrappedBook.sortedGenres.count > 0 {
+                                                WrappingSmallChipsWithName<Genre>(data: unwrappedBook.sortedGenres, chipColor: GENRE_COLOR, alignment: .leading)
+                                            }
+                                            else {
+                                                Text("No genres selected")
+                                            }
+                                        }
+                                    }
+                                    
+                                    HStack(alignment: .top, spacing: groupBoxSpacing) {
+                                        MacBookViewGroupBox(title: "Categories", icon: "folder", width: groupBoxWidth) {
+                                            if unwrappedBook.categories != nil && unwrappedBook.sortedCategories.count > 0 {
+                                                WrappingSmallChipsWithName<Category>(data: unwrappedBook.sortedCategories, chipColor: CATEGORY_COLOR, alignment: .leading)
+                                            }
+                                            else {
+                                                Text("No categories selected")
+                                            }
+                                        }
+                                        
+                                        MacBookViewGroupBox(title: "Tags", icon: "tag", width: groupBoxWidth) {
+                                            if let unwrappedTags = unwrappedBook.tags {
+                                                if unwrappedTags.allObjects.count > 0 {
+                                                    WrappingSmallChipsWithName<Tag>(data: unwrappedTags.allObjects as! [Tag], chipColor: TAG_COLOR, alignment: .leading)
+                                                }
+                                                else {
+                                                    Text("No tags selected")
+                                                }
+                                            }
+                                        }
+                                    }
+                                    
+                                    HStack(alignment: .top, spacing: groupBoxSpacing) {
+                                        MacBookViewGroupBox(title: "Translators", icon: "person.2", width: groupBoxWidth) {
+                                            if unwrappedBook.translators != nil && unwrappedBook.sortedTranslators.count > 0 {
+                                                WrappingSmallChipsWithName<Translator>(data: unwrappedBook.sortedTranslators, chipColor: TRANSLATOR_COLOR, alignment: .leading)
+                                            }
+                                            else {
+                                                Text("No translators selected")
+                                            }
+                                        }
+                                        
+                                        MacBookViewGroupBox(title: "World", icon: "globe", width: groupBoxWidth) {
+                                            HStack(spacing: 20) {
+                                                BookViewTextWithLabel(label: "Language Read In", text: unwrappedBook.languageReadInLocalizedName)
+                                                BookViewTextWithLabel(label: "Original Language", text: unwrappedBook.originalLanguageLocalizedName)
+                                                BookViewTextWithLabel(label: "Country of Origin", text: unwrappedBook.countryOfOrigin?.name ?? "")
                                             }
                                         }
                                     }
                                 }
                                 
-                                HStack(alignment: .top, spacing: groupBoxSpacing) {
-                                    MacBookViewGroupBox(title: "Translators", icon: "person.2", width: groupBoxWidth) {
-                                        if unwrappedBook.translators != nil && unwrappedBook.sortedTranslators.count > 0 {
-                                            WrappingSmallChipsWithName<Translator>(data: unwrappedBook.sortedTranslators, chipColor: TRANSLATOR_COLOR, alignment: .leading)
-                                        }
-                                        else {
-                                            Text("No translators selected")
+                                Group {
+                                    MacBookViewGroupBox(title: "Summary", icon: "text.alignleft", width: maxWidth) {
+                                        if let unwrappedSummary = unwrappedBook.summary {
+                                            Text(unwrappedSummary)
                                         }
                                     }
                                     
-                                    MacBookViewGroupBox(title: "World", icon: "globe", width: groupBoxWidth) {
-                                        HStack(spacing: 20) {
-                                            BookViewTextWithLabel(label: "Language Read In", text: unwrappedBook.languageReadInLocalizedName)
-                                            BookViewTextWithLabel(label: "Original Language", text: unwrappedBook.originalLanguageLocalizedName)
-                                            BookViewTextWithLabel(label: "Country of Origin", text: unwrappedBook.countryOfOrigin?.name ?? "")
+                                    MacBookViewGroupBox(title: "Commentary", icon: "text.bubble", width: maxWidth) {
+                                        if let unwrappedCommentary = unwrappedBook.commentary {
+                                            Text(unwrappedCommentary)
+                                        }
+                                    }
+                                    
+                                    MacBookViewGroupBox(title: "Notes", icon: "note.text", width: maxWidth) {
+                                        if let unwrappedNotes = unwrappedBook.notes {
+                                            Text(unwrappedNotes)
                                         }
                                     }
                                 }
                             }
-                            
-                            Group {
-                                MacBookViewGroupBox(title: "Summary", icon: "text.alignleft", width: maxWidth) {
-                                    if let unwrappedSummary = unwrappedBook.summary {
-                                        Text(unwrappedSummary)
-                                    }
-                                }
-                                
-                                MacBookViewGroupBox(title: "Commentary", icon: "text.bubble", width: maxWidth) {
-                                    if let unwrappedCommentary = unwrappedBook.commentary {
-                                        Text(unwrappedCommentary)
-                                    }
-                                }
-                                
-                                MacBookViewGroupBox(title: "Notes", icon: "note.text", width: maxWidth) {
-                                    if let unwrappedNotes = unwrappedBook.notes {
-                                        Text(unwrappedNotes)
-                                    }
-                                }
-                            }
+                            .offset(y: offset)
+                            .frame(maxWidth: maxWidth)
+                            .padding()
+                            .padding(.bottom, offset)
                         }
-                        .offset(y: offset)
-                        .frame(maxWidth: maxWidth)
-                        .padding()
-                        .padding(.bottom, offset)
                     }
                 }
             }
