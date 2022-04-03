@@ -16,8 +16,6 @@ struct iOSBookView: View {
                 let bookcover = getBookcover(book: unwrappedBook)
                 let offset = 100.0
                 let textWithLabelSpacing = 50.0
-                let groupBoxSpacing = 20.0
-//                let groupBoxWidth = (maxWidth / 2) - (groupBoxSpacing / 2)
                 
                 GeometryReader { metrics in
                     ScrollView {
@@ -123,6 +121,26 @@ struct iOSBookView: View {
                                                 BookViewTextWithLabel(label: "Original Language", text: unwrappedBook.originalLanguageLocalizedName)
                                             }
                                             BookViewTextWithLabel(label: "Country of Origin", text: unwrappedBook.countryOfOrigin?.name ?? "")
+                                        }
+                                    }
+                                }
+                                
+                                Group {
+                                    iOSBookViewGroupBox(title: "Summary", icon: "text.alignleft") {
+                                        if let unwrappedSummary = unwrappedBook.summary {
+                                            Text(unwrappedSummary)
+                                        }
+                                    }
+                                    
+                                    iOSBookViewGroupBox(title: "Commentary", icon: "text.bubble") {
+                                        if let unwrappedCommentary = unwrappedBook.commentary {
+                                            Text(unwrappedCommentary)
+                                        }
+                                    }
+                                    
+                                    iOSBookViewGroupBox(title: "Notes", icon: "note.text") {
+                                        if let unwrappedNotes = unwrappedBook.notes {
+                                            Text(unwrappedNotes)
                                         }
                                     }
                                 }
