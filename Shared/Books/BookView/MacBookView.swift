@@ -31,6 +31,8 @@ struct MacBookView: View {
                                 BookViewAuthors(authors: unwrappedBook.sortedAuthors)
                             }
                             
+                            BookViewRating(rating: Int(unwrappedBook.rating))
+                            
                             Spacer()
                             
                             Group {
@@ -51,7 +53,7 @@ struct MacBookView: View {
                             
                             Spacer()
                             
-                                Group {
+                            Group {
                                 HStack(alignment: .top, spacing: groupBoxSpacing) {
                                     MacBookViewGroupBox(title: "Editors", icon: "person.2.wave.2", width: groupBoxWidth) {
                                         if unwrappedBook.editors != nil && unwrappedBook.sortedEditors.count > 0 {
