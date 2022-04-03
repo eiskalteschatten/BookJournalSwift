@@ -22,7 +22,7 @@ struct MacBookViewGroupBox<Content: View>: View {
             content
         }
         .padding()
-        .frame(width: width, alignment: .leading)
+        .frame(width: width, alignment: .topLeading)
         .background(
             RoundedRectangle(cornerRadius: 10.0)
                 .fill(.regularMaterial)
