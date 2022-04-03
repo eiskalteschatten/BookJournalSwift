@@ -37,10 +37,10 @@ struct MacBookView: View {
                             
                             Group {
                                 HStack(spacing: textWithLabelSpacing) {
+                                    BookViewTextWithLabel(label: "Page Count", text: unwrappedBook.pageCount > 0 ? String(unwrappedBook.pageCount) : "")
                                     BookViewTextWithLabel(label: "Reading Status", text: unwrappedBook.readingStatusString ?? "")
                                     BookViewTextWithLabel(label: "Date Started", text: unwrappedBook.dateStartedFormatted)
                                     BookViewTextWithLabel(label: "Date Finished", text: unwrappedBook.dateFinishedFormatted)
-                                    BookViewTextWithLabel(label: "Page Count", text: unwrappedBook.pageCount > 0 ? String(unwrappedBook.pageCount) : "")
                                 }
                                 
                                 HStack(spacing: textWithLabelSpacing) {
