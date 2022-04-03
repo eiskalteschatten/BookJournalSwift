@@ -108,9 +108,9 @@ struct MacBookView: View {
                                     
                                     MacBookViewGroupBox(title: "World", icon: "globe", width: groupBoxWidth) {
                                         HStack(spacing: 20) {
-                                            BookViewTextWithLabel(label: "Country of Origin", text: unwrappedBook.countryOfOrigin?.name ?? "")
                                             BookViewTextWithLabel(label: "Language Read In", text: unwrappedBook.languageReadInLocalizedName)
                                             BookViewTextWithLabel(label: "Original Language", text: unwrappedBook.originalLanguageLocalizedName)
+                                            BookViewTextWithLabel(label: "Country of Origin", text: unwrappedBook.countryOfOrigin?.name ?? "")
                                         }
                                     }
                                 }
