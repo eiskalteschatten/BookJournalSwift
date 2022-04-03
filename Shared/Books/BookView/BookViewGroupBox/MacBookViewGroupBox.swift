@@ -10,6 +10,7 @@ import SwiftUI
 struct MacBookViewGroupBox<Content: View>: View {
     var title: String
     var icon: String
+    var width: CGFloat = 350
     @ViewBuilder var content: Content
     
     var body: some View {
@@ -21,7 +22,7 @@ struct MacBookViewGroupBox<Content: View>: View {
             content
         }
         .padding()
-        .frame(width: 350, alignment: .leading)
+        .frame(width: width, alignment: .leading)
         .background(
             RoundedRectangle(cornerRadius: 10.0)
                 .fill(.regularMaterial)

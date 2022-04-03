@@ -16,6 +16,7 @@ struct MacBookView: View {
             if let unwrappedBook = book {
                 let bookcover = getBookcover(book: unwrappedBook)
                 let offset = 100.0
+                let maxWidth = 800.0
                 
                 ScrollView {
                     ZStack {
@@ -82,9 +83,27 @@ struct MacBookView: View {
                                     }
                                 }
                             }
+                            
+                            MacBookViewGroupBox(title: "Summary", icon: "text.alignleft", width: maxWidth) {
+                                if let unwrappedSummary = unwrappedBook.summary {
+                                    Text(unwrappedSummary)
+                                }
+                            }
+                            
+                            MacBookViewGroupBox(title: "Commentary", icon: "text.bubble", width: maxWidth) {
+                                if let unwrappedCommentary = unwrappedBook.commentary {
+                                    Text(unwrappedCommentary)
+                                }
+                            }
+                            
+                            MacBookViewGroupBox(title: "Notes", icon: "note.text", width: maxWidth) {
+                                if let unwrappedNotes = unwrappedBook.notes {
+                                    Text(unwrappedNotes)
+                                }
+                            }
                         }
                         .offset(y: offset)
-                        .frame(maxWidth: 800.0)
+                        .frame(maxWidth: maxWidth)
                         .padding()
                         .padding(.bottom, offset)
                     }
@@ -128,8 +147,8 @@ struct MacBookView_Previews: PreviewProvider {
         let book = context.registeredObjects.first(where: { $0 is Book }) as! Book
         
         Group {
-            MacBookView(book: book).preferredColorScheme(.dark).padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/).frame(height: 1200).environment(\.managedObjectContext, context)
-//            MacBookView(book: book).preferredColorScheme(.light).padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/).frame(height: 1200.0).environment(\.managedObjectContext, context)
+            MacBookView(book: book).preferredColorScheme(.dark).padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/).frame(height: 2000).environment(\.managedObjectContext, context)
+//            MacBookView(book: book).preferredColorScheme(.light).padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/).frame(height: 2000.0).environment(\.managedObjectContext, context)
         }
     }
 }

@@ -22,6 +22,9 @@ struct PersistenceController {
             
             newBook.title = "Preview Book";
             newBook.pageCount = 325
+            newBook.summary = "I'm a summary"
+            newBook.commentary = "I'm a commentary"
+            newBook.notes = "I'm some notes"
             
             let newAuthor = Author(context: viewContext)
             newAuthor.name = "Mark Twain"
