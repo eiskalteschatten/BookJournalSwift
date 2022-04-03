@@ -106,30 +106,26 @@ struct iPadOSBookView: View {
                                             }
                                         }
                                     }
-                                    
-                                    HStack(alignment: .top, spacing: groupBoxSpacing) {
-                                        iOSBookViewGroupBox(title: "Translators", icon: "person.2", width: groupBoxWidth) {
-                                            if unwrappedBook.translators != nil && unwrappedBook.sortedTranslators.count > 0 {
-                                                WrappingSmallChipsWithName<Translator>(data: unwrappedBook.sortedTranslators, chipColor: TRANSLATOR_COLOR, alignment: .leading)
-                                            }
-                                            else {
-                                                Text("No translators selected")
-                                            }
-                                        }
-                                        
-                                        iOSBookViewGroupBox(title: "World", icon: "globe", width: groupBoxWidth) {
-                                            VStack(alignment: .leading, spacing: 20) {
-                                                HStack(spacing: 20) {
-                                                    BookViewTextWithLabel(label: "Language Read In", text: unwrappedBook.languageReadInLocalizedName)
-                                                    BookViewTextWithLabel(label: "Original Language", text: unwrappedBook.originalLanguageLocalizedName)
-                                                }
-                                                BookViewTextWithLabel(label: "Country of Origin", text: unwrappedBook.countryOfOrigin?.name ?? "")
-                                            }
-                                        }
-                                    }
                                 }
                                 
                                 Group {
+                                    iOSBookViewGroupBox(title: "Translators", icon: "person.2") {
+                                        if unwrappedBook.translators != nil && unwrappedBook.sortedTranslators.count > 0 {
+                                            WrappingSmallChipsWithName<Translator>(data: unwrappedBook.sortedTranslators, chipColor: TRANSLATOR_COLOR, alignment: .leading)
+                                        }
+                                        else {
+                                            Text("No translators selected")
+                                        }
+                                    }
+                                    
+                                    iOSBookViewGroupBox(title: "World", icon: "globe") {
+                                        HStack(spacing: 20) {
+                                            BookViewTextWithLabel(label: "Language Read In", text: unwrappedBook.languageReadInLocalizedName)
+                                            BookViewTextWithLabel(label: "Original Language", text: unwrappedBook.originalLanguageLocalizedName)
+                                            BookViewTextWithLabel(label: "Country of Origin", text: unwrappedBook.countryOfOrigin?.name ?? "")
+                                        }
+                                    }
+                                    
                                     iOSBookViewGroupBox(title: "Summary", icon: "text.alignleft") {
                                         if let unwrappedSummary = unwrappedBook.summary {
                                             Text(unwrappedSummary)
