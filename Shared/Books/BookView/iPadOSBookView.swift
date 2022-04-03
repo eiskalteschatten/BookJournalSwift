@@ -16,8 +16,11 @@ struct iPadOSBookView: View {
                 let bookcover = getBookcover(book: unwrappedBook)
                 let offset = 100.0
                 let textWithLabelSpacing = 50.0
+                let groupBoxSpacing = 20.0
                 
                 GeometryReader { metrics in
+                    let groupBoxWidth = (metrics.size.width * 0.5) - groupBoxSpacing
+                    
                     ScrollView {
                         ZStack {
                             BookViewBookCoverBlur(bookcover: bookcover)
@@ -62,60 +65,66 @@ struct iPadOSBookView: View {
                                 Spacer()
                                 
                                 Group {
-                                    iOSBookViewGroupBox(title: "Editors", icon: "person.2.wave.2") {
-                                        if unwrappedBook.editors != nil && unwrappedBook.sortedEditors.count > 0 {
-                                            WrappingSmallChipsWithName<Editor>(data: unwrappedBook.sortedEditors, chipColor: EDITOR_COLOR, alignment: .leading)
-                                        }
-                                        else {
-                                            Text("No editors selected")
-                                        }
-                                    }
-                                    
-                                    iOSBookViewGroupBox(title: "Genres", icon: "text.book.closed") {
-                                        if unwrappedBook.genres != nil && unwrappedBook.sortedGenres.count > 0 {
-                                            WrappingSmallChipsWithName<Genre>(data: unwrappedBook.sortedGenres, chipColor: GENRE_COLOR, alignment: .leading)
-                                        }
-                                        else {
-                                            Text("No genres selected")
-                                        }
-                                    }
-
-                                    iOSBookViewGroupBox(title: "Categories", icon: "folder") {
-                                        if unwrappedBook.categories != nil && unwrappedBook.sortedCategories.count > 0 {
-                                            WrappingSmallChipsWithName<Category>(data: unwrappedBook.sortedCategories, chipColor: CATEGORY_COLOR, alignment: .leading)
-                                        }
-                                        else {
-                                            Text("No categories selected")
-                                        }
-                                    }
-                                    
-                                    iOSBookViewGroupBox(title: "Tags", icon: "tag") {
-                                        if let unwrappedTags = unwrappedBook.tags {
-                                            if unwrappedTags.allObjects.count > 0 {
-                                                WrappingSmallChipsWithName<Tag>(data: unwrappedTags.allObjects as! [Tag], chipColor: TAG_COLOR, alignment: .leading)
+                                    HStack(alignment: .top, spacing: groupBoxSpacing) {
+                                        iOSBookViewGroupBox(title: "Editors", icon: "person.2.wave.2", width: groupBoxWidth) {
+                                            if unwrappedBook.editors != nil && unwrappedBook.sortedEditors.count > 0 {
+                                                WrappingSmallChipsWithName<Editor>(data: unwrappedBook.sortedEditors, chipColor: EDITOR_COLOR, alignment: .leading)
                                             }
                                             else {
-                                                Text("No tags selected")
+                                                Text("No editors selected")
+                                            }
+                                        }
+                                        
+                                        iOSBookViewGroupBox(title: "Genres", icon: "text.book.closed", width: groupBoxWidth) {
+                                            if unwrappedBook.genres != nil && unwrappedBook.sortedGenres.count > 0 {
+                                                WrappingSmallChipsWithName<Genre>(data: unwrappedBook.sortedGenres, chipColor: GENRE_COLOR, alignment: .leading)
+                                            }
+                                            else {
+                                                Text("No genres selected")
                                             }
                                         }
                                     }
                                     
-                                    iOSBookViewGroupBox(title: "Translators", icon: "person.2") {
-                                        if unwrappedBook.translators != nil && unwrappedBook.sortedTranslators.count > 0 {
-                                            WrappingSmallChipsWithName<Translator>(data: unwrappedBook.sortedTranslators, chipColor: TRANSLATOR_COLOR, alignment: .leading)
+                                    HStack(alignment: .top, spacing: groupBoxSpacing) {
+                                        iOSBookViewGroupBox(title: "Categories", icon: "folder", width: groupBoxWidth) {
+                                            if unwrappedBook.categories != nil && unwrappedBook.sortedCategories.count > 0 {
+                                                WrappingSmallChipsWithName<Category>(data: unwrappedBook.sortedCategories, chipColor: CATEGORY_COLOR, alignment: .leading)
+                                            }
+                                            else {
+                                                Text("No categories selected")
+                                            }
                                         }
-                                        else {
-                                            Text("No translators selected")
+                                        
+                                        iOSBookViewGroupBox(title: "Tags", icon: "tag", width: groupBoxWidth) {
+                                            if let unwrappedTags = unwrappedBook.tags {
+                                                if unwrappedTags.allObjects.count > 0 {
+                                                    WrappingSmallChipsWithName<Tag>(data: unwrappedTags.allObjects as! [Tag], chipColor: TAG_COLOR, alignment: .leading)
+                                                }
+                                                else {
+                                                    Text("No tags selected")
+                                                }
+                                            }
                                         }
                                     }
                                     
-                                    iOSBookViewGroupBox(title: "World", icon: "globe") {
-                                        VStack(alignment: .leading, spacing: 20) {
-                                            HStack(spacing: 20) {
-                                                BookViewTextWithLabel(label: "Language Read In", text: unwrappedBook.languageReadInLocalizedName)
-                                                BookViewTextWithLabel(label: "Original Language", text: unwrappedBook.originalLanguageLocalizedName)
+                                    HStack(alignment: .top, spacing: groupBoxSpacing) {
+                                        iOSBookViewGroupBox(title: "Translators", icon: "person.2", width: groupBoxWidth) {
+                                            if unwrappedBook.translators != nil && unwrappedBook.sortedTranslators.count > 0 {
+                                                WrappingSmallChipsWithName<Translator>(data: unwrappedBook.sortedTranslators, chipColor: TRANSLATOR_COLOR, alignment: .leading)
                                             }
-                                            BookViewTextWithLabel(label: "Country of Origin", text: unwrappedBook.countryOfOrigin?.name ?? "")
+                                            else {
+                                                Text("No translators selected")
+                                            }
+                                        }
+                                        
+                                        iOSBookViewGroupBox(title: "World", icon: "globe", width: groupBoxWidth) {
+                                            VStack(alignment: .leading, spacing: 20) {
+                                                HStack(spacing: 20) {
+                                                    BookViewTextWithLabel(label: "Language Read In", text: unwrappedBook.languageReadInLocalizedName)
+                                                    BookViewTextWithLabel(label: "Original Language", text: unwrappedBook.originalLanguageLocalizedName)
+                                                }
+                                                BookViewTextWithLabel(label: "Country of Origin", text: unwrappedBook.countryOfOrigin?.name ?? "")
+                                            }
                                         }
                                     }
                                 }
