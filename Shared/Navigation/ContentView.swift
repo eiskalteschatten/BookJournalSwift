@@ -89,7 +89,7 @@ struct ContentView: View {
             #if os(macOS)
             MacBookView()
             #else
-            iOSBookView()
+            iOSiPadOSBookView()
             #endif
         }
     }

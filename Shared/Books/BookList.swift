@@ -16,7 +16,7 @@ struct BookList: View {
     
     #if os(iOS)
     @State private var showNewBookSheet = false
-    private typealias BookView = iOSBookView
+    private typealias BookView = iOSiPadOSBookView
     #else
     private typealias BookView = MacBookView
     #endif

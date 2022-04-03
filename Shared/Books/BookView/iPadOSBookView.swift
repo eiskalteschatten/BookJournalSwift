@@ -1,13 +1,13 @@
 //
-//  iOSBookView.swift
+//  iPadOSBookView.swift
 //  BookJournal (iOS)
 //
-//  Created by Alex Seifert on 31.03.22.
+//  Created by Alex Seifert on 03.04.22.
 //
 
 import SwiftUI
 
-struct iOSBookView: View {
+struct iPadOSBookView: View {
     var book: Book?
     
     var body: some View {
@@ -23,6 +23,7 @@ struct iOSBookView: View {
                             BookViewBookCoverBlur(bookcover: bookcover)
                         
                             VStack(spacing: 30) {
+                                
                                 VStack(spacing: 10) {
                                     BookViewBookCoverTitle(bookcover: bookcover, title: unwrappedBook.title!)
                                     BookViewAuthors(authors: unwrappedBook.sortedAuthors)
@@ -33,16 +34,13 @@ struct iOSBookView: View {
                                 Spacer()
                                 
                                 Group {
-                                    let width = metrics.size.width * 0.35
+                                    let width = metrics.size.width * 0.15
                                     
                                     HStack(spacing: textWithLabelSpacing) {
                                         BookViewTextWithLabel(label: "Page Count", text: unwrappedBook.pageCount > 0 ? String(unwrappedBook.pageCount) : "")
                                             .frame(width: width)
                                         BookViewTextWithLabel(label: "Reading Status", text: unwrappedBook.readingStatusString ?? "")
                                             .frame(width: width)
-                                    }
-
-                                    HStack(spacing: textWithLabelSpacing) {
                                         BookViewTextWithLabel(label: "Date Started", text: unwrappedBook.dateStartedFormatted)
                                             .frame(width: width)
                                         BookViewTextWithLabel(label: "Date Finished", text: unwrappedBook.dateFinishedFormatted)
@@ -54,9 +52,6 @@ struct iOSBookView: View {
                                             .frame(width: width)
                                         BookViewTextWithLabel(label: "Publisher", text: unwrappedBook.publisher?.name ?? "")
                                             .frame(width: width)
-                                    }
-                                    
-                                    HStack(spacing: textWithLabelSpacing) {
                                         BookViewTextWithLabel(label: "Year Published", text: unwrappedBook.yearPublished > 0 ? String(unwrappedBook.yearPublished) : "")
                                             .frame(width: width)
                                         BookViewTextWithLabel(label: "ISBN", text: unwrappedBook.isbn ?? "")
@@ -185,12 +180,11 @@ struct iOSBookView: View {
     }
 }
 
-struct iOSBookView_Previews: PreviewProvider {
+struct iPadOSBookView_Previews: PreviewProvider {
     static var previews: some View {
         let context = PersistenceController.preview.container.viewContext
         let book = context.registeredObjects.first(where: { $0 is Book }) as! Book
         
-        iOSBookView(book: book).preferredColorScheme(.dark).environment(\.managedObjectContext, context)
+        iPadOSBookView(book: book).preferredColorScheme(.dark).environment(\.managedObjectContext, context)
     }
 }
-
