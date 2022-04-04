@@ -14,7 +14,7 @@ struct MacNewBookStep2: View {
         VStack {
             MacNewBookStepTitle("Book Status & Rating")
             
-            RatingEditor()
+            BookRatingEditor(rating: $bookModel.rating)
             
             Divider()
                 .padding(.vertical)

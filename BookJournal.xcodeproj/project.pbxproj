@@ -97,8 +97,8 @@
 		939BB9F627CA9BB40001B0DF /* SmallChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939BB9F527CA9BB40001B0DF /* SmallChip.swift */; };
 		939BB9F727CA9BB40001B0DF /* SmallChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939BB9F527CA9BB40001B0DF /* SmallChip.swift */; };
 		93A5700627FB11A3004CDEA0 /* MacNewBookStep8.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A5700527FB11A3004CDEA0 /* MacNewBookStep8.swift */; };
-		93A5700827FB12D1004CDEA0 /* RatingEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A5700727FB12D1004CDEA0 /* RatingEditor.swift */; };
-		93A5700927FB12D1004CDEA0 /* RatingEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A5700727FB12D1004CDEA0 /* RatingEditor.swift */; };
+		93A5700827FB12D1004CDEA0 /* BookRatingEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A5700727FB12D1004CDEA0 /* BookRatingEditor.swift */; };
+		93A5700927FB12D1004CDEA0 /* BookRatingEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A5700727FB12D1004CDEA0 /* BookRatingEditor.swift */; };
 		93A8F9A827E778CB00C8E8C5 /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A8F9A727E778CB00C8E8C5 /* BookModel.swift */; };
 		93A8F9A927E778CB00C8E8C5 /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A8F9A727E778CB00C8E8C5 /* BookModel.swift */; };
 		93B2051627E8B71200E9D858 /* MacNewBookStep2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B2051527E8B71200E9D858 /* MacNewBookStep2.swift */; };
@@ -196,7 +196,7 @@
 		939BB9F227CA785F0001B0DF /* Chip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chip.swift; sourceTree = "<group>"; };
 		939BB9F527CA9BB40001B0DF /* SmallChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallChip.swift; sourceTree = "<group>"; };
 		93A5700527FB11A3004CDEA0 /* MacNewBookStep8.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacNewBookStep8.swift; sourceTree = "<group>"; };
-		93A5700727FB12D1004CDEA0 /* RatingEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingEditor.swift; sourceTree = "<group>"; };
+		93A5700727FB12D1004CDEA0 /* BookRatingEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRatingEditor.swift; sourceTree = "<group>"; };
 		93A8F9A727E778CB00C8E8C5 /* BookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
 		93B2051527E8B71200E9D858 /* MacNewBookStep2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacNewBookStep2.swift; sourceTree = "<group>"; };
 		93B2051727E8CA6C00E9D858 /* MacNewBookStep3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacNewBookStep3.swift; sourceTree = "<group>"; };
@@ -497,7 +497,7 @@
 				9369C1B127E631EC00A39E57 /* LanguagePicker.swift */,
 				93390AA027F20267003C26D3 /* iOSImagePicker.swift */,
 				93C833F527F9AC2100A6EFB5 /* BookRating.swift */,
-				93A5700727FB12D1004CDEA0 /* RatingEditor.swift */,
+				93A5700727FB12D1004CDEA0 /* BookRatingEditor.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -704,7 +704,7 @@
 				9321990F279D86E600CB6E76 /* BookJournal.xcdatamodeld in Sources */,
 				9390CA0327F8DF3600C7FF7B /* BookViewTextWithLabel.swift in Sources */,
 				9369C1B227E631EC00A39E57 /* LanguagePicker.swift in Sources */,
-				93A5700827FB12D1004CDEA0 /* RatingEditor.swift in Sources */,
+				93A5700827FB12D1004CDEA0 /* BookRatingEditor.swift in Sources */,
 				9369C1BE27E6481500A39E57 /* TagsSearchList.swift in Sources */,
 				9369C19027E5204A00A39E57 /* CreatePublisher.swift in Sources */,
 				93436C9B27F2FE27000EAB4A /* UIImage.swift in Sources */,
@@ -740,7 +740,7 @@
 				93219912279D86E600CB6E76 /* BookJournalApp.swift in Sources */,
 				9369C1C327E6486B00A39E57 /* CreateGenre.swift in Sources */,
 				93D77C9627F59FDF00443B00 /* BookViewBookCoverBlur.swift in Sources */,
-				93A5700927FB12D1004CDEA0 /* RatingEditor.swift in Sources */,
+				93A5700927FB12D1004CDEA0 /* BookRatingEditor.swift in Sources */,
 				9369C18A27E51D5500A39E57 /* EditorsSearchList.swift in Sources */,
 				9369C1C427E6486E00A39E57 /* GenresSearchList.swift in Sources */,
 				9369C18D27E51E1900A39E57 /* CreateEditor.swift in Sources */,
