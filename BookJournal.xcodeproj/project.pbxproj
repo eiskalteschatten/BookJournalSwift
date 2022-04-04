@@ -118,6 +118,10 @@
 		93D77C9827F5A0CC00443B00 /* BookViewBookCoverTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D77C9727F5A0CC00443B00 /* BookViewBookCoverTitle.swift */; };
 		93D77C9927F5A0CC00443B00 /* BookViewBookCoverTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D77C9727F5A0CC00443B00 /* BookViewBookCoverTitle.swift */; };
 		93ED4AA827F08BA4006031A2 /* MacNewBookStep7.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ED4AA727F08BA4006031A2 /* MacNewBookStep7.swift */; };
+		93FB888E27FB81120012D3AA /* iOSContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB888D27FB81120012D3AA /* iOSContentView.swift */; };
+		93FB889127FB81A10012D3AA /* iOSBooksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB889027FB81A10012D3AA /* iOSBooksView.swift */; };
+		93FB889427FB822A0012D3AA /* MacContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB889327FB822A0012D3AA /* MacContentView.swift */; };
+		93FB889727FB83380012D3AA /* iOSWishListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB889627FB83380012D3AA /* iOSWishListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -211,6 +215,10 @@
 		93D77C9427F59FDF00443B00 /* BookViewBookCoverBlur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewBookCoverBlur.swift; sourceTree = "<group>"; };
 		93D77C9727F5A0CC00443B00 /* BookViewBookCoverTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewBookCoverTitle.swift; sourceTree = "<group>"; };
 		93ED4AA727F08BA4006031A2 /* MacNewBookStep7.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacNewBookStep7.swift; sourceTree = "<group>"; };
+		93FB888D27FB81120012D3AA /* iOSContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSContentView.swift; sourceTree = "<group>"; };
+		93FB889027FB81A10012D3AA /* iOSBooksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSBooksView.swift; sourceTree = "<group>"; };
+		93FB889327FB822A0012D3AA /* MacContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacContentView.swift; sourceTree = "<group>"; };
+		93FB889627FB83380012D3AA /* iOSWishListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSWishListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -335,6 +343,8 @@
 		9329053827C28DDF000D15AE /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				93FB889227FB82060012D3AA /* macOS */,
+				93FB888F27FB818E0012D3AA /* iOS */,
 				932198E7279D86E400CB6E76 /* ContentView.swift */,
 			);
 			path = Navigation;
@@ -510,6 +520,24 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		93FB888F27FB818E0012D3AA /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				93FB888D27FB81120012D3AA /* iOSContentView.swift */,
+				93FB889027FB81A10012D3AA /* iOSBooksView.swift */,
+				93FB889627FB83380012D3AA /* iOSWishListView.swift */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		93FB889227FB82060012D3AA /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				93FB889327FB822A0012D3AA /* MacContentView.swift */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -681,6 +709,7 @@
 			files = (
 				9329053E27C2916F000D15AE /* BookList.swift in Sources */,
 				939BB9EF27CA44D60001B0DF /* CoreData.swift in Sources */,
+				93FB888E27FB81120012D3AA /* iOSContentView.swift in Sources */,
 				93219911279D86E600CB6E76 /* BookJournalApp.swift in Sources */,
 				9346661727C93EC100D58DE7 /* iOSNewBookSheet.swift in Sources */,
 				93390AA127F20267003C26D3 /* iOSImagePicker.swift in Sources */,
@@ -695,6 +724,7 @@
 				9369C18527E5128200A39E57 /* CreateAuthor.swift in Sources */,
 				9369C19327E520CC00A39E57 /* PublishersSearchList.swift in Sources */,
 				9369C1B927E6452400A39E57 /* GenresSearchList.swift in Sources */,
+				93FB889127FB81A10012D3AA /* iOSBooksView.swift in Sources */,
 				9346662827C9841900D58DE7 /* Books.swift in Sources */,
 				93C6E78527EB71C900E0E986 /* CreateElementView.swift in Sources */,
 				9309D78327E4A55F00F19670 /* AuthorsSearchList.swift in Sources */,
@@ -720,6 +750,7 @@
 				93A8F9A827E778CB00C8E8C5 /* BookModel.swift in Sources */,
 				9369C1C027E6486100A39E57 /* CreateTag.swift in Sources */,
 				9369C19A27E53C3D00A39E57 /* CreateTranslator.swift in Sources */,
+				93FB889727FB83380012D3AA /* iOSWishListView.swift in Sources */,
 				93C833F627F9AC2100A6EFB5 /* BookRating.swift in Sources */,
 				9369C1C727E64B3600A39E57 /* CategoriesSearchList.swift in Sources */,
 				939BB9F327CA785F0001B0DF /* Chip.swift in Sources */,
@@ -753,6 +784,7 @@
 				9369C1AF27E62FE000A39E57 /* PickerMimickerWithName.swift in Sources */,
 				93B2051827E8CA6C00E9D858 /* MacNewBookStep3.swift in Sources */,
 				93219916279D86E600CB6E76 /* Persistence.swift in Sources */,
+				93FB889427FB822A0012D3AA /* MacContentView.swift in Sources */,
 				9346661D27C9407000D58DE7 /* MacNewBookWindowView.swift in Sources */,
 				9369C1D527E76ED700A39E57 /* MacNewBookWindow.swift in Sources */,
 				93B2052227E8F19800E9D858 /* MacChipsEditor.swift in Sources */,
