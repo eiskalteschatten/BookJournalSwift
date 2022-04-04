@@ -32,7 +32,7 @@ struct iPadOSBookView: View {
                                     BookViewAuthors(authors: unwrappedBook.sortedAuthors)
                                 }
                                 
-                                BookViewRating(rating: Int(unwrappedBook.rating))
+                                BookRating(rating: Int(unwrappedBook.rating))
                                 
                                 Spacer()
                                 

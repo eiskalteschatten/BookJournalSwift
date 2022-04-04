@@ -1,5 +1,5 @@
 //
-//  BookViewRating.swift
+//  BookRating.swift
 //  BookJournal
 //
 //  Created by Alex Seifert on 03.04.22.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct BookViewRating: View {
+struct BookRating: View {
     var rating: Int
     
     var body: some View {
@@ -41,10 +41,10 @@ struct BookViewRating: View {
     }
 }
 
-struct BookViewRating_Previews: PreviewProvider {
+struct BookRating_Previews: PreviewProvider {
     static var previews: some View {
-        BookViewRating(rating: 0)
-        BookViewRating(rating: 3)
-        BookViewRating(rating: 5)
+        BookRating(rating: 0)
+        BookRating(rating: 3)
+        BookRating(rating: 5)
     }
 }

@@ -110,8 +110,8 @@
 		93B2052227E8F19800E9D858 /* MacChipsEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B2052127E8F19800E9D858 /* MacChipsEditor.swift */; };
 		93C6E78527EB71C900E0E986 /* CreateElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C6E78427EB71C900E0E986 /* CreateElementView.swift */; };
 		93C6E78627EB71C900E0E986 /* CreateElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C6E78427EB71C900E0E986 /* CreateElementView.swift */; };
-		93C833F627F9AC2100A6EFB5 /* BookViewRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C833F527F9AC2100A6EFB5 /* BookViewRating.swift */; };
-		93C833F727F9AC2100A6EFB5 /* BookViewRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C833F527F9AC2100A6EFB5 /* BookViewRating.swift */; };
+		93C833F627F9AC2100A6EFB5 /* BookRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C833F527F9AC2100A6EFB5 /* BookRating.swift */; };
+		93C833F727F9AC2100A6EFB5 /* BookRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C833F527F9AC2100A6EFB5 /* BookRating.swift */; };
 		93D77C9327F59E1900443B00 /* iOSBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D77C9227F59E1900443B00 /* iOSBookView.swift */; };
 		93D77C9527F59FDF00443B00 /* BookViewBookCoverBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D77C9427F59FDF00443B00 /* BookViewBookCoverBlur.swift */; };
 		93D77C9627F59FDF00443B00 /* BookViewBookCoverBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D77C9427F59FDF00443B00 /* BookViewBookCoverBlur.swift */; };
@@ -206,7 +206,7 @@
 		93B2051F27E8D02300E9D858 /* MacNewBookStepTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacNewBookStepTitle.swift; sourceTree = "<group>"; };
 		93B2052127E8F19800E9D858 /* MacChipsEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacChipsEditor.swift; sourceTree = "<group>"; };
 		93C6E78427EB71C900E0E986 /* CreateElementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateElementView.swift; sourceTree = "<group>"; };
-		93C833F527F9AC2100A6EFB5 /* BookViewRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewRating.swift; sourceTree = "<group>"; };
+		93C833F527F9AC2100A6EFB5 /* BookRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRating.swift; sourceTree = "<group>"; };
 		93D77C9227F59E1900443B00 /* iOSBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSBookView.swift; sourceTree = "<group>"; };
 		93D77C9427F59FDF00443B00 /* BookViewBookCoverBlur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewBookCoverBlur.swift; sourceTree = "<group>"; };
 		93D77C9727F5A0CC00443B00 /* BookViewBookCoverTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewBookCoverTitle.swift; sourceTree = "<group>"; };
@@ -352,7 +352,6 @@
 				93D77C9427F59FDF00443B00 /* BookViewBookCoverBlur.swift */,
 				93D77C9727F5A0CC00443B00 /* BookViewBookCoverTitle.swift */,
 				93390AA527F20DD6003C26D3 /* BookViewAuthors.swift */,
-				93C833F527F9AC2100A6EFB5 /* BookViewRating.swift */,
 			);
 			path = BookView;
 			sourceTree = "<group>";
@@ -497,6 +496,7 @@
 				93C6E78427EB71C900E0E986 /* CreateElementView.swift */,
 				9369C1B127E631EC00A39E57 /* LanguagePicker.swift */,
 				93390AA027F20267003C26D3 /* iOSImagePicker.swift */,
+				93C833F527F9AC2100A6EFB5 /* BookRating.swift */,
 				93A5700727FB12D1004CDEA0 /* RatingEditor.swift */,
 			);
 			path = Elements;
@@ -720,7 +720,7 @@
 				93A8F9A827E778CB00C8E8C5 /* BookModel.swift in Sources */,
 				9369C1C027E6486100A39E57 /* CreateTag.swift in Sources */,
 				9369C19A27E53C3D00A39E57 /* CreateTranslator.swift in Sources */,
-				93C833F627F9AC2100A6EFB5 /* BookViewRating.swift in Sources */,
+				93C833F627F9AC2100A6EFB5 /* BookRating.swift in Sources */,
 				9369C1C727E64B3600A39E57 /* CategoriesSearchList.swift in Sources */,
 				939BB9F327CA785F0001B0DF /* Chip.swift in Sources */,
 				939BB9F627CA9BB40001B0DF /* SmallChip.swift in Sources */,
@@ -764,7 +764,7 @@
 				93B2051627E8B71200E9D858 /* MacNewBookStep2.swift in Sources */,
 				9329054227C2932F000D15AE /* Constants.swift in Sources */,
 				93219910279D86E600CB6E76 /* BookJournal.xcdatamodeld in Sources */,
-				93C833F727F9AC2100A6EFB5 /* BookViewRating.swift in Sources */,
+				93C833F727F9AC2100A6EFB5 /* BookRating.swift in Sources */,
 				93B2051C27E8CB2300E9D858 /* MacNewBookStep5.swift in Sources */,
 				9369C1B327E631EC00A39E57 /* LanguagePicker.swift in Sources */,
 				9369C1CB27E64B8B00A39E57 /* CreateCategory.swift in Sources */,
