@@ -11,18 +11,22 @@ struct MacNewBookStep8: View {
     @ObservedObject var bookModel: BookModel
     
     var body: some View {
-        Form {
-            // Summary
-            Text("Summary:")
-            TextEditor(text: $bookModel.summary)
+        VStack {
+            MacNewBookStepTitle("Summary, Commentary & Notes")
             
-            // Commentary
-            Text("Commentary:")
-            TextEditor(text: $bookModel.commentary)
-            
-            // Notes
-            Text("Notes:")
-            TextEditor(text: $bookModel.notes)
+            Form {
+                // Summary
+                Text("Summary:")
+                TextEditor(text: $bookModel.summary)
+                
+                // Commentary
+                Text("Commentary:")
+                TextEditor(text: $bookModel.commentary)
+                
+                // Notes
+                Text("Notes:")
+                TextEditor(text: $bookModel.notes)
+            }
         }
     }
 }
