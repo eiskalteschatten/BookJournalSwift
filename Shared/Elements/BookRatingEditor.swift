@@ -17,7 +17,14 @@ struct BookRatingEditor: View {
         let totalFilledStars = totalStars - totalUnfilledStars
         
         HStack {
-            Button (action: { rating = 0 }) {
+            Button (action: {
+                rating = 0
+                
+                #if os(iOS)
+                let impactHeavy = UIImpactFeedbackGenerator(style: .heavy)
+                impactHeavy.impactOccurred()
+                #endif
+            }) {
                 Image(systemName: "star.slash")
                     .foregroundColor(.red)
                     .opacity(0.8)
