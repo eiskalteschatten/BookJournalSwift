@@ -76,6 +76,11 @@ struct iOSNewBookSheet: View {
                     }
                 }
                 
+                Section("Rating") {
+                    BookRatingEditor(rating: $bookModel.rating)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                }
+                
                 Section("Book Status") {
                     // Reading Status
                     Picker("Reading Status", selection: $bookModel.readingStatus) {
