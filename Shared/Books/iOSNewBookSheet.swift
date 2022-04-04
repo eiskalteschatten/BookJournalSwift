@@ -216,6 +216,21 @@ struct iOSNewBookSheet: View {
                     LanguagePicker(title: "Original Language", selection: $bookModel.originalLanguage)
                     LanguagePicker(title: "Language Read In", selection: $bookModel.languageReadIn)
                 }
+                
+                Section("Summary") {
+                    // Summary
+                    TextEditor(text: $bookModel.summary)
+                }
+                
+                Section("Commentary") {
+                    // Commentary
+                    TextEditor(text: $bookModel.commentary)
+                }
+                 
+                Section("Notes") {
+                    // Notes
+                    TextEditor(text: $bookModel.notes)
+                }
             }
             .alert("Are you sure you want to cancel?", isPresented: $presentCloseAlert, actions: {
                 Button("No", role: .cancel, action: { presentCloseAlert = false })
