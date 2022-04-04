@@ -12,6 +12,7 @@ class BookModel: ObservableObject {
     @Published var bookcover: Data?
     
     @Published var title: String = ""
+    @Published var rating: Int = 0
     
     @Published var readingStatus: String = ""
     @Published var addDateStarted = false
@@ -37,6 +38,10 @@ class BookModel: ObservableObject {
     @Published var originalLanguage: String = ""
     @Published var languageReadIn: String = ""
     
+    @Published var summary: String = ""
+    @Published var commentary: String = ""
+    @Published var notes: String = ""
+    
     private var viewContext: NSManagedObjectContext?
     
     init() {
@@ -54,6 +59,7 @@ class BookModel: ObservableObject {
                 newBook.bookcover = unwrapped
             }
             newBook.title = title
+            newBook.rating = Int16(rating)
                        
             newBook.readingStatus = readingStatus
             if addDateStarted {
@@ -88,6 +94,10 @@ class BookModel: ObservableObject {
             translators.forEach(newBook.addToTranslators)
             newBook.originalLanguage = originalLanguage
             newBook.languageReadIn = languageReadIn
+            
+            newBook.summary = summary
+            newBook.commentary = commentary
+            newBook.notes = notes
             
             do {
                 if viewContext!.hasChanges {
