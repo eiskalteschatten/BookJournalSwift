@@ -25,7 +25,7 @@ struct BookRatingEditor: View {
                         .frame(width: starSize, height: starSize)
                         .foregroundColor(.yellow)
                         .onTapGesture {
-                            rating = index
+                            changeRating(index)
                         }
                 }
             }
@@ -38,11 +38,20 @@ struct BookRatingEditor: View {
                         .frame(width: starSize, height: starSize)
                         .foregroundColor(.yellow)
                         .onTapGesture {
-                            rating = totalFilledStars + index
+                            changeRating(totalFilledStars + index)
                         }
                 }
             }
         }
+    }
+    
+    private func changeRating(_ value: Int) {
+        rating = value;
+        
+        #if os(iOS)
+        let impactHeavy = UIImpactFeedbackGenerator(style: .heavy)
+        impactHeavy.impactOccurred()
+        #endif
     }
 }
 
