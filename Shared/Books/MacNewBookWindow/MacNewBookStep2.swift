@@ -12,7 +12,12 @@ struct MacNewBookStep2: View {
     
     var body: some View {
         VStack {
-            MacNewBookStepTitle("Book Status")
+            MacNewBookStepTitle("Book Status & Rating")
+            
+            RatingEditor()
+            
+            Divider()
+                .padding(.vertical)
             
             Form {
                 // Reading Status
