@@ -96,6 +96,7 @@
 		939BB9F427CA785F0001B0DF /* Chip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939BB9F227CA785F0001B0DF /* Chip.swift */; };
 		939BB9F627CA9BB40001B0DF /* SmallChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939BB9F527CA9BB40001B0DF /* SmallChip.swift */; };
 		939BB9F727CA9BB40001B0DF /* SmallChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939BB9F527CA9BB40001B0DF /* SmallChip.swift */; };
+		93A5700627FB11A3004CDEA0 /* MacNewBookStep8.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A5700527FB11A3004CDEA0 /* MacNewBookStep8.swift */; };
 		93A8F9A827E778CB00C8E8C5 /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A8F9A727E778CB00C8E8C5 /* BookModel.swift */; };
 		93A8F9A927E778CB00C8E8C5 /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A8F9A727E778CB00C8E8C5 /* BookModel.swift */; };
 		93B2051627E8B71200E9D858 /* MacNewBookStep2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B2051527E8B71200E9D858 /* MacNewBookStep2.swift */; };
@@ -192,6 +193,7 @@
 		939BB9EE27CA44D60001B0DF /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		939BB9F227CA785F0001B0DF /* Chip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chip.swift; sourceTree = "<group>"; };
 		939BB9F527CA9BB40001B0DF /* SmallChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallChip.swift; sourceTree = "<group>"; };
+		93A5700527FB11A3004CDEA0 /* MacNewBookStep8.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacNewBookStep8.swift; sourceTree = "<group>"; };
 		93A8F9A727E778CB00C8E8C5 /* BookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
 		93B2051527E8B71200E9D858 /* MacNewBookStep2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacNewBookStep2.swift; sourceTree = "<group>"; };
 		93B2051727E8CA6C00E9D858 /* MacNewBookStep3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacNewBookStep3.swift; sourceTree = "<group>"; };
@@ -458,6 +460,7 @@
 				93B2051B27E8CB2300E9D858 /* MacNewBookStep5.swift */,
 				93B2051D27E8CB6200E9D858 /* MacNewBookStep6.swift */,
 				93ED4AA727F08BA4006031A2 /* MacNewBookStep7.swift */,
+				93A5700527FB11A3004CDEA0 /* MacNewBookStep8.swift */,
 				93B2051F27E8D02300E9D858 /* MacNewBookStepTitle.swift */,
 			);
 			path = MacNewBookWindow;
@@ -772,6 +775,7 @@
 				9309D78027E4A51500F19670 /* SearchList.swift in Sources */,
 				93219914279D86E600CB6E76 /* ContentView.swift in Sources */,
 				9369C1C227E6486800A39E57 /* TagsSearchList.swift in Sources */,
+				93A5700627FB11A3004CDEA0 /* MacNewBookStep8.swift in Sources */,
 				9369C1C827E64B3800A39E57 /* CategoriesSearchList.swift in Sources */,
 				9369C19B27E53C3D00A39E57 /* CreateTranslator.swift in Sources */,
 				939BB9F427CA785F0001B0DF /* Chip.swift in Sources */,
