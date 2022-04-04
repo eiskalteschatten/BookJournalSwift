@@ -12,6 +12,9 @@ struct iOSWishListView: View {
         NavigationView {
             BookList(predicate: NSPredicate(format: "onWishlist == true"))
                 .navigationBarTitle("Wishlist")
+            
+            // TODO: something other than just text
+            Text("Select a book")
         }
     }
 }
