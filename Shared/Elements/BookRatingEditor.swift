@@ -17,6 +17,13 @@ struct BookRatingEditor: View {
         let totalFilledStars = totalStars - totalUnfilledStars
         
         HStack {
+            Button (action: { rating = 0 }) {
+                Image(systemName: "star.slash")
+                    .foregroundColor(.red)
+                    .opacity(0.8)
+            }
+            .buttonStyle(PlainButtonStyle())
+            
             if totalFilledStars > 0 {
                 ForEach(1...totalFilledStars, id: \.self) { index in
                     Image(systemName: "star.fill")
