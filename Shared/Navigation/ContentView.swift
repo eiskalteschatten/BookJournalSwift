@@ -13,7 +13,11 @@ struct ContentView: View {
         case allBooks, wishlist, currentlyReading, notReadYet, read, statistics
     }
     
+    #if os(macOS)
     @State private var screen: Screen? = Screen(rawValue: UserDefaults.standard.integer(forKey: USER_LAST_SCREEN_KEY)) ?? .allBooks
+    #else
+    @State private var screen: Screen?
+    #endif
     
     var body: some View {
         NavigationView {
