@@ -13,6 +13,7 @@ class BookModel: ObservableObject {
     
     @Published var title: String = ""
     @Published var rating: Int = 0
+    @Published var onWishlist: Bool = false
     
     @Published var readingStatus: String = ""
     @Published var addDateStarted = false
@@ -60,6 +61,7 @@ class BookModel: ObservableObject {
             }
             newBook.title = title
             newBook.rating = Int16(rating)
+            newBook.onWishlist = onWishlist
                        
             newBook.readingStatus = readingStatus
             if addDateStarted {
