@@ -76,9 +76,16 @@ struct iOSNewBookSheet: View {
                     }
                 }
                 
-                Section("Rating") {
-                    BookRatingEditor(rating: $bookModel.rating)
-                    .frame(maxWidth: .infinity, alignment: .center)
+                Group {
+                    Section("Rating") {
+                        BookRatingEditor(rating: $bookModel.rating)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                    }
+                    
+                    Section("Wishlist") {
+                        // Wishlist
+                        Toggle("Add Book to Wishlist", isOn: $bookModel.onWishlist)
+                    }
                 }
                 
                 Section("Book Status") {
@@ -217,19 +224,21 @@ struct iOSNewBookSheet: View {
                     LanguagePicker(title: "Language Read In", selection: $bookModel.languageReadIn)
                 }
                 
-                Section("Summary") {
-                    // Summary
-                    TextEditor(text: $bookModel.summary)
-                }
-                
-                Section("Commentary") {
-                    // Commentary
-                    TextEditor(text: $bookModel.commentary)
-                }
-                 
-                Section("Notes") {
-                    // Notes
-                    TextEditor(text: $bookModel.notes)
+                Group {
+                    Section("Summary") {
+                        // Summary
+                        TextEditor(text: $bookModel.summary)
+                    }
+                    
+                    Section("Commentary") {
+                        // Commentary
+                        TextEditor(text: $bookModel.commentary)
+                    }
+                     
+                    Section("Notes") {
+                        // Notes
+                        TextEditor(text: $bookModel.notes)
+                    }
                 }
             }
             .alert("Are you sure you want to cancel?", isPresented: $presentCloseAlert, actions: {
