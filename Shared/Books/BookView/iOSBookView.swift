@@ -29,8 +29,10 @@ struct iOSBookView: View {
                                 }
                                 
                                 BookRating(rating: Int(unwrappedBook.rating))
+                                    .padding(.bottom, 10)
                                 
-                                Spacer()
+                                Label("On Wishlist", systemImage: unwrappedBook.onWishlist ? "checkmark.square.fill" : "square")
+                                    .padding(.bottom)
                                 
                                 Group {
                                     let width = metrics.size.width * 0.35

@@ -26,6 +26,7 @@ struct PersistenceController {
             newBook.commentary = "I'm a commentary"
             newBook.notes = "I'm some notes"
             newBook.rating = 3
+            newBook.onWishlist = true
             
             let newAuthor = Author(context: viewContext)
             newAuthor.name = "Mark Twain"
