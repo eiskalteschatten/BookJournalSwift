@@ -33,6 +33,10 @@ struct iPadOSBookView: View {
                                 }
                                 
                                 BookRating(rating: Int(unwrappedBook.rating))
+                                    .padding(.bottom, 10)
+                                
+                                Label("On Wishlist", systemImage: unwrappedBook.onWishlist ? "checkmark.square.fill" : "square")
+                                    .padding(.bottom)
                                 
                                 Spacer()
                                 
