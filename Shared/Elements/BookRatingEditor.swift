@@ -18,12 +18,7 @@ struct BookRatingEditor: View {
         
         HStack {
             Button (action: {
-                rating = 0
-                
-                #if os(iOS)
-                let impactHeavy = UIImpactFeedbackGenerator(style: .heavy)
-                impactHeavy.impactOccurred()
-                #endif
+                changeRating(0)
             }) {
                 Image(systemName: "star.slash")
                     .foregroundColor(.red)
