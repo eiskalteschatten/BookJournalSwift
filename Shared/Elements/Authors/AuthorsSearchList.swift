@@ -29,7 +29,7 @@ struct AuthorsSearchList: View {
     ) private var authors: FetchedResults<Author>
     
     var body: some View {
-        SearchList<Author>(
+        SearchListMultiSelect<Author>(
             title: title,
             data: authors.map { $0 },
             selectedData: $selectedItems,

@@ -29,7 +29,7 @@ struct CategoriesSearchList: View {
     ) private var categories: FetchedResults<Category>
     
     var body: some View {
-        SearchList<Category>(
+        SearchListMultiSelect<Category>(
             title: title,
             data: categories.map { $0 },
             selectedData: $selectedItems,

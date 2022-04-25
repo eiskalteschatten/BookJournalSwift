@@ -29,7 +29,7 @@ struct TagsSearchList: View {
     ) private var tags: FetchedResults<Tag>
     
     var body: some View {
-        SearchList<Tag>(
+        SearchListMultiSelect<Tag>(
             title: title,
             data: tags.map { $0 },
             selectedData: $selectedItems,

@@ -29,7 +29,7 @@ struct EditorsSearchList: View {
     ) private var editors: FetchedResults<Editor>
     
     var body: some View {
-        SearchList<Editor>(
+        SearchListMultiSelect<Editor>(
             title: title,
             data: editors.map { $0 },
             selectedData: $selectedItems,

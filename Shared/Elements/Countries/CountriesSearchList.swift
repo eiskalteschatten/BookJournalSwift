@@ -29,7 +29,7 @@ struct CountriesSearchList: View {
     ) private var countries: FetchedResults<Country>
     
     var body: some View {
-        SearchList<Country>(
+        SearchListSingleSelect<Country>(
             title: title,
             data: countries.map { $0 },
             selectedData: $selectedItem,

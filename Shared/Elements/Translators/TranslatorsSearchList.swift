@@ -29,7 +29,7 @@ struct TranslatorsSearchList: View {
     ) private var translators: FetchedResults<Translator>
     
     var body: some View {
-        SearchList<Translator>(
+        SearchListMultiSelect<Translator>(
             title: title,
             data: translators.map { $0 },
             selectedData: $selectedItems,

@@ -29,7 +29,7 @@ struct GenresSearchList: View {
     ) private var genres: FetchedResults<Genre>
     
     var body: some View {
-        SearchList<Genre>(
+        SearchListMultiSelect<Genre>(
             title: title,
             data: genres.map { $0 },
             selectedData: $selectedItems,

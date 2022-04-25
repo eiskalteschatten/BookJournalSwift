@@ -29,7 +29,7 @@ struct PublishersSearchList: View {
     ) private var publishers: FetchedResults<Publisher>
     
     var body: some View {
-        SearchList<Publisher>(
+        SearchListSingleSelect<Publisher>(
             title: title,
             data: publishers.map { $0 },
             selectedData: $selectedItem,

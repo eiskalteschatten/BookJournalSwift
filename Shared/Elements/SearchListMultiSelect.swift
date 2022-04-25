@@ -1,5 +1,5 @@
 //
-//  SearchList.swift
+//  SearchListMultiSelect.swift
 //  BookJournal
 //
 //  Created by Alex Seifert on 18.03.22.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SearchList<T: AbstractName>: View {
+struct SearchListMultiSelect<T: AbstractName>: View {
     @Environment(\.dismiss) var dismiss
     
     var title: String
@@ -16,7 +16,6 @@ struct SearchList<T: AbstractName>: View {
     var addElementMac: (() -> Void)?
     var onDelete: (_: IndexSet) -> Void
     
-    private var singleSelection = false
     @State private var searchText = ""
     
     var body: some View {
@@ -45,40 +44,24 @@ struct SearchList<T: AbstractName>: View {
                     if item.name != nil {
                         VStack(alignment: .leading) {
                             HStack {
-                                if singleSelection {
-                                    if selectedData == item {
-                                        Image(systemName: "circle.inset.filled")
-                                            .foregroundColor(.accentColor)
-                                    }
-                                    else {
-                                        Image(systemName: "circle")
-                                    }
+                                if selectedData.contains(item) {
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .foregroundColor(.accentColor)
                                 }
                                 else {
-                                    if selectedData.contains(item) {
-                                        Image(systemName: "checkmark.circle.fill")
-                                            .foregroundColor(.accentColor)
-                                    }
-                                    else {
-                                        Image(systemName: "circle")
-                                    }
+                                    Image(systemName: "circle")
                                 }
 
                                 Text(item.name!)
                             }
                             .onTapGesture {
-                                if singleSelection {
-                                    selectedData = selectedData == item ? nil : item
+                                if selectedData.contains(item) {
+                                    if let index = selectedData.firstIndex(of: item) {
+                                        selectedData.remove(at: index)
+                                    }
                                 }
                                 else {
-                                    if selectedDataArray.contains(item) {
-                                        if let index = selectedDataArray.firstIndex(of: item) {
-                                            selectedDataArray.remove(at: index)
-                                        }
-                                    }
-                                    else {
-                                        selectedDataArray.append(item)
-                                    }
+                                    selectedData.append(item)
                                 }
                                 
                                 #if os(iOS)
@@ -135,13 +118,13 @@ struct SearchList<T: AbstractName>: View {
     }
 }
 
-struct SearchList_Previews: PreviewProvider {
+struct SearchListMultiSelect_Previews: PreviewProvider {
     @State static var authors: [Author] = []
     static let context = PersistenceController.preview.container.viewContext
     static func addItem() {}
     
     static var previews: some View {
-        SearchList<Author>(
+        SearchListMultiSelect<Author>(
             title: "Search for Something",
             data: getMockAuthors(),
             selectedData: $authors,
