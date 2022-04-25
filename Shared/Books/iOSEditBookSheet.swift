@@ -1,5 +1,5 @@
 //
-//  iOSNewBookSheet.swift
+//  iOSEditBookSheet.swift
 //  BookJournal (iOS)
 //
 //  Created by Alex Seifert on 25.02.22.
@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import WrappingHStack
 
-struct iOSNewBookSheet: View {
+struct iOSEditBookSheet: View {
     private enum Screen: Int {
         case addAuthors, addEditors, addGenres, addCategories, addTags, addTranslators, addPublisher, addCountryOfOrigin
     }
@@ -265,11 +265,11 @@ struct iOSNewBookSheet: View {
     }
 }
 
-struct iOSNewBookSheet_Previews: PreviewProvider {
+struct iOSEditBookSheet_Previews: PreviewProvider {
     static var previews: some View {
         let context = PersistenceController.preview.container.viewContext
         Group {
-            iOSNewBookSheet().preferredColorScheme(.dark).padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/).frame(height: /*@START_MENU_TOKEN@*/800.0/*@END_MENU_TOKEN@*/).environment(\.managedObjectContext, context)
+            iOSEditBookSheet().preferredColorScheme(.dark).padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/).frame(height: /*@START_MENU_TOKEN@*/800.0/*@END_MENU_TOKEN@*/).environment(\.managedObjectContext, context)
         }
     }
 }
