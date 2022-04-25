@@ -76,7 +76,7 @@ struct MacNewBookWindowView: View {
                 }
                 else {
                     Button("Finish", action: {
-                        bookModel.saveBook()
+                        bookModel.save()
                         newBookWindow?.close(closeWithPrompt: false)
                     })
                     .keyboardShortcut(.defaultAction)

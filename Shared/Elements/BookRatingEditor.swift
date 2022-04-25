@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct BookRatingEditor: View {
-    @Binding var rating: Int16
+    @Binding var rating: Int
     
     var body: some View {
         let starSize = 20.0
-        let totalStars: Int16 = 5
-        let totalUnfilledStars: Int16 = totalStars - rating
-        let totalFilledStars: Int16 = totalStars - totalUnfilledStars
+        let totalStars = 5
+        let totalUnfilledStars = totalStars - rating
+        let totalFilledStars = totalStars - totalUnfilledStars
         
         HStack {
             Button (action: {
@@ -54,7 +54,7 @@ struct BookRatingEditor: View {
         }
     }
     
-    private func changeRating(_ value: Int16) {
+    private func changeRating(_ value: Int) {
         rating = value;
         
         #if os(iOS)
@@ -65,7 +65,7 @@ struct BookRatingEditor: View {
 }
 
 struct BookRatingEditor_Previews: PreviewProvider {
-    @State static var rating: Int16 = 2
+    @State static var rating = 2
     
     static var previews: some View {
         BookRatingEditor(rating: $rating)

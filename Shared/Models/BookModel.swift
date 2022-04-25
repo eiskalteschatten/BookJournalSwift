@@ -50,7 +50,7 @@ class BookModel: ObservableObject {
         viewContext = persistenceController.container.viewContext
     }
     
-    func saveBook() {
+    func save() {
         withAnimation {
             let newBook = Book(context: viewContext!)
             newBook.createdAt = Date()
