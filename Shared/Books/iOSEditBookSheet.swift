@@ -128,8 +128,7 @@ struct iOSEditBookSheet: View {
                         destination: AuthorsSearchList(selectedItems: $book.authors.toUnwrapped(defaultValue: [])),
                         tag: Screen.addAuthors,
                         selection: $screen,
-                        label: { Text("Authors") }
-//                        label: { WrappingSmallChipsWithName<Author>(title: "Authors", data: book.authors, chipColor: AUTHOR_COLOR, alignment: .leading) }
+                        label: { WrappingSmallChipsWithName<Author>(title: "Authors", data: book.authors?.allObjects ?? [], chipColor: AUTHOR_COLOR, alignment: .leading) }
                     )
                     
 //                    // Editors
@@ -169,12 +168,12 @@ struct iOSEditBookSheet: View {
                 
                 Section("Publication Details") {
                     // Publisher
-//                    NavigationLink(
-//                        destination: PublishersSearchList(selectedItem: $book.publisher),
-//                        tag: Screen.addPublisher,
-//                        selection: $screen,
-//                        label: { PickerMimickerWithName<Publisher>(title: "Publisher", data: book.publisher) }
-//                    )
+                    NavigationLink(
+                        destination: PublishersSearchList(selectedItem: $book.publisher),
+                        tag: Screen.addPublisher,
+                        selection: $screen,
+                        label: { PickerMimickerWithName<Publisher>(title: "Publisher", data: book.publisher) }
+                    )
                     
                     // Book Format
                     Picker("Book Format", selection: $book.bookFormat) {
@@ -210,13 +209,13 @@ struct iOSEditBookSheet: View {
                 
                 Section("World") {
 //                    // Country of Origin
-//                    NavigationLink(
-//                        destination: CountriesSearchList(selectedItem: $book.countryOfOrigin),
-//                        tag: Screen.addCountryOfOrigin,
-//                        selection: $screen,
-//                        label: { PickerMimickerWithName<Country>(title: "Country of Origin", data: book.countryOfOrigin) }
-//                    )
-//
+                    NavigationLink(
+                        destination: CountriesSearchList(selectedItem: $book.countryOfOrigin),
+                        tag: Screen.addCountryOfOrigin,
+                        selection: $screen,
+                        label: { PickerMimickerWithName<Country>(title: "Country of Origin", data: book.countryOfOrigin) }
+                    )
+
 //                    // Translators
 //                    NavigationLink(
 //                        destination: TranslatorsSearchList(selectedItems: $book.translators),

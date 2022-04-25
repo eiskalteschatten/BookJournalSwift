@@ -56,12 +56,10 @@ struct SearchListMultiSelect<T: AbstractName>: View {
                             }
                             .onTapGesture {
                                 if selectedData.contains(item) {
-                                    if let index = selectedData.firstIndex(of: item) {
-                                        selectedData.remove(at: index)
-                                    }
+                                    selectedData.remove(item)
                                 }
                                 else {
-                                    selectedData.append(item)
+                                    selectedData.add(item)
                                 }
                                 
                                 #if os(iOS)
