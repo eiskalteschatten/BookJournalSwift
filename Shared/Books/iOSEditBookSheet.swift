@@ -260,9 +260,10 @@ struct iOSEditBookSheet: View {
                     },
                     trailing: Button(action: {
                         do {
-                            if viewContext.hasChanges {
-                                try viewContext.save()
-                            }
+                            book.dateStarted = addDateStarted ? book.dateStarted : nil
+                            book.dateFinished = addDateFinished ? book.dateFinished : nil
+                            
+                            try viewContext.save()
                             
                             dismiss()
                         } catch {
