@@ -12,7 +12,7 @@ struct SearchListSingleSelect<T: AbstractName>: View {
     
     var title: String
     var data: [T]
-    @Binding var selectedData: T
+    @Binding var selectedData: T?
     var addElementMac: (() -> Void)?
     var onDelete: (_: IndexSet) -> Void
     
@@ -112,7 +112,7 @@ struct SearchListSingleSelect<T: AbstractName>: View {
 }
 
 struct SearchListSingleSelect_Previews: PreviewProvider {
-    @State static var author: Author = getMockAuthors()[0]
+    @State static var author: Author?
     static let context = PersistenceController.preview.container.viewContext
     static func addItem() {}
     
