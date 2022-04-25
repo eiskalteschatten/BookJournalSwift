@@ -112,7 +112,7 @@ struct SearchListSingleSelect<T: AbstractName>: View {
 }
 
 struct SearchListSingleSelect_Previews: PreviewProvider {
-    @State static var authors: [Author] = []
+    @State static var author: Author = getMockAuthors()[0]
     static let context = PersistenceController.preview.container.viewContext
     static func addItem() {}
     
@@ -120,7 +120,7 @@ struct SearchListSingleSelect_Previews: PreviewProvider {
         SearchListSingleSelect<Author>(
             title: "Search for Something",
             data: getMockAuthors(),
-            selectedData: $authors,
+            selectedData: $author,
             addElementMac: addElementMac,
             onDelete: deleteAuthors
         )

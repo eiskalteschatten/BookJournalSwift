@@ -119,7 +119,7 @@ struct SearchListMultiSelect<T: AbstractName>: View {
 }
 
 struct SearchListMultiSelect_Previews: PreviewProvider {
-    @State static var authors: [Author] = []
+    @State static var authors: NSSet = [getMockAuthors()[0]]
     static let context = PersistenceController.preview.container.viewContext
     static func addItem() {}
     
