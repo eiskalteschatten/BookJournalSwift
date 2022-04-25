@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BookRatingEditor: View {
-    @Binding var rating: Int
+    @Binding var rating: Int16
     
     var body: some View {
         let starSize = 20.0

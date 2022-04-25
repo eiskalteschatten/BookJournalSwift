@@ -16,13 +16,15 @@ struct iOSEditBookSheet: View {
     }
     
     @Environment(\.dismiss) var dismiss
+    @ObservedObject var book: Book
 
     @State private var screen: Screen?
-    @StateObject private var bookModel = BookModel()
     @State private var presentCloseAlert = false
     @State private var presentImagePicker = false
     @State private var imagePickerSourceType: UIImagePickerController.SourceType = .photoLibrary
     @State private var bookcoverUIImage = UIImage()
+    @State private var addDateStarted = false
+    @State private var addDateFinished = false
 
     var body: some View {
         NavigationView {
@@ -45,7 +47,7 @@ struct iOSEditBookSheet: View {
                                 Label("Scan Image", systemImage: "viewfinder")
                             }
                         } label: {
-                            if let bookcover = bookModel.bookcover {
+                            if let bookcover = book.bookcover {
                                 let image = UIImage(data: bookcover)
                                 Image(uiImage: image!)
                                     .resizable()
@@ -61,14 +63,14 @@ struct iOSEditBookSheet: View {
                             ImagePicker(
                                 sourceType: imagePickerSourceType,
                                 selectedImage: $bookcoverUIImage,
-                                selectedImageData: $bookModel.bookcover
+                                selectedImageData: $book.bookcover
                             )
                         }
                         
                         // Title
                         TextField(
                             "Enter title...",
-                            text: $bookModel.title
+                            text: $book.title.toUnwrapped(defaultValue: "")
                         )
                             .font(.system(size: 20, weight: .bold))
                             .multilineTextAlignment(.center)
@@ -78,19 +80,19 @@ struct iOSEditBookSheet: View {
                 
                 Group {
                     Section("Rating") {
-                        BookRatingEditor(rating: $bookModel.rating)
+                        BookRatingEditor(rating: $book.rating)
                         .frame(maxWidth: .infinity, alignment: .center)
                     }
                     
                     Section("Wishlist") {
                         // Wishlist
-                        Toggle("Add Book to Wishlist", isOn: $bookModel.onWishlist)
+                        Toggle("Add Book to Wishlist", isOn: $book.onWishlist)
                     }
                 }
                 
                 Section("Book Status") {
                     // Reading Status
-                    Picker("Reading Status", selection: $bookModel.readingStatus) {
+                    Picker("Reading Status", selection: $book.readingStatus) {
                         ForEach(BookReadingStatus.allCases) { status in
                             Text(bookReadingStatusProperties[status]!)
                                 .tag(status.rawValue)
@@ -98,20 +100,20 @@ struct iOSEditBookSheet: View {
                     }
                     
                     // Date Started
-                    Toggle("Add Date Started", isOn: $bookModel.addDateStarted.animation())
+                    Toggle("Add Date Started", isOn: $addDateStarted.animation())
                     
-                    if bookModel.addDateStarted {
-                        DatePicker(selection: $bookModel.dateStarted, displayedComponents: .date) {
+                    if addDateStarted {
+                        DatePicker(selection: $book.dateStarted.toUnwrapped(defaultValue: Date()), displayedComponents: .date) {
                             Text("Date Started:")
                         }
                         .transition(.scale)
                     }
                     
                     // Date Finished
-                    Toggle("Add Date Finished", isOn: $bookModel.addDateFinished.animation())
+                    Toggle("Add Date Finished", isOn: $addDateFinished.animation())
                 
-                    if bookModel.addDateFinished {
-                        DatePicker(selection: $bookModel.dateFinished, displayedComponents: .date) {
+                    if addDateFinished {
+                        DatePicker(selection: $book.dateFinished.toUnwrapped(defaultValue: Date()), displayedComponents: .date) {
                             Text("Date Finished:")
                         }
                         .transition(.scale)
@@ -121,58 +123,58 @@ struct iOSEditBookSheet: View {
                 Section("People") {
                     // Authors
                     NavigationLink(
-                        destination: AuthorsSearchList(selectedItems: $bookModel.authors),
+                        destination: AuthorsSearchList(selectedItems: $book.authors),
                         tag: Screen.addAuthors,
                         selection: $screen,
-                        label: { WrappingSmallChipsWithName<Author>(title: "Authors", data: bookModel.authors, chipColor: AUTHOR_COLOR, alignment: .leading) }
+                        label: { WrappingSmallChipsWithName<Author>(title: "Authors", data: book.authors, chipColor: AUTHOR_COLOR, alignment: .leading) }
                     )
                     
                     // Editors
                     NavigationLink(
-                        destination: EditorsSearchList(selectedItems: $bookModel.editors),
+                        destination: EditorsSearchList(selectedItems: $book.editors),
                         tag: Screen.addEditors,
                         selection: $screen,
-                        label: { WrappingSmallChipsWithName<Editor>(title: "Editors", data: bookModel.editors, chipColor: EDITOR_COLOR, alignment: .leading) }
+                        label: { WrappingSmallChipsWithName<Editor>(title: "Editors", data: book.editors, chipColor: EDITOR_COLOR, alignment: .leading) }
                     )
                 }
                 
                 Section("Categorization") {
                     // Categories
                     NavigationLink(
-                        destination: CategoriesSearchList(selectedItems: $bookModel.categories),
+                        destination: CategoriesSearchList(selectedItems: $book.categories),
                         tag: Screen.addCategories,
                         selection: $screen,
-                        label: { WrappingSmallChipsWithName<Category>(title: "Categories", data: bookModel.categories, chipColor: CATEGORY_COLOR, alignment: .leading) }
+                        label: { WrappingSmallChipsWithName<Category>(title: "Categories", data: book.categories, chipColor: CATEGORY_COLOR, alignment: .leading) }
                     )
                     
                     // Tags
                     NavigationLink(
-                        destination: TagsSearchList(selectedItems: $bookModel.tags),
+                        destination: TagsSearchList(selectedItems: $book.tags),
                         tag: Screen.addTags,
                         selection: $screen,
-                        label: { WrappingSmallChipsWithName<Tag>(title: "Tags", data: bookModel.tags, chipColor: TAG_COLOR, alignment: .leading) }
+                        label: { WrappingSmallChipsWithName<Tag>(title: "Tags", data: book.tags, chipColor: TAG_COLOR, alignment: .leading) }
                     )
                     
                     // Genres
                     NavigationLink(
-                        destination: GenresSearchList(selectedItems: $bookModel.genres),
+                        destination: GenresSearchList(selectedItems: $book.genres),
                         tag: Screen.addGenres,
                         selection: $screen,
-                        label: { WrappingSmallChipsWithName<Genre>(title: "Genres", data: bookModel.genres, chipColor: GENRE_COLOR, alignment: .leading) }
+                        label: { WrappingSmallChipsWithName<Genre>(title: "Genres", data: book.genres, chipColor: GENRE_COLOR, alignment: .leading) }
                     )
                 }
                 
                 Section("Publication Details") {
                     // Publisher
                     NavigationLink(
-                        destination: PublishersSearchList(selectedItem: $bookModel.publisher),
+                        destination: PublishersSearchList(selectedItem: $book.publisher),
                         tag: Screen.addPublisher,
                         selection: $screen,
-                        label: { PickerMimickerWithName<Publisher>(title: "Publisher", data: bookModel.publisher) }
+                        label: { PickerMimickerWithName<Publisher>(title: "Publisher", data: book.publisher) }
                     )
                     
                     // Book Format
-                    Picker("Book Format", selection: $bookModel.bookFormat) {
+                    Picker("Book Format", selection: $book.bookFormat) {
                         ForEach(BookFormat.allCases) { format in
                             Label(bookFormatProperties[format]![0], systemImage: bookFormatProperties[format]![1])
                                 .tag(format.rawValue)
@@ -182,7 +184,7 @@ struct iOSEditBookSheet: View {
                     // Year Published
                     TextField(
                         "Year Published",
-                        value: $bookModel.yearPublished,
+                        value: $book.yearPublished,
                         format: .number
                     )
                         .keyboardType(.numberPad)
@@ -190,14 +192,14 @@ struct iOSEditBookSheet: View {
                     // ISBN
                     TextField(
                         "ISBN",
-                        text: $bookModel.isbn
+                        text: $book.isbn.toUnwrapped(defaultValue: "")
                     )
                         .keyboardType(.numberPad)
                     
                     // Page Count
                     TextField(
                         "Page Count",
-                        value: $bookModel.pageCount,
+                        value: $book.pageCount,
                         format: .number
                     )
                         .keyboardType(.numberPad)
@@ -206,38 +208,38 @@ struct iOSEditBookSheet: View {
                 Section("World") {
                     // Country of Origin
                     NavigationLink(
-                        destination: CountriesSearchList(selectedItem: $bookModel.countryOfOrigin),
+                        destination: CountriesSearchList(selectedItem: $book.countryOfOrigin),
                         tag: Screen.addCountryOfOrigin,
                         selection: $screen,
-                        label: { PickerMimickerWithName<Country>(title: "Country of Origin", data: bookModel.countryOfOrigin) }
+                        label: { PickerMimickerWithName<Country>(title: "Country of Origin", data: book.countryOfOrigin) }
                     )
                     
                     // Translators
                     NavigationLink(
-                        destination: TranslatorsSearchList(selectedItems: $bookModel.translators),
+                        destination: TranslatorsSearchList(selectedItems: $book.translators),
                         tag: Screen.addTranslators,
                         selection: $screen,
-                        label: { WrappingSmallChipsWithName<Translator>(title: "Translators", data: bookModel.translators, chipColor: TRANSLATOR_COLOR, alignment: .leading) }
+                        label: { WrappingSmallChipsWithName<Translator>(title: "Translators", data: book.translators, chipColor: TRANSLATOR_COLOR, alignment: .leading) }
                     )
                     
-                    LanguagePicker(title: "Original Language", selection: $bookModel.originalLanguage)
-                    LanguagePicker(title: "Language Read In", selection: $bookModel.languageReadIn)
+                    LanguagePicker(title: "Original Language", selection: $book.originalLanguage.toUnwrapped(defaultValue: ""))
+                    LanguagePicker(title: "Language Read In", selection: $book.languageReadIn.toUnwrapped(defaultValue: ""))
                 }
                 
                 Group {
                     Section("Summary") {
                         // Summary
-                        TextEditor(text: $bookModel.summary)
+                        TextEditor(text: $book.summary.toUnwrapped(defaultValue: ""))
                     }
                     
                     Section("Commentary") {
                         // Commentary
-                        TextEditor(text: $bookModel.commentary)
+                        TextEditor(text: $book.commentary.toUnwrapped(defaultValue: ""))
                     }
                      
                     Section("Notes") {
                         // Notes
-                        TextEditor(text: $bookModel.notes)
+                        TextEditor(text: $book.notes.toUnwrapped(defaultValue: ""))
                     }
                 }
             }
@@ -255,8 +257,18 @@ struct iOSEditBookSheet: View {
                         Text("Cancel")
                     },
                     trailing: Button(action: {
-                        bookModel.saveBook()
-                        dismiss()
+                        do {
+                            if viewContext!.hasChanges {
+                                try viewContext!.save()
+                            }
+                            
+                            dismiss()
+                        } catch {
+                            // TODO: Replace this implementation with code to handle the error appropriately.
+                            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                            let nsError = error as NSError
+                            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                        }
                     }) {
                         Text("Save").bold()
                     }
@@ -269,7 +281,11 @@ struct iOSEditBookSheet_Previews: PreviewProvider {
     static var previews: some View {
         let context = PersistenceController.preview.container.viewContext
         Group {
-            iOSEditBookSheet().preferredColorScheme(.dark).padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/).frame(height: /*@START_MENU_TOKEN@*/800.0/*@END_MENU_TOKEN@*/).environment(\.managedObjectContext, context)
+            iOSEditBookSheet(book: Book(context: context))
+                .preferredColorScheme(.dark)
+                .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                .frame(height: /*@START_MENU_TOKEN@*/800.0/*@END_MENU_TOKEN@*/)
+                .environment(\.managedObjectContext, context)
         }
     }
 }

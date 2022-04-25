@@ -66,7 +66,7 @@ struct BookList: View {
         }
         #if os(iOS)
         .sheet(isPresented: $showNewBookSheet) {
-            iOSEditBookSheet()
+            iOSEditBookSheet(book: Book(context: viewContext))
         }
         #endif
     }
