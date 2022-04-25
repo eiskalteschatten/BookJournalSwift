@@ -21,7 +21,7 @@ struct AuthorsSearchList: View {
     #endif
     
     var title = "Authors"
-    @Binding var selectedItems: [Author]
+    @Binding var selectedItems: NSSet
     
     @FetchRequest(
         entity: Author.entity(),

@@ -12,44 +12,12 @@ struct SearchList<T: AbstractName>: View {
     
     var title: String
     var data: [T]
-    @Binding var selectedDataArray: [T]
-    @Binding var selectedData: T?
+    @Binding var selectedData: NSSet
     var addElementMac: (() -> Void)?
     var onDelete: (_: IndexSet) -> Void
     
     private var singleSelection = false
     @State private var searchText = ""
-    
-    init(
-        title: String,
-        data: [T],
-        selectedData: Binding<[T]>,
-        addElementMac: (() -> Void)? = nil,
-        onDelete: @escaping (_: IndexSet) -> Void
-    ) {
-        self.title = title
-        self.data = data
-        self._selectedDataArray = selectedData
-        self._selectedData = Binding.constant(nil)
-        self.addElementMac = addElementMac
-        self.onDelete = onDelete
-    }
-    
-    init(
-        title: String,
-        data: [T],
-        selectedData: Binding<T?>,
-        addElementMac: (() -> Void)? = nil,
-        onDelete: @escaping (_: IndexSet) -> Void
-    ) {
-        self.title = title
-        self.data = data
-        self._selectedDataArray = Binding.constant([])
-        self._selectedData = selectedData
-        self.addElementMac = addElementMac
-        self.onDelete = onDelete
-        self.singleSelection = true
-    }
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -87,7 +55,7 @@ struct SearchList<T: AbstractName>: View {
                                     }
                                 }
                                 else {
-                                    if selectedDataArray.contains(item) {
+                                    if selectedData.contains(item) {
                                         Image(systemName: "checkmark.circle.fill")
                                             .foregroundColor(.accentColor)
                                     }

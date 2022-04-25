@@ -125,55 +125,56 @@ struct iOSEditBookSheet: View {
                 Section("People") {
                     // Authors
                     NavigationLink(
-                        destination: AuthorsSearchList(selectedItems: $book.authors),
+                        destination: AuthorsSearchList(selectedItems: $book.authors.toUnwrapped(defaultValue: [])),
                         tag: Screen.addAuthors,
                         selection: $screen,
-                        label: { WrappingSmallChipsWithName<Author>(title: "Authors", data: book.authors, chipColor: AUTHOR_COLOR, alignment: .leading) }
+                        label: { Text("Authors") }
+//                        label: { WrappingSmallChipsWithName<Author>(title: "Authors", data: book.authors, chipColor: AUTHOR_COLOR, alignment: .leading) }
                     )
                     
-                    // Editors
-                    NavigationLink(
-                        destination: EditorsSearchList(selectedItems: $book.editors),
-                        tag: Screen.addEditors,
-                        selection: $screen,
-                        label: { WrappingSmallChipsWithName<Editor>(title: "Editors", data: book.editors, chipColor: EDITOR_COLOR, alignment: .leading) }
-                    )
+//                    // Editors
+//                    NavigationLink(
+//                        destination: EditorsSearchList(selectedItems: $book.editors),
+//                        tag: Screen.addEditors,
+//                        selection: $screen,
+//                        label: { WrappingSmallChipsWithName<Editor>(title: "Editors", data: book.editors, chipColor: EDITOR_COLOR, alignment: .leading) }
+//                    )
                 }
                 
-                Section("Categorization") {
-                    // Categories
-                    NavigationLink(
-                        destination: CategoriesSearchList(selectedItems: $book.categories),
-                        tag: Screen.addCategories,
-                        selection: $screen,
-                        label: { WrappingSmallChipsWithName<Category>(title: "Categories", data: book.categories, chipColor: CATEGORY_COLOR, alignment: .leading) }
-                    )
-                    
-                    // Tags
-                    NavigationLink(
-                        destination: TagsSearchList(selectedItems: $book.tags),
-                        tag: Screen.addTags,
-                        selection: $screen,
-                        label: { WrappingSmallChipsWithName<Tag>(title: "Tags", data: book.tags, chipColor: TAG_COLOR, alignment: .leading) }
-                    )
-                    
-                    // Genres
-                    NavigationLink(
-                        destination: GenresSearchList(selectedItems: $book.genres),
-                        tag: Screen.addGenres,
-                        selection: $screen,
-                        label: { WrappingSmallChipsWithName<Genre>(title: "Genres", data: book.genres, chipColor: GENRE_COLOR, alignment: .leading) }
-                    )
-                }
+//                Section("Categorization") {
+//                    // Categories
+//                    NavigationLink(
+//                        destination: CategoriesSearchList(selectedItems: $book.categories),
+//                        tag: Screen.addCategories,
+//                        selection: $screen,
+//                        label: { WrappingSmallChipsWithName<Category>(title: "Categories", data: book.categories, chipColor: CATEGORY_COLOR, alignment: .leading) }
+//                    )
+//
+//                    // Tags
+//                    NavigationLink(
+//                        destination: TagsSearchList(selectedItems: $book.tags),
+//                        tag: Screen.addTags,
+//                        selection: $screen,
+//                        label: { WrappingSmallChipsWithName<Tag>(title: "Tags", data: book.tags, chipColor: TAG_COLOR, alignment: .leading) }
+//                    )
+//
+//                    // Genres
+//                    NavigationLink(
+//                        destination: GenresSearchList(selectedItems: $book.genres),
+//                        tag: Screen.addGenres,
+//                        selection: $screen,
+//                        label: { WrappingSmallChipsWithName<Genre>(title: "Genres", data: book.genres, chipColor: GENRE_COLOR, alignment: .leading) }
+//                    )
+//                }
                 
                 Section("Publication Details") {
                     // Publisher
-                    NavigationLink(
-                        destination: PublishersSearchList(selectedItem: $book.publisher),
-                        tag: Screen.addPublisher,
-                        selection: $screen,
-                        label: { PickerMimickerWithName<Publisher>(title: "Publisher", data: book.publisher) }
-                    )
+//                    NavigationLink(
+//                        destination: PublishersSearchList(selectedItem: $book.publisher),
+//                        tag: Screen.addPublisher,
+//                        selection: $screen,
+//                        label: { PickerMimickerWithName<Publisher>(title: "Publisher", data: book.publisher) }
+//                    )
                     
                     // Book Format
                     Picker("Book Format", selection: $book.bookFormat) {
@@ -208,21 +209,21 @@ struct iOSEditBookSheet: View {
                 }
                 
                 Section("World") {
-                    // Country of Origin
-                    NavigationLink(
-                        destination: CountriesSearchList(selectedItem: $book.countryOfOrigin),
-                        tag: Screen.addCountryOfOrigin,
-                        selection: $screen,
-                        label: { PickerMimickerWithName<Country>(title: "Country of Origin", data: book.countryOfOrigin) }
-                    )
-                    
-                    // Translators
-                    NavigationLink(
-                        destination: TranslatorsSearchList(selectedItems: $book.translators),
-                        tag: Screen.addTranslators,
-                        selection: $screen,
-                        label: { WrappingSmallChipsWithName<Translator>(title: "Translators", data: book.translators, chipColor: TRANSLATOR_COLOR, alignment: .leading) }
-                    )
+//                    // Country of Origin
+//                    NavigationLink(
+//                        destination: CountriesSearchList(selectedItem: $book.countryOfOrigin),
+//                        tag: Screen.addCountryOfOrigin,
+//                        selection: $screen,
+//                        label: { PickerMimickerWithName<Country>(title: "Country of Origin", data: book.countryOfOrigin) }
+//                    )
+//
+//                    // Translators
+//                    NavigationLink(
+//                        destination: TranslatorsSearchList(selectedItems: $book.translators),
+//                        tag: Screen.addTranslators,
+//                        selection: $screen,
+//                        label: { WrappingSmallChipsWithName<Translator>(title: "Translators", data: book.translators, chipColor: TRANSLATOR_COLOR, alignment: .leading) }
+//                    )
                     
                     LanguagePicker(title: "Original Language", selection: $book.originalLanguage.toUnwrapped(defaultValue: ""))
                     LanguagePicker(title: "Language Read In", selection: $book.languageReadIn.toUnwrapped(defaultValue: ""))
