@@ -16,6 +16,8 @@ struct iOSEditBookSheet: View {
     }
     
     @Environment(\.dismiss) var dismiss
+    @Environment(\.managedObjectContext) private var viewContext
+    
     @ObservedObject var book: Book
 
     @State private var screen: Screen?
@@ -258,8 +260,8 @@ struct iOSEditBookSheet: View {
                     },
                     trailing: Button(action: {
                         do {
-                            if viewContext!.hasChanges {
-                                try viewContext!.save()
+                            if viewContext.hasChanges {
+                                try viewContext.save()
                             }
                             
                             dismiss()
