@@ -64,12 +64,8 @@ class BookModel: ObservableObject {
             newBook.onWishlist = onWishlist
                        
             newBook.readingStatus = readingStatus
-            if addDateStarted {
-                newBook.dateStarted = dateStarted
-            }
-            if addDateFinished {
-                newBook.dateFinished = dateFinished
-            }
+            newBook.dateStarted = addDateStarted ? dateStarted : nil
+            newBook.dateFinished = addDateFinished ? dateFinished : nil
             
             authors.forEach(newBook.addToAuthors)
             editors.forEach(newBook.addToEditors)
