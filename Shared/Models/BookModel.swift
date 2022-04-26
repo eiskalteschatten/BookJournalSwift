@@ -51,6 +51,7 @@ final class BookModel: ObservableObject {
         let persistenceController = PersistenceController.shared
         viewContext = persistenceController.container.viewContext
         self.book = book
+        initVariables()
     }
     
     func save() {
@@ -113,6 +114,44 @@ final class BookModel: ObservableObject {
                 let nsError = error as NSError
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
+        }
+    }
+    
+    private func initVariables() {
+        if let unwrappedBook = book {
+            bookcover = unwrappedBook.bookcover
+                
+            title = unwrappedBook.title ?? title
+            rating = unwrappedBook.rating != 0 ? Int(unwrappedBook.rating) : rating
+            onWishlist = unwrappedBook.onWishlist
+
+            readingStatus = unwrappedBook.readingStatus ?? readingStatus
+            addDateStarted = unwrappedBook.dateStarted != nil
+            dateStarted = unwrappedBook.dateStarted ?? dateStarted
+            addDateFinished = unwrappedBook.dateFinished != nil
+            dateFinished = unwrappedBook.dateFinished ?? dateStarted
+
+            authors = unwrappedBook.authors?.allObjects as? [Author] ?? authors
+            editors = unwrappedBook.editors?.allObjects as? [Editor] ?? editors
+
+            categories = unwrappedBook.categories?.allObjects as? [Category] ?? categories
+            tags = unwrappedBook.tags?.allObjects as? [Tag] ?? tags
+            genres = unwrappedBook.genres?.allObjects as? [Genre] ?? genres
+
+            bookFormat = unwrappedBook.bookFormat ?? bookFormat
+            publisher = unwrappedBook.publisher ?? publisher
+            yearPublished = unwrappedBook.yearPublished != 0 ? unwrappedBook.yearPublished : yearPublished
+            isbn = unwrappedBook.isbn ?? isbn
+            pageCount = unwrappedBook.pageCount != 0 ? unwrappedBook.pageCount : pageCount
+
+            countryOfOrigin = unwrappedBook.countryOfOrigin ?? countryOfOrigin
+            translators = unwrappedBook.translators?.allObjects as? [Translator] ?? translators
+            originalLanguage = unwrappedBook.originalLanguage ?? originalLanguage
+            languageReadIn = unwrappedBook.languageReadIn ?? languageReadIn
+
+            summary = unwrappedBook.summary ?? summary
+            commentary = unwrappedBook.commentary ?? commentary
+            notes = unwrappedBook.notes ?? notes
         }
     }
 }
