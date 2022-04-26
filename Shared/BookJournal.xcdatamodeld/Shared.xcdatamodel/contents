@@ -24,7 +24,7 @@
         <attribute name="rating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="readingStatus" attributeType="String" defaultValueString="notReadYet"/>
         <attribute name="summary" optional="YES" attributeType="String" spotlightIndexingEnabled="YES"/>
-        <attribute name="title" attributeType="String" defaultValueString="Untitled Book" spotlightIndexingEnabled="YES"/>
+        <attribute name="title" attributeType="String" defaultValueString="" spotlightIndexingEnabled="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="yearPublished" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="authors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Author" inverseName="books" inverseEntity="Author" spotlightIndexingEnabled="YES"/>
