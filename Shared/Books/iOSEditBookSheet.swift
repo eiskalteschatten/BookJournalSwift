@@ -25,8 +25,14 @@ struct iOSEditBookSheet: View {
     @State private var imagePickerSourceType: UIImagePickerController.SourceType = .photoLibrary
     @State private var bookcoverUIImage = UIImage()
     
+    private var sheetTitle: String = "Add a New Book"
+    
     init(book: Book? = nil) {
         bookModel = BookModel(book: book)
+        
+        if let title = book?.title {
+            sheetTitle = "Edit \(title)"
+        }
     }
     
     var body: some View {
@@ -252,7 +258,7 @@ struct iOSEditBookSheet: View {
             }, message: {
                 Text("Your changes will be lost if you continue.")
             })
-            .navigationBarTitle(Text("Add a New Book"), displayMode: .inline)
+            .navigationBarTitle(Text(sheetTitle), displayMode: .inline)
                 .navigationBarItems(
                     leading: Button(action: {
                         presentCloseAlert = true

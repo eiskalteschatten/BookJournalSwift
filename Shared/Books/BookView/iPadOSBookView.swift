@@ -10,6 +10,8 @@ import SwiftUI
 struct iPadOSBookView: View {
     var book: Book?
     
+    @State private var showEditBookSheet = false
+    
     var body: some View {
         VStack {
             if let unwrappedBook = book {
@@ -166,7 +168,7 @@ struct iPadOSBookView: View {
         }
         .toolbar {
             ToolbarItem {
-                Button(action: editBook) {
+                Button(action: { showEditBookSheet.toggle() }) {
                     Label("Edit", systemImage: "pencil")
                 }
                 .disabled(book == nil)
@@ -178,10 +180,9 @@ struct iPadOSBookView: View {
                 .disabled(book == nil)
             }
         }
-    }
-    
-    private func editBook() {
-        // TODO
+        .sheet(isPresented: $showEditBookSheet) {
+            iOSEditBookSheet(book: book)
+        }
     }
     
     private func deleteBooks() {
