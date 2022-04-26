@@ -258,6 +258,7 @@ struct iOSEditBookSheet: View {
                     },
                     trailing: Button(action: {
                         bookModel.save()
+                        dismiss()
                     }) {
                         Text("Save").bold()
                     }
