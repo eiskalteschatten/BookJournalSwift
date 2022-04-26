@@ -8,7 +8,11 @@
 import SwiftUI
 import CoreData
 
-class BookModel: ObservableObject {
+final class BookModel: ObservableObject {
+    private var viewContext: NSManagedObjectContext?
+    private var book: Book?
+    private var updatingBook = false
+    
     @Published var bookcover: Data?
     
     @Published var title: String = ""
@@ -43,59 +47,61 @@ class BookModel: ObservableObject {
     @Published var commentary: String = ""
     @Published var notes: String = ""
     
-    private var viewContext: NSManagedObjectContext?
-    
-    init() {
+    init(book: Book? = nil) {
         let persistenceController = PersistenceController.shared
         viewContext = persistenceController.container.viewContext
+        self.book = book
     }
     
     func save() {
         withAnimation {
-            let newBook = Book(context: viewContext!)
-            newBook.createdAt = Date()
-            newBook.updatedAt = Date()
+            book = book != nil ? book : Book(context: viewContext!)
             
-            if let unwrapped = bookcover {
-                newBook.bookcover = unwrapped
+            if !updatingBook {
+                book!.createdAt = Date()
             }
-            newBook.title = title
-            newBook.rating = Int16(rating)
-            newBook.onWishlist = onWishlist
-                       
-            newBook.readingStatus = readingStatus
-            newBook.dateStarted = addDateStarted ? dateStarted : nil
-            newBook.dateFinished = addDateFinished ? dateFinished : nil
-            
-            authors.forEach(newBook.addToAuthors)
-            editors.forEach(newBook.addToEditors)
-            
-            categories.forEach(newBook.addToCategories)
-            tags.forEach(newBook.addToTags)
-            genres.forEach(newBook.addToGenres)
+            book!.updatedAt = Date()
 
-            newBook.bookFormat = bookFormat
+            if let unwrapped = bookcover {
+                book!.bookcover = unwrapped
+            }
+            book!.title = title
+            book!.rating = Int16(rating)
+            book!.onWishlist = onWishlist
+
+            book!.readingStatus = readingStatus
+            book!.dateStarted = addDateStarted ? dateStarted : nil
+            book!.dateFinished = addDateFinished ? dateFinished : nil
+
+            authors.forEach(book!.addToAuthors)
+            editors.forEach(book!.addToEditors)
+
+            categories.forEach(book!.addToCategories)
+            tags.forEach(book!.addToTags)
+            genres.forEach(book!.addToGenres)
+
+            book!.bookFormat = bookFormat
             if let unwrapped = publisher {
-                newBook.publisher = unwrapped
+                book!.publisher = unwrapped
             }
             if let unwrapped = yearPublished {
-                newBook.yearPublished = unwrapped
+                book!.yearPublished = unwrapped
             }
-            newBook.isbn = isbn
+            book!.isbn = isbn
             if let unwrapped = pageCount {
-                newBook.pageCount = unwrapped
+                book!.pageCount = unwrapped
             }
-            
+
             if let unwrapped = countryOfOrigin {
-                newBook.countryOfOrigin = unwrapped
+                book!.countryOfOrigin = unwrapped
             }
-            translators.forEach(newBook.addToTranslators)
-            newBook.originalLanguage = originalLanguage
-            newBook.languageReadIn = languageReadIn
-            
-            newBook.summary = summary
-            newBook.commentary = commentary
-            newBook.notes = notes
+            translators.forEach(book!.addToTranslators)
+            book!.originalLanguage = originalLanguage
+            book!.languageReadIn = languageReadIn
+
+            book!.summary = summary
+            book!.commentary = commentary
+            book!.notes = notes
             
             do {
                 if viewContext!.hasChanges {

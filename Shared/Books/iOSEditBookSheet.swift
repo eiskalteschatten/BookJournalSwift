@@ -16,16 +16,19 @@ struct iOSEditBookSheet: View {
     }
     
     @Environment(\.dismiss) var dismiss
-    @Environment(\.managedObjectContext) private var viewContext
     
-    @ObservedObject var bookModel: BookModel
+    @ObservedObject private var bookModel: BookModel
 
     @State private var screen: Screen?
     @State private var presentCloseAlert = false
     @State private var presentImagePicker = false
     @State private var imagePickerSourceType: UIImagePickerController.SourceType = .photoLibrary
     @State private var bookcoverUIImage = UIImage()
-
+    
+    init(book: Book? = nil) {
+        bookModel = BookModel(book: book)
+    }
+    
     var body: some View {
         NavigationView {
             Form {
@@ -271,7 +274,7 @@ struct iOSEditBookSheet_Previews: PreviewProvider {
     static var previews: some View {
         let context = PersistenceController.preview.container.viewContext
         Group {
-            iOSEditBookSheet(bookModel: BookModel())
+            iOSEditBookSheet()
                 .preferredColorScheme(.dark)
                 .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                 .frame(height: /*@START_MENU_TOKEN@*/800.0/*@END_MENU_TOKEN@*/)
