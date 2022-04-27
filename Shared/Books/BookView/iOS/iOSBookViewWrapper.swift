@@ -38,7 +38,7 @@ struct iOSBookViewWrapper: View {
             Button("No", role: .cancel, action: { presentDeleteAlert = false })
             Button("Yes", role: .destructive, action: { deleteBook() })
         }, message: {
-            Text("Your changes will be lost if you continue.")
+            Text("This is permanent.")
         })
         .toolbar {
             ToolbarItem {

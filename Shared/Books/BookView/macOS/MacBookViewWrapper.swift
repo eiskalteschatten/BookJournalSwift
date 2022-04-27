@@ -36,11 +36,26 @@ struct MacBookViewWrapper: View {
                 .disabled(book == nil)
             }
             ToolbarItem {
-                Button(action: deleteBook) {
+                Button(action: promptToDeleteBook) {
                     Label("Delete", systemImage: "trash")
                 }
                 .disabled(book == nil)
             }
+        }
+    }
+    
+    private func promptToDeleteBook() {
+        let alert = NSAlert()
+        alert.messageText = "Are you sure you want to delete this book?"
+        alert.informativeText = "This is permanent."
+        alert.addButton(withTitle: "No")
+        alert.addButton(withTitle: "Yes")
+        alert.alertStyle = .warning
+        
+        let delete = alert.runModal() == NSApplication.ModalResponse.alertSecondButtonReturn
+        
+        if delete {
+            deleteBook()
         }
     }
     
