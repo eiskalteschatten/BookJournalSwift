@@ -21,7 +21,10 @@ struct MacBookViewWrapper: View {
         }
         .toolbar {
             ToolbarItem {
-                Button(action: editBook) {
+                Button {
+                    let newBookWindow = MacNewBookWindowManager(book: book)
+                    newBookWindow.openWindow()
+                } label: {
                     Label("Edit", systemImage: "pencil")
                 }
                 .disabled(book == nil)
@@ -33,10 +36,6 @@ struct MacBookViewWrapper: View {
                 .disabled(book == nil)
             }
         }
-    }
-    
-    private func editBook() {
-        // TODO
     }
     
     private func deleteBooks() {

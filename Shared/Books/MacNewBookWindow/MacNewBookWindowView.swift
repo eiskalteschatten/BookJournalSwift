@@ -15,9 +15,14 @@ struct MacNewBookWindowView: View {
     }
     
     @State private var screen: Screen = .step1
-    @StateObject private var bookModel = BookModel()
+    @ObservedObject private var bookModel: BookModel
     
     private let lastStep: Screen = .step8
+    
+    init(newBookWindow: MacNewBookWindowManager? = nil, book: Book? = nil) {
+        self.newBookWindow = newBookWindow
+        bookModel = BookModel(book: book)
+    }
     
     var body: some View {
         VStack {

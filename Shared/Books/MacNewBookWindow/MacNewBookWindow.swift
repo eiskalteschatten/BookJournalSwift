@@ -35,18 +35,19 @@ class MacNewBookWindow: NSWindow {
 }
 
 class MacNewBookWindowManager {
-    var window: MacNewBookWindow?
-    
+    private var book: Book?
+    private var window: MacNewBookWindow?
     private var viewContext: NSManagedObjectContext?
     
-    init() {
+    init(book: Book? = nil) {
         let persistenceController = PersistenceController.shared
         viewContext = persistenceController.container.viewContext
+        self.book = book
     }
     
     func openWindow() {
         if viewContext != nil {
-            let contentView = MacNewBookWindowView(newBookWindow: self)
+            let contentView = MacNewBookWindowView(newBookWindow: self, book: book)
                 .environment(\.managedObjectContext, viewContext!)
             
             window = MacNewBookWindow(

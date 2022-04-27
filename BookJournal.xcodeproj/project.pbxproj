@@ -373,9 +373,9 @@
 			children = (
 				93390AA327F20DAD003C26D3 /* BookView */,
 				9369C1D327E76EC500A39E57 /* MacNewBookWindow */,
-				9346661627C93EC100D58DE7 /* iOSEditBookSheet.swift */,
 				9329053D27C2916F000D15AE /* BookList.swift */,
 				9346342627C2DFA6003B233F /* BookListItem.swift */,
+				9346661627C93EC100D58DE7 /* iOSEditBookSheet.swift */,
 			);
 			path = Books;
 			sourceTree = "<group>";
