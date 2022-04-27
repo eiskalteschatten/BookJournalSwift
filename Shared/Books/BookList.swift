@@ -45,11 +45,11 @@ struct BookList: View {
                         selection: $bookContext.selectedBook,
                         label: {
                             BookListItem(book: book)
-                                .id(id)
                         }
                     )
                 }
                 .onDelete(perform: deleteBooks)
+                .id(id)
             }
         }
         .toolbar {
