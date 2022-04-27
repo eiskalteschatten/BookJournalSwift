@@ -8,17 +8,15 @@
 import SwiftUI
 
 struct iOSiPadOSBookView: View {
-    var book: Book?
-    
     @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
     
     var body: some View {
         if horizontalSizeClass == .regular && verticalSizeClass == .regular {
-            iPadOSBookView(book: book)
+            iPadOSBookView()
         }
         else {
-            iOSBookView(book: book)
+            iOSBookView()
         }
     }
 }

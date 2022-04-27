@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct iOSBookView: View {
-    var book: Book?
-    
+    @EnvironmentObject private var bookContext: BookContext
     @State private var showEditBookSheet = false
     
     var body: some View {
         VStack {
-            if let unwrappedBook = book {
+            if let unwrappedBook = bookContext.selectedBook {
                 let bookcover = getBookcover(book: unwrappedBook)
                 let offset = 100.0
                 let textWithLabelSpacing = 50.0
@@ -38,7 +37,7 @@ struct iOSBookView: View {
                                 
                                 Group {
                                     let width = metrics.size.width * 0.35
-                                    
+
                                     HStack(spacing: textWithLabelSpacing) {
                                         BookViewTextWithLabel(label: "Page Count", text: unwrappedBook.pageCount > 0 ? String(unwrappedBook.pageCount) : "")
                                             .frame(width: width)
@@ -52,14 +51,14 @@ struct iOSBookView: View {
                                         BookViewTextWithLabel(label: "Date Finished", text: unwrappedBook.dateFinishedFormatted)
                                             .frame(width: width)
                                     }
-                                    
+
                                     HStack(spacing: textWithLabelSpacing) {
                                         BookViewTextWithLabel(label: "Book Format", text: unwrappedBook.bookFormatStrings[0])
                                             .frame(width: width)
                                         BookViewTextWithLabel(label: "Publisher", text: unwrappedBook.publisher?.name ?? "")
                                             .frame(width: width)
                                     }
-                                    
+
                                     HStack(spacing: textWithLabelSpacing) {
                                         BookViewTextWithLabel(label: "Year Published", text: unwrappedBook.yearPublished > 0 ? String(unwrappedBook.yearPublished) : "")
                                             .frame(width: width)
@@ -67,9 +66,9 @@ struct iOSBookView: View {
                                             .frame(width: width)
                                     }
                                 }
-                                
+
                                 Spacer()
-                                
+
                                 Group {
                                     iOSBookViewGroupBox(title: "Editors", icon: "person.2.wave.2") {
                                         if unwrappedBook.editors != nil && unwrappedBook.sortedEditors.count > 0 {
@@ -79,7 +78,7 @@ struct iOSBookView: View {
                                             Text("No editors selected")
                                         }
                                     }
-                                    
+
                                     iOSBookViewGroupBox(title: "Genres", icon: "text.book.closed") {
                                         if unwrappedBook.genres != nil && unwrappedBook.sortedGenres.count > 0 {
                                             WrappingSmallChipsWithName<Genre>(data: unwrappedBook.sortedGenres, chipColor: GENRE_COLOR, alignment: .leading)
@@ -97,7 +96,7 @@ struct iOSBookView: View {
                                             Text("No categories selected")
                                         }
                                     }
-                                    
+
                                     iOSBookViewGroupBox(title: "Tags", icon: "tag") {
                                         if let unwrappedTags = unwrappedBook.tags {
                                             if unwrappedTags.allObjects.count > 0 {
@@ -108,7 +107,7 @@ struct iOSBookView: View {
                                             }
                                         }
                                     }
-                                    
+
                                     iOSBookViewGroupBox(title: "Translators", icon: "person.2") {
                                         if unwrappedBook.translators != nil && unwrappedBook.sortedTranslators.count > 0 {
                                             WrappingSmallChipsWithName<Translator>(data: unwrappedBook.sortedTranslators, chipColor: TRANSLATOR_COLOR, alignment: .leading)
@@ -117,7 +116,7 @@ struct iOSBookView: View {
                                             Text("No translators selected")
                                         }
                                     }
-                                    
+
                                     iOSBookViewGroupBox(title: "World", icon: "globe") {
                                         VStack(alignment: .leading, spacing: 20) {
                                             HStack(spacing: 20) {
@@ -128,20 +127,20 @@ struct iOSBookView: View {
                                         }
                                     }
                                 }
-                                
+
                                 Group {
                                     iOSBookViewGroupBox(title: "Summary", icon: "text.alignleft") {
                                         if let unwrappedSummary = unwrappedBook.summary {
                                             Text(unwrappedSummary)
                                         }
                                     }
-                                    
+
                                     iOSBookViewGroupBox(title: "Commentary", icon: "text.bubble") {
                                         if let unwrappedCommentary = unwrappedBook.commentary {
                                             Text(unwrappedCommentary)
                                         }
                                     }
-                                    
+
                                     iOSBookViewGroupBox(title: "Notes", icon: "note.text") {
                                         if let unwrappedNotes = unwrappedBook.notes {
                                             Text(unwrappedNotes)
@@ -169,17 +168,17 @@ struct iOSBookView: View {
                 Button(action: { showEditBookSheet.toggle() }) {
                     Label("Edit", systemImage: "pencil")
                 }
-                .disabled(book == nil)
+                .disabled(bookContext.selectedBook == nil)
             }
             ToolbarItem {
                 Button(action: deleteBooks) {
                     Label("Delete", systemImage: "trash")
                 }
-                .disabled(book == nil)
+                .disabled(bookContext.selectedBook == nil)
             }
         }
         .sheet(isPresented: $showEditBookSheet) {
-            iOSEditBookSheet(book: book)
+            iOSEditBookSheet()
         }
     }
     
@@ -191,9 +190,7 @@ struct iOSBookView: View {
 struct iOSBookView_Previews: PreviewProvider {
     static var previews: some View {
         let context = PersistenceController.preview.container.viewContext
-        let book = context.registeredObjects.first(where: { $0 is Book }) as! Book
-        
-        iOSBookView(book: book).preferredColorScheme(.dark).environment(\.managedObjectContext, context)
+        iOSBookView().preferredColorScheme(.dark).environment(\.managedObjectContext, context)
     }
 }
 

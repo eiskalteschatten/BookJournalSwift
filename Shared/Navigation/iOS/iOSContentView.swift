@@ -8,17 +8,21 @@
 import SwiftUI
 
 struct iOSContentView: View {
+    @StateObject var bookContext = BookContext()
+    
     var body: some View {
         TabView {
             iOSBooksView()
                 .tabItem {
                     Label("Books", systemImage: "books.vertical")
                 }
+                .environmentObject(bookContext)
 
             iOSWishListView()
                 .tabItem {
                     Label("Wishlist", systemImage: "list.star")
                 }
+                .environmentObject(bookContext)
         }
     }
 }

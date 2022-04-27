@@ -47,9 +47,12 @@ final class BookModel: ObservableObject {
     @Published var commentary: String = ""
     @Published var notes: String = ""
     
-    init(book: Book? = nil) {
+    init() {
         let persistenceController = PersistenceController.shared
         viewContext = persistenceController.container.viewContext
+    }
+    
+    func addBook(book: Book) {
         self.book = book
         initVariables()
     }

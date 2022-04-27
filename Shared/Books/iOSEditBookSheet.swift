@@ -17,7 +17,8 @@ struct iOSEditBookSheet: View {
     
     @Environment(\.dismiss) var dismiss
     
-    @ObservedObject private var bookModel: BookModel
+    @EnvironmentObject private var bookContext: BookContext
+    @ObservedObject private var bookModel: BookModel = BookModel()
 
     @State private var screen: Screen?
     @State private var presentCloseAlert = false
@@ -25,15 +26,15 @@ struct iOSEditBookSheet: View {
     @State private var imagePickerSourceType: UIImagePickerController.SourceType = .photoLibrary
     @State private var bookcoverUIImage = UIImage()
     
-    private var sheetTitle: String = "Add a New Book"
+    @State private var sheetTitle: String = "Add a New Book"
     
-    init(book: Book? = nil) {
-        bookModel = BookModel(book: book)
-        
-        if let title = book?.title {
-            sheetTitle = "Edit \(title)"
-        }
-    }
+//    init() {
+//        bookModel = BookModel(book: bookContext.selectedBook)
+//
+//        if let title = bookContext.selectedBook?.title {
+//            sheetTitle = "Edit \(title)"
+//        }
+//    }
     
     var body: some View {
         NavigationView {
@@ -249,6 +250,15 @@ struct iOSEditBookSheet: View {
                     Section("Notes") {
                         // Notes
                         TextEditor(text: $bookModel.notes)
+                    }
+                }
+            }
+            .onAppear {
+                if bookContext.selectedBook != nil {
+                    bookModel.addBook(book: bookContext.selectedBook!)
+                    
+                    if let title = bookContext.selectedBook?.title {
+                        sheetTitle = "Edit \(title)"
                     }
                 }
             }

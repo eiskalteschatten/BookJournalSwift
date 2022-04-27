@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct iPadOSBookView: View {
-    var book: Book?
-    
+    @EnvironmentObject private var bookContext: BookContext
     @State private var showEditBookSheet = false
     
     var body: some View {
         VStack {
-            if let unwrappedBook = book {
+            if let unwrappedBook = bookContext.selectedBook {
                 let bookcover = getBookcover(book: unwrappedBook)
                 let offset = 100.0
                 let textWithLabelSpacing = 50.0
@@ -171,17 +170,17 @@ struct iPadOSBookView: View {
                 Button(action: { showEditBookSheet.toggle() }) {
                     Label("Edit", systemImage: "pencil")
                 }
-                .disabled(book == nil)
+                .disabled(bookContext.selectedBook == nil)
             }
             ToolbarItem {
                 Button(action: deleteBooks) {
                     Label("Delete", systemImage: "trash")
                 }
-                .disabled(book == nil)
+                .disabled(bookContext.selectedBook == nil)
             }
         }
         .sheet(isPresented: $showEditBookSheet) {
-            iOSEditBookSheet(book: book)
+            iOSEditBookSheet()
         }
     }
     
@@ -193,8 +192,6 @@ struct iPadOSBookView: View {
 struct iPadOSBookView_Previews: PreviewProvider {
     static var previews: some View {
         let context = PersistenceController.preview.container.viewContext
-        let book = context.registeredObjects.first(where: { $0 is Book }) as! Book
-        
-        iPadOSBookView(book: book).preferredColorScheme(.dark).environment(\.managedObjectContext, context)
+        iPadOSBookView().preferredColorScheme(.dark).environment(\.managedObjectContext, context)
     }
 }

@@ -40,6 +40,8 @@
 		9346661D27C9407000D58DE7 /* MacNewBookWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9346661827C93FD000D58DE7 /* MacNewBookWindowView.swift */; };
 		9346662827C9841900D58DE7 /* Books.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9346662727C9841900D58DE7 /* Books.swift */; };
 		9346662927C9841900D58DE7 /* Books.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9346662727C9841900D58DE7 /* Books.swift */; };
+		934869912819452000D9C6B1 /* BookContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934869902819452000D9C6B1 /* BookContext.swift */; };
+		934869922819452000D9C6B1 /* BookContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934869902819452000D9C6B1 /* BookContext.swift */; };
 		93548C8A27E8AA50004524B7 /* MacNewBookStep1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93548C8927E8AA50004524B7 /* MacNewBookStep1.swift */; };
 		9369C18527E5128200A39E57 /* CreateAuthor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9369C18427E5128200A39E57 /* CreateAuthor.swift */; };
 		9369C18627E5128200A39E57 /* CreateAuthor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9369C18427E5128200A39E57 /* CreateAuthor.swift */; };
@@ -171,6 +173,7 @@
 		9346661627C93EC100D58DE7 /* iOSEditBookSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSEditBookSheet.swift; sourceTree = "<group>"; };
 		9346661827C93FD000D58DE7 /* MacNewBookWindowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacNewBookWindowView.swift; sourceTree = "<group>"; };
 		9346662727C9841900D58DE7 /* Books.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Books.swift; sourceTree = "<group>"; };
+		934869902819452000D9C6B1 /* BookContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookContext.swift; sourceTree = "<group>"; };
 		93548C8927E8AA50004524B7 /* MacNewBookStep1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacNewBookStep1.swift; sourceTree = "<group>"; };
 		9369C18427E5128200A39E57 /* CreateAuthor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAuthor.swift; sourceTree = "<group>"; };
 		9369C18827E51D5500A39E57 /* EditorsSearchList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorsSearchList.swift; sourceTree = "<group>"; };
@@ -369,6 +372,7 @@
 				9346661627C93EC100D58DE7 /* iOSEditBookSheet.swift */,
 				9329053D27C2916F000D15AE /* BookList.swift */,
 				9346342627C2DFA6003B233F /* BookListItem.swift */,
+				934869902819452000D9C6B1 /* BookContext.swift */,
 			);
 			path = Books;
 			sourceTree = "<group>";
@@ -739,6 +743,7 @@
 				9390CA0327F8DF3600C7FF7B /* BookViewTextWithLabel.swift in Sources */,
 				9369C1B227E631EC00A39E57 /* LanguagePicker.swift in Sources */,
 				93A5700827FB12D1004CDEA0 /* BookRatingEditor.swift in Sources */,
+				934869912819452000D9C6B1 /* BookContext.swift in Sources */,
 				936B8D232816D735001465B9 /* Binding.swift in Sources */,
 				9369C1BE27E6481500A39E57 /* TagsSearchList.swift in Sources */,
 				9369C19027E5204A00A39E57 /* CreatePublisher.swift in Sources */,
@@ -824,6 +829,7 @@
 				9369C19B27E53C3D00A39E57 /* CreateTranslator.swift in Sources */,
 				939BB9F427CA785F0001B0DF /* Chip.swift in Sources */,
 				939BB9F727CA9BB40001B0DF /* SmallChip.swift in Sources */,
+				934869922819452000D9C6B1 /* BookContext.swift in Sources */,
 				93C6E78627EB71C900E0E986 /* CreateElementView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

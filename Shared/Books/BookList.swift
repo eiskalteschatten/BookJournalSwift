@@ -9,9 +9,9 @@ import SwiftUI
 import CoreData
 
 struct BookList: View {
-    private var predicate: NSPredicate?
+    var predicate: NSPredicate?
     
-    @State private var selectedBook: Book?
+//    @State private var selectedBook: Book?
     @Environment(\.managedObjectContext) private var viewContext
     
     #if os(iOS)
@@ -20,30 +20,34 @@ struct BookList: View {
     #else
     private typealias BookView = MacBookView
     #endif
-
-    @FetchRequest private var books: FetchedResults<Book>
     
-    init(predicate: NSPredicate? = nil) {
-        self._books = FetchRequest<Book>(
-            sortDescriptors: [NSSortDescriptor(keyPath: \Book.title, ascending: false)],
-            predicate: predicate,
-            animation: .default
-        )
-    }
+    @EnvironmentObject private var bookContext: BookContext
+    
+//    @FetchRequest private var books: FetchedResults<Book>
+//
+//    init(predicate: NSPredicate? = nil) {
+//        self._books = FetchRequest<Book>(
+//            sortDescriptors: [NSSortDescriptor(keyPath: \Book.title, ascending: false)],
+//            predicate: predicate,
+//            animation: .default
+//        )
+//    }
 
     var body: some View {
         List {
-            ForEach(books) { book in
-                NavigationLink(
-                    destination: BookView(book: book),
-                    tag: book,
-                    selection: $selectedBook,
-                    label: {
-                        BookListItem(book: book)
-                    }
-                )
+            if let books = bookContext.booksInBookList {
+                ForEach(books) { book in
+                    NavigationLink(
+                        destination: BookView(),
+                        tag: book,
+                        selection: $bookContext.selectedBook,
+                        label: {
+                            BookListItem(book: book)
+                        }
+                    )
+                }
+                .onDelete(perform: deleteBooks)
             }
-            .onDelete(perform: deleteBooks)
         }
         .toolbar {
             #if os(iOS)
@@ -64,6 +68,9 @@ struct BookList: View {
                 }
             }
         }
+        .onAppear {
+            bookContext.fetchBooks(predicate: predicate)
+        }
         #if os(iOS)
         .sheet(isPresented: $showNewBookSheet) {
             iOSEditBookSheet()
@@ -73,8 +80,8 @@ struct BookList: View {
 
     private func deleteBooks(offsets: IndexSet) {
         withAnimation {
-            offsets.map { books[$0] }.forEach(viewContext.delete)
-            selectedBook = nil
+            offsets.map { bookContext.booksInBookList![$0] }.forEach(viewContext.delete)
+            bookContext.selectedBook = nil
 
             do {
                 try viewContext.save()
