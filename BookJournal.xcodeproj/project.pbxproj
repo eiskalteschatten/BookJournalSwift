@@ -353,11 +353,8 @@
 		93390AA327F20DAD003C26D3 /* BookView */ = {
 			isa = PBXGroup;
 			children = (
-				932E8DB928199D8300950389 /* MacBookViewWrapper.swift */,
-				9329054327C29C55000D15AE /* MacBookView.swift */,
-				9372E7BA27F9FC0D0019146C /* iOSBookViewWrapper.swift */,
-				93D77C9227F59E1900443B00 /* iOSBookView.swift */,
-				9372E7B827F9FBAF0019146C /* iPadOSBookView.swift */,
+				93B027C52819D1E400C25857 /* macOS */,
+				93B027C42819D1D500C25857 /* iOS */,
 				93882F1F27F86F7300D5AA61 /* BookViewGroupBox */,
 				9390CA0227F8DF3600C7FF7B /* BookViewTextWithLabel.swift */,
 				93D77C9427F59FDF00443B00 /* BookViewBookCoverBlur.swift */,
@@ -529,6 +526,25 @@
 				93A8F9A727E778CB00C8E8C5 /* BookModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		93B027C42819D1D500C25857 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				9372E7BA27F9FC0D0019146C /* iOSBookViewWrapper.swift */,
+				93D77C9227F59E1900443B00 /* iOSBookView.swift */,
+				9372E7B827F9FBAF0019146C /* iPadOSBookView.swift */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		93B027C52819D1E400C25857 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				932E8DB928199D8300950389 /* MacBookViewWrapper.swift */,
+				9329054327C29C55000D15AE /* MacBookView.swift */,
+			);
+			path = macOS;
 			sourceTree = "<group>";
 		};
 		93FB888F27FB818E0012D3AA /* iOS */ = {
