@@ -35,14 +35,17 @@ struct iOSBookViewWrapper: View {
         }
         .toolbar {
             ToolbarItem {
-                Button(action: { showEditBookSheet.toggle() }) {
-                    Label("Edit", systemImage: "pencil")
-                }
-            }
-            ToolbarItem {
-                Button(action: deleteBooks) {
-                    Label("Delete", systemImage: "trash")
-                }
+                Menu {
+                    Button(action: { showEditBookSheet.toggle() }) {
+                        Label("Edit", systemImage: "pencil")
+                    }
+                    Divider()
+                    Button(role: .destructive) { deleteBooks() } label: {
+                        Label("Delete", systemImage: "trash")
+                    }
+                 } label: {
+                     Image(systemName: "ellipsis.circle")
+                 }
             }
         }
     }
