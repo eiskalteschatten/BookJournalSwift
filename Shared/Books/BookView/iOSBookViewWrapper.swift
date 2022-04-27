@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct iOSiPadOSBookView: View {
+struct iOSBookViewWrapper: View {
     var book: Book?
     
     @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
@@ -23,16 +23,15 @@ struct iOSiPadOSBookView: View {
             }
         }
         else {
-            // TODO: show monochrome logo
-            Text("A monochrome logo should go here")
+            NoBookSelected()
         }
     }
 }
 
-struct iOSiPadOSBookView_Previews: PreviewProvider {
+struct iOSBookViewWrapper_Previews: PreviewProvider {
     static var previews: some View {
         let context = PersistenceController.preview.container.viewContext
         let book = context.registeredObjects.first(where: { $0 is Book }) as! Book
-        iOSiPadOSBookView(book: book)
+        iOSBookViewWrapper(book: book)
     }
 }

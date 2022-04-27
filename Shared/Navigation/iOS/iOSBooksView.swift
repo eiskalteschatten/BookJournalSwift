@@ -61,7 +61,7 @@ struct iOSBooksView: View {
             // TODO: something other than just text
             Text("Select a category")
             
-            iOSiPadOSBookView()
+            iOSBookViewWrapper()
         }
     }
 }
