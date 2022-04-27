@@ -1,5 +1,5 @@
 //
-//  MacNewBookWindow.swift
+//  MacEditBookWindow.swift
 //  BookJournal (macOS)
 //
 //  Created by Alex Seifert on 20.03.22.
@@ -10,7 +10,7 @@ import SwiftUI
 
 fileprivate let CLOSE_WITH_PROMPT_DEFAULT = true
 
-class MacNewBookWindow: NSWindow {
+class MacEditBookWindow: NSWindow {
     var closeWithPrompt = CLOSE_WITH_PROMPT_DEFAULT
     
     override func close() {
@@ -34,9 +34,9 @@ class MacNewBookWindow: NSWindow {
     }
 }
 
-class MacNewBookWindowManager {
+class MacEditBookWindowManager {
     private var book: Book?
-    private var window: MacNewBookWindow?
+    private var window: MacEditBookWindow?
     private var viewContext: NSManagedObjectContext?
     
     init(book: Book? = nil) {
@@ -47,10 +47,10 @@ class MacNewBookWindowManager {
     
     func openWindow() {
         if viewContext != nil {
-            let contentView = MacNewBookWindowView(newBookWindow: self, book: book)
+            let contentView = MacEditBookWindowView(newBookWindow: self, book: book)
                 .environment(\.managedObjectContext, viewContext!)
             
-            window = MacNewBookWindow(
+            window = MacEditBookWindow(
                 contentRect: NSRect(x: 0, y: 0, width: 450, height: 550),
                 styleMask: [.titled, .closable, .miniaturizable, .resizable],
                 backing: .buffered,

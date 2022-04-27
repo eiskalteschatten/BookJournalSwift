@@ -22,7 +22,7 @@ struct MacBookViewWrapper: View {
         .toolbar {
             ToolbarItem {
                 Button {
-                    let newBookWindow = MacNewBookWindowManager(book: book)
+                    let newBookWindow = MacEditBookWindowManager(book: book)
                     newBookWindow.openWindow()
                 } label: {
                     Label("Edit", systemImage: "pencil")

@@ -1,5 +1,5 @@
 //
-//  MacNewBookStep3.swift
+//  MacEditBookStep4.swift
 //  BookJournal (macOS)
 //
 //  Created by Alex Seifert on 21.03.22.
@@ -7,30 +7,30 @@
 
 import SwiftUI
 
-struct MacNewBookStep3: View {
+struct MacEditBookStep4: View {
     @ObservedObject var bookModel: BookModel
     
     var body: some View {
         VStack {
-            MacNewBookStepTitle("People")
-            
-            // Authors
-            AuthorsSearchList(selectedItems: $bookModel.authors)
+            MacEditBookStepTitle("Categorization")
+
+            // Categories
+            CategoriesSearchList(selectedItems: $bookModel.categories)
             
             Divider()
                 .padding(.vertical)
-            
-            // Editors
-            EditorsSearchList(selectedItems: $bookModel.editors)
+        
+            // Tags
+            TagsSearchList(selectedItems: $bookModel.tags)
         }
     }
 }
 
-struct MacNewBookStep3_Previews: PreviewProvider {
+struct MacEditBookStep4_Previews: PreviewProvider {
     @StateObject static var bookModel = BookModel()
     
     static var previews: some View {
-        MacNewBookStep3(bookModel: bookModel)
+        MacEditBookStep4(bookModel: bookModel)
             .frame(height: 500.0)
     }
 }

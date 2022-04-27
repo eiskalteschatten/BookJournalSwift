@@ -57,7 +57,7 @@ struct BookList: View {
                     #if os(iOS)
                     showNewBookSheet.toggle()
                     #else
-                    let newBookWindow = MacNewBookWindowManager()
+                    let newBookWindow = MacEditBookWindowManager()
                     newBookWindow.openWindow()
                     #endif
                 }) {

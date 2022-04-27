@@ -1,5 +1,5 @@
 //
-//  MacNewBookStep8.swift
+//  MacEditBookStep8.swift
 //  BookJournal (macOS)
 //
 //  Created by Alex Seifert on 04.04.22.
@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct MacNewBookStep8: View {
+struct MacEditBookStep8: View {
     @ObservedObject var bookModel: BookModel
     
     var body: some View {
         VStack {
-            MacNewBookStepTitle("Summary, Commentary & Notes")
+            MacEditBookStepTitle("Summary, Commentary & Notes")
             
             Form {
                 // Summary
@@ -31,11 +31,11 @@ struct MacNewBookStep8: View {
     }
 }
 
-struct MacNewBookStep8_Previews: PreviewProvider {
+struct MacEditBookStep8_Previews: PreviewProvider {
     @StateObject static var bookModel = BookModel()
     
     static var previews: some View {
-        MacNewBookStep8(bookModel: bookModel)
+        MacEditBookStep8(bookModel: bookModel)
             .frame(height: 500.0)
     }
 }

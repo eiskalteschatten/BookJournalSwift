@@ -1,5 +1,5 @@
 //
-//  MacNewBookStep7.swift
+//  MacEditBookStep7.swift
 //  BookJournal (macOS)
 //
 //  Created by Alex Seifert on 27.03.22.
@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct MacNewBookStep7: View {
+struct MacEditBookStep7: View {
     @ObservedObject var bookModel: BookModel
     
     var body: some View {
         VStack {
-            MacNewBookStepTitle("World")
+            MacEditBookStepTitle("World")
             
             // Country of Origin
             CountriesSearchList(title: "Country Of Origin", selectedItem: $bookModel.countryOfOrigin)
@@ -34,11 +34,11 @@ struct MacNewBookStep7: View {
     }
 }
 
-struct MacNewBookStep7_Previews: PreviewProvider {
+struct MacEditBookStep7_Previews: PreviewProvider {
     @StateObject static var bookModel = BookModel()
     
     static var previews: some View {
-        MacNewBookStep7(bookModel: bookModel)
+        MacEditBookStep7(bookModel: bookModel)
             .frame(height: 500.0)
     }
 }

@@ -1,5 +1,5 @@
 //
-//  MacNewBookStep2.swift
+//  MacEditBookStep2.swift
 //  BookJournal (macOS)
 //
 //  Created by Alex Seifert on 21.03.22.
@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct MacNewBookStep2: View {
+struct MacEditBookStep2: View {
     @ObservedObject var bookModel: BookModel
     
     var body: some View {
         VStack {
-            MacNewBookStepTitle("Book Status & Rating")
+            MacEditBookStepTitle("Book Status & Rating")
             
             BookRatingEditor(rating: $bookModel.rating)
             
@@ -60,11 +60,11 @@ struct MacNewBookStep2: View {
     }
 }
 
-struct MacNewBookStep2_Previews: PreviewProvider {
+struct MacEditBookStep2_Previews: PreviewProvider {
     @StateObject static var bookModel = BookModel()
     
     static var previews: some View {
-        MacNewBookStep2(bookModel: bookModel)
+        MacEditBookStep2(bookModel: bookModel)
             .frame(height: 500.0)
     }
 }
