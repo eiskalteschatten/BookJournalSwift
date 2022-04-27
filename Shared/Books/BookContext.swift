@@ -34,8 +34,4 @@ final class BookContext: ObservableObject {
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
     }
-    
-    func refreshBooks() {
-        fetchBooks(predicate: predicate)
-    }
 }
