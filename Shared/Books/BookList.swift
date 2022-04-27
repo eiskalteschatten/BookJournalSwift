@@ -13,7 +13,6 @@ struct BookList: View {
     
     @State private var id = UUID()
     
-//    @State private var selectedBook: Book?
     @Environment(\.managedObjectContext) private var viewContext
     
     #if os(iOS)
@@ -25,16 +24,6 @@ struct BookList: View {
     
     @EnvironmentObject private var bookContext: BookContext
     
-//    @FetchRequest private var books: FetchedResults<Book>
-//
-//    init(predicate: NSPredicate? = nil) {
-//        self._books = FetchRequest<Book>(
-//            sortDescriptors: [NSSortDescriptor(keyPath: \Book.title, ascending: false)],
-//            predicate: predicate,
-//            animation: .default
-//        )
-//    }
-
     var body: some View {
         List {
             if let books = bookContext.booksInBookList {

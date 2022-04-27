@@ -28,14 +28,6 @@ struct iOSEditBookSheet: View {
     
     @State private var sheetTitle: String = "Add a New Book"
     
-//    init() {
-//        bookModel = BookModel(book: bookContext.selectedBook)
-//
-//        if let title = bookContext.selectedBook?.title {
-//            sheetTitle = "Edit \(title)"
-//        }
-//    }
-    
     var body: some View {
         NavigationView {
             Form {
