@@ -14,17 +14,25 @@ struct iOSiPadOSBookView: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
     
     var body: some View {
-        if horizontalSizeClass == .regular && verticalSizeClass == .regular {
-            iPadOSBookView(book: book)
+        if let unwrappedBook = book {
+            if horizontalSizeClass == .regular && verticalSizeClass == .regular {
+                iPadOSBookView(book: unwrappedBook)
+            }
+            else {
+                iOSBookView(book: unwrappedBook)
+            }
         }
         else {
-            iOSBookView(book: book)
+            // TODO: show monochrome logo
+            Text("A monochrome logo should go here")
         }
     }
 }
 
 struct iOSiPadOSBookView_Previews: PreviewProvider {
     static var previews: some View {
-        iOSiPadOSBookView()
+        let context = PersistenceController.preview.container.viewContext
+        let book = context.registeredObjects.first(where: { $0 is Book }) as! Book
+        iOSiPadOSBookView(book: book)
     }
 }

@@ -14,7 +14,6 @@ struct BookList: View {
     private var predicate: NSPredicate?
     
     @State private var selectedBook: Book?
-    @State private var id = UUID()
     
     #if os(iOS)
     @State private var showNewBookSheet = false
@@ -46,10 +45,6 @@ struct BookList: View {
                 )
             }
             .onDelete(perform: deleteBooks)
-            .id(id)
-        }
-        .onAppear {
-            id = UUID()
         }
         .toolbar {
             #if os(iOS)

@@ -10,7 +10,7 @@ import CoreData
 import WrappingHStack
 
 struct BookListItem: View {
-    var book: Book
+    @ObservedObject var book: Book
     
     var body: some View {
         HStack(alignment: .center, spacing: 10) {
