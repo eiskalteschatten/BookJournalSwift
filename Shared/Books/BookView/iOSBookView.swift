@@ -10,6 +10,7 @@ import SwiftUI
 struct iOSBookView: View {
     var book: Book?
     
+    @State private var id = UUID()
     @State private var showEditBookSheet = false
     
     var body: some View {
@@ -156,6 +157,7 @@ struct iOSBookView: View {
                     }
                 }
                 .edgesIgnoringSafeArea(.top)
+                .id(id)
             }
             else {
                 // TODO: show a monochrome version of the app icon
@@ -180,6 +182,9 @@ struct iOSBookView: View {
         }
         .sheet(isPresented: $showEditBookSheet) {
             iOSEditBookSheet(book: book)
+                .onDisappear {
+                    id = UUID()
+                }
         }
     }
     

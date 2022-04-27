@@ -9,10 +9,12 @@ import SwiftUI
 import CoreData
 
 struct BookList: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    
     private var predicate: NSPredicate?
     
     @State private var selectedBook: Book?
-    @Environment(\.managedObjectContext) private var viewContext
+    @State private var id = UUID()
     
     #if os(iOS)
     @State private var showNewBookSheet = false
@@ -44,6 +46,10 @@ struct BookList: View {
                 )
             }
             .onDelete(perform: deleteBooks)
+            .id(id)
+        }
+        .onAppear {
+            id = UUID()
         }
         .toolbar {
             #if os(iOS)
