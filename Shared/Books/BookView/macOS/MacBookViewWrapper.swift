@@ -36,7 +36,7 @@ struct MacBookViewWrapper: View {
                 .disabled(book == nil)
             }
             ToolbarItem {
-                Button(action: deleteBooks) {
+                Button(action: deleteBook) {
                     Label("Delete", systemImage: "trash")
                 }
                 .disabled(book == nil)
@@ -44,7 +44,7 @@ struct MacBookViewWrapper: View {
         }
     }
     
-    private func deleteBooks() {
+    private func deleteBook() {
         withAnimation {
             if let unwrappedBook = book {
                 book = nil

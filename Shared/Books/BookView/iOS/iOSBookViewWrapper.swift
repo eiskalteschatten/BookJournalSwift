@@ -14,6 +14,7 @@ struct iOSBookViewWrapper: View {
     
     @Binding var book: Book?
     @State private var showEditBookSheet = false
+    @State private var presentDeleteAlert = false
     
     init(book: Binding<Book?> = Binding.constant(nil)) {
         self._book = book
@@ -33,6 +34,12 @@ struct iOSBookViewWrapper: View {
                 NoBookSelected()
             }
         }
+        .alert("Are you sure you want to delete this book?", isPresented: $presentDeleteAlert, actions: {
+            Button("No", role: .cancel, action: { presentDeleteAlert = false })
+            Button("Yes", role: .destructive, action: { deleteBook() })
+        }, message: {
+            Text("Your changes will be lost if you continue.")
+        })
         .toolbar {
             ToolbarItem {
                 Menu {
@@ -40,7 +47,7 @@ struct iOSBookViewWrapper: View {
                         Label("Edit", systemImage: "pencil")
                     }
                     Divider()
-                    Button(role: .destructive) { deleteBooks() } label: {
+                    Button(role: .destructive) { presentDeleteAlert.toggle() } label: {
                         Label("Delete", systemImage: "trash")
                     }
                  } label: {
@@ -50,7 +57,7 @@ struct iOSBookViewWrapper: View {
         }
     }
     
-    private func deleteBooks() {
+    private func deleteBook() {
         withAnimation {
             if let unwrappedBook = book {
                 book = nil
