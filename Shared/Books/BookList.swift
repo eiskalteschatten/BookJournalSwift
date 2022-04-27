@@ -11,6 +11,8 @@ import CoreData
 struct BookList: View {
     var predicate: NSPredicate?
     
+    @State private var id = UUID()
+    
 //    @State private var selectedBook: Book?
     @Environment(\.managedObjectContext) private var viewContext
     
@@ -43,6 +45,7 @@ struct BookList: View {
                         selection: $bookContext.selectedBook,
                         label: {
                             BookListItem(book: book)
+                                .id(id)
                         }
                     )
                 }
@@ -70,10 +73,15 @@ struct BookList: View {
         }
         .onAppear {
             bookContext.fetchBooks(predicate: predicate)
+            id = UUID()
         }
         #if os(iOS)
         .sheet(isPresented: $showNewBookSheet) {
             iOSEditBookSheet()
+                .onDisappear {
+                    bookContext.fetchBooks(predicate: predicate)
+                    id = UUID()
+                }
         }
         #endif
     }
