@@ -9,8 +9,7 @@ import SwiftUI
 
 struct iOSBookView: View {
     @ObservedObject var book: Book
-    
-    @State private var showEditBookSheet = false
+    @Binding var showEditBookSheet: Bool
     
     var body: some View {
         VStack {
@@ -25,7 +24,7 @@ struct iOSBookView: View {
                     
                         VStack(spacing: 30) {
                             VStack(spacing: 10) {
-                                BookViewBookCoverTitle(bookcover: bookcover, title: book.title!)
+                                BookViewBookCoverTitle(bookcover: bookcover, title: book.title)
                                 BookViewAuthors(authors: book.sortedAuthors)
                             }
                             
@@ -156,34 +155,21 @@ struct iOSBookView: View {
                 .edgesIgnoringSafeArea(.top)
             }
         }
-        .toolbar {
-            ToolbarItem {
-                Button(action: { showEditBookSheet.toggle() }) {
-                    Label("Edit", systemImage: "pencil")
-                }
-            }
-            ToolbarItem {
-                Button(action: deleteBooks) {
-                    Label("Delete", systemImage: "trash")
-                }
-            }
-        }
+        
         .sheet(isPresented: $showEditBookSheet) {
             iOSEditBookSheet(book: book)
         }
     }
-    
-    private func deleteBooks() {
-        // TODO
-    }
 }
 
 struct iOSBookView_Previews: PreviewProvider {
+    @State static var showEditBookSheet = false
+    
     static var previews: some View {
         let context = PersistenceController.preview.container.viewContext
         let book = context.registeredObjects.first(where: { $0 is Book }) as! Book
         
-        iOSBookView(book: book).preferredColorScheme(.dark).environment(\.managedObjectContext, context)
+        iOSBookView(book: book, showEditBookSheet: $showEditBookSheet).preferredColorScheme(.dark).environment(\.managedObjectContext, context)
     }
 }
 
