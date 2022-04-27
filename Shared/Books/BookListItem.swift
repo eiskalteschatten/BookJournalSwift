@@ -23,7 +23,7 @@ struct BookListItem: View {
                 .clipped()
             
             VStack(alignment: .leading, spacing: 3.0) {
-                Text(book.title!)
+                Text(book.title ?? "")
                     .font(Font.body.bold())
                     .padding(.bottom, 2)
                 

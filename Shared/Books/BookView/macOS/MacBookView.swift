@@ -26,7 +26,7 @@ struct MacBookView: View {
                         
                         VStack(spacing: groupBoxSpacing) {
                             VStack(spacing: 10) {
-                                BookViewBookCoverTitle(bookcover: bookcover, title: book.title!)
+                                BookViewBookCoverTitle(bookcover: bookcover, title: book.title)
                                 BookViewAuthors(authors: book.sortedAuthors)
                             }
                             

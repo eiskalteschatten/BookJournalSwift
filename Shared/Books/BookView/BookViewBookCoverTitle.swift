@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BookViewBookCoverTitle: View {
     var bookcover: Image
-    var title: String
+    var title: String?
     
     var body: some View {
         VStack(spacing: 30) {
@@ -26,7 +26,7 @@ struct BookViewBookCoverTitle: View {
                 .padding(.horizontal)
                 .shadow(radius: 5)
             
-            Text(title)
+            Text(title ?? "")
                 .font(.title)
         }
     }

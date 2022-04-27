@@ -36,7 +36,7 @@ struct BookList: View {
         List {
             ForEach(books) { book in
                 NavigationLink(
-                    destination: BookView(book: book),
+                    destination: BookView(book: $selectedBook),
                     tag: book,
                     selection: $selectedBook,
                     label: {
