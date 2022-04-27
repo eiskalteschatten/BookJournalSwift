@@ -69,6 +69,8 @@ struct BookList: View {
         .sheet(isPresented: $showNewBookSheet) {
             iOSEditBookSheet()
         }
+        #else
+        .frame(minWidth: 250)
         #endif
     }
 
