@@ -1,15 +1,19 @@
 //
-//  CreateAuthor.swift
+//  CreateNamedElement.swift
 //  BookJournal
 //
-//  Created by Alex Seifert on 18.03.22.
+//  Created by Alex Seifert on 28.04.22.
 //
 
 import SwiftUI
+import CoreData
 
-struct CreateAuthor: View {
+struct CreateNamedElement<T: AbstractName>: View {
+    var createEntity: () -> T
+    var title: String
+    
     #if os(iOS)
-    @Binding var screen: AuthorsSearchListScreen?
+    @Binding var screen: SearchListScreen?
     #else
     @Binding var showScreen: Bool
     #endif
@@ -17,7 +21,7 @@ struct CreateAuthor: View {
     @State private var name: String = ""
     
     var body: some View {
-        CreateElementView(title: "Create an Author", close: close, save: save) {
+        CreateElementView(title: title, close: close, save: save) {
             Form {
                 TextField(
                     "Name",
@@ -31,10 +35,10 @@ struct CreateAuthor: View {
         let persistenceController = PersistenceController.shared
         let viewContext = persistenceController.container.viewContext
         
-        let newAuthor = Author(context: viewContext)
-        newAuthor.createdAt = Date()
-        newAuthor.updatedAt = Date()
-        newAuthor.name = name
+        let newEntity = createEntity()
+        newEntity.createdAt = Date()
+        newEntity.updatedAt = Date()
+        newEntity.name = name
         
         do {
             try viewContext.save()
@@ -55,18 +59,24 @@ struct CreateAuthor: View {
     }
 }
 
-struct CreateAuthor_Previews: PreviewProvider {
+struct CreateNamedElement_Previews: PreviewProvider {
+    static let viewContext = PersistenceController.preview.container.viewContext
+    
     #if os(iOS)
-    @State static var screen: AuthorsSearchListScreen?
+    @State static var screen: SearchListScreen?
     #else
     @State static var showScreen: Bool = true
     #endif
-    
+        
     static var previews: some View {
         #if os(iOS)
-        CreateAuthor(screen: $screen)
+        CreateNamedElement(createEntity: createEntity, title: "Create an Author", screen: $screen)
         #else
-        CreateAuthor(showScreen: $showScreen)
+        CreateNamedElement(createEntity: createEntity, title: "Create an Author", showScreen: $showScreen)
         #endif
+    }
+    
+    static private func createEntity() -> Author {
+        return Author(context: viewContext)
     }
 }

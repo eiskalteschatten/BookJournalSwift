@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-enum AuthorsSearchListScreen: Int {
+enum SearchListScreen: Int {
     case home, create
 }
 
 struct AuthorsSearchList: View {
-    @State private var screen: AuthorsSearchListScreen? = .home
+    @State private var screen: SearchListScreen? = .home
     
     @Environment(\.managedObjectContext) private var viewContext
     
@@ -44,8 +44,8 @@ struct AuthorsSearchList: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink(
-                    destination: CreateAuthor(screen: $screen),
-                    tag: AuthorsSearchListScreen.create,
+                    destination: CreateNamedElement<Author>(createEntity: createEntity, title: "Create an Author", screen: $screen),
+                    tag: SearchListScreen.create,
                     selection: $screen,
                     label: {
                         Image(systemName: "plus")
@@ -58,9 +58,13 @@ struct AuthorsSearchList: View {
         }
         #else
         .sheet(isPresented: $showCreateSheet) {
-            CreateAuthor(showScreen: $showCreateSheet)
+            CreateNamedElement<Author>(createEntity: createEntity, title: "Create an Author", showScreen: $showCreateSheet)
         }
         #endif
+    }
+    
+    private func createEntity() -> Author {
+        return Author(context: viewContext)
     }
     
     private func delete(offsets: IndexSet) {
