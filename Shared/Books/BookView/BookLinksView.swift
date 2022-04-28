@@ -14,7 +14,6 @@ struct BookLinksView: View {
         HStack(spacing: 20) {
             Button("Amazon", action: {
                 guard let url = buildSearchURL(AMAZON_SEARCH_URL) else {
-                    // TODO: what do I do here?
                     return
                 }
                 
@@ -26,7 +25,6 @@ struct BookLinksView: View {
             
             Button("Google Books", action: {
                 guard let url = buildSearchURL(GOOGLE_BOOKS_SEARCH_URL) else {
-                    // TODO: what do I do here?
                     return
                 }
                 
