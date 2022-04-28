@@ -30,6 +30,8 @@
 		9329054527C29C55000D15AE /* MacBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9329054327C29C55000D15AE /* MacBookView.swift */; };
 		932C8BF1281AA23200640726 /* CreateNamedElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932C8BF0281AA23200640726 /* CreateNamedElement.swift */; };
 		932C8BF2281AA23200640726 /* CreateNamedElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932C8BF0281AA23200640726 /* CreateNamedElement.swift */; };
+		932C8BF4281AE78600640726 /* BookLinksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932C8BF3281AE78600640726 /* BookLinksView.swift */; };
+		932C8BF5281AE78600640726 /* BookLinksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932C8BF3281AE78600640726 /* BookLinksView.swift */; };
 		932E8DB728199D4700950389 /* NoBookSelected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932E8DB628199D4700950389 /* NoBookSelected.swift */; };
 		932E8DB828199D4700950389 /* NoBookSelected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932E8DB628199D4700950389 /* NoBookSelected.swift */; };
 		932E8DBB28199D8300950389 /* MacBookViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932E8DB928199D8300950389 /* MacBookViewWrapper.swift */; };
@@ -136,6 +138,7 @@
 		9329054027C2932F000D15AE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9329054327C29C55000D15AE /* MacBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacBookView.swift; sourceTree = "<group>"; };
 		932C8BF0281AA23200640726 /* CreateNamedElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNamedElement.swift; sourceTree = "<group>"; };
+		932C8BF3281AE78600640726 /* BookLinksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookLinksView.swift; sourceTree = "<group>"; };
 		932E8DB628199D4700950389 /* NoBookSelected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoBookSelected.swift; sourceTree = "<group>"; };
 		932E8DB928199D8300950389 /* MacBookViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacBookViewWrapper.swift; sourceTree = "<group>"; };
 		93390AA027F20267003C26D3 /* iOSImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSImagePicker.swift; sourceTree = "<group>"; };
@@ -316,6 +319,7 @@
 				93D77C9727F5A0CC00443B00 /* BookViewBookCoverTitle.swift */,
 				93390AA527F20DD6003C26D3 /* BookViewAuthors.swift */,
 				932E8DB628199D4700950389 /* NoBookSelected.swift */,
+				932C8BF3281AE78600640726 /* BookLinksView.swift */,
 			);
 			path = BookView;
 			sourceTree = "<group>";
@@ -653,6 +657,7 @@
 				932C8BF1281AA23200640726 /* CreateNamedElement.swift in Sources */,
 				93C833F627F9AC2100A6EFB5 /* BookRating.swift in Sources */,
 				939BB9F327CA785F0001B0DF /* Chip.swift in Sources */,
+				932C8BF4281AE78600640726 /* BookLinksView.swift in Sources */,
 				939BB9F627CA9BB40001B0DF /* SmallChip.swift in Sources */,
 				93882F2127F86F8D00D5AA61 /* iOSBookViewGroupBox.swift in Sources */,
 			);
@@ -683,6 +688,7 @@
 				9369C1D527E76ED700A39E57 /* MacEditBookWindow.swift in Sources */,
 				93B2052227E8F19800E9D858 /* MacChipsEditor.swift in Sources */,
 				9346662927C9841900D58DE7 /* Books.swift in Sources */,
+				932C8BF5281AE78600640726 /* BookLinksView.swift in Sources */,
 				93B2051A27E8CAD900E9D858 /* MacEditBookStep4.swift in Sources */,
 				93B2051627E8B71200E9D858 /* MacEditBookStep2.swift in Sources */,
 				9329054227C2932F000D15AE /* Constants.swift in Sources */,

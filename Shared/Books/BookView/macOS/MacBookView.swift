@@ -148,6 +148,12 @@ struct MacBookView: View {
                                     }
                                 }
                             }
+                            
+                            Group {
+                                MacBookViewGroupBox(title: "Search for this book on...", icon: "link", width: maxWidth) {
+                                    BookLinksView()
+                                }
+                            }
                         }
                         .offset(y: offset)
                         .frame(maxWidth: maxWidth)

@@ -15,3 +15,6 @@ let GENRE_COLOR = Color.orange
 let TRANSLATOR_COLOR = Color.indigo
 let CATEGORY_COLOR = Color.blue
 let TAG_COLOR = Color.red
+
+let AMAZON_URL = "https://www.amazon.com"
+let GOOGLE_BOOKS_URL = "https://books.google.com"

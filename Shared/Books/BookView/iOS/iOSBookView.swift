@@ -146,6 +146,12 @@ struct iOSBookView: View {
                                     }
                                 }
                             }
+                            
+                            Group {
+                                iOSBookViewGroupBox(title: "Search for this book on...", icon: "link") {
+                                    BookLinksView()
+                                }
+                            }
                         }
                     }
                     .offset(y: offset)
