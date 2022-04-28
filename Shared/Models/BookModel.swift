@@ -17,6 +17,7 @@ final class BookModel: ObservableObject {
     private var viewContext: NSManagedObjectContext?
     private var book: Book?
     private var updatingBook = false
+    private var createOptions: BookModelCreateOptions?
     
     @Published var bookcover: Data?
     
@@ -52,10 +53,14 @@ final class BookModel: ObservableObject {
     @Published var commentary: String = ""
     @Published var notes: String = ""
     
-    init(book: Book? = nil) {
+    init(
+        book: Book? = nil,
+        createOptions: BookModelCreateOptions? = nil
+    ) {
         let persistenceController = PersistenceController.shared
         viewContext = persistenceController.container.viewContext
         self.book = book
+        self.createOptions = createOptions
         initVariables()
     }
     
@@ -123,6 +128,7 @@ final class BookModel: ObservableObject {
     }
     
     private func initVariables() {
+        // Editing a book
         if let unwrappedBook = book {
             bookcover = unwrappedBook.bookcover
                 
@@ -157,6 +163,11 @@ final class BookModel: ObservableObject {
             summary = unwrappedBook.summary ?? summary
             commentary = unwrappedBook.commentary ?? commentary
             notes = unwrappedBook.notes ?? notes
+        }
+        // Creating a book
+        else if let unwrappedOptions = createOptions {
+            readingStatus = unwrappedOptions.readingStatus?.rawValue ?? readingStatus
+            onWishlist = unwrappedOptions.onWishlist
         }
     }
 }
