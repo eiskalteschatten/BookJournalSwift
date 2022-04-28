@@ -93,7 +93,7 @@
 		93D77C9927F5A0CC00443B00 /* BookViewBookCoverTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D77C9727F5A0CC00443B00 /* BookViewBookCoverTitle.swift */; };
 		93ED4AA827F08BA4006031A2 /* MacEditBookStep7.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ED4AA727F08BA4006031A2 /* MacEditBookStep7.swift */; };
 		93FB888E27FB81120012D3AA /* iOSContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB888D27FB81120012D3AA /* iOSContentView.swift */; };
-		93FB889127FB81A10012D3AA /* iOSBooksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB889027FB81A10012D3AA /* iOSBooksView.swift */; };
+		93FB889127FB81A10012D3AA /* iOSLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB889027FB81A10012D3AA /* iOSLibraryView.swift */; };
 		93FB889427FB822A0012D3AA /* MacContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB889327FB822A0012D3AA /* MacContentView.swift */; };
 		93FB889727FB83380012D3AA /* iOSWishListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB889627FB83380012D3AA /* iOSWishListView.swift */; };
 		93FC18F22819E46E0039F4B6 /* iOSEditBookSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9346661627C93EC100D58DE7 /* iOSEditBookSheet.swift */; };
@@ -179,7 +179,7 @@
 		93D77C9727F5A0CC00443B00 /* BookViewBookCoverTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewBookCoverTitle.swift; sourceTree = "<group>"; };
 		93ED4AA727F08BA4006031A2 /* MacEditBookStep7.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacEditBookStep7.swift; sourceTree = "<group>"; };
 		93FB888D27FB81120012D3AA /* iOSContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSContentView.swift; sourceTree = "<group>"; };
-		93FB889027FB81A10012D3AA /* iOSBooksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSBooksView.swift; sourceTree = "<group>"; };
+		93FB889027FB81A10012D3AA /* iOSLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSLibraryView.swift; sourceTree = "<group>"; };
 		93FB889327FB822A0012D3AA /* MacContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacContentView.swift; sourceTree = "<group>"; };
 		93FB889627FB83380012D3AA /* iOSWishListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSWishListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -435,7 +435,7 @@
 			isa = PBXGroup;
 			children = (
 				93FB888D27FB81120012D3AA /* iOSContentView.swift */,
-				93FB889027FB81A10012D3AA /* iOSBooksView.swift */,
+				93FB889027FB81A10012D3AA /* iOSLibraryView.swift */,
 				93FB889627FB83380012D3AA /* iOSWishListView.swift */,
 			);
 			path = iOS;
@@ -629,7 +629,7 @@
 				93219915279D86E600CB6E76 /* Persistence.swift in Sources */,
 				9329054127C2932F000D15AE /* Constants.swift in Sources */,
 				93FC18F22819E46E0039F4B6 /* iOSEditBookSheet.swift in Sources */,
-				93FB889127FB81A10012D3AA /* iOSBooksView.swift in Sources */,
+				93FB889127FB81A10012D3AA /* iOSLibraryView.swift in Sources */,
 				9346662827C9841900D58DE7 /* Books.swift in Sources */,
 				93C6E78527EB71C900E0E986 /* CreateElementView.swift in Sources */,
 				932E8DB728199D4700950389 /* NoBookSelected.swift in Sources */,

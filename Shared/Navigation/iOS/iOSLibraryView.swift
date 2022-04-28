@@ -1,5 +1,5 @@
 //
-//  iOSBooksView.swift
+//  iOSLibraryView.swift
 //  BookJournal (iOS)
 //
 //  Created by Alex Seifert on 04.04.22.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct iOSBooksView: View {
+struct iOSLibraryView: View {
     private enum Screen: Int {
         case allBooks, currentlyReading, notReadYet, read
     }
@@ -66,8 +66,8 @@ struct iOSBooksView: View {
     }
 }
 
-struct iOSBooksView_Previews: PreviewProvider {
+struct iOSLibraryView_Previews: PreviewProvider {
     static var previews: some View {
-        iOSBooksView()
+        iOSLibraryView()
     }
 }

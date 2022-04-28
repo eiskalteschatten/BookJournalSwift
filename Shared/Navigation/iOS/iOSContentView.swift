@@ -10,9 +10,9 @@ import SwiftUI
 struct iOSContentView: View {
     var body: some View {
         TabView {
-            iOSBooksView()
+            iOSLibraryView()
                 .tabItem {
-                    Label("Books", systemImage: "books.vertical")
+                    Label("Library", systemImage: "books.vertical")
                 }
 
             iOSWishListView()
