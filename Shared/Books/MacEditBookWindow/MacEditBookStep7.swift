@@ -15,13 +15,21 @@ struct MacEditBookStep7: View {
             MacEditBookStepTitle("World")
             
             // Country of Origin
-            CountriesSearchList(title: "Country Of Origin", selectedItem: $bookModel.countryOfOrigin)
+            SearchList<Country>(
+                title: "Country of Origin",
+                selectedData: $bookModel.countryOfOrigin,
+                createTitle: "Create a Country"
+            )
             
             Divider()
                 .padding(.vertical)
             
             // Translators
-            TranslatorsSearchList(selectedItems: $bookModel.translators)
+            SearchList<Translator>(
+                title: "Translators",
+                selectedData: $bookModel.translators,
+                createTitle: "Create a Translator"
+            )
             
             Divider()
                 .padding(.vertical)

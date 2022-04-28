@@ -15,13 +15,21 @@ struct MacEditBookStep3: View {
             MacEditBookStepTitle("People")
             
             // Authors
-            AuthorsSearchList(selectedItems: $bookModel.authors)
+            SearchList<Author>(
+                title: "Authors",
+                selectedData: $bookModel.authors,
+                createTitle: "Create an Author"
+            )
             
             Divider()
                 .padding(.vertical)
             
             // Editors
-            EditorsSearchList(selectedItems: $bookModel.editors)
+            SearchList<Editor>(
+                title: "Editors",
+                selectedData: $bookModel.editors,
+                createTitle: "Create an Editor"
+            )
         }
     }
 }

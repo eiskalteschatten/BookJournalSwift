@@ -15,13 +15,21 @@ struct MacEditBookStep4: View {
             MacEditBookStepTitle("Categorization")
 
             // Categories
-            CategoriesSearchList(selectedItems: $bookModel.categories)
+            SearchList<Category>(
+                title: "Categories",
+                selectedData: $bookModel.categories,
+                createTitle: "Create a Category"
+            )
             
             Divider()
                 .padding(.vertical)
         
             // Tags
-            TagsSearchList(selectedItems: $bookModel.tags)
+            SearchList<Tag>(
+                title: "Tags",
+                selectedData: $bookModel.tags,
+                createTitle: "Create a Tag"
+            )
         }
     }
 }

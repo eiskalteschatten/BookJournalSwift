@@ -15,7 +15,11 @@ struct MacEditBookStep5: View {
             MacEditBookStepTitle("Publication Details")
             
             // Publisher
-            PublishersSearchList(title: "Publisher", selectedItem: $bookModel.publisher)
+            SearchList<Publisher>(
+                title: "Publisher",
+                selectedData: $bookModel.publisher,
+                createTitle: "Create a Publisher"
+            )
                 
             Divider()
                 .padding(.vertical)
