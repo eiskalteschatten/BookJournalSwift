@@ -7,18 +7,8 @@
 
 import SwiftUI
 
-enum SearchListScreen: Int {
-    case home, create
-}
-
 struct AuthorsSearchList: View {
-    @State private var screen: SearchListScreen? = .home
-    
     @Environment(\.managedObjectContext) private var viewContext
-    
-    #if os(macOS)
-    @State private var showCreateSheet = false
-    #endif
     
     var title = "Authors"
     @Binding var selectedItems: [Author]
@@ -33,60 +23,12 @@ struct AuthorsSearchList: View {
             title: title,
             data: authors.map { $0 },
             selectedData: $selectedItems,
-            addElementMac: {
-                #if os(macOS)
-                showCreateSheet.toggle()
-                #endif
-            },
-            onDelete: delete
+            createEntity: createEntity
         )
-        #if os(iOS)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink(
-                    destination: CreateNamedElement<Author>(createEntity: createEntity, title: "Create an Author", screen: $screen),
-                    tag: SearchListScreen.create,
-                    selection: $screen,
-                    label: {
-                        Image(systemName: "plus")
-                    }
-                )
-            }
-            ToolbarItem(placement: .navigationBarTrailing) {
-                EditButton()
-            }
-        }
-        #else
-        .sheet(isPresented: $showCreateSheet) {
-            CreateNamedElement<Author>(createEntity: createEntity, title: "Create an Author", showScreen: $showCreateSheet)
-        }
-        #endif
     }
     
     private func createEntity() -> Author {
         return Author(context: viewContext)
-    }
-    
-    private func delete(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { authors[$0] }.forEach(viewContext.delete)
-
-            offsets.map { authors[$0] }.forEach { item in
-                let index = selectedItems.firstIndex(of: item)
-                if index != nil {
-                    selectedItems.remove(at: index!)
-                }
-            }
-
-            do {
-                try viewContext.save()
-            } catch {
-                // TODO: Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
     }
 }
 
