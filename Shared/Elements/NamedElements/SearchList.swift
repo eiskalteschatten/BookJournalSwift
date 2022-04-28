@@ -198,9 +198,14 @@ struct SearchList<T: AbstractName>: View {
             offsets.map { data[$0] }.forEach(viewContext.delete)
 
             offsets.map { data[$0] }.forEach { item in
-                let index = selectedItems.firstIndex(of: item)
-                if index != nil {
-                    selectedItems.remove(at: index!)
+                if singleSelection && selectedData == item {
+                    selectedData = nil
+                }
+                else {
+                    let index = selectedDataArray.firstIndex(of: item)
+                    if index != nil {
+                        selectedDataArray.remove(at: index!)
+                    }
                 }
             }
 
