@@ -22,7 +22,6 @@ struct SearchList<T: AbstractName>: View {
     #endif
     
     var title: String
-    var data: [T]
     @Binding var selectedDataArray: [T]
     @Binding var selectedData: T?
     var createTitle: String
@@ -30,14 +29,17 @@ struct SearchList<T: AbstractName>: View {
     private var singleSelection = false
     @State private var searchText = ""
     
+    @FetchRequest(
+        entity: T.entity(),
+        sortDescriptors: [NSSortDescriptor(keyPath: \T.name, ascending: false)]
+    ) private var data: FetchedResults<T>
+    
     init(
         title: String,
-        data: [T],
         selectedData: Binding<[T]>,
         createTitle: String
     ) {
         self.title = title
-        self.data = data
         self._selectedDataArray = selectedData
         self._selectedData = Binding.constant(nil)
         self.createTitle = createTitle
@@ -45,12 +47,10 @@ struct SearchList<T: AbstractName>: View {
     
     init(
         title: String,
-        data: [T],
         selectedData: Binding<T?>,
         createTitle: String
     ) {
         self.title = title
-        self.data = data
         self._selectedDataArray = Binding.constant([])
         self._selectedData = selectedData
         self.singleSelection = true
@@ -176,11 +176,13 @@ struct SearchList<T: AbstractName>: View {
     }
     
     private var searchResults: [T] {
+        let dataArray = data.map { $0 }
+        
         if searchText.isEmpty {
-            return data
+            return dataArray
         }
         else {
-            return data.filter {
+            return dataArray.filter {
                 $0.name != nil
                     ? $0.name!.lowercased().contains(searchText.lowercased())
                     : false
@@ -224,26 +226,8 @@ struct SearchList_Previews: PreviewProvider {
     static var previews: some View {
         SearchList<Author>(
             title: "Search for Something",
-            data: getMockAuthors(),
             selectedData: $authors,
             createTitle: "Create an Author"
         )
-    }
-    
-    static func getMockAuthors() -> [Author] {
-        let mockAuthor1 = Author(context: viewContext)
-        mockAuthor1.name = "Liz"
-        
-        let mockAuthor2 = Author(context: viewContext)
-        mockAuthor2.name = "Scott"
-        
-        do {
-            try viewContext.save()
-        } catch {
-            let nsError = error as NSError
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-        }
-        
-        return [mockAuthor1, mockAuthor2]
     }
 }

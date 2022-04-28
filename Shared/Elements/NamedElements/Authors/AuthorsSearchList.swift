@@ -13,15 +13,9 @@ struct AuthorsSearchList: View {
     var title = "Authors"
     @Binding var selectedItems: [Author]
     
-    @FetchRequest(
-        entity: Author.entity(),
-        sortDescriptors: [NSSortDescriptor(keyPath: \Author.name, ascending: false)]
-    ) private var authors: FetchedResults<Author>
-    
     var body: some View {
         SearchList<Author>(
             title: title,
-            data: authors.map { $0 },
             selectedData: $selectedItems,
             createTitle: "Create an Author"
         )

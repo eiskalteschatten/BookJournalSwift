@@ -13,15 +13,9 @@ struct CategoriesSearchList: View {
     var title = "Categories"
     @Binding var selectedItems: [Category]
     
-    @FetchRequest(
-        entity: Category.entity(),
-        sortDescriptors: [NSSortDescriptor(keyPath: \Category.name, ascending: false)]
-    ) private var categories: FetchedResults<Category>
-    
     var body: some View {
         SearchList<Category>(
             title: title,
-            data: categories.map { $0 },
             selectedData: $selectedItems,
             createTitle: "Create a Category"
         )

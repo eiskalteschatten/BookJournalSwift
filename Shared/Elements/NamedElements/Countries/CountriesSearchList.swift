@@ -13,15 +13,9 @@ struct CountriesSearchList: View {
     var title = "Countries"
     @Binding var selectedItem: Country?
     
-    @FetchRequest(
-        entity: Country.entity(),
-        sortDescriptors: [NSSortDescriptor(keyPath: \Country.name, ascending: false)]
-    ) private var countries: FetchedResults<Country>
-    
     var body: some View {
         SearchList<Country>(
             title: title,
-            data: countries.map { $0 },
             selectedData: $selectedItem,
             createTitle: "Create a Country"
         )

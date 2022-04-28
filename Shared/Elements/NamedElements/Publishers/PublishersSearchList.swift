@@ -13,15 +13,9 @@ struct PublishersSearchList: View {
     var title = "Publishers"
     @Binding var selectedItem: Publisher?
     
-    @FetchRequest(
-        entity: Publisher.entity(),
-        sortDescriptors: [NSSortDescriptor(keyPath: \Publisher.name, ascending: false)]
-    ) private var publishers: FetchedResults<Publisher>
-    
     var body: some View {
         SearchList<Publisher>(
             title: title,
-            data: publishers.map { $0 },
             selectedData: $selectedItem,
             createTitle: "Create a Publisher"
         )

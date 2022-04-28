@@ -13,15 +13,9 @@ struct TagsSearchList: View {
     var title = "Tags"
     @Binding var selectedItems: [Tag]
     
-    @FetchRequest(
-        entity: Tag.entity(),
-        sortDescriptors: [NSSortDescriptor(keyPath: \Tag.name, ascending: false)]
-    ) private var tags: FetchedResults<Tag>
-    
     var body: some View {
         SearchList<Tag>(
             title: title,
-            data: tags.map { $0 },
             selectedData: $selectedItems,
             createTitle: "Create a Tag"
         )

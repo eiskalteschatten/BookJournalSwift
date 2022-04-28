@@ -13,15 +13,9 @@ struct TranslatorsSearchList: View {
     var title = "Translators"
     @Binding var selectedItems: [Translator]
     
-    @FetchRequest(
-        entity: Translator.entity(),
-        sortDescriptors: [NSSortDescriptor(keyPath: \Translator.name, ascending: false)]
-    ) private var translators: FetchedResults<Translator>
-    
     var body: some View {
         SearchList<Translator>(
             title: title,
-            data: translators.map { $0 },
             selectedData: $selectedItems,
             createTitle: "Create a Translator"
         )

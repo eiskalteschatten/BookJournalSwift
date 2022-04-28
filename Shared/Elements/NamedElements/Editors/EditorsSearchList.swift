@@ -13,15 +13,9 @@ struct EditorsSearchList: View {
     var title = "Editors"
     @Binding var selectedItems: [Editor]
     
-    @FetchRequest(
-        entity: Editor.entity(),
-        sortDescriptors: [NSSortDescriptor(keyPath: \Editor.name, ascending: false)]
-    ) private var editors: FetchedResults<Editor>
-    
     var body: some View {
         SearchList<Editor>(
             title: title,
-            data: editors.map { $0 },
             selectedData: $selectedItems,
             createTitle: "Create an Editor"
         )
