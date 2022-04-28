@@ -132,7 +132,7 @@ struct iOSEditBookSheet: View {
                 Section("People") {
                     // Authors
                     NavigationLink(
-                        destination: SearchList<Author>(
+                        destination: SearchListNamedElement<Author>(
                             title: "Authors",
                             selectedData: $bookModel.authors,
                             createTitle: "Create an Author"
@@ -144,7 +144,7 @@ struct iOSEditBookSheet: View {
                     
                     // Editors
                     NavigationLink(
-                        destination: SearchList<Editor>(
+                        destination: SearchListNamedElement<Editor>(
                             title: "Editors",
                             selectedData: $bookModel.editors,
                             createTitle: "Create an Editor"
@@ -158,7 +158,7 @@ struct iOSEditBookSheet: View {
                 Section("Categorization") {
                     // Categories
                     NavigationLink(
-                        destination: SearchList<Category>(
+                        destination: SearchListNamedElement<Category>(
                             title: "Categories",
                             selectedData: $bookModel.categories,
                             createTitle: "Create a Category"
@@ -170,7 +170,7 @@ struct iOSEditBookSheet: View {
                     
                     // Tags
                     NavigationLink(
-                        destination: SearchList<Tag>(
+                        destination: SearchListNamedElement<Tag>(
                             title: "Tags",
                             selectedData: $bookModel.tags,
                             createTitle: "Create a Tag"
@@ -182,7 +182,7 @@ struct iOSEditBookSheet: View {
                     
                     // Genres
                     NavigationLink(
-                        destination: SearchList<Genre>(
+                        destination: SearchListNamedElement<Genre>(
                             title: "Genres",
                             selectedData: $bookModel.genres,
                             createTitle: "Create a Genre"
@@ -196,7 +196,7 @@ struct iOSEditBookSheet: View {
                 Section("Publication Details") {
                     // Publisher
                     NavigationLink(
-                        destination: SearchList<Publisher>(
+                        destination: SearchListNamedElement<Publisher>(
                             title: "Publisher",
                             selectedData: $bookModel.publisher,
                             createTitle: "Create a Publisher"
@@ -241,7 +241,7 @@ struct iOSEditBookSheet: View {
                 Section("World") {
                     // Country of Origin
                     NavigationLink(
-                        destination: SearchList<Country>(
+                        destination: SearchListNamedElement<Country>(
                             title: "Country of Origin",
                             selectedData: $bookModel.countryOfOrigin,
                             createTitle: "Create a Country"
@@ -253,7 +253,7 @@ struct iOSEditBookSheet: View {
                     
                     // Translators
                     NavigationLink(
-                        destination: SearchList<Translator>(
+                        destination: SearchListNamedElement<Translator>(
                             title: "Translators",
                             selectedData: $bookModel.translators,
                             createTitle: "Create a Translator"

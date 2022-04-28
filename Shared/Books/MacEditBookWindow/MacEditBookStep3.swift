@@ -15,7 +15,7 @@ struct MacEditBookStep3: View {
             MacEditBookStepTitle("People")
             
             // Authors
-            SearchList<Author>(
+            SearchListNamedElement<Author>(
                 title: "Authors",
                 selectedData: $bookModel.authors,
                 createTitle: "Create an Author"
@@ -25,7 +25,7 @@ struct MacEditBookStep3: View {
                 .padding(.vertical)
             
             // Editors
-            SearchList<Editor>(
+            SearchListNamedElement<Editor>(
                 title: "Editors",
                 selectedData: $bookModel.editors,
                 createTitle: "Create an Editor"

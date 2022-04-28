@@ -1,5 +1,5 @@
 //
-//  SearchList.swift
+//  SearchListNamedElement.swift
 //  BookJournal
 //
 //  Created by Alex Seifert on 18.03.22.
@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-enum SearchListScreen: Int {
+enum SearchListNamedElementScreen: Int {
     case home, create
 }
 
-struct SearchList<T: AbstractName>: View {
+struct SearchListNamedElement<T: AbstractName>: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.managedObjectContext) private var viewContext
     
-    @State private var screen: SearchListScreen? = .home
+    @State private var screen: SearchListNamedElementScreen? = .home
     
     #if os(macOS)
     @State private var showCreateSheet = false
@@ -149,7 +149,7 @@ struct SearchList<T: AbstractName>: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink(
                         destination: CreateNamedElement<T>(title: createTitle, screen: $screen),
-                        tag: SearchListScreen.create,
+                        tag: SearchListNamedElementScreen.create,
                         selection: $screen,
                         label: {
                             Image(systemName: "plus")
@@ -218,13 +218,13 @@ struct SearchList<T: AbstractName>: View {
     }
 }
 
-struct SearchList_Previews: PreviewProvider {
+struct SearchListNamedElement_Previews: PreviewProvider {
     @State static var authors: [Author] = []
     static let viewContext = PersistenceController.preview.container.viewContext
     static func addItem() {}
     
     static var previews: some View {
-        SearchList<Author>(
+        SearchListNamedElement<Author>(
             title: "Search for Something",
             selectedData: $authors,
             createTitle: "Create an Author"

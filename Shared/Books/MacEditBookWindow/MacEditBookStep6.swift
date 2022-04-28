@@ -15,7 +15,7 @@ struct MacEditBookStep6: View {
             MacEditBookStepTitle("Genres")
             
             // Genres
-            SearchList<Genre>(
+            SearchListNamedElement<Genre>(
                 title: "Genres",
                 selectedData: $bookModel.genres,
                 createTitle: "Create a Genre"

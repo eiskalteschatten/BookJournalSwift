@@ -15,7 +15,7 @@ struct MacEditBookStep4: View {
             MacEditBookStepTitle("Categorization")
 
             // Categories
-            SearchList<Category>(
+            SearchListNamedElement<Category>(
                 title: "Categories",
                 selectedData: $bookModel.categories,
                 createTitle: "Create a Category"
@@ -25,7 +25,7 @@ struct MacEditBookStep4: View {
                 .padding(.vertical)
         
             // Tags
-            SearchList<Tag>(
+            SearchListNamedElement<Tag>(
                 title: "Tags",
                 selectedData: $bookModel.tags,
                 createTitle: "Create a Tag"

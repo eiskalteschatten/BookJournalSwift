@@ -15,7 +15,7 @@ struct MacEditBookStep7: View {
             MacEditBookStepTitle("World")
             
             // Country of Origin
-            SearchList<Country>(
+            SearchListNamedElement<Country>(
                 title: "Country of Origin",
                 selectedData: $bookModel.countryOfOrigin,
                 createTitle: "Create a Country"
@@ -25,7 +25,7 @@ struct MacEditBookStep7: View {
                 .padding(.vertical)
             
             // Translators
-            SearchList<Translator>(
+            SearchListNamedElement<Translator>(
                 title: "Translators",
                 selectedData: $bookModel.translators,
                 createTitle: "Create a Translator"

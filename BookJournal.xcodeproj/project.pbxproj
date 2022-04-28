@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9309D77F27E4A51500F19670 /* SearchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9309D77E27E4A51500F19670 /* SearchList.swift */; };
-		9309D78027E4A51500F19670 /* SearchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9309D77E27E4A51500F19670 /* SearchList.swift */; };
+		9309D77F27E4A51500F19670 /* SearchListNamedElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9309D77E27E4A51500F19670 /* SearchListNamedElement.swift */; };
+		9309D78027E4A51500F19670 /* SearchListNamedElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9309D77E27E4A51500F19670 /* SearchListNamedElement.swift */; };
 		93219900279D86E600CB6E76 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932198FF279D86E600CB6E76 /* Tests_iOS.swift */; };
 		93219902279D86E600CB6E76 /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93219901279D86E600CB6E76 /* Tests_iOSLaunchTests.swift */; };
 		9321990C279D86E600CB6E76 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9321990B279D86E600CB6E76 /* Tests_macOS.swift */; };
@@ -117,7 +117,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9309D77E27E4A51500F19670 /* SearchList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchList.swift; sourceTree = "<group>"; };
+		9309D77E27E4A51500F19670 /* SearchListNamedElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListNamedElement.swift; sourceTree = "<group>"; };
 		932198E5279D86E400CB6E76 /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		932198E6279D86E400CB6E76 /* BookJournalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookJournalApp.swift; sourceTree = "<group>"; };
 		932198E7279D86E400CB6E76 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -299,7 +299,7 @@
 		932C8BEF281A9B5400640726 /* NamedElements */ = {
 			isa = PBXGroup;
 			children = (
-				9309D77E27E4A51500F19670 /* SearchList.swift */,
+				9309D77E27E4A51500F19670 /* SearchListNamedElement.swift */,
 				932C8BF0281AA23200640726 /* CreateNamedElement.swift */,
 			);
 			path = NamedElements;
@@ -647,7 +647,7 @@
 				93D77C9527F59FDF00443B00 /* BookViewBookCoverBlur.swift in Sources */,
 				93390AA627F20DD6003C26D3 /* BookViewAuthors.swift in Sources */,
 				93219913279D86E600CB6E76 /* ContentView.swift in Sources */,
-				9309D77F27E4A51500F19670 /* SearchList.swift in Sources */,
+				9309D77F27E4A51500F19670 /* SearchListNamedElement.swift in Sources */,
 				93A8F9A827E778CB00C8E8C5 /* BookModel.swift in Sources */,
 				93FB889727FB83380012D3AA /* iOSWishListView.swift in Sources */,
 				932C8BF1281AA23200640726 /* CreateNamedElement.swift in Sources */,
@@ -698,7 +698,7 @@
 				93D77C9927F5A0CC00443B00 /* BookViewBookCoverTitle.swift in Sources */,
 				93882F2327F870F800D5AA61 /* MacBookViewGroupBox.swift in Sources */,
 				93548C8A27E8AA50004524B7 /* MacEditBookStep1.swift in Sources */,
-				9309D78027E4A51500F19670 /* SearchList.swift in Sources */,
+				9309D78027E4A51500F19670 /* SearchListNamedElement.swift in Sources */,
 				932E8DBB28199D8300950389 /* MacBookViewWrapper.swift in Sources */,
 				93219914279D86E600CB6E76 /* ContentView.swift in Sources */,
 				93A5700627FB11A3004CDEA0 /* MacEditBookStep8.swift in Sources */,

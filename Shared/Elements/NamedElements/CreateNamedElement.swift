@@ -12,7 +12,7 @@ struct CreateNamedElement<T: AbstractName>: View {
     var title: String
     
     #if os(iOS)
-    @Binding var screen: SearchListScreen?
+    @Binding var screen: SearchListNamedElementScreen?
     #else
     @Binding var showScreen: Bool
     #endif
@@ -62,7 +62,7 @@ struct CreateNamedElement_Previews: PreviewProvider {
     static let viewContext = PersistenceController.preview.container.viewContext
     
     #if os(iOS)
-    @State static var screen: SearchListScreen?
+    @State static var screen: SearchListNamedElementScreen?
     #else
     @State static var showScreen: Bool = true
     #endif
