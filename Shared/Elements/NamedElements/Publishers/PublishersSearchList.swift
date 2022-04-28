@@ -23,7 +23,8 @@ struct PublishersSearchList: View {
             title: title,
             data: publishers.map { $0 },
             selectedData: $selectedItem,
-            createEntity: createEntity
+            createEntity: createEntity,
+            createTitle: "Create a Publisher"
         )
     }
     

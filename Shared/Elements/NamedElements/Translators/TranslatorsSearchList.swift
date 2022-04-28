@@ -23,7 +23,8 @@ struct TranslatorsSearchList: View {
             title: title,
             data: translators.map { $0 },
             selectedData: $selectedItems,
-            createEntity: createEntity
+            createEntity: createEntity,
+            createTitle: "Create a Translator"
         )
     }
     

@@ -23,7 +23,8 @@ struct CategoriesSearchList: View {
             title: title,
             data: categories.map { $0 },
             selectedData: $selectedItems,
-            createEntity: createEntity
+            createEntity: createEntity,
+            createTitle: "Create a Category"
         )
     }
     

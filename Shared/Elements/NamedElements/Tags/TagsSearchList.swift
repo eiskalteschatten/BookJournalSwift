@@ -23,7 +23,8 @@ struct TagsSearchList: View {
             title: title,
             data: tags.map { $0 },
             selectedData: $selectedItems,
-            createEntity: createEntity
+            createEntity: createEntity,
+            createTitle: "Create a Tag"
         )
     }
     

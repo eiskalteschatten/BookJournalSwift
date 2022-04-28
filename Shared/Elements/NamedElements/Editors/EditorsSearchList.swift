@@ -23,7 +23,8 @@ struct EditorsSearchList: View {
             title: title,
             data: editors.map { $0 },
             selectedData: $selectedItems,
-            createEntity: createEntity
+            createEntity: createEntity,
+            createTitle: "Create an Editor"
         )
     }
     

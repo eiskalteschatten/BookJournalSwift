@@ -13,6 +13,7 @@ enum SearchListScreen: Int {
 
 struct SearchList<T: AbstractName>: View {
     @Environment(\.dismiss) var dismiss
+    @Environment(\.managedObjectContext) private var viewContext
     
     @State private var screen: SearchListScreen? = .home
     
@@ -25,6 +26,7 @@ struct SearchList<T: AbstractName>: View {
     @Binding var selectedDataArray: [T]
     @Binding var selectedData: T?
     var createEntity: () -> T
+    var createTitle: String
     
     private var singleSelection = false
     @State private var searchText = ""
@@ -32,24 +34,32 @@ struct SearchList<T: AbstractName>: View {
     init(
         title: String,
         data: [T],
-        selectedData: Binding<[T]>
+        selectedData: Binding<[T]>,
+        createEntity: @escaping () -> T,
+        createTitle: String
     ) {
         self.title = title
         self.data = data
         self._selectedDataArray = selectedData
         self._selectedData = Binding.constant(nil)
+        self.createEntity = createEntity
+        self.createTitle = createTitle
     }
     
     init(
         title: String,
         data: [T],
-        selectedData: Binding<T?>
+        selectedData: Binding<T?>,
+        createEntity: @escaping () -> T,
+        createTitle: String
     ) {
         self.title = title
         self.data = data
         self._selectedDataArray = Binding.constant([])
         self._selectedData = selectedData
         self.singleSelection = true
+        self.createEntity = createEntity
+        self.createTitle = createTitle
     }
     
     var body: some View {
@@ -143,7 +153,7 @@ struct SearchList<T: AbstractName>: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink(
-                        destination: CreateNamedElement<Author>(createEntity: createEntity, title: "Create an Author", screen: $screen),
+                        destination: CreateNamedElement<T>(createEntity: createEntity, title: createTitle, screen: $screen),
                         tag: SearchListScreen.create,
                         selection: $screen,
                         label: {
@@ -164,7 +174,7 @@ struct SearchList<T: AbstractName>: View {
                 }
             }
             .sheet(isPresented: $showCreateSheet) {
-                CreateNamedElement<Author>(createEntity: createEntity, title: "Create an Author", showScreen: $showCreateSheet)
+                CreateNamedElement<T>(createEntity: createEntity, title: createTitle, showScreen: $showCreateSheet)
             }
             #endif
         }
@@ -216,7 +226,8 @@ struct SearchList_Previews: PreviewProvider {
             title: "Search for Something",
             data: getMockAuthors(),
             selectedData: $authors,
-            createEntity: createEntity
+            createEntity: createEntity,
+            createTitle: "Create an Author"
         )
     }
     
@@ -228,7 +239,7 @@ struct SearchList_Previews: PreviewProvider {
         mockAuthor2.name = "Scott"
         
         do {
-            try context.save()
+            try viewContext.save()
         } catch {
             let nsError = error as NSError
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")

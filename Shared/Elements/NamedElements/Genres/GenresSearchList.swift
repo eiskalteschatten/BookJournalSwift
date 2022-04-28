@@ -23,7 +23,8 @@ struct GenresSearchList: View {
             title: title,
             data: genres.map { $0 },
             selectedData: $selectedItems,
-            createEntity: createEntity
+            createEntity: createEntity,
+            createTitle: "Create a Genre"
         )
     }
     
