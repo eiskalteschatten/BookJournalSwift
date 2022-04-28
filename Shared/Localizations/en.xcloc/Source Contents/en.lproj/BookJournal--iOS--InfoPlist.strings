@@ -1,4 +1,0 @@
-/* Bundle name */
-"CFBundleName" = "BookJournal";
-/* Privacy - Camera Usage Description */
-"NSCameraUsageDescription" = "BookJournal needs access to your camera to scan book covers.";
