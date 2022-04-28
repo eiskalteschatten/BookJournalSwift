@@ -27,8 +27,11 @@ struct iOSEditBookSheet: View {
     
     private var sheetTitle: String = "Add a New Book"
     
-    init(book: Book? = nil) {
-        bookModel = BookModel(book: book)
+    init(
+        book: Book? = nil,
+        createOptions: BookModelCreateOptions? = nil
+    ) {
+        bookModel = BookModel(book: book, createOptions: createOptions)
         
         if let title = book?.title {
             sheetTitle = "Edit \(title)"

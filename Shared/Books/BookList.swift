@@ -73,7 +73,7 @@ struct BookList: View {
         }
         #if os(iOS)
         .sheet(isPresented: $showNewBookSheet) {
-            iOSEditBookSheet()
+            iOSEditBookSheet(createOptions: createOptions)
         }
         #else
         .frame(minWidth: 250)
