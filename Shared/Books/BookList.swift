@@ -24,12 +24,18 @@ struct BookList: View {
 
     @FetchRequest private var books: FetchedResults<Book>
     
-    init(predicate: NSPredicate? = nil) {
+    private var createOptions: BookModelCreateOptions?
+    
+    init(
+        predicate: NSPredicate? = nil,
+        createOptions: BookModelCreateOptions? = nil
+    ) {
         self._books = FetchRequest<Book>(
             sortDescriptors: [SortDescriptor(\Book.title, order: .forward)],
             predicate: predicate,
             animation: .default
         )
+        self.createOptions = createOptions
     }
 
     var body: some View {
@@ -58,7 +64,7 @@ struct BookList: View {
                     showNewBookSheet.toggle()
                     #else
                     let newBookWindow = MacEditBookWindowManager()
-                    newBookWindow.openWindow()
+                    newBookWindow.openWindow(createOptions: createOptions)
                     #endif
                 }) {
                     Label("Add Book", systemImage: "plus")

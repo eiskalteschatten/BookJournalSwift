@@ -8,6 +8,11 @@
 import SwiftUI
 import CoreData
 
+struct BookModelCreateOptions {
+    var readingStatus: BookReadingStatus?
+    var onWishlist = false
+}
+
 final class BookModel: ObservableObject {
     private var viewContext: NSManagedObjectContext?
     private var book: Book?

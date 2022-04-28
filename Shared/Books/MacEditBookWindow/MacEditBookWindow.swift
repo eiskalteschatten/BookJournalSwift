@@ -38,6 +38,7 @@ class MacEditBookWindowManager {
     private var book: Book?
     private var window: MacEditBookWindow?
     private var viewContext: NSManagedObjectContext?
+    private var createOptions: BookModelCreateOptions?
     
     init(book: Book? = nil) {
         let persistenceController = PersistenceController.shared
@@ -45,9 +46,9 @@ class MacEditBookWindowManager {
         self.book = book
     }
     
-    func openWindow() {
+    func openWindow(createOptions: BookModelCreateOptions? = nil) {
         if viewContext != nil {
-            let contentView = MacEditBookWindowView(newBookWindow: self, book: book)
+            let contentView = MacEditBookWindowView(newBookWindow: self, book: book, createOptions: createOptions)
                 .environment(\.managedObjectContext, viewContext!)
             
             window = MacEditBookWindow(

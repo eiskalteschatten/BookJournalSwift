@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MacEditBookWindowView: View {
     var newBookWindow: MacEditBookWindowManager?
+    var createOptions: BookModelCreateOptions?
     
     private enum Screen: Int, CaseIterable {
         case step1, step2, step3, step4, step5, step6, step7, step8
@@ -19,9 +20,14 @@ struct MacEditBookWindowView: View {
     
     private let lastStep: Screen = .step8
     
-    init(newBookWindow: MacEditBookWindowManager? = nil, book: Book? = nil) {
+    init(
+        newBookWindow: MacEditBookWindowManager? = nil,
+        book: Book? = nil,
+        createOptions: BookModelCreateOptions? = nil
+    ) {
         self.newBookWindow = newBookWindow
         bookModel = BookModel(book: book)
+        self.createOptions = createOptions
     }
     
     var body: some View {

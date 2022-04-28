@@ -28,7 +28,8 @@ struct MacContentView: View {
                     )
                     NavigationLink(
                         destination: BookList(
-                            predicate: NSPredicate(format: "readingStatus == %@", BookReadingStatus.currentlyReading.rawValue)
+                            predicate: NSPredicate(format: "readingStatus == %@", BookReadingStatus.currentlyReading.rawValue),
+                            createOptions: BookModelCreateOptions(readingStatus: .currentlyReading)
                         ).navigationTitle("Currently Reading"),
                         tag: Screen.currentlyReading,
                         selection: $screen,
@@ -38,7 +39,8 @@ struct MacContentView: View {
                     )
                     NavigationLink(
                         destination: BookList(
-                            predicate: NSPredicate(format: "readingStatus == %@", BookReadingStatus.notReadYet.rawValue)
+                            predicate: NSPredicate(format: "readingStatus == %@", BookReadingStatus.notReadYet.rawValue),
+                            createOptions: BookModelCreateOptions(readingStatus: .notReadYet)
                         ).navigationTitle("Not Read Yet"),
                         tag: Screen.notReadYet,
                         selection: $screen,
@@ -48,7 +50,8 @@ struct MacContentView: View {
                     )
                     NavigationLink(
                         destination: BookList(
-                              predicate: NSPredicate(format: "readingStatus == %@", BookReadingStatus.read.rawValue)
+                              predicate: NSPredicate(format: "readingStatus == %@", BookReadingStatus.read.rawValue),
+                              createOptions: BookModelCreateOptions(readingStatus: .read)
                         ).navigationTitle("Books Read"),
                         tag: Screen.read,
                         selection: $screen,
@@ -61,7 +64,8 @@ struct MacContentView: View {
                 Section("Lists") {
                     NavigationLink(
                         destination: BookList(
-                            predicate: NSPredicate(format: "onWishlist == true")
+                            predicate: NSPredicate(format: "onWishlist == true"),
+                            createOptions: BookModelCreateOptions(onWishlist: true)
                         ).navigationTitle("Wishlist"),
                         tag: Screen.wishlist,
                         selection: $screen,
