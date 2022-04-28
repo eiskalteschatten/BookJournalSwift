@@ -32,6 +32,8 @@
 		932C8BF2281AA23200640726 /* CreateNamedElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932C8BF0281AA23200640726 /* CreateNamedElement.swift */; };
 		932C8BF4281AE78600640726 /* BookLinksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932C8BF3281AE78600640726 /* BookLinksView.swift */; };
 		932C8BF5281AE78600640726 /* BookLinksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932C8BF3281AE78600640726 /* BookLinksView.swift */; };
+		932C8BF7281AF48A00640726 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932C8BF6281AF48A00640726 /* Helpers.swift */; };
+		932C8BF8281AF48A00640726 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932C8BF6281AF48A00640726 /* Helpers.swift */; };
 		932E8DB728199D4700950389 /* NoBookSelected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932E8DB628199D4700950389 /* NoBookSelected.swift */; };
 		932E8DB828199D4700950389 /* NoBookSelected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932E8DB628199D4700950389 /* NoBookSelected.swift */; };
 		932E8DBB28199D8300950389 /* MacBookViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932E8DB928199D8300950389 /* MacBookViewWrapper.swift */; };
@@ -139,6 +141,7 @@
 		9329054327C29C55000D15AE /* MacBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacBookView.swift; sourceTree = "<group>"; };
 		932C8BF0281AA23200640726 /* CreateNamedElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNamedElement.swift; sourceTree = "<group>"; };
 		932C8BF3281AE78600640726 /* BookLinksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookLinksView.swift; sourceTree = "<group>"; };
+		932C8BF6281AF48A00640726 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		932E8DB628199D4700950389 /* NoBookSelected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoBookSelected.swift; sourceTree = "<group>"; };
 		932E8DB928199D8300950389 /* MacBookViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacBookViewWrapper.swift; sourceTree = "<group>"; };
 		93390AA027F20267003C26D3 /* iOSImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSImagePicker.swift; sourceTree = "<group>"; };
@@ -248,6 +251,7 @@
 				932198E9279D86E600CB6E76 /* Assets.xcassets */,
 				932198E4279D86E400CB6E76 /* BookJournal.xcdatamodeld */,
 				938B1A9F27F0975200FDAE4F /* languages.json */,
+				932C8BF6281AF48A00640726 /* Helpers.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -632,6 +636,7 @@
 				9369C1AE27E62FE000A39E57 /* PickerMimickerWithName.swift in Sources */,
 				93219915279D86E600CB6E76 /* Persistence.swift in Sources */,
 				9329054127C2932F000D15AE /* Constants.swift in Sources */,
+				932C8BF7281AF48A00640726 /* Helpers.swift in Sources */,
 				93FC18F22819E46E0039F4B6 /* iOSEditBookSheet.swift in Sources */,
 				93FB889127FB81A10012D3AA /* iOSLibraryView.swift in Sources */,
 				9346662827C9841900D58DE7 /* Books.swift in Sources */,
@@ -680,6 +685,7 @@
 				938B1AA427F0981800FDAE4F /* Languages.swift in Sources */,
 				93B2051E27E8CB6200E9D858 /* MacEditBookStep6.swift in Sources */,
 				9346342827C2DFA6003B233F /* BookListItem.swift in Sources */,
+				932C8BF8281AF48A00640726 /* Helpers.swift in Sources */,
 				9369C1AF27E62FE000A39E57 /* PickerMimickerWithName.swift in Sources */,
 				93B2051827E8CA6C00E9D858 /* MacEditBookStep3.swift in Sources */,
 				93219916279D86E600CB6E76 /* Persistence.swift in Sources */,

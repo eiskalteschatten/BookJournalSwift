@@ -149,9 +149,11 @@ struct MacBookView: View {
                                 }
                             }
                             
-                            Group {
-                                MacBookViewGroupBox(title: "Search for this book on...", icon: "link", width: maxWidth) {
-                                    BookLinksView()
+                            if book.title != "" || book.isbn != "" {
+                                Group {
+                                    MacBookViewGroupBox(title: "Search for this book on...", icon: "link", width: maxWidth) {
+                                        BookLinksView(book: book)
+                                    }
                                 }
                             }
                         }
