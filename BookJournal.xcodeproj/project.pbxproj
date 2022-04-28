@@ -361,6 +361,8 @@
 				9369C1B727E6451300A39E57 /* Genres */,
 				9369C1BC27E6480500A39E57 /* Tags */,
 				9369C1C527E64B1900A39E57 /* Categories */,
+				93C6E78427EB71C900E0E986 /* CreateElementView.swift */,
+				9309D77E27E4A51500F19670 /* SearchList.swift */,
 			);
 			path = NamedElements;
 			sourceTree = "<group>";
@@ -518,8 +520,6 @@
 				9369C1AC27E62F2400A39E57 /* Forms */,
 				939BB9F227CA785F0001B0DF /* Chip.swift */,
 				939BB9F527CA9BB40001B0DF /* SmallChip.swift */,
-				9309D77E27E4A51500F19670 /* SearchList.swift */,
-				93C6E78427EB71C900E0E986 /* CreateElementView.swift */,
 				9369C1B127E631EC00A39E57 /* LanguagePicker.swift */,
 				93390AA027F20267003C26D3 /* iOSImagePicker.swift */,
 				93C833F527F9AC2100A6EFB5 /* BookRating.swift */,
