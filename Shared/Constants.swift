@@ -16,5 +16,6 @@ let TRANSLATOR_COLOR = Color.indigo
 let CATEGORY_COLOR = Color.blue
 let TAG_COLOR = Color.red
 
-let AMAZON_SEARCH_URL = "https://www.amazon.com/s?k="
+let AMAZON_SEARCH_URL = "https://www.amazon.de/s?tag=alexseifert0b-21&k="
 let GOOGLE_BOOKS_SEARCH_URL = "https://www.google.com/search?tbm=bks&q="
+
