@@ -350,6 +350,21 @@
 			path = Navigation;
 			sourceTree = "<group>";
 		};
+		932C8BEF281A9B5400640726 /* NamedElements */ = {
+			isa = PBXGroup;
+			children = (
+				9309D78127E4A54900F19670 /* Authors */,
+				9369C18727E51CAD00A39E57 /* Editors */,
+				9369C19527E53BAE00A39E57 /* Translators */,
+				9369C18E27E5201900A39E57 /* Publishers */,
+				9369C19C27E53FBF00A39E57 /* Countries */,
+				9369C1B727E6451300A39E57 /* Genres */,
+				9369C1BC27E6480500A39E57 /* Tags */,
+				9369C1C527E64B1900A39E57 /* Categories */,
+			);
+			path = NamedElements;
+			sourceTree = "<group>";
+		};
 		93390AA327F20DAD003C26D3 /* BookView */ = {
 			isa = PBXGroup;
 			children = (
@@ -499,14 +514,7 @@
 		939BB9F127CA78460001B0DF /* Elements */ = {
 			isa = PBXGroup;
 			children = (
-				9309D78127E4A54900F19670 /* Authors */,
-				9369C18727E51CAD00A39E57 /* Editors */,
-				9369C19527E53BAE00A39E57 /* Translators */,
-				9369C18E27E5201900A39E57 /* Publishers */,
-				9369C19C27E53FBF00A39E57 /* Countries */,
-				9369C1B727E6451300A39E57 /* Genres */,
-				9369C1BC27E6480500A39E57 /* Tags */,
-				9369C1C527E64B1900A39E57 /* Categories */,
+				932C8BEF281A9B5400640726 /* NamedElements */,
 				9369C1AC27E62F2400A39E57 /* Forms */,
 				939BB9F227CA785F0001B0DF /* Chip.swift */,
 				939BB9F527CA9BB40001B0DF /* SmallChip.swift */,
