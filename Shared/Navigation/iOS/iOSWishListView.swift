@@ -11,7 +11,7 @@ struct iOSWishListView: View {
     var body: some View {
         NavigationView {
             BookList(predicate: NSPredicate(format: "onWishlist == true"))
-                .listStyle(.plain)
+                .listStyle(.sidebar)
                 .navigationBarTitle("Wishlist")
             
             iOSBookViewWrapper()
