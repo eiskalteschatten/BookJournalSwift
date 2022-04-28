@@ -40,6 +40,7 @@ struct BookLinksView: View {
     
     private func buildSearchURL(_ url: String) -> URL? {
         if var isbn = book.isbn, !isbn.isEmpty {
+            isbn = isbn.replacingOccurrences(of: "-", with: "")
             isbn = isbn.addingPercentEncoding(withAllowedCharacters: .alphanumerics)!
             return URL(string: "\(url)\(isbn)")
         }
