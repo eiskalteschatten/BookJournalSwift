@@ -132,7 +132,11 @@ struct iOSEditBookSheet: View {
                 Section("People") {
                     // Authors
                     NavigationLink(
-                        destination: AuthorsSearchList(selectedItems: $bookModel.authors),
+                        destination: SearchList<Author>(
+                            title: "Authors",
+                            selectedData: $bookModel.authors,
+                            createTitle: "Create an Author"
+                        ),
                         tag: Screen.addAuthors,
                         selection: $screen,
                         label: { WrappingSmallChipsWithName<Author>(title: "Authors", data: bookModel.authors, chipColor: AUTHOR_COLOR, alignment: .leading) }
@@ -140,7 +144,11 @@ struct iOSEditBookSheet: View {
                     
                     // Editors
                     NavigationLink(
-                        destination: EditorsSearchList(selectedItems: $bookModel.editors),
+                        destination: SearchList<Editor>(
+                            title: "Editors",
+                            selectedData: $bookModel.editors,
+                            createTitle: "Create an Editor"
+                        ),
                         tag: Screen.addEditors,
                         selection: $screen,
                         label: { WrappingSmallChipsWithName<Editor>(title: "Editors", data: bookModel.editors, chipColor: EDITOR_COLOR, alignment: .leading) }
@@ -150,7 +158,11 @@ struct iOSEditBookSheet: View {
                 Section("Categorization") {
                     // Categories
                     NavigationLink(
-                        destination: CategoriesSearchList(selectedItems: $bookModel.categories),
+                        destination: SearchList<Category>(
+                            title: "Categories",
+                            selectedData: $bookModel.categories,
+                            createTitle: "Create a Category"
+                        ),
                         tag: Screen.addCategories,
                         selection: $screen,
                         label: { WrappingSmallChipsWithName<Category>(title: "Categories", data: bookModel.categories, chipColor: CATEGORY_COLOR, alignment: .leading) }
@@ -158,7 +170,11 @@ struct iOSEditBookSheet: View {
                     
                     // Tags
                     NavigationLink(
-                        destination: TagsSearchList(selectedItems: $bookModel.tags),
+                        destination: SearchList<Tag>(
+                            title: "Tags",
+                            selectedData: $bookModel.tags,
+                            createTitle: "Create a Tag"
+                        ),
                         tag: Screen.addTags,
                         selection: $screen,
                         label: { WrappingSmallChipsWithName<Tag>(title: "Tags", data: bookModel.tags, chipColor: TAG_COLOR, alignment: .leading) }
@@ -166,7 +182,11 @@ struct iOSEditBookSheet: View {
                     
                     // Genres
                     NavigationLink(
-                        destination: GenresSearchList(selectedItems: $bookModel.genres),
+                        destination: SearchList<Genre>(
+                            title: "Genres",
+                            selectedData: $bookModel.genres,
+                            createTitle: "Create a Genre"
+                        ),
                         tag: Screen.addGenres,
                         selection: $screen,
                         label: { WrappingSmallChipsWithName<Genre>(title: "Genres", data: bookModel.genres, chipColor: GENRE_COLOR, alignment: .leading) }
@@ -176,7 +196,11 @@ struct iOSEditBookSheet: View {
                 Section("Publication Details") {
                     // Publisher
                     NavigationLink(
-                        destination: PublishersSearchList(selectedItem: $bookModel.publisher),
+                        destination: SearchList<Publisher>(
+                            title: "Publisher",
+                            selectedData: $bookModel.publisher,
+                            createTitle: "Create a Publisher"
+                        ),
                         tag: Screen.addPublisher,
                         selection: $screen,
                         label: { PickerMimickerWithName<Publisher>(title: "Publisher", data: bookModel.publisher) }
@@ -217,7 +241,11 @@ struct iOSEditBookSheet: View {
                 Section("World") {
                     // Country of Origin
                     NavigationLink(
-                        destination: CountriesSearchList(selectedItem: $bookModel.countryOfOrigin),
+                        destination: SearchList<Country>(
+                            title: "Country of Origin",
+                            selectedData: $bookModel.countryOfOrigin,
+                            createTitle: "Create a Country"
+                        ),
                         tag: Screen.addCountryOfOrigin,
                         selection: $screen,
                         label: { PickerMimickerWithName<Country>(title: "Country of Origin", data: bookModel.countryOfOrigin) }
@@ -225,7 +253,11 @@ struct iOSEditBookSheet: View {
                     
                     // Translators
                     NavigationLink(
-                        destination: TranslatorsSearchList(selectedItems: $bookModel.translators),
+                        destination: SearchList<Translator>(
+                            title: "Translators",
+                            selectedData: $bookModel.translators,
+                            createTitle: "Create a Translator"
+                        ),
                         tag: Screen.addTranslators,
                         selection: $screen,
                         label: { WrappingSmallChipsWithName<Translator>(title: "Translators", data: bookModel.translators, chipColor: TRANSLATOR_COLOR, alignment: .leading) }
