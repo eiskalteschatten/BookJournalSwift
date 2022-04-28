@@ -23,13 +23,8 @@ struct PublishersSearchList: View {
             title: title,
             data: publishers.map { $0 },
             selectedData: $selectedItem,
-            createEntity: createEntity,
             createTitle: "Create a Publisher"
         )
-    }
-    
-    private func createEntity() -> Publisher {
-        return Publisher(context: viewContext)
     }
 }
 

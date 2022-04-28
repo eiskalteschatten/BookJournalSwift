@@ -23,13 +23,8 @@ struct TranslatorsSearchList: View {
             title: title,
             data: translators.map { $0 },
             selectedData: $selectedItems,
-            createEntity: createEntity,
             createTitle: "Create a Translator"
         )
-    }
-    
-    private func createEntity() -> Translator {
-        return Translator(context: viewContext)
     }
 }
 

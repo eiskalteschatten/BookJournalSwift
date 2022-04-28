@@ -23,13 +23,8 @@ struct AuthorsSearchList: View {
             title: title,
             data: authors.map { $0 },
             selectedData: $selectedItems,
-            createEntity: createEntity,
             createTitle: "Create an Author"
         )
-    }
-    
-    private func createEntity() -> Author {
-        return Author(context: viewContext)
     }
 }
 

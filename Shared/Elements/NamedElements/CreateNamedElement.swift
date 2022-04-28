@@ -9,7 +9,6 @@ import SwiftUI
 import CoreData
 
 struct CreateNamedElement<T: AbstractName>: View {
-    var createEntity: () -> T
     var title: String
     
     #if os(iOS)
@@ -35,7 +34,7 @@ struct CreateNamedElement<T: AbstractName>: View {
         let persistenceController = PersistenceController.shared
         let viewContext = persistenceController.container.viewContext
         
-        let newEntity = createEntity()
+        let newEntity = T(context: viewContext)
         newEntity.createdAt = Date()
         newEntity.updatedAt = Date()
         newEntity.name = name
@@ -70,13 +69,9 @@ struct CreateNamedElement_Previews: PreviewProvider {
         
     static var previews: some View {
         #if os(iOS)
-        CreateNamedElement(createEntity: createEntity, title: "Create an Author", screen: $screen)
+        CreateNamedElement<Author>(title: "Create an Author", screen: $screen)
         #else
-        CreateNamedElement(createEntity: createEntity, title: "Create an Author", showScreen: $showScreen)
+        CreateNamedElement<Author>(title: "Create an Author", showScreen: $showScreen)
         #endif
-    }
-    
-    static private func createEntity() -> Author {
-        return Author(context: viewContext)
     }
 }

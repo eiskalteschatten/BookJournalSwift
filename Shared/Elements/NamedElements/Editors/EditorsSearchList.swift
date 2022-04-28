@@ -23,13 +23,8 @@ struct EditorsSearchList: View {
             title: title,
             data: editors.map { $0 },
             selectedData: $selectedItems,
-            createEntity: createEntity,
             createTitle: "Create an Editor"
         )
-    }
-    
-    private func createEntity() -> Editor {
-        return Editor(context: viewContext)
     }
 }
 

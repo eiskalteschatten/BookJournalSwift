@@ -23,13 +23,8 @@ struct GenresSearchList: View {
             title: title,
             data: genres.map { $0 },
             selectedData: $selectedItems,
-            createEntity: createEntity,
             createTitle: "Create a Genre"
         )
-    }
-    
-    private func createEntity() -> Genre {
-        return Genre(context: viewContext)
     }
 }
 

@@ -25,7 +25,6 @@ struct SearchList<T: AbstractName>: View {
     var data: [T]
     @Binding var selectedDataArray: [T]
     @Binding var selectedData: T?
-    var createEntity: () -> T
     var createTitle: String
     
     private var singleSelection = false
@@ -35,14 +34,12 @@ struct SearchList<T: AbstractName>: View {
         title: String,
         data: [T],
         selectedData: Binding<[T]>,
-        createEntity: @escaping () -> T,
         createTitle: String
     ) {
         self.title = title
         self.data = data
         self._selectedDataArray = selectedData
         self._selectedData = Binding.constant(nil)
-        self.createEntity = createEntity
         self.createTitle = createTitle
     }
     
@@ -50,7 +47,6 @@ struct SearchList<T: AbstractName>: View {
         title: String,
         data: [T],
         selectedData: Binding<T?>,
-        createEntity: @escaping () -> T,
         createTitle: String
     ) {
         self.title = title
@@ -58,7 +54,6 @@ struct SearchList<T: AbstractName>: View {
         self._selectedDataArray = Binding.constant([])
         self._selectedData = selectedData
         self.singleSelection = true
-        self.createEntity = createEntity
         self.createTitle = createTitle
     }
     
@@ -153,7 +148,7 @@ struct SearchList<T: AbstractName>: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink(
-                        destination: CreateNamedElement<T>(createEntity: createEntity, title: createTitle, screen: $screen),
+                        destination: CreateNamedElement<T>(title: createTitle, screen: $screen),
                         tag: SearchListScreen.create,
                         selection: $screen,
                         label: {
@@ -174,7 +169,7 @@ struct SearchList<T: AbstractName>: View {
                 }
             }
             .sheet(isPresented: $showCreateSheet) {
-                CreateNamedElement<T>(createEntity: createEntity, title: createTitle, showScreen: $showCreateSheet)
+                CreateNamedElement<T>(title: createTitle, showScreen: $showCreateSheet)
             }
             #endif
         }
@@ -231,7 +226,6 @@ struct SearchList_Previews: PreviewProvider {
             title: "Search for Something",
             data: getMockAuthors(),
             selectedData: $authors,
-            createEntity: createEntity,
             createTitle: "Create an Author"
         )
     }
@@ -251,9 +245,5 @@ struct SearchList_Previews: PreviewProvider {
         }
         
         return [mockAuthor1, mockAuthor2]
-    }
-    
-    static private func createEntity() -> Author {
-        return Author(context: viewContext)
     }
 }

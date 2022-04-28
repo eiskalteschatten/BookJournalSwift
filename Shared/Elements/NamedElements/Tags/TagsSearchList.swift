@@ -23,13 +23,8 @@ struct TagsSearchList: View {
             title: title,
             data: tags.map { $0 },
             selectedData: $selectedItems,
-            createEntity: createEntity,
             createTitle: "Create a Tag"
         )
-    }
-    
-    private func createEntity() -> Tag {
-        return Tag(context: viewContext)
     }
 }
 

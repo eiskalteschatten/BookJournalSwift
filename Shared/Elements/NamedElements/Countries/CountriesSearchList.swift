@@ -23,13 +23,8 @@ struct CountriesSearchList: View {
             title: title,
             data: countries.map { $0 },
             selectedData: $selectedItem,
-            createEntity: createEntity,
             createTitle: "Create a Country"
         )
-    }
-    
-    private func createEntity() -> Country {
-        return Country(context: viewContext)
     }
 }
 

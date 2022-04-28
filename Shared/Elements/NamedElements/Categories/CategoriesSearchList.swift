@@ -23,13 +23,8 @@ struct CategoriesSearchList: View {
             title: title,
             data: categories.map { $0 },
             selectedData: $selectedItems,
-            createEntity: createEntity,
             createTitle: "Create a Category"
         )
-    }
-    
-    private func createEntity() -> Category {
-        return Category(context: viewContext)
     }
 }
 
