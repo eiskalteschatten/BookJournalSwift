@@ -131,18 +131,21 @@ struct iOSBookView: View {
                                 iOSBookViewGroupBox(title: "Summary", icon: "text.alignleft") {
                                     if let unwrappedSummary = book.summary {
                                         Text(unwrappedSummary)
+                                            .textSelection(.enabled)
                                     }
                                 }
                                 
                                 iOSBookViewGroupBox(title: "Commentary", icon: "text.bubble") {
                                     if let unwrappedCommentary = book.commentary {
                                         Text(unwrappedCommentary)
+                                            .textSelection(.enabled)
                                     }
                                 }
                                 
                                 iOSBookViewGroupBox(title: "Notes", icon: "note.text") {
                                     if let unwrappedNotes = book.notes {
                                         Text(unwrappedNotes)
+                                            .textSelection(.enabled)
                                     }
                                 }
                             }

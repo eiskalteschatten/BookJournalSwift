@@ -20,6 +20,20 @@ struct MacBookViewWrapper: View {
         Group {
             if let unwrappedBook = book {
                 MacBookView(book: unwrappedBook)
+                    .contextMenu {
+                        Button("Add New Book", action: {
+                            let newBookWindow = MacEditBookWindowManager()
+                            newBookWindow.openWindow()
+                        })
+                        Button("Edit \"\(unwrappedBook.title!)\"", action: {
+                            let newBookWindow = MacEditBookWindowManager(book: book)
+                            newBookWindow.openWindow()
+                        })
+                        Divider()
+                        Button("Delete Book", role: .destructive, action: {
+                            promptToDeleteBook()
+                        })
+                    }
             }
             else {
                 NoBookSelected()

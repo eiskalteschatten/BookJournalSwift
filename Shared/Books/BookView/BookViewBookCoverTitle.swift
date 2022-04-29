@@ -28,6 +28,7 @@ struct BookViewBookCoverTitle: View {
             
             Text(title ?? "")
                 .font(.title)
+                .textSelection(.enabled)
         }
     }
 }

@@ -19,6 +19,7 @@ struct BookViewTextWithLabel: View {
                 .opacity(0.7)
             
             Text(text)
+                .textSelection(.enabled)
         }
     }
 }

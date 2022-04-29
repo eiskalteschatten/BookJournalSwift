@@ -14,26 +14,37 @@ struct BookLinksView: View {
         HStack(spacing: 20) {
             Button("Amazon", action: {
                 let amazonLink = getAmazonLink(withSearchParam: true)
-                guard let url = buildSearchURL(amazonLink) else {
-                    return
+                if let url = buildSearchURL(amazonLink) {
+                    openURLInBrowser(url)
                 }
-                
-                openURLInBrowser(url)
             })
-                #if os(macOS)
-                .buttonStyle(.link)
-                #endif
+            .contextMenu {
+                Button("Copy Link") {
+                    let amazonLink = getAmazonLink(withSearchParam: true)
+                    if let url = buildSearchURL(amazonLink) {
+                        copyTextToClipboard(url.absoluteString)
+                    }
+                }
+            }
+            #if os(macOS)
+            .buttonStyle(.link)
+            #endif
             
             Button("Google Books", action: {
-                guard let url = buildSearchURL(GOOGLE_BOOKS_SEARCH_URL) else {
-                    return
+                if let url = buildSearchURL(GOOGLE_BOOKS_SEARCH_URL) {
+                    openURLInBrowser(url)
                 }
-                
-                openURLInBrowser(url)
             })
-                #if os(macOS)
-                .buttonStyle(.link)
-                #endif
+            .contextMenu {
+                Button("Copy Link") {
+                    if let url = buildSearchURL(GOOGLE_BOOKS_SEARCH_URL) {
+                        copyTextToClipboard(url.absoluteString)
+                    }
+                }
+            }
+            #if os(macOS)
+            .buttonStyle(.link)
+            #endif
         }
     }
     

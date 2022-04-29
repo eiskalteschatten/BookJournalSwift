@@ -33,6 +33,15 @@ struct WrappingSmallChipsWithName<T: AbstractName>: View {
                     }
                     .padding(.horizontal, 1)
                     .padding(.vertical, 3)
+                    .contextMenu {
+                        let copyButtonLabel = item.name != nil ? "Copy \"\(item.name!)\"" : "Copy"
+                        Button(copyButtonLabel) {
+                            if let name = item.name {
+                                copyTextToClipboard(name)
+                            }
+                        }
+                        .disabled(item.name == nil)
+                    }
                 }
                 .frame(minWidth: 250)
             }

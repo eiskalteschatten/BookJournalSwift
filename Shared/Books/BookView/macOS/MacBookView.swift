@@ -133,18 +133,21 @@ struct MacBookView: View {
                                 MacBookViewGroupBox(title: "Summary", icon: "text.alignleft", width: maxWidth) {
                                     if let unwrappedSummary = book.summary {
                                         Text(unwrappedSummary)
+                                            .textSelection(.enabled)
                                     }
                                 }
                                 
                                 MacBookViewGroupBox(title: "Commentary", icon: "text.bubble", width: maxWidth) {
                                     if let unwrappedCommentary = book.commentary {
                                         Text(unwrappedCommentary)
+                                            .textSelection(.enabled)
                                     }
                                 }
                                 
                                 MacBookViewGroupBox(title: "Notes", icon: "note.text", width: maxWidth) {
                                     if let unwrappedNotes = book.notes {
                                         Text(unwrappedNotes)
+                                            .textSelection(.enabled)
                                     }
                                 }
                             }
