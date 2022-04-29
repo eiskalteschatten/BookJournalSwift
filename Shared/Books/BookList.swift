@@ -17,6 +17,8 @@ struct BookList: View {
     
     #if os(iOS)
     @State private var showNewBookSheet = false
+    @State private var presentDeleteAlert = false
+    @State private var indexSetToDelete: IndexSet?
     private typealias BookView = iOSBookViewWrapper
     #else
     private typealias BookView = MacBookViewWrapper
@@ -75,6 +77,16 @@ struct BookList: View {
         .sheet(isPresented: $showNewBookSheet) {
             iOSEditBookSheet(createOptions: createOptions)
         }
+        .alert("Are you sure you want to delete this book?", isPresented: $presentDeleteAlert, actions: {
+            Button("No", role: .cancel, action: { presentDeleteAlert = false })
+            Button("Yes", role: .destructive, action: {
+                if let offsets = indexSetToDelete {
+                    deleteBooks(offsets: offsets)
+                }
+            })
+        }, message: {
+            Text("This is permanent.")
+        })
         #else
         .frame(minWidth: 250)
         #endif
@@ -90,6 +102,7 @@ struct BookList: View {
     }
     
     private func promptToDeleteBook(offsets: IndexSet) {
+        #if os(macOS)
         let alert = NSAlert()
         alert.messageText = "Are you sure you want to delete this book?"
         alert.informativeText = "This is permanent."
@@ -102,6 +115,10 @@ struct BookList: View {
         if delete {
             deleteBooks(offsets: offsets)
         }
+        #else
+        indexSetToDelete = offsets
+        presentDeleteAlert.toggle()
+        #endif
     }
 
     private func deleteBooks(offsets: IndexSet) {
