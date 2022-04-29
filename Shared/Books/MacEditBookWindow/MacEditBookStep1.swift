@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import os
 
 struct MacEditBookStep1: View {
     @ObservedObject var bookModel: BookModel
@@ -62,10 +63,15 @@ struct MacEditBookStep1: View {
                 do {
                     try bookModel.bookcover = Data(contentsOf: panel.url!)
                 } catch {
-                    // TODO: Replace this implementation with code to handle the error appropriately.
-                    // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                    let nsError = error as NSError
-                    fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                    showErrorAlert(
+                        error: error as NSError,
+                        errorMessage: "An error occurred while choosing a book cover image!",
+                        subErrorMessage: "Please try again.",
+                        logger: Logger(
+                            subsystem: Bundle.main.bundleIdentifier!,
+                            category: String(describing: MacEditBookStep1.self)
+                        )
+                    )
                 }
             }
         }
