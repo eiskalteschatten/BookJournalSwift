@@ -22,7 +22,7 @@ struct BookJournalApp: App {
         #if os(macOS)
         .commands {
             SidebarCommands()
-            BookJournalCommands()
+            BookJournalCommands(globalViewModel: globalViewModel)
         }
         #endif
     }

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct BookJournalCommands: Commands {
+    @ObservedObject var globalViewModel: GlobalViewModel
+    
     var body: some Commands {
         CommandGroup(replacing: CommandGroupPlacement.newItem) {
             Button("New Book") {
@@ -43,6 +45,18 @@ struct BookJournalCommands: Commands {
                 }
             }
             .keyboardShortcut("t", modifiers: [.command])
+            
+            Divider()
+            
+            Button("Edit Book") {
+               
+            }
+            .disabled(globalViewModel.selectedBook == nil)
+            .keyboardShortcut("e", modifiers: [.command])
+            
+            Button("Delete Book", action: globalViewModel.promptToDeleteBook)
+                .disabled(globalViewModel.selectedBook == nil)
+                .keyboardShortcut(.delete, modifiers: [.command])
         }
     }
 }
