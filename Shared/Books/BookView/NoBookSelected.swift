@@ -9,9 +9,10 @@ import SwiftUI
 
 struct NoBookSelected: View {
     var body: some View {
-        // TODO: show a monochrome version of the app icon
-        Image(systemName: "book")
-            .font(.system(size: 200))
+        Image("MonochromeIcon")
+            .resizable()
+            .scaledToFit()
+            .frame(maxWidth: 200)
             .opacity(0.1)
     }
 }
