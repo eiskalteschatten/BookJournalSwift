@@ -13,7 +13,22 @@ final class GlobalViewModel: ObservableObject {
     
     @Published var selectedBook: Book?
     
-    init() {
+    #if os(iOS)
+    @Published var globalError: String?
+    @Published var globalErrorSubtext: String?
+    @Published var showGlobalErrorAlert: Bool = false {
+        didSet {
+            if !showGlobalErrorAlert {
+                globalError = nil
+                globalErrorSubtext = nil
+            }
+        }
+    }
+    #endif
+    
+    static let shared: GlobalViewModel = GlobalViewModel()
+    
+    private init() {
         let persistenceController = PersistenceController.shared
         viewContext = persistenceController.container.viewContext
     }
