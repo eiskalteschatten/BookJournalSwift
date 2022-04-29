@@ -13,7 +13,8 @@ struct BookLinksView: View {
     var body: some View {
         HStack(spacing: 20) {
             Button("Amazon", action: {
-                guard let url = buildSearchURL(AMAZON_SEARCH_URL) else {
+                let amazonLink = getAmazonLink(withSearchParam: true)
+                guard let url = buildSearchURL(amazonLink) else {
                     return
                 }
                 
