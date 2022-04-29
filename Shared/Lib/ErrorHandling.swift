@@ -6,8 +6,14 @@
 //
 
 import SwiftUI
+import os
 
 func handleCoreDataError(_ error: NSError) {
+    let logger = Logger(
+        subsystem: Bundle.main.bundleIdentifier!,
+        category: String(describing: handleCoreDataError.self)
+    )
+    
     let errorMessage = "An error occurred while attempting to save your changes."
     let subErrorMessage = "Please wait a little bit and try again."
     
@@ -24,7 +30,10 @@ func handleCoreDataError(_ error: NSError) {
     globalViewModel.showGlobalErrorAlert = true
     #endif
     
+    let errorToLog = "Unresolved error \(error), \(error.userInfo)"
+    logger.error("\(errorToLog)")
+    
     #if DEBUG
-    fatalError("Unresolved error \(error), \(error.userInfo)")
+    fatalError(errorToLog)
     #endif
 }
