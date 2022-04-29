@@ -8,14 +8,16 @@
 import SwiftUI
 import os
 
-func handleCoreDataError(_ error: NSError) {
-    let logger = Logger(
+func showErrorAlert(
+    error: NSError,
+    errorMessage: String,
+    subErrorMessage: String,
+    logger: Logger?
+) {
+    let _logger = logger != nil ? logger! : Logger(
         subsystem: Bundle.main.bundleIdentifier!,
-        category: String(describing: handleCoreDataError.self)
+        category: "Generic Error"
     )
-    
-    let errorMessage = "An error occurred while attempting to save your changes."
-    let subErrorMessage = "Please wait a little bit and try again."
     
     #if os(macOS)
     let alert = NSAlert()
@@ -31,9 +33,21 @@ func handleCoreDataError(_ error: NSError) {
     #endif
     
     let errorToLog = "Unresolved error \(error), \(error.userInfo)"
-    logger.error("\(errorToLog)")
+    _logger.error("\(errorToLog)")
     
     #if DEBUG
     fatalError(errorToLog)
     #endif
+}
+
+func handleCoreDataError(_ error: NSError) {
+    showErrorAlert(
+        error: error,
+        errorMessage: "An error occurred while attempting to save your changes.",
+        subErrorMessage: "Please wait a little bit and try again.",
+        logger: Logger(
+            subsystem: Bundle.main.bundleIdentifier!,
+            category: String(describing: handleCoreDataError.self)
+        )
+    )
 }
