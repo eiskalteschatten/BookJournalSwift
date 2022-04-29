@@ -19,7 +19,6 @@ struct BookJournalApp: App {
         #if os(macOS)
         .commands {
             SidebarCommands()
-//            TextFormattingCommands()
             BookJournalCommands()
         }
         #endif
