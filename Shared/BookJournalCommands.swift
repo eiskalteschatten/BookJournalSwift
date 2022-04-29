@@ -49,7 +49,8 @@ struct BookJournalCommands: Commands {
             Divider()
             
             Button("Edit Book") {
-               
+                let newBookWindow = MacEditBookWindowManager(book: globalViewModel.selectedBook)
+                newBookWindow.openWindow()
             }
             .disabled(globalViewModel.selectedBook == nil)
             .keyboardShortcut("e", modifiers: [.command])
