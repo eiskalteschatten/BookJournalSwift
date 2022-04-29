@@ -16,5 +16,12 @@ struct BookJournalApp: App {
             ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
+        #if os(macOS)
+        .commands {
+            SidebarCommands()
+//            TextFormattingCommands()
+            BookJournalCommands()
+        }
+        #endif
     }
 }
