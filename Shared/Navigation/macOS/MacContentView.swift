@@ -77,7 +77,6 @@ struct MacContentView: View {
                 
 //                Section("Statistics") {
 //                    NavigationLink(
-//                        // TODO: create the statistics view
 //                        destination: BookList().navigationTitle("Statistics"),
 //                        tag: Screen.statistics,
 //                        selection: $screen,

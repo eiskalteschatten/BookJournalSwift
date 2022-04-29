@@ -24,7 +24,7 @@ func getAmazonLink(withSearchParam: Bool = false) -> String {
         "it-IT": "https://www.amazon.it/s?tag=alexseifer0eb-21",
         "es-ES": "https://www.amazon.es/s?tag=alexseifert06-21",
         "en-GB": "https://www.amazon.co.uk/s?tag=alexseifert05-21",
-        "en-US": "https://www.amazon.com"  // TODO
+        "en-US": "https://www.amazon.com"  // TODO: add affiliates link
     ]
     
     guard var link = links[locale] ?? links["en_US"] else {
