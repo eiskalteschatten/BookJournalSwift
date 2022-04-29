@@ -10,10 +10,9 @@ import CoreData
 
 struct BookList: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @EnvironmentObject private var globalViewModel: GlobalViewModel
     
     private var predicate: NSPredicate?
-    
-    @State private var selectedBook: Book?
     
     #if os(iOS)
     @State private var showNewBookSheet = false
@@ -44,9 +43,9 @@ struct BookList: View {
         List {
             ForEach(Array(books.enumerated()), id: \.element) { index, book in
                 NavigationLink(
-                    destination: BookView(book: $selectedBook),
+                    destination: BookView(),
                     tag: book,
-                    selection: $selectedBook,
+                    selection: $globalViewModel.selectedBook,
                     label: {
                         BookListItem(book: book)
                     }
@@ -124,7 +123,7 @@ struct BookList: View {
     private func deleteBooks(offsets: IndexSet) {
         withAnimation {
             offsets.map { books[$0] }.forEach(viewContext.delete)
-            selectedBook = nil
+            globalViewModel.selectedBook = nil
 
             do {
                 try viewContext.save()

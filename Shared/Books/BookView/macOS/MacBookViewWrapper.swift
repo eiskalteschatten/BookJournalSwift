@@ -9,24 +9,19 @@ import SwiftUI
 
 struct MacBookViewWrapper: View {
     @Environment(\.managedObjectContext) private var viewContext
-    
-    @Binding var book: Book?
-    
-    init(book: Binding<Book?> = Binding.constant(nil)) {
-        self._book = book
-    }
+    @EnvironmentObject private var globalViewModel: GlobalViewModel
     
     var body: some View {
         Group {
-            if let unwrappedBook = book {
-                MacBookView(book: unwrappedBook)
+            if let unwrappedBook = globalViewModel.selectedBook {
+                MacBookView()
                     .contextMenu {
                         Button("Add New Book", action: {
                             let newBookWindow = MacEditBookWindowManager()
                             newBookWindow.openWindow()
                         })
                         Button("Edit \"\(unwrappedBook.title!)\"", action: {
-                            let newBookWindow = MacEditBookWindowManager(book: book)
+                            let newBookWindow = MacEditBookWindowManager(book: globalViewModel.selectedBook)
                             newBookWindow.openWindow()
                         })
                         Divider()
@@ -42,18 +37,18 @@ struct MacBookViewWrapper: View {
         .toolbar {
             ToolbarItem {
                 Button {
-                    let newBookWindow = MacEditBookWindowManager(book: book)
+                    let newBookWindow = MacEditBookWindowManager(book: globalViewModel.selectedBook)
                     newBookWindow.openWindow()
                 } label: {
                     Label("Edit", systemImage: "pencil")
                 }
-                .disabled(book == nil)
+                .disabled(globalViewModel.selectedBook == nil)
             }
             ToolbarItem {
                 Button(action: promptToDeleteBook) {
                     Label("Delete", systemImage: "trash")
                 }
-                .disabled(book == nil)
+                .disabled(globalViewModel.selectedBook == nil)
             }
         }
     }
@@ -75,8 +70,8 @@ struct MacBookViewWrapper: View {
     
     private func deleteBook() {
         withAnimation {
-            if let unwrappedBook = book {
-                book = nil
+            if let unwrappedBook = globalViewModel.selectedBook {
+                globalViewModel.selectedBook = nil
                 viewContext.delete(unwrappedBook)
                 
                 do {

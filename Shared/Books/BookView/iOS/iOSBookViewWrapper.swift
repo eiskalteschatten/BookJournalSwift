@@ -11,23 +11,19 @@ struct iOSBookViewWrapper: View {
     @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
     @Environment(\.managedObjectContext) private var viewContext
+    @EnvironmentObject private var globalViewModel: GlobalViewModel
     
-    @Binding var book: Book?
     @State private var showEditBookSheet = false
     @State private var presentDeleteAlert = false
     
-    init(book: Binding<Book?> = Binding.constant(nil)) {
-        self._book = book
-    }
-    
     var body: some View {
         Group {
-            if let unwrappedBook = book {
+            if globalViewModel.selectedBook != nil {
                 if horizontalSizeClass == .regular && verticalSizeClass == .regular {
-                    iPadOSBookView(book: unwrappedBook, showEditBookSheet: $showEditBookSheet)
+                    iPadOSBookView(showEditBookSheet: $showEditBookSheet)
                 }
                 else {
-                    iOSBookView(book: unwrappedBook, showEditBookSheet: $showEditBookSheet)
+                    iOSBookView(showEditBookSheet: $showEditBookSheet)
                 }
             }
             else {
@@ -59,8 +55,8 @@ struct iOSBookViewWrapper: View {
     
     private func deleteBook() {
         withAnimation {
-            if let unwrappedBook = book {
-                book = nil
+            if let unwrappedBook = globalViewModel.selectedBook {
+                globalViewModel.selectedBook = nil
                 viewContext.delete(unwrappedBook)
                 
                 do {
