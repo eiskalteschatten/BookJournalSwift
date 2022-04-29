@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 final class GlobalViewModel: ObservableObject {
     private var viewContext: NSManagedObjectContext?
@@ -42,10 +43,7 @@ final class GlobalViewModel: ObservableObject {
                 do {
                     try viewContext!.save()
                 } catch {
-                    // TODO: Replace this implementation with code to handle the error appropriately.
-                    // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                    let nsError = error as NSError
-                    fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                    handleCoreDataError(error as NSError)
                 }
             }
         }
