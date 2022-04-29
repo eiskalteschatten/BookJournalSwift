@@ -12,14 +12,14 @@ struct MacBookView: View {
     
     var body: some View {
         if let book = globalViewModel.selectedBook {
+            let bookcover = getBookcover(book: book)
+            let offset = 100.0
+            let maxWidth = 800.0
+            let textWithLabelSpacing = 50.0
+            let groupBoxSpacing = 20.0
+            let groupBoxWidth = (maxWidth / 2) - (groupBoxSpacing / 2)
+            
             VStack {
-                let bookcover = getBookcover(book: book)
-                let offset = 100.0
-                let maxWidth = 800.0
-                let textWithLabelSpacing = 50.0
-                let groupBoxSpacing = 20.0
-                let groupBoxWidth = (maxWidth / 2) - (groupBoxSpacing / 2)
-                
                 GeometryReader { metrics in
                     ScrollView {
                         ZStack {
@@ -151,10 +151,8 @@ struct MacBookView: View {
                                                 .textSelection(.enabled)
                                         }
                                     }
-                                }
-                                
-                                if book.title != "" || book.isbn != "" {
-                                    Group {
+                                    
+                                    if book.title != "" || book.isbn != "" {
                                         MacBookViewGroupBox(title: "Search for this book on...", icon: "link", width: maxWidth) {
                                             BookLinksView(book: book)
                                         }

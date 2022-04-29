@@ -149,10 +149,8 @@ struct iOSBookView: View {
                                                 .textSelection(.enabled)
                                         }
                                     }
-                                }
-                                
-                                if book.title != "" || book.isbn != "" {
-                                    Group {
+                                    
+                                    if book.title != "" || book.isbn != "" {
                                         iOSBookViewGroupBox(title: "Search for this book on...", icon: "link") {
                                             BookLinksView(book: book)
                                         }
