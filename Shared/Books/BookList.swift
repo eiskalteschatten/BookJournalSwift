@@ -40,7 +40,7 @@ struct BookList: View {
 
     var body: some View {
         List {
-            ForEach(books) { book in
+            ForEach(Array(books.enumerated()), id: \.element) { index, book in
                 NavigationLink(
                     destination: BookView(book: $selectedBook),
                     tag: book,
@@ -49,6 +49,13 @@ struct BookList: View {
                         BookListItem(book: book)
                     }
                 )
+                .contextMenu {
+                    Button("Add New Book", action: addNewBook)
+                    Divider()
+                    Button("Delete Book", role: .destructive, action: {
+                        promptToDeleteBook(offsets: IndexSet([index]))
+                    })
+                }
             }
             .onDelete(perform: deleteBooks)
         }
@@ -59,14 +66,7 @@ struct BookList: View {
             }
             #endif
             ToolbarItem {
-                Button(action: {
-                    #if os(iOS)
-                    showNewBookSheet.toggle()
-                    #else
-                    let newBookWindow = MacEditBookWindowManager()
-                    newBookWindow.openWindow(createOptions: createOptions)
-                    #endif
-                }) {
+                Button(action: addNewBook) {
                     Label("Add Book", systemImage: "plus")
                 }
             }
@@ -78,6 +78,30 @@ struct BookList: View {
         #else
         .frame(minWidth: 250)
         #endif
+    }
+    
+    private func addNewBook() {
+        #if os(iOS)
+        showNewBookSheet.toggle()
+        #else
+        let newBookWindow = MacEditBookWindowManager()
+        newBookWindow.openWindow(createOptions: createOptions)
+        #endif
+    }
+    
+    private func promptToDeleteBook(offsets: IndexSet) {
+        let alert = NSAlert()
+        alert.messageText = "Are you sure you want to delete this book?"
+        alert.informativeText = "This is permanent."
+        alert.addButton(withTitle: "No")
+        alert.addButton(withTitle: "Yes")
+        alert.alertStyle = .warning
+        
+        let delete = alert.runModal() == NSApplication.ModalResponse.alertSecondButtonReturn
+        
+        if delete {
+            deleteBooks(offsets: offsets)
+        }
     }
 
     private func deleteBooks(offsets: IndexSet) {
