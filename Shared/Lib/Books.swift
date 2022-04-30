@@ -38,16 +38,24 @@ let bookFormatProperties: [BookFormat: [String]] = [
     .other: ["Other", "questionmark"]
 ]
 
+let defaultBookcoverNames = [
+    "DefaultBookcoverBlack",
+    "DefaultBookcoverBlue",
+    "DefaultBookcoverRed",
+    "DefaultBookcoverGreen",
+    "DefaultBookcoverWhite"
+]
+
 func getBookcover(book: Book) -> Image {
     #if os(macOS)
     return book.bookcover != nil
         ? Image(nsImage: NSImage(data: book.bookcover!)!)
         // TODO: add actual default cover image
-        : Image("DefaultBookCover")
+        : Image("DefaultBookcoverBlack")
     #else
     return book.bookcover != nil
         ? Image(uiImage: UIImage(data: book.bookcover!)!)
         // TODO: add actual default cover image
-        : Image("DefaultBookCover")
+        : Image("DefaultBookcoverBlack")
     #endif
 }
