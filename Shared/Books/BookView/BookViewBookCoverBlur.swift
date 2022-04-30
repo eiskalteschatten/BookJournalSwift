@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct BookViewBookCoverBlur: View {
-    var bookcover: Image
+    @ObservedObject var book: Book
     
     var body: some View {
+        let bookcover = getBookcover(book: book)
+        
         GeometryReader { geometry in
             if geometry.frame(in: .global).minY <= 0 {
                 bookcover
@@ -39,6 +41,9 @@ struct BookViewBookCoverBlur: View {
 
 struct BookViewBookCoverBlur_Previews: PreviewProvider {
     static var previews: some View {
-        BookViewBookCoverBlur(bookcover: Image(systemName: "macpro.gen1.fill"))
+        let context = PersistenceController.preview.container.viewContext
+        let book = context.registeredObjects.first(where: { $0 is Book }) as! Book
+        
+        BookViewBookCoverBlur(book: book)
     }
 }

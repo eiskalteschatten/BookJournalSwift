@@ -12,7 +12,6 @@ struct MacBookView: View {
     
     var body: some View {
         if let book = globalViewModel.selectedBook {
-            let bookcover = getBookcover(book: book)
             let offset = 100.0
             let maxWidth = 800.0
             let textWithLabelSpacing = 50.0
@@ -23,11 +22,11 @@ struct MacBookView: View {
                 GeometryReader { metrics in
                     ScrollView {
                         ZStack {
-                            BookViewBookCoverBlur(bookcover: bookcover)
+                            BookViewBookCoverBlur(book: book)
                             
                             VStack(spacing: groupBoxSpacing) {
                                 VStack(spacing: 10) {
-                                    BookViewBookCoverTitle(bookcover: bookcover, title: book.title)
+                                    BookViewBookCoverTitle(book: book)
                                     BookViewAuthors(authors: book.sortedAuthors)
                                 }
                                 

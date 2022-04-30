@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct BookViewBookCoverTitle: View {
-    var bookcover: Image
-    var title: String?
+    @ObservedObject var book: Book
     
     var body: some View {
+        let bookcover = getBookcover(book: book)
+        
         VStack(spacing: 30) {
             #if os(macOS)
             let frameHeight = 400.0
@@ -26,7 +27,7 @@ struct BookViewBookCoverTitle: View {
                 .padding(.horizontal)
                 .shadow(radius: 5)
             
-            Text(title ?? "")
+            Text(book.title ?? "")
                 .font(.title)
                 .textSelection(.enabled)
         }
@@ -35,6 +36,9 @@ struct BookViewBookCoverTitle: View {
 
 struct BookViewBookCoverTitle_Previews: PreviewProvider {
     static var previews: some View {
-        BookViewBookCoverTitle(bookcover: Image(systemName: "macpro.gen1.fill"), title: "A Book")
+        let context = PersistenceController.preview.container.viewContext
+        let book = context.registeredObjects.first(where: { $0 is Book }) as! Book
+        
+        BookViewBookCoverTitle(book: book)
     }
 }

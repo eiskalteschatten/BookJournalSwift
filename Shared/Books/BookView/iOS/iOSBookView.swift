@@ -21,11 +21,11 @@ struct iOSBookView: View {
                 GeometryReader { metrics in
                     ScrollView {
                         ZStack {
-                            BookViewBookCoverBlur(bookcover: bookcover)
+                            BookViewBookCoverBlur(book: book)
                         
                             VStack(spacing: 30) {
                                 VStack(spacing: 10) {
-                                    BookViewBookCoverTitle(bookcover: bookcover, title: book.title)
+                                    BookViewBookCoverTitle(book: book)
                                     BookViewAuthors(authors: book.sortedAuthors)
                                 }
                                 
