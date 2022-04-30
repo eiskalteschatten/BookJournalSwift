@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import os
 
 struct BookModelCreateOptions {
     var readingStatus: BookReadingStatus?
@@ -76,6 +77,19 @@ final class BookModel: ObservableObject {
             if let unwrapped = bookcover {
                 book!.bookcover = unwrapped
             }
+            else {
+                let randomDefaultBookcover = getRandomDefaultBookcover()
+                #if os(macOS)
+//                    let image = NSImage(named: randomDefaultBookcover)
+//                    let data = image.
+                #else
+                let image = UIImage(named: randomDefaultBookcover)!
+                let data = image.jpegData(compressionQuality: 100)!
+                #endif
+                
+                book!.bookcover = Data(data)
+            }
+            
             book!.title = title
             book!.rating = Int16(rating)
             book!.onWishlist = onWishlist

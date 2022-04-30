@@ -46,16 +46,19 @@ let defaultBookcoverNames = [
     "DefaultBookcoverWhite"
 ]
 
+func getRandomDefaultBookcover() -> String {
+    let randomInt = Int.random(in: 0 ..< (defaultBookcoverNames.count - 1))
+    return defaultBookcoverNames[randomInt]
+}
+
 func getBookcover(book: Book) -> Image {
     #if os(macOS)
     return book.bookcover != nil
         ? Image(nsImage: NSImage(data: book.bookcover!)!)
-        // TODO: add actual default cover image
-        : Image("DefaultBookcoverBlack")
+        : Image(defaultBookcoverNames[0])
     #else
     return book.bookcover != nil
         ? Image(uiImage: UIImage(data: book.bookcover!)!)
-        // TODO: add actual default cover image
-        : Image("DefaultBookcoverBlack")
+        : Image(defaultBookcoverNames[0])
     #endif
 }
