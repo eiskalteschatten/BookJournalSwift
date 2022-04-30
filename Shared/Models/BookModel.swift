@@ -80,8 +80,10 @@ final class BookModel: ObservableObject {
             else {
                 let randomDefaultBookcover = getRandomDefaultBookcover()
                 #if os(macOS)
-//                    let image = NSImage(named: randomDefaultBookcover)
-//                    let data = image.
+                let image = NSImage(named: randomDefaultBookcover)!
+                let cgImage = image.cgImage(forProposedRect: nil, context: nil, hints: nil)!
+                let bitmapRep = NSBitmapImageRep(cgImage: cgImage)
+                let data = bitmapRep.representation(using: NSBitmapImageRep.FileType.jpeg, properties: [:])!
                 #else
                 let image = UIImage(named: randomDefaultBookcover)!
                 let data = image.jpegData(compressionQuality: 100)!
