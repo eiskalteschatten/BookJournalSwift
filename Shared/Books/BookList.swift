@@ -23,11 +23,7 @@ struct BookList: View {
     private typealias BookView = MacBookViewWrapper
     #endif
 
-    @FetchRequest(
-        entity: Book.entity(),
-        sortDescriptors: [NSSortDescriptor(keyPath: \Book.title, ascending: false)]
-    )
-    private var books: FetchedResults<Book>
+    @FetchRequest private var books: FetchedResults<Book>
     
     private var createOptions: BookModelCreateOptions?
     
@@ -35,8 +31,12 @@ struct BookList: View {
         predicate: NSPredicate? = nil,
         createOptions: BookModelCreateOptions? = nil
     ) {
+        self._books = FetchRequest<Book>(
+            sortDescriptors: [SortDescriptor(\Book.title, order: .forward)],
+            predicate: predicate,
+            animation: .default
+        )
         self.createOptions = createOptions
-        self.predicate = predicate
     }
 
     var body: some View {
@@ -70,11 +70,6 @@ struct BookList: View {
                 Button(action: addNewBook) {
                     Label("Add Book", systemImage: "plus")
                 }
-            }
-        }
-        .onAppear {
-            if let unwrappedPredicate = predicate {
-                books.nsPredicate = unwrappedPredicate
             }
         }
         #if os(iOS)
