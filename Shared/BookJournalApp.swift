@@ -14,7 +14,7 @@ struct BookJournalApp: App {
     @StateObject var globalViewModel = GlobalViewModel.shared
     
     var body: some Scene {
-        WindowGroup {
+        WindowGroup("BookJournal", id: "BookJournal.viewer") {
             ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .environmentObject(globalViewModel)
