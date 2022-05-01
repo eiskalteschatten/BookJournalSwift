@@ -89,9 +89,9 @@ struct MacContentView: View {
             .onChange(of: screen, perform: { _ in
                 UserDefaults.standard.set(screen?.rawValue, forKey: USER_LAST_SCREEN_KEY)
             })
-            
-            // TODO: something other than just text
-            Text("Select a category")
+
+            // Blank column
+            Text("")
             
             MacBookViewWrapper()
         }
