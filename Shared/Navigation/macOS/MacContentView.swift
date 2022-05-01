@@ -90,9 +90,7 @@ struct MacContentView: View {
                 UserDefaults.standard.set(screen?.rawValue, forKey: USER_LAST_SCREEN_KEY)
             })
 
-            // Blank column
-            Text("")
-            
+            EmptyView()
             MacBookViewWrapper()
         }
     }

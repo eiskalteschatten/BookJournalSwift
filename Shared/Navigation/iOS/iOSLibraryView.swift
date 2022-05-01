@@ -61,11 +61,16 @@ struct iOSLibraryView: View {
             }
             .navigationBarTitle("BookJournal")
             
-            // TODO: something other than just text
-            Text("Select a category")
-            
+            EmptyView()
             iOSBookViewWrapper()
         }
+    }
+}
+
+extension UISplitViewController {
+    open override func viewDidLoad() {
+        super.viewDidLoad()
+        self.show(.primary)
     }
 }
 
