@@ -14,7 +14,6 @@ struct iPadOSBookView: View {
     var body: some View {
         if let book = globalViewModel.selectedBook {
             VStack {
-                let bookcover = getBookcover(book: book)
                 let offset = 100.0
                 let textWithLabelSpacing = 50.0
                 let groupBoxSpacing = 20.0
