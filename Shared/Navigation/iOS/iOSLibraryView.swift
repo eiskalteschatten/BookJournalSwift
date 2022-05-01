@@ -67,14 +67,6 @@ struct iOSLibraryView: View {
     }
 }
 
-// Show all three columns on iPad by default
-extension UISplitViewController {
-    open override func viewDidLoad() {
-        super.viewDidLoad()
-        self.show(.primary)
-    }
-}
-
 struct iOSLibraryView_Previews: PreviewProvider {
     static var previews: some View {
         iOSLibraryView()

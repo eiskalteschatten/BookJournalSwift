@@ -49,6 +49,7 @@ struct iOSBookViewWrapper: View {
                  } label: {
                      Image(systemName: "ellipsis.circle")
                  }
+                 .disabled(globalViewModel.selectedBook == nil)
             }
         }
     }
