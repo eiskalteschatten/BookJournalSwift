@@ -12,7 +12,7 @@ struct iOSLibraryView: View {
         case allBooks, currentlyReading, notReadYet, read
     }
     
-    @State private var screen: Screen?
+    @SceneStorage("iOSLibraryView.screen") private var screen: Screen?
     
     var body: some View {
         NavigationView {
@@ -64,6 +64,13 @@ struct iOSLibraryView: View {
             EmptyView()
             iOSBookViewWrapper()
         }
+    }
+}
+
+extension UISplitViewController {
+    open override func viewDidLoad() {
+        super.viewDidLoad()
+        self.show(.primary)
     }
 }
 

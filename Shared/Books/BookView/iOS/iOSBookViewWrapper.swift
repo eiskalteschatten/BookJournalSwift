@@ -26,9 +26,6 @@ struct iOSBookViewWrapper: View {
                     iOSBookView(showEditBookSheet: $showEditBookSheet)
                 }
             }
-            else {
-                NoBookSelected()
-            }
         }
         .alert("Are you sure you want to delete this book?", isPresented: $presentDeleteAlert, actions: {
             Button("No", role: .cancel, action: { presentDeleteAlert = false })

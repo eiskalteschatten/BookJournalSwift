@@ -12,7 +12,7 @@ struct MacContentView: View {
         case allBooks, wishlist, currentlyReading, notReadYet, read, statistics
     }
     
-    @State private var screen: Screen? = Screen(rawValue: UserDefaults.standard.integer(forKey: USER_LAST_SCREEN_KEY)) ?? .allBooks
+    @SceneStorage("MacContentView.screen") private var screen: Screen?
     
     var body: some View {
         NavigationView {
@@ -86,9 +86,6 @@ struct MacContentView: View {
 //                    )
 //                }
             }
-            .onChange(of: screen, perform: { _ in
-                UserDefaults.standard.set(screen?.rawValue, forKey: USER_LAST_SCREEN_KEY)
-            })
 
             EmptyView()
             MacBookViewWrapper()
