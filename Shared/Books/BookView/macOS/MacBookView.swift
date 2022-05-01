@@ -24,7 +24,7 @@ struct MacBookView: View {
                         ZStack {
                             BookViewBookCoverBlur(book: book)
                             
-                            VStack(spacing: groupBoxSpacing) {
+                            LazyVStack(spacing: groupBoxSpacing) {
                                 VStack(spacing: 10) {
                                     BookViewBookCoverTitle(book: book)
                                     BookViewAuthors(authors: book.sortedAuthors)

@@ -22,7 +22,7 @@ struct iOSBookView: View {
                         ZStack {
                             BookViewBookCoverBlur(book: book)
                         
-                            VStack(spacing: 30) {
+                            LazyVStack(spacing: 30) {
                                 VStack(spacing: 10) {
                                     BookViewBookCoverTitle(book: book)
                                     BookViewAuthors(authors: book.sortedAuthors)
