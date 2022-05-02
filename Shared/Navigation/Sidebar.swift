@@ -97,6 +97,8 @@ struct Sidebar: View {
         }
         #if os(iOS)
         .navigationBarTitle("BookJournal")
+        #else
+        .frame(minWidth: 200)
         #endif
     }
 }
