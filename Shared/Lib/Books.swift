@@ -53,12 +53,12 @@ func getRandomDefaultBookcover() -> String {
 
 func getBookcover(book: Book) -> Image {
     #if os(macOS)
-    return book.bookcover != nil
-        ? Image(nsImage: NSImage(data: book.bookcover!)!)
+    return book.bookcover?.image != nil
+        ? Image(nsImage: NSImage(data: book.bookcover!.image!)!)
         : Image(defaultBookcoverNames[0])
     #else
-    return book.bookcover != nil
-        ? Image(uiImage: UIImage(data: book.bookcover!)!)
+    return book.bookcover?.image != nil
+        ? Image(uiImage: UIImage(data: book.bookcover!.image!)!)
         : Image(defaultBookcoverNames[0])
     #endif
 }

@@ -9,6 +9,7 @@ import SwiftUI
 import os
 
 struct MacEditBookStep1: View {
+    @Environment(\.managedObjectContext) private var viewContext
     @ObservedObject var bookModel: BookModel
     
     var body: some View {
@@ -17,7 +18,7 @@ struct MacEditBookStep1: View {
             
             // Bookcover
             Button(action: chooseBookcoverImage) {
-                if let bookcover = bookModel.bookcover {
+                if let imageStore = bookModel.bookcover, let bookcover = imageStore.image {
                     let image = NSImage(data: bookcover)
                     Image(nsImage: image!)
                         .resizable()
@@ -61,7 +62,19 @@ struct MacEditBookStep1: View {
         if panel.runModal() == .OK {
             if panel.url != nil {
                 do {
-                    try bookModel.bookcover = Data(contentsOf: panel.url!)
+                    let data = try Data(contentsOf: panel.url!)
+                    
+                    if let imageStore = bookModel.bookcover {
+                        imageStore.image = data
+                        imageStore.updatedAt = Date()
+                    }
+                    else {
+                        let imageStore = ImageStore(context: viewContext)
+                        imageStore.image = data
+                        imageStore.updatedAt = Date()
+                        imageStore.createdAt = Date()
+                        bookModel.bookcover = imageStore
+                    }
                 } catch {
                     showErrorAlert(
                         error: error as NSError,

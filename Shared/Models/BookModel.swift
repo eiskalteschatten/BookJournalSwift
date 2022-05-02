@@ -20,7 +20,7 @@ final class BookModel: ObservableObject {
     private var updatingBook = false
     private var createOptions: BookModelCreateOptions?
     
-    @Published var bookcover: Data?
+    @Published var bookcover: ImageStore?
     
     @Published var title: String = ""
     @Published var rating: Int = 0
@@ -89,7 +89,8 @@ final class BookModel: ObservableObject {
                 let data = image.jpegData(compressionQuality: 100)!
                 #endif
                 
-                book!.bookcover = Data(data)
+                let imageStore = getBookcoverImageStore(data: Data(data))
+                book!.bookcover = imageStore
             }
             
             book!.title = title
@@ -137,6 +138,21 @@ final class BookModel: ObservableObject {
             } catch {
                 handleCoreDataError(error as NSError)
             }
+        }
+    }
+    
+    private func getBookcoverImageStore(data: Data) -> ImageStore {
+        if let unwrappedImage = book!.bookcover {
+            unwrappedImage.updatedAt = Date()
+            unwrappedImage.image = data
+            return unwrappedImage
+        }
+        else {
+            let image = ImageStore(context: viewContext!)
+            image.createdAt = Date()
+            image.updatedAt = Date()
+            image.image = data
+            return image
         }
     }
     
