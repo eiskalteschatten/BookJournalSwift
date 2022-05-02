@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    #if os(iOS)
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
+    #endif
     
     var body: some View {
         #if os(macOS)
