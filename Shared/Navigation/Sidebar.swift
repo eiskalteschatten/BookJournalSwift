@@ -12,7 +12,9 @@ struct Sidebar: View {
         case allBooks, wishlist, currentlyReading, notReadYet, read, statistics
     }
     
-    @SceneStorage("Sidebar.screen") private var screen: Screen?
+    private let defaults = UserDefaults.standard
+    private let sidebarScreenKey = "Sidebar.screen"
+    @State private var screen: Screen?
     
     var body: some View {
         List {
@@ -84,6 +86,14 @@ struct Sidebar: View {
 //                        }
 //                    )
 //                }
+        }
+        .onChange(of: screen) { newScreen in
+            defaults.set(newScreen?.rawValue, forKey: sidebarScreenKey)
+        }
+        .onAppear {
+            if let restoredScreen = defaults.integer(forKey: sidebarScreenKey) as Int? {
+                screen = Screen(rawValue: restoredScreen)
+            }
         }
         #if os(iOS)
         .navigationBarTitle("BookJournal")

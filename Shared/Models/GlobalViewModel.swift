@@ -11,11 +11,12 @@ import CoreData
 final class GlobalViewModel: ObservableObject {
     private let defaults = UserDefaults.standard
     private var viewContext: NSManagedObjectContext?
+    private let selectedBookURLKey = "GlobalViewModel.selectedBookURL"
     
     @Published var selectedBook: Book? {
         didSet {
-            // Use user defaults instead of @SceneStorage here so that a URL object can be stored
-            defaults.set(selectedBook?.objectID.uriRepresentation(), forKey: "selectedBookId")
+            // Use user defaults instead of @SceneStorage so it can be initialized in the constructor
+            defaults.set(selectedBook?.objectID.uriRepresentation(), forKey: selectedBookURLKey)
         }
     }
     
@@ -38,7 +39,7 @@ final class GlobalViewModel: ObservableObject {
         let persistenceController = PersistenceController.shared
         viewContext = persistenceController.container.viewContext
         
-        if let url = defaults.url(forKey: "selectedBookId"),
+        if let url = defaults.url(forKey: selectedBookURLKey),
            let objectID = viewContext!.persistentStoreCoordinator!.managedObjectID(forURIRepresentation: url),
            let book = try? viewContext!.existingObject(with: objectID) as? Book {
                 selectedBook = book
