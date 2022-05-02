@@ -59,7 +59,7 @@ struct iOSEditBookSheet: View {
                                 Label("Scan Image", systemImage: "viewfinder")
                             }
                         } label: {
-                            if let bookcover = bookModel.bookcover {
+                            if let imageStore = bookModel.bookcover, let bookcover = imageStore.image {
                                 let image = UIImage(data: bookcover)
                                 Image(uiImage: image!)
                                     .resizable()
@@ -75,7 +75,7 @@ struct iOSEditBookSheet: View {
                             ImagePicker(
                                 sourceType: imagePickerSourceType,
                                 selectedImage: $bookcoverUIImage,
-                                selectedImageData: $bookModel.bookcover
+                                selectedImageStore: $bookModel.bookcover
                             )
                         }
                         
