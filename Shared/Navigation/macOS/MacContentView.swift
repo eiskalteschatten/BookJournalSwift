@@ -17,7 +17,7 @@ struct MacContentView: View {
     var body: some View {
         NavigationView {
             List {
-                Section("Books") {
+                Section("Library") {
                     NavigationLink(
                         destination: BookList().navigationTitle("All Books"),
                         tag: Screen.allBooks,
