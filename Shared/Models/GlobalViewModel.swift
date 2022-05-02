@@ -9,9 +9,15 @@ import SwiftUI
 import CoreData
 
 final class GlobalViewModel: ObservableObject {
+    private let defaults = UserDefaults.standard
     private var viewContext: NSManagedObjectContext?
     
-    @Published var selectedBook: Book?
+    @Published var selectedBook: Book? {
+        didSet {
+            // Use user defaults instead of @SceneStorage here so that a URL object can be stored
+            defaults.set(selectedBook?.objectID.uriRepresentation(), forKey: "selectedBookId")
+        }
+    }
     
     #if os(iOS)
     @Published var globalError: String?
@@ -31,6 +37,12 @@ final class GlobalViewModel: ObservableObject {
     private init() {
         let persistenceController = PersistenceController.shared
         viewContext = persistenceController.container.viewContext
+        
+        if let url = defaults.url(forKey: "selectedBookId"),
+           let objectID = viewContext!.persistentStoreCoordinator!.managedObjectID(forURIRepresentation: url),
+           let book = try? viewContext!.existingObject(with: objectID) as? Book {
+                selectedBook = book
+        }
     }
     
     #if os(macOS)
