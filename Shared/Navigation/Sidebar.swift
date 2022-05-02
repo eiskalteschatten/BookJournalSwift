@@ -85,6 +85,9 @@ struct Sidebar: View {
 //                    )
 //                }
         }
+        #if os(iOS)
+        .navigationBarTitle("BookJournal")
+        #endif
     }
 }
 

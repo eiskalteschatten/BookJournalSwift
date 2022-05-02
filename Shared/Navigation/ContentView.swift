@@ -8,11 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
+    
     var body: some View {
         #if os(macOS)
-        MacContentView()
+        ThreeColumnContentView()
         #else
-        iOSContentView()
+        if horizontalSizeClass == .compact {
+            iOSStackContentView()
+        }
+        else {
+            ThreeColumnContentView()
+        }
         #endif
     }
 }
