@@ -11,6 +11,7 @@ struct ThreeColumnContentView: View {
     var body: some View {
         NavigationView {
             Sidebar()
+            
             EmptyView()
             
             #if os(macOS)
@@ -21,6 +22,15 @@ struct ThreeColumnContentView: View {
         }
     }
 }
+
+#if os(iOS)
+extension UISplitViewController {
+    open override func viewDidLoad() {
+        super.viewDidLoad()
+        self.show(.primary)
+    }
+}
+#endif
 
 struct ThreeColumnContentView_Previews: PreviewProvider {
     static var previews: some View {
