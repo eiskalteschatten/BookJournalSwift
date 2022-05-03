@@ -11,7 +11,7 @@ import os
 
 struct BookModelCreateOptions {
     var readingStatus: BookReadingStatus?
-    var onWishlist = false
+    var list: ListOfBooks?
 }
 
 final class BookModel: ObservableObject {
@@ -193,6 +193,10 @@ final class BookModel: ObservableObject {
         // Creating a book
         else if let unwrappedOptions = createOptions {
             readingStatus = unwrappedOptions.readingStatus?.rawValue ?? readingStatus
+            
+            if let unwrappedList = unwrappedOptions.list {
+                lists.append(unwrappedList)
+            }
         }
     }
 }
