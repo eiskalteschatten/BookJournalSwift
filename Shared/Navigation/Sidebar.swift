@@ -74,7 +74,7 @@ struct Sidebar: View {
                 ForEach(lists.filter { $0.name != nil }) { list in
                     NavigationLink(
                         destination: BookList(
-                            predicate: NSPredicate(format: "onWishlist == true"),
+                            predicate: NSPredicate(format: "ANY lists == %@", list),
                             createOptions: BookModelCreateOptions(list: list)
                         ).navigationTitle(list.name ?? ""),
                         tag: list.objectID.uriRepresentation().absoluteString,
