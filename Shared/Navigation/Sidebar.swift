@@ -80,12 +80,7 @@ struct Sidebar: View {
                         tag: list.objectID.uriRepresentation().absoluteString,
                         selection: $screen,
                         label: {
-                            if let icon = list.icon {
-                                Label(list.name ?? "", systemImage: icon)
-                            }
-                            else {
-                                Text(list.name ?? "")
-                            }
+                            Label(list.name ?? "", systemImage: list.icon ?? DEFAULT_LIST_ICON)
                         }
                     )
                     .listItemTint(Color("SidebarTint"))

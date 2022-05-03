@@ -17,3 +17,5 @@ let LIST_COLOR = Color.blue
 let TAG_COLOR = Color.red
 
 let GOOGLE_BOOKS_SEARCH_URL = "https://www.google.com/search?tbm=bks&q="
+
+let DEFAULT_LIST_ICON = "list.dash"
