@@ -20,7 +20,8 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MonochromeIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Jhb-q1-fQe">
                                 <rect key="frame" x="-65.5" y="300" width="545" height="296"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="Jhb-q1-fQe" secondAttribute="height" multiplier="409:222" id="M3N-5G-oUv"/>
+                                    <constraint firstAttribute="width" constant="545" id="1pS-H3-LXK"/>
+                                    <constraint firstAttribute="height" constant="296" id="zDa-ux-uWC"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -28,9 +29,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <color key="tintColor" name="AccentColor"/>
                         <constraints>
-                            <constraint firstItem="Jhb-q1-fQe" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="JT3-47-egI"/>
-                            <constraint firstItem="Jhb-q1-fQe" firstAttribute="top" secondItem="Bcu-3y-fUS" secondAttribute="top" constant="256" id="cvk-DO-jdW"/>
-                            <constraint firstItem="Jhb-q1-fQe" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="sOZ-ek-fgs"/>
+                            <constraint firstItem="Jhb-q1-fQe" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="dff-ni-bt2"/>
+                            <constraint firstItem="Jhb-q1-fQe" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="lwY-2w-6iZ"/>
                         </constraints>
                     </view>
                 </viewController>
