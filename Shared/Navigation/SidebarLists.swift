@@ -36,11 +36,6 @@ struct SidebarLists: View {
                     }
                 )
                 .listItemTint(Color("SidebarTint"))
-                #if os(macOS)
-                .onHover { _ in
-                    showAddListButton.toggle()
-                }
-                #endif
             }
         }
     }
