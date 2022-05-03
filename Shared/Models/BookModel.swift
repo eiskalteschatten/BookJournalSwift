@@ -24,7 +24,6 @@ final class BookModel: ObservableObject {
     
     @Published var title: String = ""
     @Published var rating: Int = 0
-    @Published var onWishlist: Bool = false
     
     @Published var readingStatus: String = ""
     @Published var addDateStarted = false
@@ -35,7 +34,7 @@ final class BookModel: ObservableObject {
     @Published var authors: [Author] = []
     @Published var editors: [Editor] = []
     
-    @Published var categories: [Category] = []
+    @Published var lists: [ListOfBooks] = []
     @Published var tags: [Tag] = []
     @Published var genres: [Genre] = []
     
@@ -95,7 +94,6 @@ final class BookModel: ObservableObject {
             
             book!.title = title
             book!.rating = Int16(rating)
-            book!.onWishlist = onWishlist
 
             book!.readingStatus = readingStatus
             book!.dateStarted = addDateStarted ? dateStarted : nil
@@ -104,7 +102,7 @@ final class BookModel: ObservableObject {
             authors.forEach(book!.addToAuthors)
             editors.forEach(book!.addToEditors)
 
-            categories.forEach(book!.addToCategories)
+            lists.forEach(book!.addToLists)
             tags.forEach(book!.addToTags)
             genres.forEach(book!.addToGenres)
 
@@ -163,7 +161,6 @@ final class BookModel: ObservableObject {
                 
             title = unwrappedBook.title ?? title
             rating = unwrappedBook.rating != 0 ? Int(unwrappedBook.rating) : rating
-            onWishlist = unwrappedBook.onWishlist
 
             readingStatus = unwrappedBook.readingStatus ?? readingStatus
             addDateStarted = unwrappedBook.dateStarted != nil
@@ -174,7 +171,7 @@ final class BookModel: ObservableObject {
             authors = unwrappedBook.authors?.allObjects as? [Author] ?? authors
             editors = unwrappedBook.editors?.allObjects as? [Editor] ?? editors
 
-            categories = unwrappedBook.categories?.allObjects as? [Category] ?? categories
+            lists = unwrappedBook.lists?.allObjects as? [ListOfBooks] ?? lists
             tags = unwrappedBook.tags?.allObjects as? [Tag] ?? tags
             genres = unwrappedBook.genres?.allObjects as? [Genre] ?? genres
 
@@ -196,7 +193,6 @@ final class BookModel: ObservableObject {
         // Creating a book
         else if let unwrappedOptions = createOptions {
             readingStatus = unwrappedOptions.readingStatus?.rawValue ?? readingStatus
-            onWishlist = unwrappedOptions.onWishlist
         }
     }
 }

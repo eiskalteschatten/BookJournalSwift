@@ -29,8 +29,8 @@ extension Book {
         }
     }
     
-    public var sortedCategories: [Category] {
-        let set = categories as? Set<Category> ?? []
+    public var sortedLists: [ListOfBooks] {
+        let set = lists as? Set<ListOfBooks> ?? []
         return set.sorted {
             $0.wrappedName < $1.wrappedName
         }

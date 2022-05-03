@@ -49,12 +49,6 @@ struct MacEditBookStep2: View {
                     }
                     .disabled(!bookModel.addDateFinished)
                 }
-                
-                Divider()
-                    .padding(.vertical)
-                
-                // Wishlist
-                Toggle("Add Book to Wishlist", isOn: $bookModel.onWishlist)
             }
         }
     }

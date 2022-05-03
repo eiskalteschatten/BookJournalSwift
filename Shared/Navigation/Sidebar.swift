@@ -70,18 +70,18 @@ struct Sidebar: View {
             }
             
             Section("Lists") {
-                NavigationLink(
-                    destination: BookList(
-                        predicate: NSPredicate(format: "onWishlist == true"),
-                        createOptions: BookModelCreateOptions(onWishlist: true)
-                    ).navigationTitle("Wishlist"),
-                    tag: Screen.wishlist,
-                    selection: $screen,
-                    label: {
-                        Label("Wishlist", systemImage: "list.star")
-                    }
-                )
-                .listItemTint(Color("SidebarTint"))
+//                NavigationLink(
+//                    destination: BookList(
+//                        predicate: NSPredicate(format: "onWishlist == true"),
+//                        createOptions: BookModelCreateOptions(onWishlist: true)
+//                    ).navigationTitle("Wishlist"),
+//                    tag: Screen.wishlist,
+//                    selection: $screen,
+//                    label: {
+//                        Label("Wishlist", systemImage: "list.star")
+//                    }
+//                )
+//                .listItemTint(Color("SidebarTint"))
             }
         }
         .onChange(of: screen) { newScreen in

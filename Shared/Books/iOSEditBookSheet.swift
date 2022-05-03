@@ -168,7 +168,7 @@ struct iOSEditBookSheet: View {
                         ),
                         tag: Screen.addCategories,
                         selection: $screen,
-                        label: { WrappingSmallChipsWithName<Category>(title: "Categories", data: bookModel.categories, chipColor: CATEGORY_COLOR, alignment: .leading) }
+                        label: { WrappingSmallChipsWithName<Category>(title: "Categories", data: bookModel.categories, chipColor: LIST_COLOR, alignment: .leading) }
                     )
                     
                     // Tags

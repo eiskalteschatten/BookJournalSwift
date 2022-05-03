@@ -17,7 +17,6 @@
         <attribute name="isbn" optional="YES" attributeType="String"/>
         <attribute name="languageReadIn" optional="YES" attributeType="String"/>
         <attribute name="notes" optional="YES" attributeType="String" spotlightIndexingEnabled="YES"/>
-        <attribute name="onWishlist" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="originalLanguage" optional="YES" attributeType="String"/>
         <attribute name="pageCount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="rating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
@@ -28,16 +27,13 @@
         <attribute name="yearPublished" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="authors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Author" inverseName="books" inverseEntity="Author" spotlightIndexingEnabled="YES"/>
         <relationship name="bookcover" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ImageStore" inverseName="book" inverseEntity="ImageStore"/>
-        <relationship name="categories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Category" inverseName="books" inverseEntity="Category" spotlightIndexingEnabled="YES"/>
         <relationship name="countryOfOrigin" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Country" inverseName="books" inverseEntity="Country"/>
         <relationship name="editors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Editor" inverseName="books" inverseEntity="Editor" spotlightIndexingEnabled="YES"/>
         <relationship name="genres" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Genre" inverseName="books" inverseEntity="Genre" spotlightIndexingEnabled="YES"/>
+        <relationship name="lists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ListOfBooks" inverseName="books" inverseEntity="ListOfBooks" spotlightIndexingEnabled="YES"/>
         <relationship name="publisher" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Publisher" inverseName="books" inverseEntity="Publisher"/>
         <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="books" inverseEntity="Tag" spotlightIndexingEnabled="YES"/>
         <relationship name="translators" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Translator" inverseName="books" inverseEntity="Translator"/>
-    </entity>
-    <entity name="Category" representedClassName="Category" parentEntity="AbstractName" syncable="YES" codeGenerationType="class">
-        <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="categories" inverseEntity="Book" spotlightIndexingEnabled="YES"/>
     </entity>
     <entity name="Country" representedClassName="Country" parentEntity="AbstractName" syncable="YES" codeGenerationType="class">
         <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="countryOfOrigin" inverseEntity="Book" spotlightIndexingEnabled="YES"/>
@@ -54,6 +50,10 @@
         <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="book" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="bookcover" inverseEntity="Book"/>
     </entity>
+    <entity name="ListOfBooks" representedClassName="ListOfBooks" parentEntity="AbstractName" syncable="YES" codeGenerationType="class">
+        <attribute name="icon" optional="YES" attributeType="String"/>
+        <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="lists" inverseEntity="Book" spotlightIndexingEnabled="YES"/>
+    </entity>
     <entity name="Publisher" representedClassName="Publisher" parentEntity="AbstractName" syncable="YES" codeGenerationType="class">
         <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="publisher" inverseEntity="Book" spotlightIndexingEnabled="YES"/>
     </entity>
@@ -66,14 +66,14 @@
     <elements>
         <element name="AbstractName" positionX="-9" positionY="162" width="128" height="74"/>
         <element name="Author" positionX="-54" positionY="153" width="128" height="44"/>
-        <element name="Book" positionX="-63" positionY="-9" width="128" height="419"/>
-        <element name="Category" positionX="-54" positionY="153" width="128" height="44"/>
+        <element name="Book" positionX="-63" positionY="-9" width="128" height="404"/>
+        <element name="ListOfBooks" positionX="-54" positionY="153" width="128" height="59"/>
         <element name="Country" positionX="27" positionY="207" width="128" height="44"/>
         <element name="Editor" positionX="-54" positionY="153" width="128" height="44"/>
         <element name="Genre" positionX="-9" positionY="189" width="128" height="44"/>
+        <element name="ImageStore" positionX="-18" positionY="153" width="128" height="89"/>
         <element name="Publisher" positionX="-27" positionY="180" width="128" height="44"/>
         <element name="Tag" positionX="-45" positionY="162" width="128" height="44"/>
         <element name="Translator" positionX="-18" positionY="153" width="128" height="44"/>
-        <element name="ImageStore" positionX="-18" positionY="153" width="128" height="89"/>
     </elements>
 </model>

@@ -15,10 +15,10 @@ struct MacEditBookStep4: View {
             MacEditBookStepTitle("Categorization")
 
             // Categories
-            SearchListNamedElement<Category>(
-                title: "Categories",
-                selectedData: $bookModel.categories,
-                createTitle: "Create a Category"
+            SearchListNamedElement<ListOfBooks>(
+                title: "Lists",
+                selectedData: $bookModel.lists,
+                createTitle: "Create a List"
             )
             
             Divider()

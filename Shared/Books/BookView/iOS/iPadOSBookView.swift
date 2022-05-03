@@ -92,7 +92,7 @@ struct iPadOSBookView: View {
                                     HStack(alignment: .top, spacing: groupBoxSpacing) {
                                         iOSBookViewGroupBox(title: "Categories", icon: "folder", width: groupBoxWidth) {
                                             if book.categories != nil && book.sortedCategories.count > 0 {
-                                                WrappingSmallChipsWithName<Category>(data: book.sortedCategories, chipColor: CATEGORY_COLOR, alignment: .leading)
+                                                WrappingSmallChipsWithName<Category>(data: book.sortedCategories, chipColor: LIST_COLOR, alignment: .leading)
                                             }
                                             else {
                                                 Text("No categories selected")

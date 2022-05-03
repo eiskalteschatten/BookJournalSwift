@@ -26,7 +26,6 @@ struct PersistenceController {
             newBook.commentary = "I'm a commentary"
             newBook.notes = "I'm some notes"
             newBook.rating = 3
-            newBook.onWishlist = true
             
             let newAuthor = Author(context: viewContext)
             newAuthor.name = "Mark Twain"
@@ -38,10 +37,11 @@ struct PersistenceController {
             
             newBook.addToEditors(newEditor)
             
-            let newCategory = Category(context: viewContext)
-            newCategory.name = "Cranky Books"
+            let newList = ListOfBooks(context: viewContext)
+            newList.name = "Cranky Books"
+            newList.icon = "list.star"
             
-            newBook.addToCategories(newCategory)
+            newBook.addToLists(newList)
             
             let newTag = Tag(context: viewContext)
             newTag.name = "Hilarious"
