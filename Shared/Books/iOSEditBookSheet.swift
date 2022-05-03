@@ -12,7 +12,7 @@ import WrappingHStack
 
 struct iOSEditBookSheet: View {
     private enum Screen: Int {
-        case addAuthors, addEditors, addGenres, addCategories, addTags, addTranslators, addPublisher, addCountryOfOrigin
+        case addAuthors, addEditors, addGenres, addLists, addTags, addTranslators, addPublisher, addCountryOfOrigin
     }
     
     @Environment(\.dismiss) var dismiss
@@ -90,16 +90,9 @@ struct iOSEditBookSheet: View {
                     }
                 }
                 
-                Group {
-                    Section("Rating") {
-                        BookRatingEditor(rating: $bookModel.rating)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                    }
-                    
-                    Section("Wishlist") {
-                        // Wishlist
-                        Toggle("Add Book to Wishlist", isOn: $bookModel.onWishlist)
-                    }
+                Section("Rating") {
+                    BookRatingEditor(rating: $bookModel.rating)
+                    .frame(maxWidth: .infinity, alignment: .center)
                 }
                 
                 Section("Book Status") {
@@ -159,16 +152,16 @@ struct iOSEditBookSheet: View {
                 }
                 
                 Section("Categorization") {
-                    // Categories
+                    // Lists
                     NavigationLink(
-                        destination: SearchListNamedElement<Category>(
-                            title: "Categories",
-                            selectedData: $bookModel.categories,
-                            createTitle: "Create a Category"
+                        destination: SearchListNamedElement<ListOfBooks>(
+                            title: "Lists",
+                            selectedData: $bookModel.lists,
+                            createTitle: "Create a List"
                         ),
-                        tag: Screen.addCategories,
+                        tag: Screen.addLists,
                         selection: $screen,
-                        label: { WrappingSmallChipsWithName<Category>(title: "Categories", data: bookModel.categories, chipColor: LIST_COLOR, alignment: .leading) }
+                        label: { WrappingSmallChipsWithName<ListOfBooks>(title: "Lists", data: bookModel.lists, chipColor: LIST_COLOR, alignment: .leading) }
                     )
                     
                     // Tags

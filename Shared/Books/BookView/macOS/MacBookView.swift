@@ -89,7 +89,7 @@ struct MacBookView: View {
                                                 WrappingSmallChipsWithName<ListOfBooks>(data: book.sortedLists, chipColor: LIST_COLOR, alignment: .leading)
                                             }
                                             else {
-                                                Text("No categories selected")
+                                                Text("No lists selected")
                                             }
                                         }
                                         

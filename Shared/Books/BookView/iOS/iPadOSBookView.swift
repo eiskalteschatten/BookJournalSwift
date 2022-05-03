@@ -33,9 +33,6 @@ struct iPadOSBookView: View {
                                 }
                                 
                                 BookRating(book: book)
-                                    .padding(.bottom, 10)
-                                
-                                Label("On Wishlist", systemImage: book.onWishlist ? "checkmark.square.fill" : "square")
                                     .padding(.bottom)
                                 
                                 Spacer()
@@ -90,12 +87,12 @@ struct iPadOSBookView: View {
                                     }
                                     
                                     HStack(alignment: .top, spacing: groupBoxSpacing) {
-                                        iOSBookViewGroupBox(title: "Categories", icon: "folder", width: groupBoxWidth) {
-                                            if book.categories != nil && book.sortedCategories.count > 0 {
-                                                WrappingSmallChipsWithName<Category>(data: book.sortedCategories, chipColor: LIST_COLOR, alignment: .leading)
+                                        iOSBookViewGroupBox(title: "Lists", icon: "list.bullet.rectangle", width: groupBoxWidth) {
+                                            if book.lists != nil && book.sortedLists.count > 0 {
+                                                WrappingSmallChipsWithName<ListOfBooks>(data: book.sortedLists, chipColor: LIST_COLOR, alignment: .leading)
                                             }
                                             else {
-                                                Text("No categories selected")
+                                                Text("No lists selected")
                                             }
                                         }
                                         
