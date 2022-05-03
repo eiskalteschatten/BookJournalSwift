@@ -70,7 +70,25 @@ struct Sidebar: View {
                 .listItemTint(Color("SidebarTint"))
             }
             
-            Section("Lists") {
+            Section(header:
+                HStack {
+                    Text("Lists")
+                    Spacer()
+                    Button {
+                        // TODO
+                    } label : {
+                        Image(systemName: "plus.circle")
+                            #if os(macOS)
+                            .font(.system(size: 15))
+                            #else
+                            .font(.system(size: 20))
+                            .foregroundColor(.accentColor)
+                            #endif
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                    .padding(.trailing, 5)
+                }
+            ) {
                 ForEach(lists.filter { $0.name != nil }) { list in
                     NavigationLink(
                         destination: BookList(
