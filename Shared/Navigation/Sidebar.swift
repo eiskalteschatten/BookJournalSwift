@@ -12,6 +12,12 @@ struct Sidebar: View {
     private let sidebarScreenKey = "Sidebar.screen"
     @State private var screen: String?
     
+    #if os(macOS)
+    @State private var showAddListButton = false
+    #else
+    @State private var showAddListButton = true
+    #endif
+    
     @FetchRequest(
         entity: ListOfBooks.entity(),
         sortDescriptors: [NSSortDescriptor(keyPath: \ListOfBooks.name, ascending: false)]
@@ -74,20 +80,27 @@ struct Sidebar: View {
                 HStack {
                     Text("Lists")
                     Spacer()
-                    Button {
-                        // TODO
-                    } label : {
-                        Image(systemName: "plus.circle")
-                            #if os(macOS)
-                            .font(.system(size: 15))
-                            #else
-                            .font(.system(size: 20))
-                            .foregroundColor(.accentColor)
-                            #endif
+                    if showAddListButton {
+                        Button {
+                            // TODO
+                        } label : {
+                            Image(systemName: "plus.circle")
+                                #if os(macOS)
+                                .font(.system(size: 15))
+                                #else
+                                .font(.system(size: 20))
+                                .foregroundColor(.accentColor)
+                                #endif
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                        .padding(.trailing, 5)
                     }
-                    .buttonStyle(PlainButtonStyle())
-                    .padding(.trailing, 5)
                 }
+                #if os(macOS)
+                .onHover { _ in
+                    showAddListButton.toggle()
+                }
+                #endif
             ) {
                 ForEach(lists.filter { $0.name != nil }) { list in
                     NavigationLink(
@@ -102,6 +115,11 @@ struct Sidebar: View {
                         }
                     )
                     .listItemTint(Color("SidebarTint"))
+                    #if os(macOS)
+                    .onHover { _ in
+                        showAddListButton.toggle()
+                    }
+                    #endif
                 }
             }
         }
