@@ -18,7 +18,7 @@ struct SidebarLists: View {
 
     @FetchRequest(
         entity: ListOfBooks.entity(),
-        sortDescriptors: [NSSortDescriptor(keyPath: \ListOfBooks.name, ascending: false)]
+        sortDescriptors: [NSSortDescriptor(keyPath: \ListOfBooks.name, ascending: true)]
     ) private var lists: FetchedResults<ListOfBooks>
         
     var body: some View {
