@@ -26,6 +26,7 @@ struct BookLinksView: View {
                     }
                 }
             }
+            .foregroundColor(.blue)
             #if os(macOS)
             .buttonStyle(.link)
             #endif
@@ -42,6 +43,7 @@ struct BookLinksView: View {
                     }
                 }
             }
+            .foregroundColor(.blue)
             #if os(macOS)
             .buttonStyle(.link)
             #endif
