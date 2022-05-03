@@ -27,6 +27,8 @@ struct Sidebar: View {
                         Label("All Books", systemImage: "books.vertical")
                     }
                 )
+                .listItemTint(Color("SidebarTint"))
+                
                 NavigationLink(
                     destination: BookList(
                         predicate: NSPredicate(format: "readingStatus == %@", BookReadingStatus.currentlyReading.rawValue),
@@ -38,6 +40,8 @@ struct Sidebar: View {
                         Label("Currently Reading", systemImage: "book")
                     }
                 )
+                .listItemTint(Color("SidebarTint"))
+                
                 NavigationLink(
                     destination: BookList(
                         predicate: NSPredicate(format: "readingStatus == %@", BookReadingStatus.notReadYet.rawValue),
@@ -49,6 +53,8 @@ struct Sidebar: View {
                         Label("Not Read Yet", systemImage: "book.closed")
                     }
                 )
+                .listItemTint(Color("SidebarTint"))
+                
                 NavigationLink(
                     destination: BookList(
                           predicate: NSPredicate(format: "readingStatus == %@", BookReadingStatus.read.rawValue),
@@ -60,6 +66,7 @@ struct Sidebar: View {
                         Label("Books Read", systemImage: "checkmark.square")
                     }
                 )
+                .listItemTint(Color("SidebarTint"))
             }
             
             Section("Lists") {
@@ -74,18 +81,8 @@ struct Sidebar: View {
                         Label("Wishlist", systemImage: "list.star")
                     }
                 )
+                .listItemTint(Color("SidebarTint"))
             }
-            
-//                Section("Statistics") {
-//                    NavigationLink(
-//                        destination: BookList().navigationTitle("Statistics"),
-//                        tag: Screen.statistics,
-//                        selection: $screen,
-//                        label: {
-//                            Label("Statistics", systemImage: "chart.bar")
-//                        }
-//                    )
-//                }
         }
         .onChange(of: screen) { newScreen in
             defaults.set(newScreen?.rawValue, forKey: sidebarScreenKey)
