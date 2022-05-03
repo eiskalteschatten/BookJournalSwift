@@ -72,6 +72,7 @@ struct BookList: View {
                 }
             }
         }
+        .tint(.red)
         #if os(iOS)
         .sheet(isPresented: $showNewBookSheet) {
             iOSEditBookSheet(createOptions: createOptions)
