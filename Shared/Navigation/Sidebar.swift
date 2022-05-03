@@ -92,6 +92,7 @@ struct Sidebar: View {
                 }
             }
         }
+        .listStyle(SidebarListStyle())
         .onChange(of: screen) { newScreen in
             defaults.set(newScreen, forKey: sidebarScreenKey)
         }
