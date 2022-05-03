@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct BookRating: View {
-    var rating: Int
+    @ObservedObject var book: Book
     
     var body: some View {
         let starSize = 20.0
-        let totalStars = 5
-        let totalUnfilledStars = totalStars - rating
-        let totalFilledStars = totalStars - totalUnfilledStars
+        let totalStars: Int16 = 5
+        let totalUnfilledStars: Int16 = totalStars - book.rating
+        let totalFilledStars: Int16 = totalStars - totalUnfilledStars
         
         HStack {
             if totalFilledStars > 0 {
@@ -43,8 +43,9 @@ struct BookRating: View {
 
 struct BookRating_Previews: PreviewProvider {
     static var previews: some View {
-        BookRating(rating: 0)
-        BookRating(rating: 3)
-        BookRating(rating: 5)
+        let context = PersistenceController.preview.container.viewContext
+        let book = context.registeredObjects.first(where: { $0 is Book }) as! Book
+        
+        BookRating(book: book)
     }
 }

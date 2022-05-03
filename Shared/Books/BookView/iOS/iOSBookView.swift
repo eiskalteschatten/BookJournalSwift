@@ -28,7 +28,7 @@ struct iOSBookView: View {
                                     BookViewAuthors(authors: book.sortedAuthors)
                                 }
                                 
-                                BookRating(rating: Int(book.rating))
+                                BookRating(book: book)
                                     .padding(.bottom, 10)
                                 
                                 Label("On Wishlist", systemImage: book.onWishlist ? "checkmark.square.fill" : "square")
