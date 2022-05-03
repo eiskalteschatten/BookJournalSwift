@@ -12,47 +12,14 @@ struct MacEditBookStep5: View {
     
     var body: some View {
         VStack {
-            MacEditBookStepTitle("Publication Details")
+            MacEditBookStepTitle("Lists")
             
-            // Publisher
-            SearchListNamedElement<Publisher>(
-                title: "Publisher",
-                selectedData: $bookModel.publisher,
-                createTitle: "Create a Publisher"
+            // Lists
+            SearchListNamedElement<ListOfBooks>(
+                title: "Lists",
+                selectedData: $bookModel.lists,
+                createTitle: "Create a List"
             )
-                
-            Divider()
-                .padding(.vertical)
-            
-            Form {
-                // Book Format
-                Picker("Book Format:", selection: $bookModel.bookFormat) {
-                    ForEach(BookFormat.allCases) { format in
-                        Label(bookFormatProperties[format]![0], systemImage: bookFormatProperties[format]![1])
-                            .tag(format.rawValue)
-                    }
-                }
-                
-                // Year Published
-                TextField(
-                    "Year Published:",
-                    value: $bookModel.yearPublished,
-                    format: .number
-                )
-
-                // ISBN
-                TextField(
-                    "ISBN:",
-                    text: $bookModel.isbn
-                )
-                
-                // Page Count
-                TextField(
-                    "Page Count:",
-                    value: $bookModel.pageCount,
-                    format: .number
-                )
-            }
         }
     }
 }

@@ -14,21 +14,21 @@ struct MacEditBookStep4: View {
         VStack {
             MacEditBookStepTitle("Categorization")
 
-            // Categories
-            SearchListNamedElement<ListOfBooks>(
-                title: "Lists",
-                selectedData: $bookModel.lists,
-                createTitle: "Create a List"
-            )
-            
-            Divider()
-                .padding(.vertical)
-        
             // Tags
             SearchListNamedElement<Tag>(
                 title: "Tags",
                 selectedData: $bookModel.tags,
                 createTitle: "Create a Tag"
+            )
+            
+            Divider()
+                .padding(.vertical)
+            
+            // Genres
+            SearchListNamedElement<Genre>(
+                title: "Genres",
+                selectedData: $bookModel.genres,
+                createTitle: "Create a Genre"
             )
         }
     }
