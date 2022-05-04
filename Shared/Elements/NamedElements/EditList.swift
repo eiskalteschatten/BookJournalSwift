@@ -1,5 +1,5 @@
 //
-//  CreateList.swift
+//  EditList.swift
 //  BookJournal
 //
 //  Created by Alex Seifert on 04.05.22.
@@ -7,51 +7,55 @@
 
 import SwiftUI
 
-struct CreateList: View {
+struct EditList: View {
     @Binding var screen: SearchListNamedElementScreen?
     @Binding var showScreen: Bool
-
-    @State private var name: String = ""
+    
+    @ObservedObject private var editListViewModel: EditListViewModel
     
     // Navigvation View
-    init(screen: Binding<SearchListNamedElementScreen?>) {
+    init(screen: Binding<SearchListNamedElementScreen?>, list: ListOfBooks? = nil) {
         self._screen = screen
         self._showScreen = Binding.constant(false)
+        self.editListViewModel = EditListViewModel(list: list)
     }
     
     // Screen View
-    init(showScreen: Binding<Bool>) {
+    init(showScreen: Binding<Bool>, list: ListOfBooks? = nil) {
         self._screen = Binding.constant(nil)
         self._showScreen = showScreen
+        self.editListViewModel = EditListViewModel(list: list)
     }
 
     var body: some View {
         #if os(iOS)
         if screen == nil {
             NavigationView {
-                InternalCreateElementView(screen: $screen, showScreen: $showScreen, name: $name)
+                InternalCreateElementView(screen: $screen, showScreen: $showScreen, editListViewModel: editListViewModel)
             }
         }
         else {
-            InternalCreateElementView(screen: $screen, showScreen: $showScreen, name: $name)
+            InternalCreateElementView(screen: $screen, showScreen: $showScreen, editListViewModel: editListViewModel)
         }
         #else
-        InternalCreateElementView(screen: $screen, showScreen: $showScreen, name: $name)
+        InternalCreateElementView(screen: $screen, showScreen: $showScreen, editListViewModel: editListViewModel)
         #endif
     }
 }
 
 fileprivate struct InternalCreateElementView: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    
     @Binding var screen: SearchListNamedElementScreen?
     @Binding var showScreen: Bool
-    @Binding var name: String
+    @ObservedObject var editListViewModel: EditListViewModel
     
     var body: some View {
-        CreateElementView(title: "Create a List", close: close, save: save) {
+        CreateElementView(title: "Create a List", close: close, save: editListViewModel.save) {
             Form {
                 TextField(
                     "Name",
-                    text: $name
+                    text: $editListViewModel.name
                 )
             }
         }
@@ -68,22 +72,6 @@ fileprivate struct InternalCreateElementView: View {
         #endif
     }
     
-    private func save() {
-        let persistenceController = PersistenceController.shared
-        let viewContext = persistenceController.container.viewContext
-        
-        let newEntity = ListOfBooks(context: viewContext)
-        newEntity.createdAt = Date()
-        newEntity.updatedAt = Date()
-        newEntity.name = name
-        
-        do {
-            try viewContext.save()
-        } catch {
-            handleCoreDataError(error as NSError)
-        }
-    }
-
     private func close() {
         if screen != nil {
             screen = .home
@@ -95,14 +83,14 @@ fileprivate struct InternalCreateElementView: View {
     }
 }
 
-struct CreateList_Previews: PreviewProvider {
+struct EditList_Previews: PreviewProvider {
     static let viewContext = PersistenceController.preview.container.viewContext
     
     @State static var screen: SearchListNamedElementScreen?
     @State static var showScreen = true
     
     static var previews: some View {
-        CreateList(screen: $screen)
-        CreateList(showScreen: $showScreen)
+        EditList(screen: $screen)
+        EditList(showScreen: $showScreen)
     }
 }

@@ -81,7 +81,7 @@ struct Sidebar: View {
             }
         }
         .sheet(isPresented: $sidebarViewModel.showCreateSheet) {
-            CreateList(showScreen: $sidebarViewModel.showCreateSheet)
+            EditList(showScreen: $sidebarViewModel.showCreateSheet)
         }
         #if os(iOS)
         .navigationBarTitle("BookJournal")

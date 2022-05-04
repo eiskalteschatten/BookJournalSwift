@@ -101,7 +101,7 @@ struct SearchListLists: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink(
-                        destination: CreateList(screen: $screen),
+                        destination: EditList(screen: $screen),
                         tag: SearchListNamedElementScreen.create,
                         selection: $screen,
                         label: {
@@ -122,7 +122,7 @@ struct SearchListLists: View {
                 }
             }
             .sheet(isPresented: $showCreateSheet) {
-                CreateList(showScreen: $showCreateSheet)
+                EditList(showScreen: $showCreateSheet)
             }
             #endif
         }
