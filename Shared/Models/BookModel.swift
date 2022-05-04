@@ -64,6 +64,52 @@ final class BookModel: ObservableObject {
         initVariables()
     }
     
+    private func initVariables() {
+        // Editing a book
+        if let unwrappedBook = book {
+            bookcover = unwrappedBook.bookcover
+                
+            title = unwrappedBook.title ?? title
+            rating = unwrappedBook.rating != 0 ? Int(unwrappedBook.rating) : rating
+
+            readingStatus = unwrappedBook.readingStatus ?? readingStatus
+            addDateStarted = unwrappedBook.dateStarted != nil
+            dateStarted = unwrappedBook.dateStarted ?? dateStarted
+            addDateFinished = unwrappedBook.dateFinished != nil
+            dateFinished = unwrappedBook.dateFinished ?? dateStarted
+
+            authors = unwrappedBook.authors?.allObjects as? [Author] ?? authors
+            editors = unwrappedBook.editors?.allObjects as? [Editor] ?? editors
+
+            lists = unwrappedBook.lists?.allObjects as? [ListOfBooks] ?? lists
+            tags = unwrappedBook.tags?.allObjects as? [Tag] ?? tags
+            genres = unwrappedBook.genres?.allObjects as? [Genre] ?? genres
+
+            bookFormat = unwrappedBook.bookFormat ?? bookFormat
+            publisher = unwrappedBook.publisher ?? publisher
+            yearPublished = unwrappedBook.yearPublished != 0 ? unwrappedBook.yearPublished : yearPublished
+            isbn = unwrappedBook.isbn ?? isbn
+            pageCount = unwrappedBook.pageCount != 0 ? unwrappedBook.pageCount : pageCount
+
+            countryOfOrigin = unwrappedBook.countryOfOrigin ?? countryOfOrigin
+            translators = unwrappedBook.translators?.allObjects as? [Translator] ?? translators
+            originalLanguage = unwrappedBook.originalLanguage ?? originalLanguage
+            languageReadIn = unwrappedBook.languageReadIn ?? languageReadIn
+
+            summary = unwrappedBook.summary ?? summary
+            commentary = unwrappedBook.commentary ?? commentary
+            notes = unwrappedBook.notes ?? notes
+        }
+        // Creating a book
+        else if let unwrappedOptions = createOptions {
+            readingStatus = unwrappedOptions.readingStatus?.rawValue ?? readingStatus
+            
+            if let unwrappedList = unwrappedOptions.list {
+                lists.append(unwrappedList)
+            }
+        }
+    }
+    
     func save() {
         withAnimation {
             book = book != nil ? book : Book(context: viewContext!)
@@ -151,52 +197,6 @@ final class BookModel: ObservableObject {
             image.updatedAt = Date()
             image.image = data
             return image
-        }
-    }
-    
-    private func initVariables() {
-        // Editing a book
-        if let unwrappedBook = book {
-            bookcover = unwrappedBook.bookcover
-                
-            title = unwrappedBook.title ?? title
-            rating = unwrappedBook.rating != 0 ? Int(unwrappedBook.rating) : rating
-
-            readingStatus = unwrappedBook.readingStatus ?? readingStatus
-            addDateStarted = unwrappedBook.dateStarted != nil
-            dateStarted = unwrappedBook.dateStarted ?? dateStarted
-            addDateFinished = unwrappedBook.dateFinished != nil
-            dateFinished = unwrappedBook.dateFinished ?? dateStarted
-
-            authors = unwrappedBook.authors?.allObjects as? [Author] ?? authors
-            editors = unwrappedBook.editors?.allObjects as? [Editor] ?? editors
-
-            lists = unwrappedBook.lists?.allObjects as? [ListOfBooks] ?? lists
-            tags = unwrappedBook.tags?.allObjects as? [Tag] ?? tags
-            genres = unwrappedBook.genres?.allObjects as? [Genre] ?? genres
-
-            bookFormat = unwrappedBook.bookFormat ?? bookFormat
-            publisher = unwrappedBook.publisher ?? publisher
-            yearPublished = unwrappedBook.yearPublished != 0 ? unwrappedBook.yearPublished : yearPublished
-            isbn = unwrappedBook.isbn ?? isbn
-            pageCount = unwrappedBook.pageCount != 0 ? unwrappedBook.pageCount : pageCount
-
-            countryOfOrigin = unwrappedBook.countryOfOrigin ?? countryOfOrigin
-            translators = unwrappedBook.translators?.allObjects as? [Translator] ?? translators
-            originalLanguage = unwrappedBook.originalLanguage ?? originalLanguage
-            languageReadIn = unwrappedBook.languageReadIn ?? languageReadIn
-
-            summary = unwrappedBook.summary ?? summary
-            commentary = unwrappedBook.commentary ?? commentary
-            notes = unwrappedBook.notes ?? notes
-        }
-        // Creating a book
-        else if let unwrappedOptions = createOptions {
-            readingStatus = unwrappedOptions.readingStatus?.rawValue ?? readingStatus
-            
-            if let unwrappedList = unwrappedOptions.list {
-                lists.append(unwrappedList)
-            }
         }
     }
 }
