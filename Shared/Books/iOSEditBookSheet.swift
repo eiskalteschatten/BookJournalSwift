@@ -8,7 +8,6 @@
 import SwiftUI
 import UIKit
 import CoreData
-import WrappingHStack
 
 struct iOSEditBookSheet: View {
     private enum Screen: Int {

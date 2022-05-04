@@ -7,7 +7,6 @@
 
 import SwiftUI
 import CoreData
-import WrappingHStack
 
 struct BookListItem: View {
     @ObservedObject var book: Book
