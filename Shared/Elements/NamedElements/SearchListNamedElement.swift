@@ -148,7 +148,7 @@ struct SearchListNamedElement<T: AbstractName>: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink(
-                        destination: CreateNamedElement<T>(title: createTitle, screen: $screen),
+                        destination: EditNamedElement<T>(title: createTitle, screen: $screen),
                         tag: SearchListNamedElementScreen.create,
                         selection: $screen,
                         label: {
@@ -169,7 +169,7 @@ struct SearchListNamedElement<T: AbstractName>: View {
                 }
             }
             .sheet(isPresented: $showCreateSheet) {
-                CreateNamedElement<T>(title: createTitle, showScreen: $showCreateSheet)
+                EditNamedElement<T>(title: createTitle, showScreen: $showCreateSheet)
             }
             #endif
         }

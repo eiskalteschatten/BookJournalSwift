@@ -1,5 +1,5 @@
 //
-//  CreateNamedElement.swift
+//  EditNamedElement.swift
 //  BookJournal
 //
 //  Created by Alex Seifert on 28.04.22.
@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreData
 
-struct CreateNamedElement<T: AbstractName>: View {
+struct EditNamedElement<T: AbstractName>: View {
     var title: String
     
     @Binding var screen: SearchListNamedElementScreen?
@@ -101,14 +101,14 @@ fileprivate struct InternalCreateElementView<T: AbstractName>: View {
     }
 }
 
-struct CreateNamedElement_Previews: PreviewProvider {
+struct EditNamedElement_Previews: PreviewProvider {
     static let viewContext = PersistenceController.preview.container.viewContext
     
     @State static var screen: SearchListNamedElementScreen?
     @State static var showScreen: Bool = true
         
     static var previews: some View {
-        CreateNamedElement<Author>(title: "Create an Author", screen: $screen)
-        CreateNamedElement<Author>(title: "Create an Author", showScreen: $showScreen)
+        EditNamedElement<Author>(title: "Create an Author", screen: $screen)
+        EditNamedElement<Author>(title: "Create an Author", showScreen: $showScreen)
     }
 }
