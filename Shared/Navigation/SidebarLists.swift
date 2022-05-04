@@ -26,7 +26,7 @@ struct SidebarLists: View {
                     tag: list.objectID.uriRepresentation().absoluteString,
                     selection: $sidebarViewModel.screen,
                     label: {
-                        Label(list.name ?? "", systemImage: list.icon ?? DEFAULT_LIST_ICON)
+                        Label(list.name ?? "", systemImage: !(list.icon ?? "").isEmpty ? list.icon! : DEFAULT_LIST_ICON)
                     }
                 )
                 .listItemTint(Color("SidebarTint"))
