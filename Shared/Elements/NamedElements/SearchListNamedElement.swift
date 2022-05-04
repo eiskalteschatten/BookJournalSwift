@@ -8,7 +8,7 @@
 import SwiftUI
 
 enum SearchListNamedElementScreen: Int {
-    case home, create
+    case home, edit
 }
 
 struct SearchListNamedElement<T: AbstractName>: View {
@@ -149,7 +149,7 @@ struct SearchListNamedElement<T: AbstractName>: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink(
                         destination: EditNamedElement<T>(title: createTitle, screen: $screen),
-                        tag: SearchListNamedElementScreen.create,
+                        tag: SearchListNamedElementScreen.edit,
                         selection: $screen,
                         label: {
                             Image(systemName: "plus")

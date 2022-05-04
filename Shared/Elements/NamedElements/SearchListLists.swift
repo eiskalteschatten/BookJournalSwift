@@ -14,10 +14,11 @@ struct SearchListLists: View {
     @Binding var selectedData: [ListOfBooks]
     
     @State private var searchText = ""
-    @State private var showEditSheet = false
     @State private var listToEdit: ListOfBooks?
     
-    #if os(iOS)
+    #if os(macOS)
+    @State private var showEditSheet = false
+    #else
     @State private var screen: SearchListNamedElementScreen? = .home
     #endif
     
@@ -86,7 +87,11 @@ struct SearchListLists: View {
                         .contextMenu {
                             Button("Edit \"\(item.name ?? "")\"", action: {
                                 listToEdit = item
+                                #if os(macOS)
                                 showEditSheet.toggle()
+                                #else
+                                screen = .edit
+                                #endif
                             })
                             Divider()
                             Button("Delete \"\(item.name ?? "")\"", role: .destructive, action: {
@@ -104,14 +109,6 @@ struct SearchListLists: View {
                 
             }
             .listStyle(.plain)
-            .onChange(of: showEditSheet) { show in
-                if !show {
-                    listToEdit = nil
-                }
-            }
-            .sheet(isPresented: $showEditSheet) {
-                EditList(showScreen: $showEditSheet, list: listToEdit)
-            }
             #if os(iOS)
             .navigationBarTitle(Text("Lists"), displayMode: .inline)
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always)) {
@@ -124,8 +121,8 @@ struct SearchListLists: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink(
-                        destination: EditList(screen: $screen),
-                        tag: SearchListNamedElementScreen.create,
+                        destination: EditList(screen: $screen, list: listToEdit),
+                        tag: SearchListNamedElementScreen.edit,
                         selection: $screen,
                         label: {
                             Image(systemName: "plus")
@@ -142,6 +139,14 @@ struct SearchListLists: View {
                     if result.name != nil {
                         Text(result.name!).searchCompletion(result.name!)
                     }
+                }
+            }
+            .sheet(isPresented: $showEditSheet) {
+                EditList(showScreen: $showEditSheet, list: listToEdit)
+            }
+            .onChange(of: showEditSheet) { show in
+                if !show {
+                    listToEdit = nil
                 }
             }
             #endif
