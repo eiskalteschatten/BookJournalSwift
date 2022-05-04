@@ -12,12 +12,15 @@ class EditNamedElementViewModel<T: AbstractName>: ObservableObject {
     private var viewContext: NSManagedObjectContext?
     private var element: T?
     
+    var isEditing = false
+    
     @Published var name: String = ""
     
     init(element: T? = nil) {
         let persistenceController = PersistenceController.shared
         viewContext = persistenceController.container.viewContext
         self.element = element
+        self.isEditing = element != nil
         initVariables()
     }
     
