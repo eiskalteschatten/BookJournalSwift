@@ -29,6 +29,28 @@ struct CreateNamedElement<T: AbstractName>: View {
     }
     
     var body: some View {
+        #if os(iOS)
+        if screen == nil {
+            NavigationView {
+                InternalCreateElementView<T>(title: title, screen: $screen, showScreen: $showScreen, name: $name)
+            }
+        }
+        else {
+            InternalCreateElementView<T>(title: title, screen: $screen, showScreen: $showScreen, name: $name)
+        }
+        #else
+        InternalCreateElementView<T>(title: title, screen: $screen, showScreen: $showScreen, name: $name)
+        #endif
+    }
+}
+
+fileprivate struct InternalCreateElementView<T: AbstractName>: View {
+    var title: String
+    @Binding var screen: SearchListNamedElementScreen?
+    @Binding var showScreen: Bool
+    @Binding var name: String
+    
+    var body: some View {
         CreateElementView(title: title, close: close, save: save) {
             Form {
                 TextField(
@@ -37,6 +59,17 @@ struct CreateNamedElement<T: AbstractName>: View {
                 )
             }
         }
+        #if os(iOS)
+        .if(screen == nil) { view in
+            view.navigationBarItems(
+                leading: Button(action: {
+                    close()
+                }) {
+                    Text("Cancel")
+                }
+            )
+        }
+        #endif
     }
     
     private func save() {
