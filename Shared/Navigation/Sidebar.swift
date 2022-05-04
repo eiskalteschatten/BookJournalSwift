@@ -72,6 +72,11 @@ struct Sidebar: View {
         .onChange(of: sidebarViewModel.screen) { newScreen in
             defaults.set(newScreen, forKey: sidebarScreenKey)
         }
+        .onChange(of: sidebarViewModel.showEditSheet) { show in
+            if !show {
+                sidebarViewModel.listToEdit = nil
+            }
+        }
         .onAppear {
             if let restoredScreen = defaults.string(forKey: sidebarScreenKey) as String? {
                 sidebarViewModel.screen = restoredScreen
