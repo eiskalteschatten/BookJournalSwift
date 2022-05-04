@@ -10,7 +10,8 @@ import SwiftUI
 struct Sidebar: View {
     private let defaults = UserDefaults.standard
     private let sidebarScreenKey = "Sidebar.screen"
-    @State private var screen: String?
+    
+    @StateObject private var sidebarViewModel = SidebarViewModel()
     
     var body: some View {
         List {
@@ -18,7 +19,7 @@ struct Sidebar: View {
                 NavigationLink(
                     destination: BookList().navigationTitle("All Books"),
                     tag: "allBooks",
-                    selection: $screen,
+                    selection: $sidebarViewModel.screen,
                     label: {
                         Label("All Books", systemImage: "books.vertical")
                     }
@@ -31,7 +32,7 @@ struct Sidebar: View {
                         createOptions: BookModelCreateOptions(readingStatus: .currentlyReading)
                     ).navigationTitle("Currently Reading"),
                     tag: BookReadingStatus.currentlyReading.rawValue,
-                    selection: $screen,
+                    selection: $sidebarViewModel.screen,
                     label: {
                         Label("Currently Reading", systemImage: "book")
                     }
@@ -44,7 +45,7 @@ struct Sidebar: View {
                         createOptions: BookModelCreateOptions(readingStatus: .notReadYet)
                     ).navigationTitle("Not Read Yet"),
                     tag: BookReadingStatus.notReadYet.rawValue,
-                    selection: $screen,
+                    selection: $sidebarViewModel.screen,
                     label: {
                         Label("Not Read Yet", systemImage: "book.closed")
                     }
@@ -57,7 +58,7 @@ struct Sidebar: View {
                           createOptions: BookModelCreateOptions(readingStatus: .read)
                     ).navigationTitle("Books Read"),
                     tag: BookReadingStatus.read.rawValue,
-                    selection: $screen,
+                    selection: $sidebarViewModel.screen,
                     label: {
                         Label("Books Read", systemImage: "checkmark.square")
                     }
@@ -65,15 +66,15 @@ struct Sidebar: View {
                 .listItemTint(Color("SidebarTint"))
             }
             
-            SidebarLists(screen: $screen)
+            SidebarLists(sidebarViewModel: sidebarViewModel)
         }
         .listStyle(SidebarListStyle())
-        .onChange(of: screen) { newScreen in
+        .onChange(of: sidebarViewModel.screen) { newScreen in
             defaults.set(newScreen, forKey: sidebarScreenKey)
         }
         .onAppear {
             if let restoredScreen = defaults.string(forKey: sidebarScreenKey) as String? {
-                screen = restoredScreen
+                sidebarViewModel.screen = restoredScreen
             }
         }
         #if os(iOS)

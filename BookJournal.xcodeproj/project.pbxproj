@@ -83,6 +83,8 @@
 		9376AAE328227B1A003C52DA /* CreateList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9376AAE128227B1A003C52DA /* CreateList.swift */; };
 		9376AAE528228688003C52DA /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9376AAE428228688003C52DA /* View.swift */; };
 		9376AAE628228688003C52DA /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9376AAE428228688003C52DA /* View.swift */; };
+		9376AAE828228FB2003C52DA /* SidebarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9376AAE728228FB2003C52DA /* SidebarViewModel.swift */; };
+		9376AAE928228FB2003C52DA /* SidebarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9376AAE728228FB2003C52DA /* SidebarViewModel.swift */; };
 		93882F2127F86F8D00D5AA61 /* iOSBookViewGroupBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93882F2027F86F8D00D5AA61 /* iOSBookViewGroupBox.swift */; };
 		93882F2327F870F800D5AA61 /* MacBookViewGroupBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93882F2227F870F800D5AA61 /* MacBookViewGroupBox.swift */; };
 		938B1AA027F0975200FDAE4F /* languages.json in Resources */ = {isa = PBXBuildFile; fileRef = 938B1A9F27F0975200FDAE4F /* languages.json */; };
@@ -192,6 +194,7 @@
 		9376AADE282275C2003C52DA /* SearchListLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListLists.swift; sourceTree = "<group>"; };
 		9376AAE128227B1A003C52DA /* CreateList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateList.swift; sourceTree = "<group>"; };
 		9376AAE428228688003C52DA /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		9376AAE728228FB2003C52DA /* SidebarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarViewModel.swift; sourceTree = "<group>"; };
 		93882F2027F86F8D00D5AA61 /* iOSBookViewGroupBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSBookViewGroupBox.swift; sourceTree = "<group>"; };
 		93882F2227F870F800D5AA61 /* MacBookViewGroupBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacBookViewGroupBox.swift; sourceTree = "<group>"; };
 		938B1A9F27F0975200FDAE4F /* languages.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = languages.json; sourceTree = "<group>"; };
@@ -331,6 +334,7 @@
 				9331145B281FD0FB00A0AFC9 /* iOSStackContentView.swift */,
 				93311455281FCF2900A0AFC9 /* Sidebar.swift */,
 				9376AADB28218F2A003C52DA /* SidebarLists.swift */,
+				9376AAE728228FB2003C52DA /* SidebarViewModel.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -688,6 +692,7 @@
 				93219913279D86E600CB6E76 /* ContentView.swift in Sources */,
 				9309D77F27E4A51500F19670 /* SearchListNamedElement.swift in Sources */,
 				9331145C281FD0FB00A0AFC9 /* iOSStackContentView.swift in Sources */,
+				9376AAE828228FB2003C52DA /* SidebarViewModel.swift in Sources */,
 				93A8F9A827E778CB00C8E8C5 /* BookModel.swift in Sources */,
 				932C8BF1281AA23200640726 /* CreateNamedElement.swift in Sources */,
 				93C833F627F9AC2100A6EFB5 /* BookRating.swift in Sources */,
@@ -712,6 +717,7 @@
 				93D77C9627F59FDF00443B00 /* BookViewBookCoverBlur.swift in Sources */,
 				93A5700927FB12D1004CDEA0 /* BookRatingEditor.swift in Sources */,
 				93311457281FCF2A00A0AFC9 /* Sidebar.swift in Sources */,
+				9376AAE928228FB2003C52DA /* SidebarViewModel.swift in Sources */,
 				9390CA0427F8DF3600C7FF7B /* BookViewTextWithLabel.swift in Sources */,
 				93390AA727F20DD6003C26D3 /* BookViewAuthors.swift in Sources */,
 				932E8DB828199D4700950389 /* NoBookSelected.swift in Sources */,

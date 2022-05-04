@@ -8,23 +8,15 @@
 import SwiftUI
 
 struct SidebarLists: View {
-    @Binding var screen: String?
+    @ObservedObject var sidebarViewModel: SidebarViewModel
     
-    @State private var showCreateSheet = false
-    
-    #if os(macOS)
-    @State private var showAddListButton = false
-    #else
-    @State private var showAddListButton = true
-    #endif
-
     @FetchRequest(
         entity: ListOfBooks.entity(),
         sortDescriptors: [NSSortDescriptor(keyPath: \ListOfBooks.name, ascending: true)]
     ) private var lists: FetchedResults<ListOfBooks>
-        
+    
     var body: some View {
-        Section(header: SectionHeader(showAddListButton: $showAddListButton, showCreateSheet: $showCreateSheet)) {
+        Section(header: SectionHeader(sidebarViewModel: sidebarViewModel)) {
             ForEach(lists.filter { $0.name != nil }) { list in
                 NavigationLink(
                     destination: BookList(
@@ -32,7 +24,7 @@ struct SidebarLists: View {
                         createOptions: BookModelCreateOptions(list: list)
                     ).navigationTitle(list.name ?? ""),
                     tag: list.objectID.uriRepresentation().absoluteString,
-                    selection: $screen,
+                    selection: $sidebarViewModel.screen,
                     label: {
                         Label(list.name ?? "", systemImage: list.icon ?? DEFAULT_LIST_ICON)
                     }
@@ -40,15 +32,20 @@ struct SidebarLists: View {
                 .listItemTint(Color("SidebarTint"))
             }
         }
-        .sheet(isPresented: $showCreateSheet) {
-            CreateList(showScreen: $showCreateSheet)
+        .sheet(isPresented: $sidebarViewModel.showCreateSheet) {
+            CreateList(showScreen: $sidebarViewModel.showCreateSheet)
         }
     }
 }
 
 fileprivate struct SectionHeader: View {
-    @Binding var showAddListButton: Bool
-    @Binding var showCreateSheet: Bool
+    @ObservedObject var sidebarViewModel: SidebarViewModel
+    
+    #if os(macOS)
+    @State private var showAddListButton = false
+    #else
+    @State private var showAddListButton = true
+    #endif
     
     var body: some View {
         HStack {
@@ -58,7 +55,7 @@ fileprivate struct SectionHeader: View {
             
             if showAddListButton {
                 Button {
-                    showCreateSheet.toggle()
+                    sidebarViewModel.showCreateSheet.toggle()
                 } label : {
                     Image(systemName: "plus.circle")
                         #if os(macOS)
@@ -81,9 +78,9 @@ fileprivate struct SectionHeader: View {
 }
 
 struct SidebarLists_Previews: PreviewProvider {
-    @State static private var screen: String?
+    @StateObject static var sidebarViewModel = SidebarViewModel()
     
     static var previews: some View {
-        SidebarLists(screen: $screen)
+        SidebarLists(sidebarViewModel: sidebarViewModel)
     }
 }
