@@ -77,5 +77,5 @@ let listSFSymbols = [
     "theatermasks",
     "theatermasks.circle",
     "cross.vial",
-    "appelogo"
+    "applelogo"
 ]
