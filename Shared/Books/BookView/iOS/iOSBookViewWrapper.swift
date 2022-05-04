@@ -37,11 +37,11 @@ struct iOSBookViewWrapper: View {
             ToolbarItem {
                 Menu {
                     Button(action: { showEditBookSheet.toggle() }) {
-                        Label("Edit", systemImage: "pencil")
+                        Label("Edit Book", systemImage: "pencil")
                     }
                     Divider()
                     Button(role: .destructive) { presentDeleteAlert.toggle() } label: {
-                        Label("Delete", systemImage: "trash")
+                        Label("Delete Book", systemImage: "trash")
                     }
                  } label: {
                      Image(systemName: "ellipsis.circle")
