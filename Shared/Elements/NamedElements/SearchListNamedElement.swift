@@ -15,10 +15,10 @@ struct SearchListNamedElement<T: AbstractName>: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.managedObjectContext) private var viewContext
     
-    @State private var screen: SearchListNamedElementScreen? = .home
-    
     #if os(macOS)
     @State private var showCreateSheet = false
+    #else
+    @State private var screen: SearchListNamedElementScreen? = .home
     #endif
     
     var title: String
