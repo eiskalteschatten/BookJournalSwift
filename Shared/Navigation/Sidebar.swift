@@ -77,6 +77,9 @@ struct Sidebar: View {
                 sidebarViewModel.screen = restoredScreen
             }
         }
+        .sheet(isPresented: $sidebarViewModel.showCreateSheet) {
+            CreateList(showScreen: $sidebarViewModel.showCreateSheet)
+        }
         #if os(iOS)
         .navigationBarTitle("BookJournal")
         #else

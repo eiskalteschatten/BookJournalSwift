@@ -32,9 +32,6 @@ struct SidebarLists: View {
                 .listItemTint(Color("SidebarTint"))
             }
         }
-        .sheet(isPresented: $sidebarViewModel.showCreateSheet) {
-            CreateList(showScreen: $sidebarViewModel.showCreateSheet)
-        }
     }
 }
 
