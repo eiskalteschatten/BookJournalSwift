@@ -30,6 +30,15 @@ struct SidebarLists: View {
                     }
                 )
                 .listItemTint(Color("SidebarTint"))
+                .contextMenu {
+                    Button("Edit \"\(list.name ?? "")\"", action: {
+                        
+                    })
+                    Divider()
+                    Button("Delete \"\(list.name ?? "")\"", role: .destructive, action: {
+                        
+                    })
+                }
             }
         }
     }

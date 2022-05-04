@@ -53,7 +53,7 @@ struct BookList: View {
                 .contextMenu {
                     Button("Add New Book", action: addNewBook)
                     Divider()
-                    Button("Delete Book", role: .destructive, action: {
+                    Button("Delete \"\(book.title!)\"", role: .destructive, action: {
                         promptToDeleteBook(offsets: IndexSet([index]))
                     })
                 }
