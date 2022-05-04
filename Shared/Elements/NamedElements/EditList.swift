@@ -51,7 +51,11 @@ fileprivate struct InternalCreateElementView: View {
     @ObservedObject var editListViewModel: EditListViewModel
     
     var body: some View {
-        CreateElementView(title: "Create a List", close: close, save: editListViewModel.save) {
+        CreateElementView(
+            title: editListViewModel.isEditing ? "Edit List" : "Create a List",
+            close: close,
+            save: editListViewModel.save
+        ) {
             Form {
                 TextField(
                     "Name",

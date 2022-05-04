@@ -12,13 +12,16 @@ class EditListViewModel: ObservableObject {
     private var viewContext: NSManagedObjectContext?
     private var list: ListOfBooks?
     
+    var isEditing = false
+    
     @Published var name: String = ""
     @Published var icon: String = DEFAULT_LIST_ICON
     
     init(list: ListOfBooks? = nil) {
         let persistenceController = PersistenceController.shared
-        viewContext = persistenceController.container.viewContext
+        self.viewContext = persistenceController.container.viewContext
         self.list = list
+        self.isEditing = list != nil
         initVariables()
     }
     
