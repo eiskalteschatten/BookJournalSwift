@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 class EditListViewModel: ObservableObject {
     private var viewContext: NSManagedObjectContext?
