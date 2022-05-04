@@ -24,6 +24,22 @@ struct CreateList: View {
     }
 
     var body: some View {
+        #if os(iOS)
+        NavigationView {
+            InternalCreateElementView(screen: $screen, showScreen: $showScreen, name: $name)
+        }
+        #else
+        InternalCreateElementView(screen: $screen, showScreen: $showScreen, name: $name)
+        #endif
+    }
+}
+
+fileprivate struct InternalCreateElementView: View {
+    @Binding var screen: SearchListNamedElementScreen?
+    @Binding var showScreen: Bool
+    @Binding var name: String
+    
+    var body: some View {
         CreateElementView(title: "Create a List", close: close, save: save) {
             Form {
                 TextField(
@@ -32,8 +48,17 @@ struct CreateList: View {
                 )
             }
         }
+        #if os(iOS)
+        .navigationBarItems(
+            leading: Button(action: {
+                close()
+            }) {
+                Text("Cancel")
+            }
+        )
+        #endif
     }
-
+    
     private func save() {
         let persistenceController = PersistenceController.shared
         let viewContext = persistenceController.container.viewContext

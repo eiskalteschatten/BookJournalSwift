@@ -23,14 +23,14 @@ struct CreateElementView<Content: View>: View {
             content
             #if os(iOS)
             .navigationBarTitle(Text(title), displayMode: .inline)
-                .navigationBarItems(
-                    trailing: Button(action: {
-                        save()
-                        close()
-                    }) {
-                        Text("Save").bold()
-                    }
-                )
+            .navigationBarItems(
+                trailing: Button(action: {
+                    save()
+                    close()
+                }) {
+                    Text("Save").bold()
+                }
+            )
             #else
             .padding(.bottom)
             #endif
