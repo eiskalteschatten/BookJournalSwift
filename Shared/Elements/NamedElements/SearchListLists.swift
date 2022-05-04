@@ -14,10 +14,10 @@ struct SearchListLists: View {
     @Binding var selectedData: [ListOfBooks]
     
     @State private var searchText = ""
-    
-    #if os(macOS)
     @State private var showEditSheet = false
-    #else
+    @State private var listToEdit: ListOfBooks?
+    
+    #if os(iOS)
     @State private var screen: SearchListNamedElementScreen? = .home
     #endif
     
@@ -85,8 +85,8 @@ struct SearchListLists: View {
                         }
                         .contextMenu {
                             Button("Edit \"\(item.name ?? "")\"", action: {
-//                                    sidebarViewModel.listToEdit = list
-//                                    sidebarViewModel.showEditSheet.toggle()
+                                listToEdit = item
+                                showEditSheet.toggle()
                             })
                             Divider()
                             Button("Delete \"\(item.name ?? "")\"", role: .destructive, action: {
@@ -104,6 +104,14 @@ struct SearchListLists: View {
                 
             }
             .listStyle(.plain)
+            .onChange(of: showEditSheet) { show in
+                if !show {
+                    listToEdit = nil
+                }
+            }
+            .sheet(isPresented: $showEditSheet) {
+                EditList(showScreen: $showEditSheet, list: listToEdit)
+            }
             #if os(iOS)
             .navigationBarTitle(Text("Lists"), displayMode: .inline)
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always)) {
@@ -135,9 +143,6 @@ struct SearchListLists: View {
                         Text(result.name!).searchCompletion(result.name!)
                     }
                 }
-            }
-            .sheet(isPresented: $showEditSheet) {
-                EditList(showScreen: $showEditSheet)
             }
             #endif
         }
