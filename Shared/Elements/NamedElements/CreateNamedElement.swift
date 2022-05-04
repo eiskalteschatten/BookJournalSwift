@@ -11,13 +11,22 @@ import CoreData
 struct CreateNamedElement<T: AbstractName>: View {
     var title: String
     
-    #if os(iOS)
     @Binding var screen: SearchListNamedElementScreen?
-    #else
     @Binding var showScreen: Bool
-    #endif
     
     @State private var name: String = ""
+    
+    init(title: String, screen: Binding<SearchListNamedElementScreen?>) {
+        self.title = title
+        self._screen = screen
+        self._showScreen = Binding.constant(false)
+    }
+    
+    init(title: String, showScreen: Binding<Bool>) {
+        self.title = title
+        self._screen = Binding.constant(nil)
+        self._showScreen = showScreen
+    }
     
     var body: some View {
         CreateElementView(title: title, close: close, save: save) {
@@ -47,28 +56,19 @@ struct CreateNamedElement<T: AbstractName>: View {
     }
     
     private func close() {
-        #if os(iOS)
         screen = .home
-        #else
         showScreen.toggle()
-        #endif
     }
 }
 
 struct CreateNamedElement_Previews: PreviewProvider {
     static let viewContext = PersistenceController.preview.container.viewContext
     
-    #if os(iOS)
     @State static var screen: SearchListNamedElementScreen?
-    #else
     @State static var showScreen: Bool = true
-    #endif
         
     static var previews: some View {
-        #if os(iOS)
         CreateNamedElement<Author>(title: "Create an Author", screen: $screen)
-        #else
         CreateNamedElement<Author>(title: "Create an Author", showScreen: $showScreen)
-        #endif
     }
 }
