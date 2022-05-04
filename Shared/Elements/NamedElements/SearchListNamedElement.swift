@@ -102,32 +102,32 @@ struct SearchListNamedElement<T: AbstractName>: View {
 
                                 Text(item.name!)
                             }
-                            .onTapGesture {
-                                if singleSelection {
-                                    selectedData = selectedData == item ? nil : item
-                                }
-                                else {
-                                    if selectedDataArray.contains(item) {
-                                        if let index = selectedDataArray.firstIndex(of: item) {
-                                            selectedDataArray.remove(at: index)
-                                        }
-                                    }
-                                    else {
-                                        selectedDataArray.append(item)
-                                    }
-                                }
-                                
-                                #if os(iOS)
-                                let impactHeavy = UIImpactFeedbackGenerator(style: .heavy)
-                                impactHeavy.impactOccurred()
-                                #endif
-                            }
                             
                             #if os(macOS)
                             if item != searchResults.last {
                                 Divider()
                                     .padding(.leading, 23)
                             }
+                            #endif
+                        }
+                        .onTapGesture {
+                            if singleSelection {
+                                selectedData = selectedData == item ? nil : item
+                            }
+                            else {
+                                if selectedDataArray.contains(item) {
+                                    if let index = selectedDataArray.firstIndex(of: item) {
+                                        selectedDataArray.remove(at: index)
+                                    }
+                                }
+                                else {
+                                    selectedDataArray.append(item)
+                                }
+                            }
+                            
+                            #if os(iOS)
+                            let impactHeavy = UIImpactFeedbackGenerator(style: .heavy)
+                            impactHeavy.impactOccurred()
                             #endif
                         }
                     }

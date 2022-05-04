@@ -60,21 +60,6 @@ struct SearchListLists: View {
 
                                 Label(item.name!, systemImage: item.icon ?? DEFAULT_LIST_ICON)
                             }
-                            .onTapGesture {
-                                if selectedData.contains(item) {
-                                    if let index = selectedData.firstIndex(of: item) {
-                                        selectedData.remove(at: index)
-                                    }
-                                }
-                                else {
-                                    selectedData.append(item)
-                                }
-                                
-                                #if os(iOS)
-                                let impactHeavy = UIImpactFeedbackGenerator(style: .heavy)
-                                impactHeavy.impactOccurred()
-                                #endif
-                            }
                             
                             #if os(macOS)
                             if item != searchResults.last {
@@ -82,6 +67,36 @@ struct SearchListLists: View {
                                     .padding(.leading, 23)
                             }
                             #endif
+                        }
+                        .onTapGesture {
+                            if selectedData.contains(item) {
+                                if let index = selectedData.firstIndex(of: item) {
+                                    selectedData.remove(at: index)
+                                }
+                            }
+                            else {
+                                selectedData.append(item)
+                            }
+                            
+                            #if os(iOS)
+                            let impactHeavy = UIImpactFeedbackGenerator(style: .heavy)
+                            impactHeavy.impactOccurred()
+                            #endif
+                        }
+                        .contextMenu {
+                            Button("Edit \"\(item.name ?? "")\"", action: {
+//                                    sidebarViewModel.listToEdit = list
+//                                    sidebarViewModel.showEditSheet.toggle()
+                            })
+                            Divider()
+                            Button("Delete \"\(item.name ?? "")\"", role: .destructive, action: {
+//                                    #if os(macOS)
+//                                    EditListViewModel.promptToDeleteList(list)
+//                                    #else
+//                                    sidebarViewModel.listToEdit = list
+//                                    sidebarViewModel.presentDeleteAlert.toggle()
+//                                    #endif
+                            })
                         }
                     }
                 }
