@@ -20,6 +20,7 @@ struct SearchListLists: View {
     @State private var showEditSheet = false
     #else
     @State private var screen: SearchListNamedElementScreen? = .home
+    @State private var presentDeleteAlert = false
     #endif
     
     @FetchRequest(
@@ -87,6 +88,7 @@ struct SearchListLists: View {
                         .contextMenu {
                             Button("Edit \"\(item.name ?? "")\"", action: {
                                 listToEdit = item
+                                
                                 #if os(macOS)
                                 showEditSheet.toggle()
                                 #else
@@ -95,12 +97,13 @@ struct SearchListLists: View {
                             })
                             Divider()
                             Button("Delete \"\(item.name ?? "")\"", role: .destructive, action: {
-//                                    #if os(macOS)
-//                                    EditListViewModel.promptToDeleteList(list)
-//                                    #else
-//                                    sidebarViewModel.listToEdit = list
-//                                    sidebarViewModel.presentDeleteAlert.toggle()
-//                                    #endif
+                                listToEdit = item
+                                
+                                #if os(macOS)
+                                EditListViewModel.promptToDeleteList(item)
+                                #else
+                                presentDeleteAlert.toggle()
+                                #endif
                             })
                         }
                     }
@@ -133,6 +136,17 @@ struct SearchListLists: View {
                     EditButton()
                 }
             }
+            .alert("Are you sure you want to delete this list?", isPresented: $presentDeleteAlert, actions: {
+                Button("No", role: .cancel, action: { presentDeleteAlert = false })
+                Button("Yes", role: .destructive, action: {
+                    if let unwrappedList = listToEdit {
+                        EditListViewModel.deleteList(unwrappedList)
+                        listToEdit = nil
+                    }
+                })
+            }, message: {
+                Text("Any books inside this list will not be deleted.")
+            })
             #else
             .searchable(text: $searchText) {
                 ForEach(searchResults, id: \.self) { result in
