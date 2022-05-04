@@ -8,13 +8,20 @@
 import SwiftUI
 
 struct CreateList: View {
-    #if os(iOS)
     @Binding var screen: SearchListNamedElementScreen?
-    #else
     @Binding var showScreen: Bool
-    #endif
 
     @State private var name: String = ""
+    
+    init(screen: Binding<SearchListNamedElementScreen?>) {
+        self._screen = screen
+        self._showScreen = Binding.constant(false)
+    }
+    
+    init(showScreen: Binding<Bool>) {
+        self._screen = Binding.constant(nil)
+        self._showScreen = showScreen
+    }
 
     var body: some View {
         CreateElementView(title: "Create a List", close: close, save: save) {
@@ -44,28 +51,19 @@ struct CreateList: View {
     }
 
     private func close() {
-        #if os(iOS)
         screen = .home
-        #else
         showScreen.toggle()
-        #endif
     }
 }
 
 struct CreateList_Previews: PreviewProvider {
     static let viewContext = PersistenceController.preview.container.viewContext
     
-    #if os(iOS)
     @State static var screen: SearchListNamedElementScreen?
-    #else
-    @State static var showScreen: Bool = true
-    #endif
+    @State static var showScreen = true
     
     static var previews: some View {
-        #if os(iOS)
         CreateList(screen: $screen)
-        #else
         CreateList(showScreen: $showScreen)
-        #endif
     }
 }

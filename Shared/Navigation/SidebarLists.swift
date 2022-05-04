@@ -10,6 +10,8 @@ import SwiftUI
 struct SidebarLists: View {
     @Binding var screen: String?
     
+    @State private var showCreateSheet = false
+    
     #if os(macOS)
     @State private var showAddListButton = false
     #else
@@ -22,7 +24,7 @@ struct SidebarLists: View {
     ) private var lists: FetchedResults<ListOfBooks>
         
     var body: some View {
-        Section(header: SectionHeader(showAddListButton: $showAddListButton)) {
+        Section(header: SectionHeader(showAddListButton: $showAddListButton, showCreateSheet: $showCreateSheet)) {
             ForEach(lists.filter { $0.name != nil }) { list in
                 NavigationLink(
                     destination: BookList(
@@ -38,19 +40,25 @@ struct SidebarLists: View {
                 .listItemTint(Color("SidebarTint"))
             }
         }
+        .sheet(isPresented: $showCreateSheet) {
+            CreateList(showScreen: $showCreateSheet)
+        }
     }
 }
 
 fileprivate struct SectionHeader: View {
     @Binding var showAddListButton: Bool
+    @Binding var showCreateSheet: Bool
     
     var body: some View {
         HStack {
             Text("Lists")
+            
             Spacer()
+            
             if showAddListButton {
                 Button {
-                    // TODO
+                    showCreateSheet.toggle()
                 } label : {
                     Image(systemName: "plus.circle")
                         #if os(macOS)
