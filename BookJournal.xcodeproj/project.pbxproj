@@ -77,6 +77,8 @@
 		9376AAD928214E47003C52DA /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9376AAD828214E47003C52DA /* Launch Screen.storyboard */; };
 		9376AADC28218F2A003C52DA /* SidebarLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9376AADB28218F2A003C52DA /* SidebarLists.swift */; };
 		9376AADD28218F2A003C52DA /* SidebarLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9376AADB28218F2A003C52DA /* SidebarLists.swift */; };
+		9376AADF282275C2003C52DA /* SearchListLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9376AADE282275C2003C52DA /* SearchListLists.swift */; };
+		9376AAE0282275C2003C52DA /* SearchListLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9376AADE282275C2003C52DA /* SearchListLists.swift */; };
 		93882F2127F86F8D00D5AA61 /* iOSBookViewGroupBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93882F2027F86F8D00D5AA61 /* iOSBookViewGroupBox.swift */; };
 		93882F2327F870F800D5AA61 /* MacBookViewGroupBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93882F2227F870F800D5AA61 /* MacBookViewGroupBox.swift */; };
 		938B1AA027F0975200FDAE4F /* languages.json in Resources */ = {isa = PBXBuildFile; fileRef = 938B1A9F27F0975200FDAE4F /* languages.json */; };
@@ -183,6 +185,7 @@
 		9372E7BA27F9FC0D0019146C /* iOSBookViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSBookViewWrapper.swift; sourceTree = "<group>"; };
 		9376AAD828214E47003C52DA /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		9376AADB28218F2A003C52DA /* SidebarLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarLists.swift; sourceTree = "<group>"; };
+		9376AADE282275C2003C52DA /* SearchListLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListLists.swift; sourceTree = "<group>"; };
 		93882F2027F86F8D00D5AA61 /* iOSBookViewGroupBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSBookViewGroupBox.swift; sourceTree = "<group>"; };
 		93882F2227F870F800D5AA61 /* MacBookViewGroupBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacBookViewGroupBox.swift; sourceTree = "<group>"; };
 		938B1A9F27F0975200FDAE4F /* languages.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = languages.json; sourceTree = "<group>"; };
@@ -331,6 +334,7 @@
 			children = (
 				9309D77E27E4A51500F19670 /* SearchListNamedElement.swift */,
 				932C8BF0281AA23200640726 /* CreateNamedElement.swift */,
+				9376AADE282275C2003C52DA /* SearchListLists.swift */,
 			);
 			path = NamedElements;
 			sourceTree = "<group>";
@@ -658,6 +662,7 @@
 				93D77C9327F59E1900443B00 /* iOSBookView.swift in Sources */,
 				938B1AA327F0981800FDAE4F /* Languages.swift in Sources */,
 				93D77C9827F5A0CC00443B00 /* BookViewBookCoverTitle.swift in Sources */,
+				9376AADF282275C2003C52DA /* SearchListLists.swift in Sources */,
 				9321990F279D86E600CB6E76 /* BookJournal.xcdatamodeld in Sources */,
 				9390CA0327F8DF3600C7FF7B /* BookViewTextWithLabel.swift in Sources */,
 				9369C1B227E631EC00A39E57 /* LanguagePicker.swift in Sources */,
@@ -727,6 +732,7 @@
 				9369C1AB27E62C1F00A39E57 /* WrappingSmallChipsWithName.swift in Sources */,
 				93A8F9A927E778CB00C8E8C5 /* BookModel.swift in Sources */,
 				9329054527C29C55000D15AE /* MacBookView.swift in Sources */,
+				9376AAE0282275C2003C52DA /* SearchListLists.swift in Sources */,
 				93ED4AA827F08BA4006031A2 /* MacEditBookStep7.swift in Sources */,
 				93D77C9927F5A0CC00443B00 /* BookViewBookCoverTitle.swift in Sources */,
 				932C8BFB281BFDCF00640726 /* Clipboard.swift in Sources */,

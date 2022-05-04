@@ -15,11 +15,7 @@ struct MacEditBookStep5: View {
             MacEditBookStepTitle("Lists")
             
             // Lists
-            SearchListNamedElement<ListOfBooks>(
-                title: "Lists",
-                selectedData: $bookModel.lists,
-                createTitle: "Create a List"
-            )
+            SearchListLists(selectedData: $bookModel.lists)
         }
     }
 }
