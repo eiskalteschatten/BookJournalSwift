@@ -16,12 +16,14 @@ struct CreateNamedElement<T: AbstractName>: View {
     
     @State private var name: String = ""
     
+    // Navigvation View
     init(title: String, screen: Binding<SearchListNamedElementScreen?>) {
         self.title = title
         self._screen = screen
         self._showScreen = Binding.constant(false)
     }
     
+    // Screen View
     init(title: String, showScreen: Binding<Bool>) {
         self.title = title
         self._screen = Binding.constant(nil)

@@ -13,11 +13,13 @@ struct CreateList: View {
 
     @State private var name: String = ""
     
+    // Navigvation View
     init(screen: Binding<SearchListNamedElementScreen?>) {
         self._screen = screen
         self._showScreen = Binding.constant(false)
     }
     
+    // Screen View
     init(showScreen: Binding<Bool>) {
         self._screen = Binding.constant(nil)
         self._showScreen = showScreen
