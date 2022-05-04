@@ -61,7 +61,6 @@ fileprivate struct InternalCreateElementView: View {
                     "Name",
                     text: $editListViewModel.name
                 )
-                .padding(.bottom)
                 
                 ScrollView {
                     LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 5)) {
@@ -81,7 +80,12 @@ fileprivate struct InternalCreateElementView: View {
                         }
                     }
                 }
+                .padding(.top)
+                #if os(macOS)
                 .frame(maxHeight: 200)
+                #else
+                .frame(maxHeight: 400)
+                #endif
             }
         }
         #if os(iOS)
