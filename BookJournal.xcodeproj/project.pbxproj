@@ -87,6 +87,8 @@
 		9376AAE928228FB2003C52DA /* SidebarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9376AAE728228FB2003C52DA /* SidebarViewModel.swift */; };
 		9376AAEB2822A695003C52DA /* EditListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9376AAEA2822A695003C52DA /* EditListViewModel.swift */; };
 		9376AAEC2822A695003C52DA /* EditListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9376AAEA2822A695003C52DA /* EditListViewModel.swift */; };
+		9376AAEE2822AA54003C52DA /* EditNamedElementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9376AAED2822AA54003C52DA /* EditNamedElementViewModel.swift */; };
+		9376AAEF2822AA54003C52DA /* EditNamedElementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9376AAED2822AA54003C52DA /* EditNamedElementViewModel.swift */; };
 		93882F2127F86F8D00D5AA61 /* iOSBookViewGroupBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93882F2027F86F8D00D5AA61 /* iOSBookViewGroupBox.swift */; };
 		93882F2327F870F800D5AA61 /* MacBookViewGroupBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93882F2227F870F800D5AA61 /* MacBookViewGroupBox.swift */; };
 		938B1AA027F0975200FDAE4F /* languages.json in Resources */ = {isa = PBXBuildFile; fileRef = 938B1A9F27F0975200FDAE4F /* languages.json */; };
@@ -198,6 +200,7 @@
 		9376AAE428228688003C52DA /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		9376AAE728228FB2003C52DA /* SidebarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarViewModel.swift; sourceTree = "<group>"; };
 		9376AAEA2822A695003C52DA /* EditListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditListViewModel.swift; sourceTree = "<group>"; };
+		9376AAED2822AA54003C52DA /* EditNamedElementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNamedElementViewModel.swift; sourceTree = "<group>"; };
 		93882F2027F86F8D00D5AA61 /* iOSBookViewGroupBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSBookViewGroupBox.swift; sourceTree = "<group>"; };
 		93882F2227F870F800D5AA61 /* MacBookViewGroupBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacBookViewGroupBox.swift; sourceTree = "<group>"; };
 		938B1A9F27F0975200FDAE4F /* languages.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = languages.json; sourceTree = "<group>"; };
@@ -347,6 +350,7 @@
 			children = (
 				9309D77E27E4A51500F19670 /* SearchListNamedElement.swift */,
 				932C8BF0281AA23200640726 /* EditNamedElement.swift */,
+				9376AAED2822AA54003C52DA /* EditNamedElementViewModel.swift */,
 				9376AADE282275C2003C52DA /* SearchListLists.swift */,
 				9376AAE128227B1A003C52DA /* EditList.swift */,
 				9376AAEA2822A695003C52DA /* EditListViewModel.swift */,
@@ -666,6 +670,7 @@
 				9346342727C2DFA6003B233F /* BookListItem.swift in Sources */,
 				9369C1AE27E62FE000A39E57 /* PickerMimickerWithName.swift in Sources */,
 				932C8C02281C2A4800640726 /* ErrorHandling.swift in Sources */,
+				9376AAEE2822AA54003C52DA /* EditNamedElementViewModel.swift in Sources */,
 				9376AAE228227B1A003C52DA /* EditList.swift in Sources */,
 				93219915279D86E600CB6E76 /* Persistence.swift in Sources */,
 				9329054127C2932F000D15AE /* Constants.swift in Sources */,
@@ -763,6 +768,7 @@
 				93882F2327F870F800D5AA61 /* MacBookViewGroupBox.swift in Sources */,
 				93548C8A27E8AA50004524B7 /* MacEditBookStep1.swift in Sources */,
 				9309D78027E4A51500F19670 /* SearchListNamedElement.swift in Sources */,
+				9376AAEF2822AA54003C52DA /* EditNamedElementViewModel.swift in Sources */,
 				932E8DBB28199D8300950389 /* MacBookViewWrapper.swift in Sources */,
 				93219914279D86E600CB6E76 /* ContentView.swift in Sources */,
 				93A5700627FB11A3004CDEA0 /* MacEditBookStep8.swift in Sources */,

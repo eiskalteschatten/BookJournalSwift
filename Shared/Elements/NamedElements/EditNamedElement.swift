@@ -14,34 +14,36 @@ struct EditNamedElement<T: AbstractName>: View {
     @Binding var screen: SearchListNamedElementScreen?
     @Binding var showScreen: Bool
     
-    @State private var name: String = ""
+    @ObservedObject private var editNamedElementViewModel: EditNamedElementViewModel<T>
     
     // Navigvation View
-    init(title: String, screen: Binding<SearchListNamedElementScreen?>) {
+    init(title: String, screen: Binding<SearchListNamedElementScreen?>, element: T? = nil) {
         self.title = title
         self._screen = screen
         self._showScreen = Binding.constant(false)
+        self.editNamedElementViewModel = EditNamedElementViewModel<T>(element: element)
     }
     
     // Screen View
-    init(title: String, showScreen: Binding<Bool>) {
+    init(title: String, showScreen: Binding<Bool>, element: T? = nil) {
         self.title = title
         self._screen = Binding.constant(nil)
         self._showScreen = showScreen
+        self.editNamedElementViewModel = EditNamedElementViewModel<T>(element: element)
     }
     
     var body: some View {
         #if os(iOS)
         if screen == nil {
             NavigationView {
-                InternalCreateElementView<T>(title: title, screen: $screen, showScreen: $showScreen, name: $name)
+                InternalCreateElementView<T>(title: title, screen: $screen, showScreen: $showScreen, editNamedElementViewModel: editNamedElementViewModel)
             }
         }
         else {
-            InternalCreateElementView<T>(title: title, screen: $screen, showScreen: $showScreen, name: $name)
+            InternalCreateElementView<T>(title: title, screen: $screen, showScreen: $showScreen, editNamedElementViewModel: editNamedElementViewModel)
         }
         #else
-        InternalCreateElementView<T>(title: title, screen: $screen, showScreen: $showScreen, name: $name)
+        InternalCreateElementView<T>(title: title, screen: $screen, showScreen: $showScreen, editNamedElementViewModel: editNamedElementViewModel)
         #endif
     }
 }
@@ -50,14 +52,14 @@ fileprivate struct InternalCreateElementView<T: AbstractName>: View {
     var title: String
     @Binding var screen: SearchListNamedElementScreen?
     @Binding var showScreen: Bool
-    @Binding var name: String
+    @ObservedObject var editNamedElementViewModel: EditNamedElementViewModel<T>
     
     var body: some View {
-        CreateElementView(title: title, close: close, save: save) {
+        CreateElementView(title: title, close: close, save: editNamedElementViewModel.save) {
             Form {
                 TextField(
                     "Name",
-                    text: $name
+                    text: $editNamedElementViewModel.name
                 )
             }
         }
@@ -72,22 +74,6 @@ fileprivate struct InternalCreateElementView<T: AbstractName>: View {
             )
         }
         #endif
-    }
-    
-    private func save() {
-        let persistenceController = PersistenceController.shared
-        let viewContext = persistenceController.container.viewContext
-        
-        let newEntity = T(context: viewContext)
-        newEntity.createdAt = Date()
-        newEntity.updatedAt = Date()
-        newEntity.name = name
-        
-        do {
-            try viewContext.save()
-        } catch {
-            handleCoreDataError(error as NSError)
-        }
     }
     
     private func close() {
