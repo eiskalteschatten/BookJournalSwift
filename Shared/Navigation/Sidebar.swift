@@ -76,6 +76,9 @@ struct Sidebar: View {
             if let restoredScreen = defaults.string(forKey: sidebarScreenKey) as String? {
                 sidebarViewModel.screen = restoredScreen
             }
+            else {
+                GlobalViewModel.shared.selectedBook = nil
+            }
         }
         .sheet(isPresented: $sidebarViewModel.showCreateSheet) {
             CreateList(showScreen: $sidebarViewModel.showCreateSheet)
