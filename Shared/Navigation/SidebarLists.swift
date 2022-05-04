@@ -32,7 +32,8 @@ struct SidebarLists: View {
                 .listItemTint(Color("SidebarTint"))
                 .contextMenu {
                     Button("Edit \"\(list.name ?? "")\"", action: {
-                        
+                        sidebarViewModel.listToEdit = list
+                        sidebarViewModel.showEditSheet.toggle()
                     })
                     Divider()
                     Button("Delete \"\(list.name ?? "")\"", role: .destructive, action: {
@@ -61,7 +62,7 @@ fileprivate struct SectionHeader: View {
             
             if showAddListButton {
                 Button {
-                    sidebarViewModel.showCreateSheet.toggle()
+                    sidebarViewModel.showEditSheet.toggle()
                 } label : {
                     Image(systemName: "plus.circle")
                         #if os(macOS)

@@ -16,7 +16,7 @@ struct SearchListNamedElement<T: AbstractName>: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     #if os(macOS)
-    @State private var showCreateSheet = false
+    @State private var showEditSheet = false
     #else
     @State private var screen: SearchListNamedElementScreen? = .home
     #endif
@@ -69,7 +69,7 @@ struct SearchListNamedElement<T: AbstractName>: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .frame(maxWidth: 200)
                 
-                Button(action: { showCreateSheet.toggle() }, label: {
+                Button(action: { showEditSheet.toggle() }, label: {
                     Image(systemName: "plus")
                 })
                 .buttonStyle(.plain)
@@ -168,8 +168,8 @@ struct SearchListNamedElement<T: AbstractName>: View {
                     }
                 }
             }
-            .sheet(isPresented: $showCreateSheet) {
-                EditNamedElement<T>(title: createTitle, showScreen: $showCreateSheet)
+            .sheet(isPresented: $showEditSheet) {
+                EditNamedElement<T>(title: createTitle, showScreen: $showEditSheet)
             }
             #endif
         }

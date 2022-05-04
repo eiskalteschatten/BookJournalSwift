@@ -16,7 +16,7 @@ struct SearchListLists: View {
     @State private var searchText = ""
     
     #if os(macOS)
-    @State private var showCreateSheet = false
+    @State private var showEditSheet = false
     #else
     @State private var screen: SearchListNamedElementScreen? = .home
     #endif
@@ -38,7 +38,7 @@ struct SearchListLists: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .frame(maxWidth: 200)
                 
-                Button(action: { showCreateSheet.toggle() }, label: {
+                Button(action: { showEditSheet.toggle() }, label: {
                     Image(systemName: "plus")
                 })
                 .buttonStyle(.plain)
@@ -121,8 +121,8 @@ struct SearchListLists: View {
                     }
                 }
             }
-            .sheet(isPresented: $showCreateSheet) {
-                EditList(showScreen: $showCreateSheet)
+            .sheet(isPresented: $showEditSheet) {
+                EditList(showScreen: $showEditSheet)
             }
             #endif
         }

@@ -9,5 +9,6 @@ import SwiftUI
 
 class SidebarViewModel: ObservableObject {
     @Published var screen: String?
-    @Published var showCreateSheet = false
+    @Published var showEditSheet = false
+    @Published var listToEdit: ListOfBooks?
 }

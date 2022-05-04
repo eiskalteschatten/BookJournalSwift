@@ -80,8 +80,8 @@ struct Sidebar: View {
                 GlobalViewModel.shared.selectedBook = nil
             }
         }
-        .sheet(isPresented: $sidebarViewModel.showCreateSheet) {
-            EditList(showScreen: $sidebarViewModel.showCreateSheet)
+        .sheet(isPresented: $sidebarViewModel.showEditSheet) {
+            EditList(showScreen: $sidebarViewModel.showEditSheet, list: sidebarViewModel.listToEdit)
         }
         #if os(iOS)
         .navigationBarTitle("BookJournal")
