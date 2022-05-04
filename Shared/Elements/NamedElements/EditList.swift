@@ -61,6 +61,27 @@ fileprivate struct InternalCreateElementView: View {
                     "Name",
                     text: $editListViewModel.name
                 )
+                .padding(.bottom)
+                
+                ScrollView {
+                    LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 5)) {
+                        ForEach(listSFSymbols, id: \.self) { symbol in
+                            Image(systemName: symbol)
+                                .padding(10)
+                                .font(.system(size: 20))
+                                .background {
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .fill(symbol == editListViewModel.icon ? Color.accentColor : Color.clear)
+                                        .aspectRatio(1.0, contentMode: .fit)
+                                }
+                                .foregroundColor(symbol == editListViewModel.icon ? Color.black : Color.primary)
+                                .onTapGesture {
+                                    editListViewModel.icon = symbol
+                                }
+                        }
+                    }
+                }
+                .frame(maxHeight: 200)
             }
         }
         #if os(iOS)
