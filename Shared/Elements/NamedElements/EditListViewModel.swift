@@ -48,4 +48,36 @@ class EditListViewModel: ObservableObject {
             }
         }
     }
+    
+    #if os(macOS)
+    static func promptToDeleteList(_ list: ListOfBooks) {
+        let alert = NSAlert()
+        alert.messageText = "Are you sure you want to delete this list?"
+        alert.informativeText = "Any books inside this list will not be deleted. This is permanent."
+        alert.addButton(withTitle: "No")
+        alert.addButton(withTitle: "Yes")
+        alert.alertStyle = .warning
+        
+        let delete = alert.runModal() == NSApplication.ModalResponse.alertSecondButtonReturn
+        
+        if delete {
+            deleteList(list)
+        }
+    }
+
+    static func deleteList(_ list: ListOfBooks) {
+        let persistenceController = PersistenceController.shared
+        let viewContext = persistenceController.container.viewContext
+        
+        withAnimation {
+            viewContext.delete(list)
+            
+            do {
+                try viewContext.save()
+            } catch {
+                handleCoreDataError(error as NSError)
+            }
+        }
+    }
+    #endif
 }

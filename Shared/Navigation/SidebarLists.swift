@@ -37,7 +37,11 @@ struct SidebarLists: View {
                     })
                     Divider()
                     Button("Delete \"\(list.name ?? "")\"", role: .destructive, action: {
+                        #if os(macOS)
+                        EditListViewModel.promptToDeleteList(list)
+                        #else
                         
+                        #endif
                     })
                 }
             }
