@@ -11,4 +11,8 @@ class SidebarViewModel: ObservableObject {
     @Published var screen: String?
     @Published var showEditSheet = false
     @Published var listToEdit: ListOfBooks?
+    
+    #if os(iOS)
+    @Published var presentDeleteAlert = false
+    #endif
 }

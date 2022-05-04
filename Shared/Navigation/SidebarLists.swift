@@ -40,7 +40,8 @@ struct SidebarLists: View {
                         #if os(macOS)
                         EditListViewModel.promptToDeleteList(list)
                         #else
-                        
+                        sidebarViewModel.listToEdit = list
+                        sidebarViewModel.presentDeleteAlert.toggle()
                         #endif
                     })
                 }

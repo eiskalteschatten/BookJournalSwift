@@ -90,6 +90,17 @@ struct Sidebar: View {
         }
         #if os(iOS)
         .navigationBarTitle("BookJournal")
+        .alert("Are you sure you want to delete this list?", isPresented: $sidebarViewModel.presentDeleteAlert, actions: {
+            Button("No", role: .cancel, action: { sidebarViewModel.presentDeleteAlert = false })
+            Button("Yes", role: .destructive, action: {
+                if let unwrappedList = sidebarViewModel.listToEdit {
+                    EditListViewModel.deleteList(unwrappedList)
+                    sidebarViewModel.listToEdit = nil
+                }
+            })
+        }, message: {
+            Text("Any books inside this list will not be deleted.")
+        })
         #else
         .frame(minWidth: 200)
         #endif

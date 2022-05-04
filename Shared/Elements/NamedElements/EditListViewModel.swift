@@ -53,7 +53,7 @@ class EditListViewModel: ObservableObject {
     static func promptToDeleteList(_ list: ListOfBooks) {
         let alert = NSAlert()
         alert.messageText = "Are you sure you want to delete this list?"
-        alert.informativeText = "Any books inside this list will not be deleted. This is permanent."
+        alert.informativeText = "Any books inside this list will not be deleted."
         alert.addButton(withTitle: "No")
         alert.addButton(withTitle: "Yes")
         alert.alertStyle = .warning
@@ -64,6 +64,7 @@ class EditListViewModel: ObservableObject {
             deleteList(list)
         }
     }
+    #endif
 
     static func deleteList(_ list: ListOfBooks) {
         let persistenceController = PersistenceController.shared
@@ -79,5 +80,4 @@ class EditListViewModel: ObservableObject {
             }
         }
     }
-    #endif
 }
