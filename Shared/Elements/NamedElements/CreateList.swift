@@ -25,7 +25,12 @@ struct CreateList: View {
 
     var body: some View {
         #if os(iOS)
-        NavigationView {
+        if screen == nil {
+            NavigationView {
+                InternalCreateElementView(screen: $screen, showScreen: $showScreen, name: $name)
+            }
+        }
+        else {
             InternalCreateElementView(screen: $screen, showScreen: $showScreen, name: $name)
         }
         #else
@@ -49,13 +54,15 @@ fileprivate struct InternalCreateElementView: View {
             }
         }
         #if os(iOS)
-        .navigationBarItems(
-            leading: Button(action: {
-                close()
-            }) {
-                Text("Cancel")
-            }
-        )
+        .if(screen == nil) { view in
+            view.navigationBarItems(
+                leading: Button(action: {
+                    close()
+                }) {
+                    Text("Cancel")
+                }
+            )
+        }
         #endif
     }
     
