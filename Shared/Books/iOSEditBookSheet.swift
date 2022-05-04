@@ -154,11 +154,7 @@ struct iOSEditBookSheet: View {
                 Section("Categorization") {
                     // Lists
                     NavigationLink(
-                        destination: SearchListNamedElement<ListOfBooks>(
-                            title: "Lists",
-                            selectedData: $bookModel.lists,
-                            createTitle: "Create a List"
-                        ),
+                        destination: SearchListLists(selectedData: $bookModel.lists),
                         tag: Screen.addLists,
                         selection: $screen,
                         label: { WrappingSmallChipsWithName<ListOfBooks>(title: "Lists", data: bookModel.lists, chipColor: LIST_COLOR, alignment: .leading) }
