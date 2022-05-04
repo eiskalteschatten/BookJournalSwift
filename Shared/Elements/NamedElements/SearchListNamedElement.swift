@@ -31,7 +31,7 @@ struct SearchListNamedElement<T: AbstractName>: View {
     
     @FetchRequest(
         entity: T.entity(),
-        sortDescriptors: [NSSortDescriptor(keyPath: \T.name, ascending: false)]
+        sortDescriptors: [NSSortDescriptor(keyPath: \T.name, ascending: true)]
     ) private var data: FetchedResults<T>
     
     init(
