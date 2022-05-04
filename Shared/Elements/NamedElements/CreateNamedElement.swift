@@ -89,8 +89,13 @@ fileprivate struct InternalCreateElementView<T: AbstractName>: View {
     }
     
     private func close() {
-        screen = .home
-        showScreen.toggle()
+        if screen != nil {
+            screen = .home
+        }
+        
+        if showScreen {
+            showScreen.toggle()
+        }
     }
 }
 
