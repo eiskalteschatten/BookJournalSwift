@@ -102,7 +102,6 @@ func createDefaultListsInCoreData() {
     
     do {
         let preferences = try viewContext.fetch(preferencesFetch)
-        
         let preferencesRow = preferences.count > 0 ? preferences[0] : AppPreferences(context: viewContext)
         
         if !preferencesRow.defaultListsCreated {
