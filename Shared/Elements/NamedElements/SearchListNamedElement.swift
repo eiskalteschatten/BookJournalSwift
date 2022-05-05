@@ -176,7 +176,7 @@ struct SearchListNamedElement<T: AbstractName>: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink(
-                        destination: EditNamedElement<T>(title: createTitle, screen: $screen),
+                        destination: EditNamedElement<T>(createTitle: createTitle, editTitle: editTitle, screen: $screen, element: elementToEdit),
                         tag: SearchListNamedElementScreen.edit,
                         selection: $screen,
                         label: {
@@ -188,6 +188,17 @@ struct SearchListNamedElement<T: AbstractName>: View {
                     EditButton()
                 }
             }
+            .alert("Are you sure you want to delete this item?", isPresented: $presentDeleteAlert, actions: {
+                Button("No", role: .cancel, action: { presentDeleteAlert = false })
+                Button("Yes", role: .destructive, action: {
+                    if let unwrappedElement = elementToEdit {
+                        EditNamedElementViewModel<T>.deleteElement(unwrappedElement)
+                        elementToEdit = nil
+                    }
+                })
+            }, message: {
+                Text("No books will be deleted.")
+            })
             #else
             .searchable(text: $searchText) {
                 ForEach(searchResults, id: \.self) { result in

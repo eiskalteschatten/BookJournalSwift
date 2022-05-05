@@ -130,7 +130,8 @@ struct iOSEditBookSheet: View {
                         destination: SearchListNamedElement<Author>(
                             title: "Authors",
                             selectedData: $bookModel.authors,
-                            createTitle: "Create an Author"
+                            createTitle: "Create an Author",
+                            editTitle: "Edit Author"
                         ),
                         tag: Screen.addAuthors,
                         selection: $screen,
@@ -142,7 +143,8 @@ struct iOSEditBookSheet: View {
                         destination: SearchListNamedElement<Editor>(
                             title: "Editors",
                             selectedData: $bookModel.editors,
-                            createTitle: "Create an Editor"
+                            createTitle: "Create an Editor",
+                            editTitle: "Edit Editor"
                         ),
                         tag: Screen.addEditors,
                         selection: $screen,
@@ -164,7 +166,8 @@ struct iOSEditBookSheet: View {
                         destination: SearchListNamedElement<Tag>(
                             title: "Tags",
                             selectedData: $bookModel.tags,
-                            createTitle: "Create a Tag"
+                            createTitle: "Create a Tag",
+                            editTitle: "Edit Tag"
                         ),
                         tag: Screen.addTags,
                         selection: $screen,
@@ -176,7 +179,8 @@ struct iOSEditBookSheet: View {
                         destination: SearchListNamedElement<Genre>(
                             title: "Genres",
                             selectedData: $bookModel.genres,
-                            createTitle: "Create a Genre"
+                            createTitle: "Create a Genre",
+                            editTitle: "Edit Genre"
                         ),
                         tag: Screen.addGenres,
                         selection: $screen,
@@ -190,7 +194,8 @@ struct iOSEditBookSheet: View {
                         destination: SearchListNamedElement<Publisher>(
                             title: "Publisher",
                             selectedData: $bookModel.publisher,
-                            createTitle: "Create a Publisher"
+                            createTitle: "Create a Publisher",
+                            editTitle: "Edit Publisher"
                         ),
                         tag: Screen.addPublisher,
                         selection: $screen,
@@ -235,7 +240,8 @@ struct iOSEditBookSheet: View {
                         destination: SearchListNamedElement<Country>(
                             title: "Country of Origin",
                             selectedData: $bookModel.countryOfOrigin,
-                            createTitle: "Create a Country"
+                            createTitle: "Create a Country",
+                            editTitle: "Edit Country"
                         ),
                         tag: Screen.addCountryOfOrigin,
                         selection: $screen,
@@ -247,7 +253,8 @@ struct iOSEditBookSheet: View {
                         destination: SearchListNamedElement<Translator>(
                             title: "Translators",
                             selectedData: $bookModel.translators,
-                            createTitle: "Create a Translator"
+                            createTitle: "Create a Translator",
+                            editTitle: "Edit Translator"
                         ),
                         tag: Screen.addTranslators,
                         selection: $screen,
