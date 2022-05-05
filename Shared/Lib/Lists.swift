@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 let listSFSymbols = [
     DEFAULT_LIST_ICON,
