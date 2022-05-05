@@ -9,7 +9,8 @@ import SwiftUI
 import CoreData
 
 struct EditNamedElement<T: AbstractName>: View {
-    var title: String
+    var createTitle: String
+    var editTitle: String
     
     @Binding var screen: SearchListNamedElementScreen?
     @Binding var showScreen: Bool
@@ -17,16 +18,18 @@ struct EditNamedElement<T: AbstractName>: View {
     @ObservedObject private var editNamedElementViewModel: EditNamedElementViewModel<T>
     
     // Navigvation View
-    init(title: String, screen: Binding<SearchListNamedElementScreen?>, element: T? = nil) {
-        self.title = title
+    init(createTitle: String, editTitle: String, screen: Binding<SearchListNamedElementScreen?>, element: T? = nil) {
+        self.createTitle = createTitle
+        self.editTitle = editTitle
         self._screen = screen
         self._showScreen = Binding.constant(false)
         self.editNamedElementViewModel = EditNamedElementViewModel<T>(element: element)
     }
     
     // Screen View
-    init(title: String, showScreen: Binding<Bool>, element: T? = nil) {
-        self.title = title
+    init(createTitle: String, editTitle: String, showScreen: Binding<Bool>, element: T? = nil) {
+        self.createTitle = createTitle
+        self.editTitle = editTitle
         self._screen = Binding.constant(nil)
         self._showScreen = showScreen
         self.editNamedElementViewModel = EditNamedElementViewModel<T>(element: element)
@@ -36,26 +39,31 @@ struct EditNamedElement<T: AbstractName>: View {
         #if os(iOS)
         if screen == nil {
             NavigationView {
-                InternalCreateElementView<T>(title: title, screen: $screen, showScreen: $showScreen, editNamedElementViewModel: editNamedElementViewModel)
+                InternalCreateElementView<T>(createTitle: createTitle, editTitle: editTitle, screen: $screen, showScreen: $showScreen, editNamedElementViewModel: editNamedElementViewModel)
             }
         }
         else {
-            InternalCreateElementView<T>(title: title, screen: $screen, showScreen: $showScreen, editNamedElementViewModel: editNamedElementViewModel)
+            InternalCreateElementView<T>(createTitle: createTitle, editTitle: editTitle, screen: $screen, showScreen: $showScreen, editNamedElementViewModel: editNamedElementViewModel)
         }
         #else
-        InternalCreateElementView<T>(title: title, screen: $screen, showScreen: $showScreen, editNamedElementViewModel: editNamedElementViewModel)
+        InternalCreateElementView<T>(createTitle: createTitle, editTitle: editTitle, screen: $screen, showScreen: $showScreen, editNamedElementViewModel: editNamedElementViewModel)
         #endif
     }
 }
 
 fileprivate struct InternalCreateElementView<T: AbstractName>: View {
-    var title: String
+    var createTitle: String
+    var editTitle: String
     @Binding var screen: SearchListNamedElementScreen?
     @Binding var showScreen: Bool
     @ObservedObject var editNamedElementViewModel: EditNamedElementViewModel<T>
     
     var body: some View {
-        CreateElementView(title: title, close: close, save: editNamedElementViewModel.save) {
+        CreateElementView(
+            title: editNamedElementViewModel.isEditing ? editTitle : createTitle,
+            close: close,
+            save: editNamedElementViewModel.save
+        ) {
             Form {
                 TextField(
                     "Name",
@@ -94,7 +102,7 @@ struct EditNamedElement_Previews: PreviewProvider {
     @State static var showScreen: Bool = true
         
     static var previews: some View {
-        EditNamedElement<Author>(title: "Create an Author", screen: $screen)
-        EditNamedElement<Author>(title: "Create an Author", showScreen: $showScreen)
+        EditNamedElement<Author>(createTitle: "Create an Author", editTitle: "Edit Author", screen: $screen)
+        EditNamedElement<Author>(createTitle: "Create an Author", editTitle: "Edit Author", showScreen: $showScreen)
     }
 }

@@ -18,7 +18,8 @@ struct MacEditBookStep7: View {
             SearchListNamedElement<Country>(
                 title: "Country of Origin",
                 selectedData: $bookModel.countryOfOrigin,
-                createTitle: "Create a Country"
+                createTitle: "Create a Country",
+                editTitle: "Edit Country"
             )
             
             Divider()
@@ -28,7 +29,8 @@ struct MacEditBookStep7: View {
             SearchListNamedElement<Translator>(
                 title: "Translators",
                 selectedData: $bookModel.translators,
-                createTitle: "Create a Translator"
+                createTitle: "Create a Translator",
+                editTitle: "Edit Translator"
             )
             
             Divider()

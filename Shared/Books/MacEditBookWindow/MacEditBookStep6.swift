@@ -18,7 +18,8 @@ struct MacEditBookStep6: View {
             SearchListNamedElement<Publisher>(
                 title: "Publisher",
                 selectedData: $bookModel.publisher,
-                createTitle: "Create a Publisher"
+                createTitle: "Create a Publisher",
+                editTitle: "Edit Publisher"
             )
                 
             Divider()

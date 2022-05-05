@@ -18,7 +18,8 @@ struct MacEditBookStep4: View {
             SearchListNamedElement<Tag>(
                 title: "Tags",
                 selectedData: $bookModel.tags,
-                createTitle: "Create a Tag"
+                createTitle: "Create a Tag",
+                editTitle: "Edit Tag"
             )
             
             Divider()
@@ -28,7 +29,8 @@ struct MacEditBookStep4: View {
             SearchListNamedElement<Genre>(
                 title: "Genres",
                 selectedData: $bookModel.genres,
-                createTitle: "Create a Genre"
+                createTitle: "Create a Genre",
+                editTitle: "Edit Genre"
             )
         }
     }

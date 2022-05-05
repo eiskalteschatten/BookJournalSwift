@@ -19,15 +19,18 @@ struct SearchListNamedElement<T: AbstractName>: View {
     @State private var showEditSheet = false
     #else
     @State private var screen: SearchListNamedElementScreen? = .home
+    @State private var presentDeleteAlert = false
     #endif
     
     var title: String
     @Binding var selectedDataArray: [T]
     @Binding var selectedData: T?
     var createTitle: String
+    var editTitle: String
     
     private var singleSelection = false
     @State private var searchText = ""
+    @State private var elementToEdit: T?
     
     @FetchRequest(
         entity: T.entity(),
@@ -37,24 +40,28 @@ struct SearchListNamedElement<T: AbstractName>: View {
     init(
         title: String,
         selectedData: Binding<[T]>,
-        createTitle: String
+        createTitle: String,
+        editTitle: String
     ) {
         self.title = title
         self._selectedDataArray = selectedData
         self._selectedData = Binding.constant(nil)
         self.createTitle = createTitle
+        self.editTitle = editTitle
     }
     
     init(
         title: String,
         selectedData: Binding<T?>,
-        createTitle: String
+        createTitle: String,
+        editTitle: String
     ) {
         self.title = title
         self._selectedDataArray = Binding.constant([])
         self._selectedData = selectedData
         self.singleSelection = true
         self.createTitle = createTitle
+        self.editTitle = editTitle
     }
     
     var body: some View {
@@ -130,6 +137,27 @@ struct SearchListNamedElement<T: AbstractName>: View {
                             impactHeavy.impactOccurred()
                             #endif
                         }
+                        .contextMenu {
+                            Button("Edit \"\(item.name ?? "")\"", action: {
+                                elementToEdit = item
+                                
+                                #if os(macOS)
+                                showEditSheet.toggle()
+                                #else
+                                screen = .edit
+                                #endif
+                            })
+                            Divider()
+                            Button("Delete \"\(item.name ?? "")\"", role: .destructive, action: {
+                                elementToEdit = item
+                                
+                                #if os(macOS)
+                                EditNamedElementViewModel<T>.promptToDeleteElement(item)
+                                #else
+                                presentDeleteAlert.toggle()
+                                #endif
+                            })
+                        }
                     }
                 }
                 .onDelete(perform: delete)
@@ -169,7 +197,12 @@ struct SearchListNamedElement<T: AbstractName>: View {
                 }
             }
             .sheet(isPresented: $showEditSheet) {
-                EditNamedElement<T>(title: createTitle, showScreen: $showEditSheet)
+                EditNamedElement<T>(createTitle: createTitle, editTitle: editTitle, showScreen: $showEditSheet, element: elementToEdit)
+            }
+            .onChange(of: showEditSheet) { show in
+                if !show {
+                    elementToEdit = nil
+                }
             }
             #endif
         }
@@ -224,7 +257,8 @@ struct SearchListNamedElement_Previews: PreviewProvider {
         SearchListNamedElement<Author>(
             title: "Search for Something",
             selectedData: $authors,
-            createTitle: "Create an Author"
+            createTitle: "Create an Author",
+            editTitle: "Edit Author"
         )
     }
 }

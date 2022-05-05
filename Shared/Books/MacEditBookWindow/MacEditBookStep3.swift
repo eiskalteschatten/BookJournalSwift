@@ -18,7 +18,8 @@ struct MacEditBookStep3: View {
             SearchListNamedElement<Author>(
                 title: "Authors",
                 selectedData: $bookModel.authors,
-                createTitle: "Create an Author"
+                createTitle: "Create an Author",
+                editTitle: "Edit Author"
             )
             
             Divider()
@@ -28,7 +29,8 @@ struct MacEditBookStep3: View {
             SearchListNamedElement<Editor>(
                 title: "Editors",
                 selectedData: $bookModel.editors,
-                createTitle: "Create an Editor"
+                createTitle: "Create an Editor",
+                editTitle: "Edit Editor"
             )
         }
     }
