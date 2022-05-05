@@ -91,3 +91,33 @@ let defaultLists = [
     ["Lent Books", "gift"],
     ["Books Recommended to Me", "star"]
 ]
+
+func createDefaultListsInCoreData() {
+    let persistenceController = PersistenceController.shared
+    let viewContext = persistenceController.container.viewContext
+    
+    let preferencesFetch: NSFetchRequest<AppPreferences> = AppPreferences.fetchRequest()
+    preferencesFetch.fetchLimit = 1
+    
+    do {
+        let preferences = try viewContext.fetch(preferencesFetch)
+        
+        let preferencesRow = preferences.count > 0 ? preferences[0] : AppPreferences(context: viewContext)
+        
+        if !preferencesRow.defaultListsCreated {
+            defaultLists.forEach { list in
+                let newList = ListOfBooks(context: viewContext)
+                newList.createdAt = Date()
+                newList.updatedAt = Date()
+                newList.name = list[0]
+                newList.icon = list[1]
+            }
+            
+            preferencesRow.defaultListsCreated = true
+            
+            try viewContext.save()
+        }
+    } catch {
+        handleCoreDataError(error as NSError)
+    }
+}

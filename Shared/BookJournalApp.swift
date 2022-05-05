@@ -18,6 +18,9 @@ struct BookJournalApp: App {
             ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .environmentObject(globalViewModel)
+                .task {
+                    createDefaultListsInCoreData()
+                }
                 #if os(iOS)
                 .alert(globalViewModel.globalError ?? "An error occurred!", isPresented: $globalViewModel.showGlobalErrorAlert, actions: {
                     Button("OK", role: .cancel, action: { globalViewModel.showGlobalErrorAlert = false })

@@ -5,6 +5,9 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
+    <entity name="AppPreferences" representedClassName="AppPreferences" syncable="YES" codeGenerationType="class">
+        <attribute name="defaultListsCreated" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+    </entity>
     <entity name="Author" representedClassName="Author" parentEntity="AbstractName" syncable="YES" codeGenerationType="class">
         <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="authors" inverseEntity="Book" spotlightIndexingEnabled="YES"/>
     </entity>
@@ -57,9 +60,6 @@
     <entity name="Publisher" representedClassName="Publisher" parentEntity="AbstractName" syncable="YES" codeGenerationType="class">
         <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="publisher" inverseEntity="Book" spotlightIndexingEnabled="YES"/>
     </entity>
-    <entity name="Settings" representedClassName="Settings" syncable="YES" codeGenerationType="class">
-        <attribute name="defaultListsCreated" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
-    </entity>
     <entity name="Tag" representedClassName="Tag" parentEntity="AbstractName" syncable="YES" codeGenerationType="class">
         <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="tags" inverseEntity="Book" spotlightIndexingEnabled="YES"/>
     </entity>
@@ -78,6 +78,6 @@
         <element name="Publisher" positionX="-27" positionY="180" width="128" height="44"/>
         <element name="Tag" positionX="-45" positionY="162" width="128" height="44"/>
         <element name="Translator" positionX="-18" positionY="153" width="128" height="44"/>
-        <element name="Settings" positionX="-18" positionY="153" width="128" height="44"/>
+        <element name="AppPreferences" positionX="-18" positionY="153" width="128" height="44"/>
     </elements>
 </model>
