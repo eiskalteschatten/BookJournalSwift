@@ -76,6 +76,11 @@ fileprivate struct InternalCreateElementView: View {
                                 .foregroundColor(symbol == editListViewModel.icon ? Color.black : Color.primary)
                                 .onTapGesture {
                                     editListViewModel.icon = symbol
+                                    
+                                    #if os(iOS)
+                                    let impactHeavy = UIImpactFeedbackGenerator(style: .heavy)
+                                    impactHeavy.impactOccurred()
+                                    #endif
                                 }
                         }
                     }
