@@ -76,11 +76,18 @@ let listSFSymbols = [
     "bag",
     "bag.circle",
     "barcode",
-    "giftcard",
+    "gift",
     "gauge",
     "speedometer",
     "theatermasks",
     "theatermasks.circle",
     "cross.vial",
     "applelogo"
+]
+
+let defaultLists = [
+    ["Wishlist", "list.star"],
+    ["Borrowed Books", "person.2"],
+    ["Lent Books", "gift"],
+    ["Books Recommended to Me", "star"]
 ]

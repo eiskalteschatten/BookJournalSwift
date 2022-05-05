@@ -395,9 +395,9 @@
 				932C8BF6281AF48A00640726 /* Helpers.swift */,
 				9346662727C9841900D58DE7 /* Books.swift */,
 				938B1AA227F0981800FDAE4F /* Languages.swift */,
+				9330715D2822F3F300F7E160 /* Lists.swift */,
 				932C8BF9281BFDCF00640726 /* Clipboard.swift */,
 				932C8C01281C2A4800640726 /* ErrorHandling.swift */,
-				9330715D2822F3F300F7E160 /* Lists.swift */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
