@@ -57,6 +57,9 @@
     <entity name="Publisher" representedClassName="Publisher" parentEntity="AbstractName" syncable="YES" codeGenerationType="class">
         <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="publisher" inverseEntity="Book" spotlightIndexingEnabled="YES"/>
     </entity>
+    <entity name="Settings" representedClassName="Settings" syncable="YES" codeGenerationType="class">
+        <attribute name="defaultListsCreated" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+    </entity>
     <entity name="Tag" representedClassName="Tag" parentEntity="AbstractName" syncable="YES" codeGenerationType="class">
         <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="tags" inverseEntity="Book" spotlightIndexingEnabled="YES"/>
     </entity>
@@ -67,13 +70,14 @@
         <element name="AbstractName" positionX="-9" positionY="162" width="128" height="74"/>
         <element name="Author" positionX="-54" positionY="153" width="128" height="44"/>
         <element name="Book" positionX="-63" positionY="-9" width="128" height="404"/>
-        <element name="ListOfBooks" positionX="-54" positionY="153" width="128" height="59"/>
         <element name="Country" positionX="27" positionY="207" width="128" height="44"/>
         <element name="Editor" positionX="-54" positionY="153" width="128" height="44"/>
         <element name="Genre" positionX="-9" positionY="189" width="128" height="44"/>
         <element name="ImageStore" positionX="-18" positionY="153" width="128" height="89"/>
+        <element name="ListOfBooks" positionX="-54" positionY="153" width="128" height="59"/>
         <element name="Publisher" positionX="-27" positionY="180" width="128" height="44"/>
         <element name="Tag" positionX="-45" positionY="162" width="128" height="44"/>
         <element name="Translator" positionX="-18" positionY="153" width="128" height="44"/>
+        <element name="Settings" positionX="-18" positionY="153" width="128" height="44"/>
     </elements>
 </model>
