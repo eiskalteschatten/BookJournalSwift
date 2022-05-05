@@ -29,7 +29,9 @@ struct iPadOSBookView: View {
                                 
                                 VStack(spacing: 10) {
                                     BookViewBookCoverTitle(book: book)
-                                    BookViewAuthors(authors: book.sortedAuthors)
+                                    if book.authors != nil && book.sortedAuthors.count > 0 {
+                                        WrappingSmallChipsWithName<Author>(data: book.sortedAuthors, chipColor: AUTHOR_COLOR)
+                                    }
                                 }
                                 
                                 BookRating(book: book)
