@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreData
 
-class EditListViewModel: ObservableObject {
+final class EditListViewModel: ObservableObject {
     private var viewContext: NSManagedObjectContext?
     private var list: ListOfBooks?
     

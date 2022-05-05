@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreData
 
-class EditNamedElementViewModel<T: AbstractName>: ObservableObject {
+final class EditNamedElementViewModel<T: AbstractName>: ObservableObject {
     private var viewContext: NSManagedObjectContext?
     private var element: T?
     
