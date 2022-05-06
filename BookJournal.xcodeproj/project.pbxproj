@@ -352,6 +352,7 @@
 				9376AADE282275C2003C52DA /* SearchListLists.swift */,
 				9376AAE128227B1A003C52DA /* EditList.swift */,
 				9376AAEA2822A695003C52DA /* EditListViewModel.swift */,
+				9369C1A927E62C1F00A39E57 /* WrappingSmallChipsWithName.swift */,
 			);
 			path = NamedElements;
 			sourceTree = "<group>";
@@ -399,7 +400,6 @@
 		9369C1AC27E62F2400A39E57 /* Forms */ = {
 			isa = PBXGroup;
 			children = (
-				9369C1A927E62C1F00A39E57 /* WrappingSmallChipsWithName.swift */,
 				9369C1AD27E62FE000A39E57 /* PickerMimickerWithName.swift */,
 			);
 			path = Forms;
