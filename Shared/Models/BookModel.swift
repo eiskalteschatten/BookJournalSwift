@@ -145,11 +145,16 @@ final class BookModel: ObservableObject {
             book!.dateStarted = addDateStarted ? dateStarted : nil
             book!.dateFinished = addDateFinished ? dateFinished : nil
 
+            book!.authors = []
             authors.forEach(book!.addToAuthors)
+            book!.editors = []
             editors.forEach(book!.addToEditors)
 
+            book!.lists = []
             lists.forEach(book!.addToLists)
+            book!.tags = []
             tags.forEach(book!.addToTags)
+            book!.genres = []
             genres.forEach(book!.addToGenres)
 
             book!.bookFormat = bookFormat
@@ -167,6 +172,7 @@ final class BookModel: ObservableObject {
             if let unwrapped = countryOfOrigin {
                 book!.countryOfOrigin = unwrapped
             }
+            book!.translators = []
             translators.forEach(book!.addToTranslators)
             book!.originalLanguage = originalLanguage
             book!.languageReadIn = languageReadIn
