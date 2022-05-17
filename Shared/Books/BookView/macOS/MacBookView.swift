@@ -28,7 +28,7 @@ struct MacBookView: View {
                                 VStack(spacing: 10) {
                                     BookViewBookCoverTitle(book: book)
                                     if book.authors != nil && book.sortedAuthors.count > 0 {
-                                        WrappingSmallChipsWithName<Author>(data: book.sortedAuthors, chipColor: AUTHOR_COLOR)
+                                        WrappingSmallChipsWithName<Author>(book: book, chipColor: AUTHOR_COLOR)
                                     }
                                 }
                                 
@@ -38,7 +38,7 @@ struct MacBookView: View {
                                 
                                 Group {
                                     let width = metrics.size.width * 0.15
-                                    
+
                                     HStack(spacing: textWithLabelSpacing) {
                                         BookViewTextWithLabel(label: "Page Count", text: book.pageCount > 0 ? String(book.pageCount) : "")
                                             .frame(width: width)
@@ -49,7 +49,7 @@ struct MacBookView: View {
                                         BookViewTextWithLabel(label: "Date Finished", text: book.dateFinishedFormatted)
                                             .frame(width: width)
                                     }
-                                    
+
                                     HStack(spacing: textWithLabelSpacing) {
                                         BookViewTextWithLabel(label: "Book Format", text: book.bookFormatStrings[0])
                                             .frame(width: width)
@@ -61,44 +61,44 @@ struct MacBookView: View {
                                             .frame(width: width)
                                     }
                                 }
-                                
+
                                 Spacer()
-                                
+
                                 Group {
                                     HStack(alignment: .top, spacing: groupBoxSpacing) {
                                         MacBookViewGroupBox(title: "Editors", icon: "person.2.wave.2", width: groupBoxWidth) {
                                             if book.editors != nil && book.sortedEditors.count > 0 {
-                                                WrappingSmallChipsWithName<Editor>(data: book.sortedEditors, chipColor: EDITOR_COLOR, alignment: .leading)
+                                                WrappingSmallChipsWithName<Editor>(book: book, chipColor: EDITOR_COLOR, alignment: .leading)
                                             }
                                             else {
                                                 Text("No editors selected")
                                             }
                                         }
-                                        
+
                                         MacBookViewGroupBox(title: "Genres", icon: "text.book.closed", width: groupBoxWidth) {
                                             if book.genres != nil && book.sortedGenres.count > 0 {
-                                                WrappingSmallChipsWithName<Genre>(data: book.sortedGenres, chipColor: GENRE_COLOR, alignment: .leading)
+                                                WrappingSmallChipsWithName<Genre>(book: book, chipColor: GENRE_COLOR, alignment: .leading)
                                             }
                                             else {
                                                 Text("No genres selected")
                                             }
                                         }
                                     }
-                                    
+
                                     HStack(alignment: .top, spacing: groupBoxSpacing) {
                                         MacBookViewGroupBox(title: "Lists", icon: "list.bullet.rectangle", width: groupBoxWidth) {
                                             if book.lists != nil && book.sortedLists.count > 0 {
-                                                WrappingSmallChipsWithName<ListOfBooks>(data: book.sortedLists, chipColor: LIST_COLOR, alignment: .leading)
+                                                WrappingSmallChipsWithName<ListOfBooks>(book: book, chipColor: LIST_COLOR, alignment: .leading)
                                             }
                                             else {
                                                 Text("No lists selected")
                                             }
                                         }
-                                        
+
                                         MacBookViewGroupBox(title: "Tags", icon: "tag", width: groupBoxWidth) {
                                             if let unwrappedTags = book.tags {
                                                 if unwrappedTags.allObjects.count > 0 {
-                                                    WrappingSmallChipsWithName<Tag>(data: unwrappedTags.allObjects as! [Tag], chipColor: TAG_COLOR, alignment: .leading)
+                                                    WrappingSmallChipsWithName<Tag>(book: book, chipColor: TAG_COLOR, alignment: .leading)
                                                 }
                                                 else {
                                                     Text("No tags selected")
@@ -106,17 +106,17 @@ struct MacBookView: View {
                                             }
                                         }
                                     }
-                                    
+
                                     HStack(alignment: .top, spacing: groupBoxSpacing) {
                                         MacBookViewGroupBox(title: "Translators", icon: "person.2", width: groupBoxWidth) {
                                             if book.translators != nil && book.sortedTranslators.count > 0 {
-                                                WrappingSmallChipsWithName<Translator>(data: book.sortedTranslators, chipColor: TRANSLATOR_COLOR, alignment: .leading)
+                                                WrappingSmallChipsWithName<Translator>(book: book, chipColor: TRANSLATOR_COLOR, alignment: .leading)
                                             }
                                             else {
                                                 Text("No translators selected")
                                             }
                                         }
-                                        
+
                                         MacBookViewGroupBox(title: "World", icon: "globe", width: groupBoxWidth) {
                                             HStack(spacing: 20) {
                                                 BookViewTextWithLabel(label: "Language Read In", text: book.languageReadInLocalizedName)
@@ -126,7 +126,7 @@ struct MacBookView: View {
                                         }
                                     }
                                 }
-                                
+
                                 Group {
                                     MacBookViewGroupBox(title: "Summary", icon: "text.alignleft", width: maxWidth) {
                                         if let unwrappedSummary = book.summary {
@@ -134,21 +134,21 @@ struct MacBookView: View {
                                                 .textSelection(.enabled)
                                         }
                                     }
-                                    
+
                                     MacBookViewGroupBox(title: "Commentary", icon: "text.bubble", width: maxWidth) {
                                         if let unwrappedCommentary = book.commentary {
                                             Text(unwrappedCommentary)
                                                 .textSelection(.enabled)
                                         }
                                     }
-                                    
+
                                     MacBookViewGroupBox(title: "Notes", icon: "note.text", width: maxWidth) {
                                         if let unwrappedNotes = book.notes {
                                             Text(unwrappedNotes)
                                                 .textSelection(.enabled)
                                         }
                                     }
-                                    
+
                                     if book.title != "" || book.isbn != "" {
                                         MacBookViewGroupBox(title: "Search for this book on...", icon: "link", width: maxWidth) {
                                             BookLinksView(book: book)
