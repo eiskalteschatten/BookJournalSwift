@@ -12,6 +12,7 @@ struct WrappingSmallChipsWithName<T: AbstractName>: View {
     var title: String?
     var chipColor: Color = .gray
     var alignment: HorizontalAlignment = .center
+    var book: Book?
     
     @FetchRequest private var data: FetchedResults<T>
     
@@ -21,13 +22,12 @@ struct WrappingSmallChipsWithName<T: AbstractName>: View {
         chipColor: Color = .gray,
         alignment: HorizontalAlignment = .center
     ) {
-        if let unwrappedBook = book {
-            self._data = FetchRequest<T>(
-                sortDescriptors: [SortDescriptor(\T.name, order: .forward)],
-                predicate: NSPredicate(format: "ANY books == %@", unwrappedBook),
-                animation: .default
-            )
-        }
+        self._data = FetchRequest<T>(
+            sortDescriptors: [SortDescriptor(\T.name, order: .forward)],
+            predicate: book != nil ? NSPredicate(format: "ANY books == %@", book!) : nil,
+            animation: .default
+        )
+        self.book = book
         self.title = title
         self.chipColor = chipColor
         self.alignment = alignment
@@ -39,7 +39,7 @@ struct WrappingSmallChipsWithName<T: AbstractName>: View {
                 Text(title!)
             }
             
-            if data.count > 0 {
+            if book != nil && data.count > 0 {
                 Spacer()
                 
                 WrappingHStack(data, id: \.self, alignment: alignment) { item in
