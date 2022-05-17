@@ -23,6 +23,7 @@ struct iOSEditBookSheet: View {
     @State private var presentImagePicker = false
     @State private var imagePickerSourceType: UIImagePickerController.SourceType = .photoLibrary
     @State private var bookcoverUIImage = UIImage()
+    private var book: Book?
     
     private var sheetTitle: String = "Add a New Book"
     
@@ -31,6 +32,7 @@ struct iOSEditBookSheet: View {
         createOptions: BookModelCreateOptions? = nil
     ) {
         bookModel = BookModel(book: book, createOptions: createOptions)
+        self.book = book
         
         if let title = book?.title {
             sheetTitle = "Edit \(title)"
@@ -135,7 +137,7 @@ struct iOSEditBookSheet: View {
                         ),
                         tag: Screen.addAuthors,
                         selection: $screen,
-                        label: { WrappingSmallChipsWithName<Author>(title: "Authors", data: bookModel.authors, chipColor: AUTHOR_COLOR, alignment: .leading) }
+                        label: { WrappingSmallChipsWithName<Author>(book: book, title: "Authors", chipColor: AUTHOR_COLOR, alignment: .leading) }
                     )
                     
                     // Editors
@@ -148,7 +150,7 @@ struct iOSEditBookSheet: View {
                         ),
                         tag: Screen.addEditors,
                         selection: $screen,
-                        label: { WrappingSmallChipsWithName<Editor>(title: "Editors", data: bookModel.editors, chipColor: EDITOR_COLOR, alignment: .leading) }
+                        label: { WrappingSmallChipsWithName<Editor>(book: book, title: "Editors", chipColor: EDITOR_COLOR, alignment: .leading) }
                     )
                 }
                 
@@ -158,7 +160,7 @@ struct iOSEditBookSheet: View {
                         destination: SearchListLists(selectedData: $bookModel.lists),
                         tag: Screen.addLists,
                         selection: $screen,
-                        label: { WrappingSmallChipsWithName<ListOfBooks>(title: "Lists", data: bookModel.lists, chipColor: LIST_COLOR, alignment: .leading) }
+                        label: { WrappingSmallChipsWithName<ListOfBooks>(book: book, title: "Lists", chipColor: LIST_COLOR, alignment: .leading) }
                     )
                     
                     // Tags
@@ -171,7 +173,7 @@ struct iOSEditBookSheet: View {
                         ),
                         tag: Screen.addTags,
                         selection: $screen,
-                        label: { WrappingSmallChipsWithName<Tag>(title: "Tags", data: bookModel.tags, chipColor: TAG_COLOR, alignment: .leading) }
+                        label: { WrappingSmallChipsWithName<Tag>(book: book, title: "Tags", chipColor: TAG_COLOR, alignment: .leading) }
                     )
                     
                     // Genres
@@ -184,7 +186,7 @@ struct iOSEditBookSheet: View {
                         ),
                         tag: Screen.addGenres,
                         selection: $screen,
-                        label: { WrappingSmallChipsWithName<Genre>(title: "Genres", data: bookModel.genres, chipColor: GENRE_COLOR, alignment: .leading) }
+                        label: { WrappingSmallChipsWithName<Genre>(book: book, title: "Genres", chipColor: GENRE_COLOR, alignment: .leading) }
                     )
                 }
                 
@@ -258,7 +260,7 @@ struct iOSEditBookSheet: View {
                         ),
                         tag: Screen.addTranslators,
                         selection: $screen,
-                        label: { WrappingSmallChipsWithName<Translator>(title: "Translators", data: bookModel.translators, chipColor: TRANSLATOR_COLOR, alignment: .leading) }
+                        label: { WrappingSmallChipsWithName<Translator>(book: book, title: "Translators", chipColor: TRANSLATOR_COLOR, alignment: .leading) }
                     )
                     
                     LanguagePicker(title: "Original Language", selection: $bookModel.originalLanguage)

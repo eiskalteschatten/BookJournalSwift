@@ -30,7 +30,7 @@ struct iPadOSBookView: View {
                                 VStack(spacing: 10) {
                                     BookViewBookCoverTitle(book: book)
                                     if book.authors != nil && book.sortedAuthors.count > 0 {
-                                        WrappingSmallChipsWithName<Author>(data: book.sortedAuthors, chipColor: AUTHOR_COLOR)
+                                        WrappingSmallChipsWithName<Author>(book: book, chipColor: AUTHOR_COLOR)
                                     }
                                 }
                                 
@@ -71,7 +71,7 @@ struct iPadOSBookView: View {
                                     HStack(alignment: .top, spacing: groupBoxSpacing) {
                                         iOSBookViewGroupBox(title: "Editors", icon: "person.2.wave.2", width: groupBoxWidth) {
                                             if book.editors != nil && book.sortedEditors.count > 0 {
-                                                WrappingSmallChipsWithName<Editor>(data: book.sortedEditors, chipColor: EDITOR_COLOR, alignment: .leading)
+                                                WrappingSmallChipsWithName<Editor>(book: book, chipColor: EDITOR_COLOR, alignment: .leading)
                                             }
                                             else {
                                                 Text("No editors selected")
@@ -80,7 +80,7 @@ struct iPadOSBookView: View {
                                         
                                         iOSBookViewGroupBox(title: "Genres", icon: "text.book.closed", width: groupBoxWidth) {
                                             if book.genres != nil && book.sortedGenres.count > 0 {
-                                                WrappingSmallChipsWithName<Genre>(data: book.sortedGenres, chipColor: GENRE_COLOR, alignment: .leading)
+                                                WrappingSmallChipsWithName<Genre>(book: book, chipColor: GENRE_COLOR, alignment: .leading)
                                             }
                                             else {
                                                 Text("No genres selected")
@@ -91,7 +91,7 @@ struct iPadOSBookView: View {
                                     HStack(alignment: .top, spacing: groupBoxSpacing) {
                                         iOSBookViewGroupBox(title: "Lists", icon: "list.bullet.rectangle", width: groupBoxWidth) {
                                             if book.lists != nil && book.sortedLists.count > 0 {
-                                                WrappingSmallChipsWithName<ListOfBooks>(data: book.sortedLists, chipColor: LIST_COLOR, alignment: .leading)
+                                                WrappingSmallChipsWithName<ListOfBooks>(book: book, chipColor: LIST_COLOR, alignment: .leading)
                                             }
                                             else {
                                                 Text("No lists selected")
@@ -101,7 +101,7 @@ struct iPadOSBookView: View {
                                         iOSBookViewGroupBox(title: "Tags", icon: "tag", width: groupBoxWidth) {
                                             if let unwrappedTags = book.tags {
                                                 if unwrappedTags.allObjects.count > 0 {
-                                                    WrappingSmallChipsWithName<Tag>(data: unwrappedTags.allObjects as! [Tag], chipColor: TAG_COLOR, alignment: .leading)
+                                                    WrappingSmallChipsWithName<Tag>(book: book, chipColor: TAG_COLOR, alignment: .leading)
                                                 }
                                                 else {
                                                     Text("No tags selected")
@@ -114,7 +114,7 @@ struct iPadOSBookView: View {
                                 Group {
                                     iOSBookViewGroupBox(title: "Translators", icon: "person.2") {
                                         if book.translators != nil && book.sortedTranslators.count > 0 {
-                                            WrappingSmallChipsWithName<Translator>(data: book.sortedTranslators, chipColor: TRANSLATOR_COLOR, alignment: .leading)
+                                            WrappingSmallChipsWithName<Translator>(book: book, chipColor: TRANSLATOR_COLOR, alignment: .leading)
                                         }
                                         else {
                                             Text("No translators selected")

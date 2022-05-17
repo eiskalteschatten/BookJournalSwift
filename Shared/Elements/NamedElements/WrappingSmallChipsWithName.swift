@@ -16,16 +16,18 @@ struct WrappingSmallChipsWithName<T: AbstractName>: View {
     @FetchRequest private var data: FetchedResults<T>
     
     init(
-        book: Book,
+        book: Book? = nil,
         title: String? = nil,
         chipColor: Color = .gray,
         alignment: HorizontalAlignment = .center
     ) {
-        self._data = FetchRequest<T>(
-            sortDescriptors: [SortDescriptor(\T.name, order: .forward)],
-            predicate: NSPredicate(format: "ANY books == %@", book),
-            animation: .default
-        )
+        if let unwrappedBook = book {
+            self._data = FetchRequest<T>(
+                sortDescriptors: [SortDescriptor(\T.name, order: .forward)],
+                predicate: NSPredicate(format: "ANY books == %@", unwrappedBook),
+                animation: .default
+            )
+        }
         self.title = title
         self.chipColor = chipColor
         self.alignment = alignment
