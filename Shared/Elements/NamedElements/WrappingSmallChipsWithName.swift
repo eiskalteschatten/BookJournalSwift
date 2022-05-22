@@ -68,28 +68,8 @@ struct WrappingSmallChipsWithName<T: AbstractName>: View {
     }
 }
 
-//struct WrappingSmallChipsWithName_Previews: PreviewProvider {
-//    @State static var authors: [Author] = []
-//    static let context = PersistenceController.preview.container.viewContext
-//    
-//    static var previews: some View {
-//        WrappingSmallChipsWithName(title: "Test Link", data: getMockAuthors())
-//    }
-//    
-//    static func getMockAuthors() -> [Author] {
-//        let mockAuthor1 = Author(context: context)
-//        mockAuthor1.name = "Liz"
-//        
-//        let mockAuthor2 = Author(context: context)
-//        mockAuthor2.name = "Scott"
-//        
-//        do {
-//            try context.save()
-//        } catch {
-//            let nsError = error as NSError
-//            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-//        }
-//        
-//        return [mockAuthor1, mockAuthor2]
-//    }
-//}
+struct WrappingSmallChipsWithName_Previews: PreviewProvider {
+    static var previews: some View {
+        WrappingSmallChipsWithName<Author>(title: "Test Link")
+    }
+}
