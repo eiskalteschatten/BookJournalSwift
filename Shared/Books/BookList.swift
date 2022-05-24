@@ -68,7 +68,7 @@ struct BookList: View {
             #endif
             ToolbarItem {
                 Button(action: addNewBook) {
-                    Label("Add Book", systemImage: "plus")
+                    Label("Add Book", systemImage: "plus.circle")
                 }
             }
         }
