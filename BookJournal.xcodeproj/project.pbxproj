@@ -999,7 +999,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2022 Alex Seifert";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2026 Alex Seifert";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -1030,7 +1030,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2022 Alex Seifert";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "© 2026 Alex Seifert";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
